@@ -1,0 +1,40 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+OPTIONS      /*path                      @org.planner.controllers.MainController.options(path)
+
+POST         /api/oauth2/access_token    @org.planner.controllers.UserController.accessToken
+POST         /api/project                @org.planner.controllers.ProjectController.insertProject
+PUT          /api/project/:id             @org.planner.controllers.ProjectController.updateProject(id: String)
+DELETE       /api/project/:projectId             @org.planner.controllers.ProjectController.deleteProject(projectId: String)
+POST         /api/project/:projectId/task @org.planner.controllers.ProjectController.insertTask(projectId: String)
+GET         /api/project/:projectId/tasks @org.planner.controllers.ProjectController.getTasks(projectId: String, offset: Int, count: Int)
+
+GET          /login                      @org.planner.controllers.UserController.login
+POST         /login                      @org.planner.controllers.UserController.loginPost
+POST         /api/login                  @org.planner.controllers.UserController.loginPost
+GET          /api/user/:userId           @org.planner.controllers.UserController.getUserById(userId: String)
+GET          /api/user                   @org.planner.controllers.UserController.getUserBySession
+GET          /api/users                   @org.planner.controllers.UserController.searchUsers(email: Option[String], nick: Option[String])
+POST         /api/register               @org.planner.controllers.UserController.register
+POST         /api/group                  @org.planner.controllers.UserController.addGroup
+POST         /api/group/:groupId/users   @org.planner.controllers.UserController.addUsersToGroup(groupId: String)
+GET          /api/user/:id/projects      @org.planner.controllers.ProjectController.getUserProjects(id: String, offset: Int, count: Int)
+
+#GET          /api-docs                   controllers.ApiHelpController.getResources
+#GET          /api-docs/api/project       controllers.ApiHelpController.getResource(path = "/api/project")
+#GET          /api-docs/api/user          controllers.ApiHelpController.getResource(path = "/api/user")
+
+GET          /api-docs                   @pl.matisoft.swagger.ApiHelpController.getResources
+GET          /api-docs/api/project       @pl.matisoft.swagger.ApiHelpController.getResource(path = "/api/project")
+GET          /api-docs/api/user          @pl.matisoft.swagger.ApiHelpController.getResource(path = "/api/user")
+
+GET          /docs/*file                 controllers.Assets.at(path="/public/docs", file)
+GET          /app/*file                  controllers.Assets.at(path="/public/client/app",file)
+GET          /m/*file                  controllers.Assets.at(path="/public/ionic/www",file)
+GET          /public.html                controllers.Assets.at(path="/public/client",file="public.html")
+GET          /autologin.html             controllers.Assets.at(path="/public/client",file="autologin.html")
+GET          /index.html                 controllers.Assets.at(path="/public/client",file="index.html")
+#GET         /*user/*project             @org.planner.controllers.MainController.indexProject(user: String, project: String)
+#GET         /*user                      @org.planner.controllers.MainController.indexUser(user: String)
+
