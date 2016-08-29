@@ -9,15 +9,16 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using App1.Extended.Code;
 
 namespace App1.Code.Abstracts
 {
     public abstract class AControl : LinearLayout
     {
-        private Context m_Context;
+        private ShApplication m_Context;
 
         //AControl
-        public AControl(Context context): base(context)
+        public AControl(ShApplication context): base(context)
         {            
             m_Context = context;
         }//AControl

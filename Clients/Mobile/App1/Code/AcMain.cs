@@ -6,14 +6,13 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using App1.Code.Abstracts;
+using App1.Code.Controls;
 
 namespace App1.Code
 {
-    [Activity(Label = "App1", MainLauncher = true, Icon = "@drawable/icon")]
-    public class MainActivity : AActivity
-    {
-        int count = 1;
-
+    [Activity(Label = "@string/ApplicationName", MainLauncher = true, Icon = "@drawable/icon")]
+    public class AcMain : AActivity
+    {       
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -23,8 +22,12 @@ namespace App1.Code
 
             // Get our button from the layout resource,
             // and attach an event to it
-            //Button button = FindViewById<Button>(Resource.Id.MyButton);
-
+            LinearLayout llShoppingLst = FindViewById<LinearLayout>(Resource.Id.listShopping);
+            for (int i = 0; i < 40; i++)
+            {
+                CtrlShoppingList item = new CtrlShoppingList(ShApplicationContext, "My List " + i);
+                llShoppingLst.AddView(item);
+            }//for
             //button.Click += delegate { button.Text = string.Format("{0} clicks!", count++); };
         }
     }
