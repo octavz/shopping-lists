@@ -52,6 +52,7 @@
     <Compile Include="Code\Abstracts\AActivity.cs" />
     <Compile Include="Code\Abstracts\AControl.cs" />
     <Compile Include="Code\Controls\CtrlShoppingList.cs" />
+    <Compile Include="Code\Data\ShoppingListDTO.cs" />
     <Compile Include="Code\Extended\ShApplication.cs" />
     <Compile Include="Code\AcMain.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
@@ -82,7 +83,6 @@
     <None Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Code\Data\" />
     <Folder Include="Code\Helpers\" />
     <Folder Include="Code\Service\" />
   </ItemGroup>

@@ -7,12 +7,17 @@ using Android.Widget;
 using Android.OS;
 using App1.Code.Abstracts;
 using App1.Code.Controls;
+using App1.Code.Data;
 
 namespace App1.Code
 {
     [Activity(Label = "@string/ApplicationName", MainLauncher = true, Icon = "@drawable/icon")]
     public class AcMain : AActivity
-    {       
+    {
+        LinearLayout llShoppingLst = null;
+        Button btnCreateList = null;
+        EditText txtListName = null;
+
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -22,14 +27,21 @@ namespace App1.Code
 
             // Get our button from the layout resource,
             // and attach an event to it
-            LinearLayout llShoppingLst = FindViewById<LinearLayout>(Resource.Id.listShopping);
-            for (int i = 0; i < 40; i++)
-            {
-                CtrlShoppingList item = new CtrlShoppingList(ShApplicationContext, "My List " + i);
-                llShoppingLst.AddView(item);
-            }//for
-            //button.Click += delegate { button.Text = string.Format("{0} clicks!", count++); };
-        }
+            llShoppingLst = FindViewById<LinearLayout>(Resource.Id.listShopping);
+            btnCreateList = FindViewById<Button>(Resource.Id.btnCreateList);
+            txtListName = FindViewById<EditText>(Resource.Id.editListName);
+
+            btnCreateList.Click += AddNewList;
+        }//OnCreate
+
+        private void AddNewList(object sender, EventArgs e)
+        {
+            ShoppingListDTO lstData = new ShoppingListDTO() { ListName = txtListName.Text };
+
+            CtrlShoppingList item = new CtrlShoppingList(ShApplicationContext, lstData);
+            llShoppingLst.AddView(item);
+        }//AddNewList
+
     }
 }
 

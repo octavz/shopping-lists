@@ -23,5 +23,9 @@ namespace App1.Code.Abstracts
             m_Context = context;
         }//AControl
 
+        /// <summary>
+        /// Shopping list - Application Cotext
+        /// </summary>
+        public ShApplication ShApplicationContext { get { return m_Context; } }
     }
 }

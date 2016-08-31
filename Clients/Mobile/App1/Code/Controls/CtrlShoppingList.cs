@@ -11,21 +11,22 @@ using Android.Views;
 using Android.Widget;
 using App1.Code.Abstracts;
 using App1.Extended.Code;
+using App1.Code.Data;
 
 namespace App1.Code.Controls
 {
     [Register("CtrlShoppingList")]
     public class CtrlShoppingList: AControl
     {
-        private string m_ListName = null;
+        private ShoppingListDTO m_Data = null;
 
         /// <summary>
         /// CtrlShoppingList
         /// </summary>
         /// <param name="cnt"></param>
-        public CtrlShoppingList(ShApplication cnt,string listName): base(cnt)
+        public CtrlShoppingList(ShApplication cnt, ShoppingListDTO data) : base(cnt)
         {
-            m_ListName = listName;
+            m_Data = data;
 
             Inflate(cnt, Resource.Layout.CtrlShoppingList, this);
             Initialize();
@@ -34,9 +35,16 @@ namespace App1.Code.Controls
         void Initialize()
         {            
             TextView lstNm = FindViewById<TextView>(Resource.Id.txtListName);
-            lstNm.Text = m_ListName;
+            LinearLayout llShopingListMain = FindViewById<LinearLayout>(Resource.Id.llShopingListMain);
+            lstNm.Text = m_Data.ListName;
+            llShopingListMain.Click += ShoppingListClick;
         }
 
-        public string ListName   { get { return string.IsNullOrEmpty(m_ListName) ? string.Empty : m_ListName; } }
+        private void ShoppingListClick(object sender, EventArgs e)
+        {
+            Toast.MakeText(ShApplicationContext, "Click on item", ToastLength.Short).Show();
+        }
+
+        public string ListName   { get { return string.IsNullOrEmpty(m_Data.ListName) ? string.Empty : m_Data.ListName; } }
     }//CtrlShoppingList
 }
