@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="25px"
+    android:minHeight="25px">
+  <LinearLayout
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      android:id="@+id/linearLayout1">
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="ddd"
+        android:layout_weight="1"
+        android:id="@+id/editListName" />
+    <Button
+        android:text="@string/ListsButtonCreate"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnCreateList" />
+  </LinearLayout>
+  <ScrollView
+      android:minWidth="25px"
+      android:minHeight="25px"
+      android:layout_width="fill_parent"
+      android:layout_height="fill_parent"
+      android:fillViewport="false"
+      android:id="@+id/scrollView1">
+    <LinearLayout
+        android:orientation="vertical"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/listShopping" />
+  </ScrollView>
+</LinearLayout>

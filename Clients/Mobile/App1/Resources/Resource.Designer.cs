@@ -95,10 +95,16 @@ namespace App1
 		{
 			
 			// aapt resource value: 0x7f030000
-			public const int AcMain = 2130903040;
+			public const int AcListItems = 2130903040;
 			
 			// aapt resource value: 0x7f030001
-			public const int CtrlShoppingList = 2130903041;
+			public const int AcMain = 2130903041;
+			
+			// aapt resource value: 0x7f030002
+			public const int AcShoppingLists = 2130903042;
+			
+			// aapt resource value: 0x7f030003
+			public const int CtrlShoppingList = 2130903043;
 			
 			static Layout()
 			{
@@ -113,14 +119,17 @@ namespace App1
 		public partial class String
 		{
 			
+			// aapt resource value: 0x7f040002
+			public const int ActivityShoppingList = 2130968578;
+			
 			// aapt resource value: 0x7f040001
 			public const int ApplicationName = 2130968577;
 			
 			// aapt resource value: 0x7f040000
 			public const int Hello = 2130968576;
 			
-			// aapt resource value: 0x7f040002
-			public const int ListsButtonAdd = 2130968578;
+			// aapt resource value: 0x7f040003
+			public const int ListsButtonCreate = 2130968579;
 			
 			static String()
 			{

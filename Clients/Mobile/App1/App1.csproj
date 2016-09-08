@@ -51,10 +51,17 @@
   <ItemGroup>
     <Compile Include="Code\Abstracts\AActivity.cs" />
     <Compile Include="Code\Abstracts\AControl.cs" />
+    <Compile Include="Code\Abstracts\HelperFactory.cs" />
+    <Compile Include="Code\Abstracts\IHttpHelper.cs" />
+    <Compile Include="Code\AcShoppingLists.cs" />
     <Compile Include="Code\Controls\CtrlShoppingList.cs" />
+    <Compile Include="Code\Data\Request\ReqLoginDTO.cs" />
+    <Compile Include="Code\Data\Response\ResLoginDTO.cs" />
     <Compile Include="Code\Data\ShoppingListDTO.cs" />
     <Compile Include="Code\Extended\ShApplication.cs" />
     <Compile Include="Code\AcMain.cs" />
+    <Compile Include="Code\Helpers\MockHttpHelper.cs" />
+    <Compile Include="Code\Repository\UserRepository.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -63,6 +70,12 @@
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <AndroidResource Include="Resources\layout\CtrlShoppingList.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\AcListItems.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\AcShoppingLists.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -83,7 +96,6 @@
     <None Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Code\Helpers\" />
     <Folder Include="Code\Service\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

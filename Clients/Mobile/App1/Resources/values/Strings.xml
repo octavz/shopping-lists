@@ -2,5 +2,6 @@
 <resources>
     <string name="Hello">Hello World, Click Me!</string>
     <string name="ApplicationName">App1</string>
-  <string name="ListsButtonAdd">Add</string>
+    <string name="ActivityShoppingList">Manage lists</string>
+   <string name="ListsButtonCreate">Create New</string>
 </resources>
