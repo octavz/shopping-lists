@@ -1,8 +1,42 @@
 scalacOptions ++= Seq("-feature")
 
-net.virtualvoid.sbt.graph.Plugin.graphSettings
+//net.virtualvoid.sbt.graph.Plugin.graphSettings
 
-libraryDependencies += specs2 % Test
+scalaVersion := "2.11.8"
 
-libraryDependencies += evolutions
+val appName = "shopping-list"
+
+val appVersion = "0.1"
+
+val appResolvers = Seq(
+  "sonatype-snapshots" at "https://oss.sonatype.org/content/repositories/snapshots",
+  "sonatype-releases" at "https://oss.sonatype.org/content/repositories/releases",
+  "java-net" at "http://download.java.net/maven/2",
+  "Sedis Repo" at "http://pk11-scratch.googlecode.com/svn/trunk",
+  "Clojars " at "http://clojars.org/repo",
+  "scalaz-bintray" at "https://dl.bintray.com/scalaz/releases",
+  "Typesafe Repository" at "http://repo.typesafe.com/typesafe/releases/")
+
+libraryDependencies ++= Seq(
+  specs2 % Test,
+  cache,
+  json,
+  "com.typesafe.slick" %% "slick" % "3.1.1",
+  "com.typesafe.play" %% "play-slick" % "2.0.0",
+  "com.typesafe.play" %% "play-slick-evolutions" % "2.0.0",
+  "com.nulab-inc" %% "play2-oauth2-provider" % "0.15.0",
+  //    "org.mockito" % "mockito-all" % "2.0.2-beta",
+  //"com.wix" %% "accord-core" % "0.4-SNAPSHOT",
+  "net.sourceforge.htmlunit" % "htmlunit" % "2.17" % "test",
+  "com.github.nscala-time" %% "nscala-time" % "2.0.0",
+  "com.livestream" %% "scredis" % "2.0.6",
+  "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.7.2",
+  "org.webjars" % "swagger-ui" % "2.2.2",
+  "com.h2database" % "h2" % "1.4.187"
+)
+
+lazy val main = (project in file(".")).enablePlugins(PlayScala, SwaggerPlugin)
+
+swaggerDomainNameSpaces := Seq("org.shopping.dto")
+
 

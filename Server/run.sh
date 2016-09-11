@@ -1,15 +1,15 @@
 #!/bin/sh
 
-PLANNER_HOME=/home/octav/Planner
+APP_HOME=/home/octav/Planner
 
-PID_PATH=$PLANNER_HOME"/target/universal/stage/RUNNING_PID"
+PID_PATH=$APP_HOME"/target/universal/stage/RUNNING_PID"
 
 run()
 {
  activator -mem 150 start
 }
 
-cd $PLANNER_HOME
+cd $APP_HOME
 
 if [ ! -f $PID_PATH ]; then
     echo "PID file not found at $PID_PATH!"

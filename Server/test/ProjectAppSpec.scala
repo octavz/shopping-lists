@@ -1,12 +1,11 @@
 import org.junit.runner._
-
-import org.planner.dal.Oauth2DAL
-import org.planner.db.User
-import org.planner.modules._
-import org.planner.modules.core.ProjectModule
-import org.planner.modules.dto._
-import org.planner.util.Gen._
-import org.planner.util.Time._
+import org.shopping.dal.Oauth2DAL
+import org.shopping.db.User
+import org.shopping.dto._
+import org.shopping.modules._
+import org.shopping.modules.core.ListModule
+import org.shopping.util.Gen._
+import org.shopping.util.Time._
 import org.specs2.mock.Mockito
 import org.specs2.runner._
 import play.api.Application
@@ -21,16 +20,16 @@ import scala.language.postfixOps
 import scalaoauth2.provider.AccessToken
 
 /**
- * Add your spec here.
- * You can mock out a whole application including requests, plugins etc.
- * For more information, consult the wiki.
- */
+  * Add your spec here.
+  * You can mock out a whole application including requests, plugins etc.
+  * For more information, consult the wiki.
+  */
 @RunWith(classOf[JUnitRunner])
 class ProjectAppSpec extends PlaySpecification with Mockito {
 
   def waitFor[T](f: Future[T], duration: FiniteDuration = 1000.milli)(implicit ec: ExecutionContext): T = Await.result(f, duration)
 
-  def anUser = User(id = guid, login = guid, providerToken = None, created = now, userId = None, groupId = None, updated = now, lastLogin = None, password = guid, nick = guid)
+  def anUser = User(id = guid, login = guid, providerToken = None, created = now, updated = now, lastLogin = None, password = guid, nick = guid)
 
   //  def app(m: ProjectController = mock[ProjectController], u: User = anUser) = FakeApplication(
   //    additionalConfiguration = Map(
@@ -48,18 +47,18 @@ class ProjectAppSpec extends PlaySpecification with Mockito {
   //    ))
 
 
-  case class MockContext(app: Application, projectModule: ProjectModule, dalAuth: Oauth2DAL, user: User)
+  case class MockContext(app: Application, projectModule: ListModule, dalAuth: Oauth2DAL, user: User)
 
-  def app(mp: ProjectModule = mock[ProjectModule], dalAuth: Oauth2DAL = mock[Oauth2DAL], u: User = anUser): MockContext = {
+  def app(mp: ListModule = mock[ListModule], dalAuth: Oauth2DAL = mock[Oauth2DAL], u: User = anUser): MockContext = {
     dalAuth.findAccessToken(anyString) returns Future.successful(Some(AccessToken("token", None, None, None, new java.util.Date())))
     //auth.isAccessTokenExpired(any[AccessToken]) returns false
     dalAuth.findAuthInfoByAccessToken(any[AccessToken]) returns Future.successful(Some(authInfo))
 
     val ret = new GuiceApplicationBuilder()
       .configure(Map(
-      "evolutionplugin" -> "disabled"
-    ))
-      .overrides(bind[ProjectModule].toInstance(mp))
+        "evolutionplugin" -> "disabled"
+      ))
+      .overrides(bind[ListModule].toInstance(mp))
       .overrides(bind[Oauth2DAL].toInstance(dalAuth))
       .build()
     MockContext(ret, mp, dalAuth, u)
@@ -69,70 +68,62 @@ class ProjectAppSpec extends PlaySpecification with Mockito {
 
   "Project controller" should {
 
-    "have create project route and authorize" in {
+    "have create list route and authorize" in {
       val module = app()
       println("spec:" + module.projectModule)
-      module.projectModule.insertProject(any[ProjectDTO]) answers (p => result(p.asInstanceOf[ProjectDTO]))
+      module.projectModule.insertList(any[ListDTO]) answers (p => result(p.asInstanceOf[ListDTO]))
       running(module.app) {
-        val page = route(FakeRequest(POST, "/api/project")
+        val page = route(module.app, FakeRequest(POST, "/api/project")
           .withHeaders("Authorization" -> "OAuth token")
           .withJsonBody(Json.parse(
-          """
+            """
             {
             "name":"project",
-            "desc":"123456",
-            "parent":"parent",
-            "public" : true 
+            "desc":"123456"
             }
-          """)))
+            """)))
         page must beSome
         status(page.get) === OK
         Await.ready(page.get, Duration.Inf)
         there was one(module.projectModule).setAuth(authInfo)
-        there was one(module.projectModule).insertProject(any[ProjectDTO])
+        there was one(module.projectModule).insertList(any[ListDTO])
         val json = contentAsJson(page.get)
         json \ "name" === JsDefined(JsString("project"))
         json \ "desc" === JsDefined(JsString("123456"))
-        json \ "parent" === JsDefined(JsString("parent"))
       }
     }
 
     "get all projects" in {
       val module = app()
-      val p = ProjectDTO(id = guido, name = guid, desc = guido, parent = guido, public = true, perm = Some(1), groupId = Some("groupId"), userId = Some("userId"))
-      module.projectModule.getUserProjects("id", 0, 10) returns result(ProjectListDTO(items = List(p), total = 1))
+      val p = ListDTO(id = guido, name = guid, desc = guido, userId = Some("userId"))
+      module.projectModule.getUserLists("id", 0, 10) returns result(ProjectListDTO(items = List(p), total = 1))
       running(module.app) {
-        val page = route(FakeRequest(GET, "/api/user/id/projects?offset=0&count=10").withHeaders("Authorization" -> "OAuth token"))
+        val page = route(module.app, FakeRequest(GET, "/api/user/id/projects?offset=0&count=10").withHeaders("Authorization" -> "OAuth token"))
         page must beSome
         status(page.get) === OK
         Await.ready(page.get, Duration.Inf)
         there was one(module.projectModule).setAuth(authInfo)
-        there was one(module.projectModule).getUserProjects("id", 0, 10)
+        there was one(module.projectModule).getUserLists("id", 0, 10)
         val json = contentAsJson(page.get)
         val arr = (json \ "items").as[JsArray].value
         arr.size === 1
-        arr(0) \ "id" === JsDefined(JsString(p.id.get))
-        arr(0) \ "name" === JsDefined(JsString(p.name))
-        arr(0) \ "desc" === JsDefined(JsString(p.desc.get))
-        arr(0) \ "parent" === JsDefined(JsString(p.parent.get))
-        arr(0) \ "public" === JsDefined(JsBoolean(true))
-        arr(0) \ "perm" === JsDefined(JsNumber(p.perm.get))
+        arr.head \ "id" === JsDefined(JsString(p.id.get))
+        arr.head \ "name" === JsDefined(JsString(p.name))
+        arr.head \ "desc" === JsDefined(JsString(p.desc.get))
       }
 
     }
 
     "update project" in {
       val module = app()
-      val p = ProjectDTO(id = guido, name = guid, desc = guido, parent = guido, public = true, perm = Some(1), groupId = Some("groupId"), userId = Some("userId"))
-      module.projectModule.updateProject(any) returns result(p)
+      val p = ListDTO(id = guido, name = guid, desc = guido, userId = Some("userId"))
+      module.projectModule.updateList(any) returns result(p)
       running(module.app) {
-        val page = route(FakeRequest(PUT, "/api/project/id").withHeaders("Authorization" -> "OAuth token").withJsonBody(Json.parse(
+        val page = route(module.app, FakeRequest(PUT, "/api/project/id").withHeaders("Authorization" -> "OAuth token").withJsonBody(Json.parse(
           s"""
                 {
                 "name":"${p.name}",
-                "desc":"${p.desc}",
-                "parent":"${p.parent}",
-                "public" : true
+                "desc":"${p.desc}"
                 }
               """)))
         Await.ready(page.get, Duration.Inf)
@@ -141,10 +132,9 @@ class ProjectAppSpec extends PlaySpecification with Mockito {
         status(page.get) === OK
         Await.ready(page.get, Duration.Inf)
         there was one(module.projectModule).setAuth(authInfo)
-        there was one(module.projectModule).updateProject(any)
+        there was one(module.projectModule).updateList(any)
         json \ "name" === JsDefined(JsString(p.name))
         json \ "desc" === JsDefined(JsString(p.desc.get))
-        json \ "parent" === JsDefined(JsString(p.parent.get))
       }
     }
 

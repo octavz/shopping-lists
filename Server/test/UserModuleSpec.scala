@@ -1,25 +1,19 @@
-import org.planner.modules.dto.{GroupDTO, RegisterDTO}
-import play.api.http.Status
-import org.planner.util.Gen._
-import org.planner.util.Time._
+import org.junit.runner._
+import org.shopping.dal._
+import org.shopping.db._
+import org.shopping.dto.RegisterDTO
+import org.shopping.modules._
+import org.shopping.modules.core.impl._
+import org.shopping.util.Gen._
+import org.shopping.util.Time._
+import org.specs2.mock._
 import org.specs2.mutable._
 import org.specs2.runner._
-import org.junit.runner._
+
 import scala.concurrent._
 import scala.concurrent.duration._
-import org.specs2.mock._
-
-import org.planner.modules._
-import org.planner.modules.core.impl._
-import org.planner.dal._
-import org.planner.db._
-
 import scalaoauth2.provider.AuthInfo
 
-/** .
-  * main test class for DefaultAssetServiceComponent
-  * it mocks AssetRepoComponent
-  */
 @RunWith(classOf[JUnitRunner])
 class UserModuleSpec extends Specification with Mockito {
 
@@ -30,19 +24,20 @@ class UserModuleSpec extends Specification with Mockito {
   def userModule(dalUser: UserDAL = mock[UserDAL], dalAuth: Oauth2DAL = mock[Oauth2DAL]): MockContext = {
     val ret = new DefaultUserModule(dalUser, dalAuth)
     ret.setAuth(AuthInfo[User](user =
-      User(id = guid, login = guid, password = guid, created = now, updated = now, userId = None, groupId = None,
+      User(id = guid, login = guid, password = guid, created = now, updated = now,
         lastLogin = nowo, providerToken = guido, nick = guid), Some("1"), None, None))
     MockContext(ret, dalUser, dalAuth)
   }
 
   /**
-   * generates  strings to be used in test
-   * @param size the size of the string
-   * @return the generated string
-   */
+    * generates  strings to be used in test
+    *
+    * @param size the size of the string
+    * @return the generated string
+    */
   def genString(size: Int): String = (for (i <- 1 to size) yield "a").mkString
 
-  def newUser = User(id = guid, login = guid, providerToken = None, created = now, userId = None, groupId = None, updated = now, lastLogin = None, password = guid, nick = guid)
+  def newUser = User(id = guid, login = guid, providerToken = None, created = now, updated = now, lastLogin = None, password = guid, nick = guid)
 
   "User module" should {
 
@@ -95,43 +90,6 @@ class UserModuleSpec extends Specification with Mockito {
       s must beLeft
       s.errCode === 500
       s.errMessage must contain("Email already exists")
-    }
-
-    "implement add group and call dal" in {
-      val dto = GroupDTO(id = None, name = guid, projectId = guid)
-      val m = userModule()
-      m.dalUser.insertGroupWithUser(any, any) answers (a => a match {
-        case Array(g: Group, uid: String) =>
-          uid === m.userModule.authData.user.id
-          dal(g)
-      })
-      val s = Await.result(m.userModule.addGroup(dto), duration)
-      there was one(m.dalUser).insertGroupWithUser(any, any)
-      s must beRight
-    }
-
-    "handle add group dal error" in {
-      val u = GroupDTO(id = None, name = guid, projectId = guid)
-      val m = userModule()
-      m.dalUser.insertGroupWithUser(any, any) returns dalErr("dal test error")
-      val s = Await.result(m.userModule.addGroup(u), duration)
-      there was one(m.dalUser).insertGroupWithUser(any, any)
-      s must beLeft
-      val (code, msg) = s.merge
-      code === Status.INTERNAL_SERVER_ERROR
-      msg === "dal test error"
-    }
-
-    "handle add group future error" in {
-      val m = userModule()
-      val u = GroupDTO(id = None, name = guid, projectId = guid)
-      m.dalUser.insertGroupWithUser(any[Group], any) returns Future.failed(new Exception("test"))
-      val s = Await.result(m.userModule.addGroup(u), duration)
-      there was one(m.dalUser).insertGroupWithUser(any, any)
-      s must beLeft
-      val (code, msg) = s.merge
-      code === Status.INTERNAL_SERVER_ERROR
-      msg === "test"
     }
 
     "work wih chaining" in {
