@@ -13,7 +13,7 @@ class RunModule extends AbstractModule {
     bind(classOf[ListDAL]).to(classOf[SlickListDAL])
     bind(classOf[UserDAL]).to(classOf[SlickUserDAL])
     bind(classOf[Caching]).to(classOf[RedisCaching])
-    bind(classOf[ListModule]).to(classOf[DefaultProjectModule])
+    bind(classOf[ListModule]).to(classOf[DefaultListModule])
     bind(classOf[UserModule]).to(classOf[DefaultUserModule])
   }
 

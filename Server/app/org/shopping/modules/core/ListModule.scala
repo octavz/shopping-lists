@@ -11,7 +11,7 @@ import org.shopping.dto._
 
     def deleteList(projectId: String): Result[BooleanDTO]
 
-    def getUserLists(id: String, offset: Int, count: Int): Result[ProjectListDTO]
+    def getUserLists(id: String, offset: Int, count: Int): Result[ListsDTO]
 
     def insertListItem(task: ListItemDTO): Result[ListItemDTO]
 

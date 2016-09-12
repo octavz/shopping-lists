@@ -7,15 +7,15 @@ OPTIONS      /*path                      @org.shopping.controllers.MainControlle
 ### NoDocs ###
 POST         /api/oauth2/access_token    @org.shopping.controllers.UserController.accessToken
 ### NoDocs ###
-POST         /api/project                @org.shopping.controllers.ProjectController.insertProject
+POST         /api/list                @org.shopping.controllers.ListController.insertList
 ### NoDocs ###
-PUT          /api/project/:id             @org.shopping.controllers.ProjectController.updateProject(id: String)
+PUT          /api/list/:id             @org.shopping.controllers.ListController.updateList(id: String)
 ### NoDocs ###
-DELETE       /api/project/:projectId             @org.shopping.controllers.ProjectController.deleteProject(projectId: String)
+DELETE       /api/list/:listId             @org.shopping.controllers.ListController.deleteList(listId: String)
 ### NoDocs ###
-POST         /api/project/:projectId/task @org.shopping.controllers.ProjectController.insertTask(projectId: String)
+POST         /api/list/:listId/task @org.shopping.controllers.ListController.insertTask(listId: String)
 ### NoDocs ###
-GET         /api/project/:projectId/tasks @org.shopping.controllers.ProjectController.getTasks(projectId: String, offset: Int, count: Int)
+GET         /api/list/:listId/tasks @org.shopping.controllers.ListController.getTasks(listId: String, offset: Int, count: Int)
 
 ### NoDocs ###
 GET          /login                      @org.shopping.controllers.UserController.loginGet
@@ -44,7 +44,7 @@ GET          /api/user/:userId           @org.shopping.controllers.UserControlle
 GET          /api/user                   @org.shopping.controllers.UserController.getUserBySession
 GET          /api/users                   @org.shopping.controllers.UserController.searchUsers(email: Option[String], nick: Option[String])
 POST         /api/register               @org.shopping.controllers.UserController.register
-GET          /api/user/:id/projects      @org.shopping.controllers.ProjectController.getUserProjects(id: String, offset: Int, count: Int)
+GET          /api/user/:id/lists      @org.shopping.controllers.ListController.getUserLists(id: String, offset: Int, count: Int)
 
 ### NoDocs ###
 GET          /app/*file                  controllers.Assets.at(path="/public/client/app",file)

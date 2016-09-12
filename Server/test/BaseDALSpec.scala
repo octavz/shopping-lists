@@ -34,7 +34,7 @@ class BaseDALSpec extends PlaySpecification with Mockito {
 
   def test[T: AsResult](t: TestEnv => T) = try {
     println("Building environment")
-//    val dbRandom = Gen.guid
+    //    val dbRandom = Gen.guid
     val dbRandom = ""
     val app = guiceApp(dbRandom).build()
     running(app) {
@@ -81,9 +81,11 @@ class BaseDALSpec extends PlaySpecification with Mockito {
       .configure(
         Map(
           "evolutions" -> "disabled",
-          "slick.dbs.test.driver" -> "slick.driver.H2Driver$",
-          "slick.dbs.test.db.driver" -> "org.h2.Driver",
-          "slick.dbs.test.db.url" -> s"jdbc:h2:mem:shopping_test_$dbName;DATABASE_TO_UPPER=false;DB_CLOSE_DELAY=-1"
+          "slick.dbs.test.driver" -> "slick.driver.PostgresDriver$",
+          "slick.dbs.test.db.driver" -> "org.postgresql.Driver",
+          "slick.dbs.test.db.url" -> s"jdbc:postgresql://localhost:5432/mytest",
+          "slick.dbs.test.db.user" -> "postgres",
+          "slick.dbs.test.db.password" -> ""
         ))
       .in(Mode.Test)
 

@@ -123,7 +123,7 @@ INSERT INTO users(id, login, nick, provider, provider_token, last_login,  PASSWO
 
 INSERT INTO lists(id,user_id, NAME, description,  status, created, updated) VALUES ('1', '1', 'list name1', 'description', 0,  '2014-06-05 11:52:16.904', '2014-06-05 11:52:16.904');
 INSERT INTO lists(id,user_id, NAME, description,  status, created, updated) VALUES ('2', '1', 'list name2', 'description', 0,  '2014-06-05 11:52:16.904', '2014-06-05 11:52:16.904');
-INSERT INTO lists(id,user_id, NAME, description,  status, created, updated) VALUES ('3', '1', 'list name3', 'description', 0,  '2014-06-05 11:52:16.904', '2014-06-05 11:52:16.904');
+INSERT INTO lists(id,user_id, NAME, description,  status, created, updated) VALUES ('3', '2', 'list name3', 'description', 0,  '2014-06-05 11:52:16.904', '2014-06-05 11:52:16.904');
 
 INSERT INTO entity_types(id, description) VALUES ('1', 'user');
 INSERT INTO entity_types(id, description) VALUES ('2', 'list');

@@ -22,16 +22,16 @@ trait JsonDTOFormats extends BaseFormats with ConstraintReads {
       (__ \ 'password).format[String](minLength[String](6) keepAnd maxLength[String](50))
     ) (RegisterDTO, unlift(RegisterDTO.unapply))
 
-  implicit val projectDtoRead = (
+  implicit val listRead = (
     (__ \ 'id).readNullable[String](maxLength[String](50)) ~
-      (__ \ 'name).read[String](minLength[String](5) keepAnd maxLength[String](200)) ~
+      (__ \ 'name).read[String](minLength[String](1) keepAnd maxLength[String](200)) ~
       (__ \ 'desc).readNullable[String](maxLength[String](1500)) ~
       (__ \ 'userId).readNullable[String]
     ) (ListDTO)
 
-  implicit val projectDtoWrite = Json.writes[ListDTO]
+  implicit val listWrite = Json.writes[ListDTO]
 
-  implicit val projectListDto = Json.format[ProjectListDTO]
+  implicit val lists = Json.format[ListsDTO]
 
   implicit val loginResponse = Json.writes[LoginResponseDTO]
   implicit val loginRequest = Json.reads[LoginRequestDTO]

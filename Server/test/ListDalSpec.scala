@@ -34,10 +34,10 @@ class ListDalSpec extends BaseDALSpec {
 
   import org.shopping.util.Time._
 
-  "Project DAL" should {
+  "Lists DAL" should {
     def newDal(te: TestEnv) = new SlickListDAL(te.dbConfigProvider, new TestCaching)
 
-    "insert project and the default group" in {
+    "insert list" in {
       test { env =>
         val dal = newDal(env)
         val schema = org.shopping.db.DB(env.dbConfig.driver)
@@ -59,15 +59,9 @@ class ListDalSpec extends BaseDALSpec {
         val lists = ret._1.distinct
         lists.size === 2
         lists.head.id === "1"
+        lists.tail.head.id === "2"
       }
     }
-    //
-    //    "get public projects by user" in new WithApplication(testApp) {
-    //      val dal = newDal
-    //      val resGet = Await.result(dal.getUserPublicProjects("1", 0, 1), Duration.Inf)
-    //      val ret = resGet.asInstanceOf[(List[(Group, Project)], Int)]
-    //      ret._1.size === 0
-    //    }
 
   }
 
