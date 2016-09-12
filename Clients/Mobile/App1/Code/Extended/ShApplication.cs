@@ -10,7 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 
-namespace App1.Extended.Code
+namespace ShList.Extended.Code
 {
     [Application]
     public class ShApplication : Application

@@ -9,11 +9,11 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using App1.Code.Abstracts;
-using App1.Extended.Code;
-using App1.Code.Data;
+using ShList.Code.Data;
+using ShList.Code.Abstracts;
+using ShList.Extended.Code;
 
-namespace App1.Code.Controls
+namespace ShList.Code.Controls
 {
     [Register("CtrlShoppingList")]
     public class CtrlShoppingList: AControl
