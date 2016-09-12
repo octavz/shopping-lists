@@ -9,9 +9,10 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using App1.Extended.Code;
+using Android.Support.V7.App;
+using ShList.Extended.Code;
 
-namespace App1.Code.Abstracts
+namespace ShList.Code.Abstracts
 {
     public abstract class AActivity : Activity
     {

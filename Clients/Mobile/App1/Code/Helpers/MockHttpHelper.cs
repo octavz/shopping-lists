@@ -9,10 +9,10 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using App1.Code.Data.Request;
-using App1.Code.Abstracts;
+using ShList.Code.Abstracts;
+using ShList.Code.Data.Request;
 
-namespace App1.Code.Helpers
+namespace ShList.Code.Helpers
 {
     public class MockHttpHelper: IHttpHelper
     {        

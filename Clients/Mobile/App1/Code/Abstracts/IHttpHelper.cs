@@ -10,7 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 
-namespace App1.Code.Abstracts
+namespace ShList.Code.Abstracts
 {
     public interface IHttpHelper
     {

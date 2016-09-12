@@ -10,7 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 
-namespace App1.Code.Data
+namespace ShList.Code.Data
 {
     public class ShoppingListDTO
     {

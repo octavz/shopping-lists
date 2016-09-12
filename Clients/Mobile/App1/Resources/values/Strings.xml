@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="Hello">Hello World, Click Me!</string>
-    <string name="ApplicationName">App1</string>
-    <string name="ActivityShoppingList">Manage lists</string>
-   <string name="ListsButtonCreate">Create New</string>
+  <string name="Hello">Hello World, Click Me!</string>
+  <string name="ApplicationName">App1</string>
+  <string name="ActivityShoppingList">Manage lists</string>
+  <string name="ListsButtonCreate">Create New</string>
+  <string name="Email">Email</string>
+  <string name="Password">Password</string>
+  <string name="NoAccount">No account yet? Create one</string>
+  <string name="LoginButton">Login</string>
 </resources>

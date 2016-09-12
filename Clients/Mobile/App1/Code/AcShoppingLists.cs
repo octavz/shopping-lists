@@ -9,11 +9,11 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using App1.Code.Abstracts;
-using App1.Code.Data;
-using App1.Code.Controls;
+using ShList.Code.Abstracts;
+using ShList.Code.Data;
+using ShList.Code.Controls;
 
-namespace App1.Code
+namespace ShList.Code
 {
 
     [Activity(Label = "@string/ActivityShoppingList")]

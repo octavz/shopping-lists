@@ -10,7 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 
-namespace App1.Code.Data.Request
+namespace ShList.Code.Data.Request
 {
     public class ReqLoginDTO
     {
