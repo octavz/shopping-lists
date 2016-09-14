@@ -36,13 +36,13 @@ class UserController @Inject()(userModule: UserModule) extends BaseController(us
         val dto = json.as[LoginRequestDTO]
         val auth = AuthorizationRequest(headers = Map.empty
           , params = Map(
-            "grant_type" -> Seq(dto.grantType)
-            , "client_id" -> Seq(dto.clientId)
-            , "client_secret" -> Seq(dto.clientSecret)
+            "grant_type" -> Seq(dto.grantType.getOrElse("password"))
+            , "client_id" -> Seq(dto.clientId.getOrElse("1"))
+            , "client_secret" -> Seq(dto.clientSecret.getOrElse("secret"))
             , "username" -> Seq(dto.userName)
             , "password" -> Seq(dto.password)))
 
-        userModule.login(request) flatMap {
+        userModule.login(auth) flatMap {
           case Right(r) =>
             if (request.accepts("text/html")) {
               Future.successful(Redirect("/public.html").withCookies(Cookie("access_token", r.accessToken)))
@@ -87,7 +87,7 @@ class UserController @Inject()(userModule: UserModule) extends BaseController(us
     implicit request =>
       request.body.asJson.map {
         json => try {
-          val dto = json.as[RegisterDTO]
+          val dto = json.as[RegisterRequestDTO]
           userModule.registerUser(dto).toResponse
         } catch {
           case e: Throwable =>
@@ -95,7 +95,7 @@ class UserController @Inject()(userModule: UserModule) extends BaseController(us
               e.getMessage
             }"))
         }
-      }.getOrElse(Future.successful(BadRequest("Wrong json")))
+      }.getOrElse(Future.successful(BadRequest("@aaa.comWrong json")))
   }
 
   def getUserById(userId: String) = Action.async {

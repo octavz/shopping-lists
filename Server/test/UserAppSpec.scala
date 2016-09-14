@@ -76,7 +76,7 @@ class UserAppSpec extends PlaySpecification with Mockito {
 
     "have register route" in {
       val service = newComp
-      service.registerUser(any[RegisterDTO]) answers (u => result(u.asInstanceOf[RegisterDTO]))
+      service.registerUser(any[RegisterRequestDTO]) answers (u => result(u.asInstanceOf[RegisterRequestDTO]))
       val a = app(service)
       running(a) {
         val page = route(a, FakeRequest(POST, "/api/register")

@@ -77,7 +77,7 @@ class ListModuleSpec extends Specification with Mockito {
       val s = Await.result(m.listModule.insertList(dto), Duration.Inf)
       there was one(m.dalList).insertList(any[SList])
       s must beLeft
-      val (code, message) = s.merge.asInstanceOf[ResultError]
+      val ErrorDTO(code, message) = s.merge.asInstanceOf[ResultError]
       code === Status.INTERNAL_SERVER_ERROR
       message === "test"
     }
@@ -111,7 +111,7 @@ class ListModuleSpec extends Specification with Mockito {
       val s = Await.result(m.listModule.getUserLists(m.listModule.authData.user.id, 0, 100), Duration.Inf)
       there was one(m.dalList).getUserLists(m.listModule.authData.user.id, 0, 100)
       s must beLeft
-      val (code, message) = s.merge.asInstanceOf[ResultError]
+      val ErrorDTO(code, message) = s.merge.asInstanceOf[ResultError]
       code === Status.INTERNAL_SERVER_ERROR
       message === "Test error"
     }
@@ -122,7 +122,7 @@ class ListModuleSpec extends Specification with Mockito {
       val s = Await.result(m.listModule.getUserLists(m.listModule.authData.user.id, 0, 100), Duration.Inf)
       there was one(m.dalList).getUserLists(m.listModule.authData.user.id, 0, 100)
       s must beLeft
-      val (code, message) = s.merge.asInstanceOf[ResultError]
+      val ErrorDTO(code, message) = s.merge.asInstanceOf[ResultError]
       code === Status.INTERNAL_SERVER_ERROR
       message === "test future"
     }

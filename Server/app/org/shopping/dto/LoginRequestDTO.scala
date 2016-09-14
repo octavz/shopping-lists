@@ -9,4 +9,4 @@ package org.shopping.dto
 //, new ApiImplicitParam(name = "grant_type", required = true, dataType = "String", paramType = "form", defaultValue = "password")
 //, new ApiImplicitParam(name = "client_secret", required = true, dataType = "String", paramType = "form", defaultValue = "secret")
 
-case class LoginRequestDTO(userName: String, password: String, clientId: String, grantType: String, clientSecret: String)
+case class LoginRequestDTO(userName: String, password: String, clientId: Option[String], grantType: Option[String], clientSecret: Option[String])

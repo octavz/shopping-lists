@@ -51,14 +51,14 @@ class DefaultListModule @Inject()(dalUser: UserDAL, dalProject: ListDAL) extends
     true
   }
 
-  override def insertListItem(task: ListItemDTO): Result[ListItemDTO] = {
+  override def insertListItem(item: ListItemDTO): Result[ListItemDTO] = {
     val f = {
-      val model = task.toModel()
-      dalProject.addListItem(model) map { _ => resultSync(task) }
+      val model = item.toModel()
+      dalProject.addListItem(model) map { _ => resultSync(item) }
     }
 
     f recover {
-      case e: Throwable => resultExSync(e, "insertTask")
+      case e: Throwable => resultExSync(e, "insertListItem")
     }
   }
 
@@ -73,7 +73,7 @@ class DefaultListModule @Inject()(dalUser: UserDAL, dalProject: ListDAL) extends
     }
 
     f recover {
-      case e: Throwable => resultExSync(e, "getTasks")
+      case e: Throwable => resultExSync(e, "getListItems")
     }
   }
 

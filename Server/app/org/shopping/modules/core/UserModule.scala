@@ -1,6 +1,6 @@
 package org.shopping.modules.core
 
-import org.shopping.dto.{RegisterDTO, UserDTO}
+import org.shopping.dto.{RegisterRequestDTO, UserDTO, UsersDTO}
 import org.shopping.modules.Result
 
 import scala.concurrent._
@@ -16,8 +16,8 @@ import scalaoauth2.provider.{AuthorizationRequest, GrantHandlerResult, OAuthErro
 
     def login(request: AuthorizationRequest): Future[Either[OAuthError, GrantHandlerResult]]
 
-    def registerUser(u: RegisterDTO): Result[RegisterDTO]
+    def registerUser(u: RegisterRequestDTO): Result[RegisterRequestDTO]
 
-    def searchUsers(email: Option[String], nick: Option[String]): Result[Seq[UserDTO]]
+    def searchUsers(email: Option[String], nick: Option[String]): Result[UsersDTO]
 
 }

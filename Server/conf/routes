@@ -3,20 +3,8 @@
 # ~~~~
 ### NoDocs ###
 OPTIONS      /*path                      @org.shopping.controllers.MainController.options(path)
-
 ### NoDocs ###
 POST         /api/oauth2/access_token    @org.shopping.controllers.UserController.accessToken
-### NoDocs ###
-POST         /api/list                @org.shopping.controllers.ListController.insertList
-### NoDocs ###
-PUT          /api/list/:id             @org.shopping.controllers.ListController.updateList(id: String)
-### NoDocs ###
-DELETE       /api/list/:listId             @org.shopping.controllers.ListController.deleteList(listId: String)
-### NoDocs ###
-POST         /api/list/:listId/task @org.shopping.controllers.ListController.insertTask(listId: String)
-### NoDocs ###
-GET         /api/list/:listId/tasks @org.shopping.controllers.ListController.getTasks(listId: String, offset: Int, count: Int)
-
 ### NoDocs ###
 GET          /login                      @org.shopping.controllers.UserController.loginGet
 
@@ -24,7 +12,161 @@ GET          /login                      @org.shopping.controllers.UserControlle
 POST         /login                      @org.shopping.controllers.UserController.loginPostForm
 
 ###
-# summary: Logins User
+# tags:
+#   - List operations
+# summary: Create List
+# consumes:
+#   - application/json
+# produces:
+#   - application/json
+# parameters:
+#   - name: body
+#     in: body
+#     description: register data
+#     required: true
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.ListDTO'
+#   - name: "Authorization"
+#     in: "header"
+#     description: "Authorization code"
+#     required: true
+#     type: "string"
+# responses:
+#   201:
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.ListDTO'
+#   401:
+#     description: Unauthorized
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
+###
+POST         /api/list                   @org.shopping.controllers.ListController.insertList
+
+###
+# tags:
+#   - List operations
+# summary: Update List
+# consumes:
+#   - application/json
+# produces:
+#   - application/json
+# parameters:
+#   - name: body
+#     in: body
+#     description: register data
+#     required: true
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.ListDTO'
+#   - name: "Authorization"
+#     in: "header"
+#     description: "Authorization code"
+#     required: true
+#     type: "string"
+# responses:
+#   201:
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.ListDTO'
+#   401:
+#     description: Unauthorized
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
+#   404:
+#     description: Entity not found
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
+###
+PUT          /api/list/:listId           @org.shopping.controllers.ListController.updateList(listId: String)
+
+###
+# tags:
+#   - List operations
+# summary: Delete List
+# parameters:
+#   - name: "Authorization"
+#     in: "header"
+#     description: "Authorization code"
+#     required: true
+#     type: "string"
+# responses:
+#   204:
+#       description: Operation successful
+#   404:
+#     description: Entity not found
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
+#   401:
+#     description: Unauthorized
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
+###
+DELETE       /api/list/:listId           @org.shopping.controllers.ListController.deleteList(listId: String)
+
+###
+# tags:
+#   - List operations
+# summary: Create List Item
+# consumes:
+#   - application/json
+# produces:
+#   - application/json
+# parameters:
+#   - name: body
+#     in: body
+#     description: add list item data
+#     required: true
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.ListItemDTO'
+#   - name: "Authorization"
+#     in: "header"
+#     description: "Authorization code"
+#     required: true
+#     type: "string"
+# responses:
+#   201:
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.ListItemDTO'
+#   404:
+#     description: Entity not found
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
+#   401:
+#     description: Unauthorized
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
+###
+POST         /api/list/:listId/item      @org.shopping.controllers.ListController.insertListItem(listId: String)
+
+###
+# tags:
+#   - List operations
+# summary: Get List by Id
+# produces:
+#   - application/json
+# parameters:
+#   - name: "Authorization"
+#     in: "header"
+#     description: "Authorization code"
+#     required: true
+#     type: "string"
+# responses:
+#   200:
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.ListDTO'
+#   404:
+#     description: Entity not found
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
+#   401:
+#     description: Unauthorized
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
+###
+GET         /api/list/:listId/items      @org.shopping.controllers.ListController.getListItems(listId: String, offset: Int, count: Int)
+
+###
+# tags:
+#   - User operations
+# summary: Login User
 # consumes:
 #   - application/json
 # parameters:
@@ -40,11 +182,128 @@ POST         /login                      @org.shopping.controllers.UserControlle
 #       $ref: '#/definitions/org.shopping.dto.LoginResponseDTO'
 ###
 POST         /api/login                  @org.shopping.controllers.UserController.login
+
+###
+# tags:
+#   - User operations
+# summary: Get user account
+# produces:
+#   - application/json
+# parameters:
+#   - name: "Authorization"
+#     in: "header"
+#     description: "Authorization code"
+#     required: true
+#     type: "string"
+# responses:
+#   200:
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.UserDTO'
+#   401:
+#     description: Unauthorized
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
+#   404:
+#     description: Entity not found
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
+###
 GET          /api/user/:userId           @org.shopping.controllers.UserController.getUserById(userId: String)
+
+###
+# tags:
+#   - User operations
+# summary: Get current user account
+# produces:
+#   - application/json
+# parameters:
+#   - name: "Authorization"
+#     in: "header"
+#     description: "Authorization code"
+#     required: true
+#     type: "string"
+# responses:
+#   200:
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.UserDTO'
+#   401:
+#     description: Unauthorized
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
+###
 GET          /api/user                   @org.shopping.controllers.UserController.getUserBySession
+
+###
+# tags:
+#   - User operations
+# summary: Get user users by email or nick
+# produces:
+#   - application/json
+# parameters:
+#   - name: "Authorization"
+#     in: "header"
+#     description: "Authorization code"
+#     required: true
+#     type: "string"
+# responses:
+#   200:
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.UsersDTO'
+#   401:
+#     description: Unauthorized
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
+###
 GET          /api/users                   @org.shopping.controllers.UserController.searchUsers(email: Option[String], nick: Option[String])
+
+###
+# tags:
+#   - User operations
+# summary: Register User
+# consumes:
+#   - application/json
+# produces:
+#   - application/json
+# parameters:
+#   - name: body
+#     in: body
+#     description: register data
+#     required: true
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.RegisterRequestDTO'
+# responses:
+#   201:
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.RegisterResponseDTO'
+###
 POST         /api/register               @org.shopping.controllers.UserController.register
-GET          /api/user/:id/lists      @org.shopping.controllers.ListController.getUserLists(id: String, offset: Int, count: Int)
+
+###
+# tags:
+#   - User operations
+# summary: Get public lists by userId
+# produces:
+#   - application/json
+# parameters:
+#   - name: "Authorization"
+#     in: "header"
+#     description: "Authorization code"
+#     required: true
+#     type: "string"
+# responses:
+#   200:
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.ListsDTO'
+#   401:
+#     description: Unauthorized
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
+#   404:
+#     description: Entity not found
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
+###
+GET          /api/user/:userId/lists     @org.shopping.controllers.ListController.getUserLists(userId: String, offset: Int, count: Int)
 
 ### NoDocs ###
 GET          /app/*file                  controllers.Assets.at(path="/public/client/app",file)

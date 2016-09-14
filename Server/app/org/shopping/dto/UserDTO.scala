@@ -3,9 +3,6 @@ package org.shopping.dto
 import org.shopping.db.User
 import org.shopping.util.Time
 
-/**
-  * Created by octav on 11.09.2016.
-  */
 case class UserDTO(login: String, password: String, id: String, nick: String) {
 
   def this(model: User) = this(model.login, model.password, model.id, model.nick)

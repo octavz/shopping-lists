@@ -64,7 +64,7 @@ class ListController @Inject()(listModule: ListModule) extends BaseController(li
 
     }
 
-  def insertTask(listId: String) =
+  def insertListItem(listId: String) =
     Action.async {
       implicit request =>
         request.body.asJson.map {
@@ -85,7 +85,7 @@ class ListController @Inject()(listModule: ListModule) extends BaseController(li
         }.getOrElse(asyncBadRequest(new Exception("Bad Json")))
     }
 
-  def getTasks(listId: String,
+  def getListItems(listId: String,
                offset: Int,
                count: Int) =
     Action.async {

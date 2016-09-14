@@ -1,7 +1,7 @@
 import org.junit.runner._
 import org.shopping.dal._
 import org.shopping.db._
-import org.shopping.dto.RegisterDTO
+import org.shopping.dto.RegisterRequestDTO
 import org.shopping.modules._
 import org.shopping.modules.core.impl._
 import org.shopping.util.Gen._
@@ -67,7 +67,7 @@ class UserModuleSpec extends Specification with Mockito {
     }
 
     "implement register and call dal" in {
-      val u = RegisterDTO(login = guid, password = guid)
+      val u = RegisterRequestDTO(login = guid, password = guid)
       val m = userModule()
       m.dalUser.insertUser(any[User]) answers (a => dal(a.asInstanceOf[User]))
       m.dalUser.getUserByEmail(any[String]) returns dal(None)
@@ -78,7 +78,7 @@ class UserModuleSpec extends Specification with Mockito {
     }
 
     "not call insert if email already exists" in {
-      val u = RegisterDTO(login = guid, password = guid)
+      val u = RegisterRequestDTO(login = guid, password = guid)
       val m = userModule()
       m.dalUser.insertUser(any[User]) answers (a => dal(a.asInstanceOf[User]))
       m.dalUser.getUserByEmail(any[String]) returns dal(Some(newUser))

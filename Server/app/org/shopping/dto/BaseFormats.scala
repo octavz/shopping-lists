@@ -9,8 +9,8 @@ trait BaseFormats {
       def writes(d: Either[ResultError, T]): JsValue = d match {
         case Right(t) => Json.toJson(t.asInstanceOf[T])
         case Left(err) => Json.obj(
-          "errCode" -> err._1,
-          "errMessage" -> err._2
+          "errCode" -> err.errorCode,
+          "errMessage" -> err.message
         )
       }
     }
