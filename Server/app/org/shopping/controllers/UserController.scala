@@ -3,7 +3,7 @@ package org.shopping.controllers
 
 import com.google.inject.Inject
 import org.shopping._
-import org.shopping.modules.core.UserModule
+import org.shopping.modules.core.UserService
 import org.shopping.dto._
 import play.api.libs.json.{JsObject, Json}
 import play.api.mvc._
@@ -12,7 +12,7 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent._
 import scalaoauth2.provider.AuthorizationRequest
 
-class UserController @Inject()(userModule: UserModule) extends BaseController(userModule) {
+class UserController @Inject()(userModule: UserService) extends BaseController(userModule) {
 
   def accessToken = Action.async {
     implicit request =>

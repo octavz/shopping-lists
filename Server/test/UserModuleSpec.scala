@@ -19,10 +19,10 @@ class UserModuleSpec extends Specification with Mockito {
 
   val duration = Duration.Inf
 
-  case class MockContext(userModule: DefaultUserModule, dalUser: UserDAL, dalAuth: Oauth2DAL)
+  case class MockContext(userModule: DefaultUserService, dalUser: UserDAL, dalAuth: Oauth2DAL)
 
   def userModule(dalUser: UserDAL = mock[UserDAL], dalAuth: Oauth2DAL = mock[Oauth2DAL]): MockContext = {
-    val ret = new DefaultUserModule(dalUser, dalAuth)
+    val ret = new DefaultUserService(dalUser, dalAuth)
     ret.setAuth(AuthInfo[User](user =
       User(id = guid, login = guid, password = guid, created = now, updated = now,
         lastLogin = nowo, providerToken = guido, nick = guid), Some("1"), None, None))

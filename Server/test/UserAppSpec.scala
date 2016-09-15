@@ -4,7 +4,7 @@ import org.shopping.config.RunModule
 import org.shopping.dal.Oauth2DAL
 import org.shopping.dto._
 import org.shopping.modules._
-import org.shopping.modules.core.{ListModule, UserModule}
+import org.shopping.modules.core.{ListService, UserService}
 import org.specs2.mock.Mockito
 import org.specs2.runner._
 import play.api.inject.guice.GuiceApplicationBuilder
@@ -22,15 +22,15 @@ class UserAppSpec extends PlaySpecification with Mockito {
 
   def waitFor[T](f: Future[T], duration: FiniteDuration = 1000.milli)(implicit ec: ExecutionContext): T = Await.result(f, duration)
 
-  class TestModule(m: UserModule) extends AbstractModule {
+  class TestModule(m: UserService) extends AbstractModule {
     override def configure() = {
-      bind(classOf[UserModule]).toInstance(m)
+      bind(classOf[UserService]).toInstance(m)
       bind(classOf[Oauth2DAL]).toInstance(mock[Oauth2DAL])
-      bind(classOf[ListModule]).toInstance(mock[ListModule])
+      bind(classOf[ListService]).toInstance(mock[ListService])
     }
   }
 
-  def app(m: UserModule = mock[UserModule]) = {
+  def app(m: UserService = mock[UserService]) = {
     new GuiceApplicationBuilder()
       .disable[RunModule]
       .configure(Map(
@@ -40,7 +40,7 @@ class UserAppSpec extends PlaySpecification with Mockito {
       .build()
   }
 
-  def newComp = mock[UserModule]
+  def newComp = mock[UserService]
 
   "Application" should {
 

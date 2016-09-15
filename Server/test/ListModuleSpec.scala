@@ -26,10 +26,10 @@ class ListModuleSpec extends Specification with Mockito {
     User(id = guid, login = guid, password = guid, created = now, updated = now,
       lastLogin = nowo, providerToken = guido, nick = guid), Some("1"), None, None)
 
-  case class MockedContext(listModule: DefaultListModule, dalUser: UserDAL, dalList: ListDAL)
+  case class MockedContext(listModule: DefaultListService, dalUser: UserDAL, dalList: ListDAL)
 
   def module(dalUser: UserDAL = mock[UserDAL], dalList: ListDAL = mock[ListDAL]) = {
-    val ret = new DefaultListModule(dalUser, dalList)
+    val ret = new DefaultListService(dalUser, dalList)
     ret.setAuth(authInfo)
     MockedContext(ret, dalUser, dalList)
   }

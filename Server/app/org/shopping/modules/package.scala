@@ -30,6 +30,10 @@ package object modules {
 
   def resultError(errCode: Int, errMessage: String, data: String = "") = Future.successful(Left(ErrorDTO(errCode, errMessage)))
 
+  def resultError(err: (Int, String)) = err match {
+    case (errCode, errMessage) => Future.successful(Left(ErrorDTO(errCode, errMessage)))
+  }
+
   def resultErrorSync(errCode: Int, errMessage: String, data: String = "") = Left(ErrorDTO(errCode, errMessage))
 
   def resultEx(ex: Throwable, data: String = "", errCode: Int = 500) = Future.successful(Left(ErrorDTO(errCode, ex.getMessage)))

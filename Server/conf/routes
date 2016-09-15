@@ -104,7 +104,7 @@ DELETE       /api/list/:listId           @org.shopping.controllers.ListControlle
 ###
 # tags:
 #   - List operations
-# summary: Create List Item
+# summary: Add multiple list Items
 # consumes:
 #   - application/json
 # produces:
@@ -124,7 +124,7 @@ DELETE       /api/list/:listId           @org.shopping.controllers.ListControlle
 # responses:
 #   201:
 #     schema:
-#       $ref: '#/definitions/org.shopping.dto.ListItemDTO'
+#       $ref: '#/definitions/org.shopping.dto.ListItemsDTO'
 #   404:
 #     description: Entity not found
 #     schema:
@@ -134,7 +134,7 @@ DELETE       /api/list/:listId           @org.shopping.controllers.ListControlle
 #     schema:
 #       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
 ###
-POST         /api/list/:listId/item      @org.shopping.controllers.ListController.insertListItem(listId: String)
+POST         /api/list/:listId/items      @org.shopping.controllers.ListController.addListItems(listId: String)
 
 ###
 # tags:
@@ -161,7 +161,7 @@ POST         /api/list/:listId/item      @org.shopping.controllers.ListControlle
 #     schema:
 #       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
 ###
-GET         /api/list/:listId/items      @org.shopping.controllers.ListController.getListItems(listId: String, offset: Int, count: Int)
+GET         /api/list/:listId/items      @org.shopping.controllers.ListController.getListItems(listId: String)
 
 ###
 # tags:
@@ -182,33 +182,6 @@ GET         /api/list/:listId/items      @org.shopping.controllers.ListControlle
 #       $ref: '#/definitions/org.shopping.dto.LoginResponseDTO'
 ###
 POST         /api/login                  @org.shopping.controllers.UserController.login
-
-###
-# tags:
-#   - User operations
-# summary: Get user account
-# produces:
-#   - application/json
-# parameters:
-#   - name: "Authorization"
-#     in: "header"
-#     description: "Authorization code"
-#     required: true
-#     type: "string"
-# responses:
-#   200:
-#     schema:
-#       $ref: '#/definitions/org.shopping.dto.UserDTO'
-#   401:
-#     description: Unauthorized
-#     schema:
-#       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
-#   404:
-#     description: Entity not found
-#     schema:
-#       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
-###
-GET          /api/user/:userId           @org.shopping.controllers.UserController.getUserById(userId: String)
 
 ###
 # tags:

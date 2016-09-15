@@ -2,7 +2,7 @@ package org.shopping.modules.core
 
 import org.shopping.modules.AuthData
 
-trait BaseModule {
+trait BaseService {
   protected var _authData: AuthData = null
 
   def setAuth(value: AuthData) = {

@@ -1,7 +1,7 @@
 package org.shopping.modules.core.impl
 
 import com.google.inject.Inject
-import org.shopping.modules.core.UserModule
+import org.shopping.modules.core.UserService
 import org.shopping.dto.{BooleanDTO, RegisterRequestDTO, UserDTO, UsersDTO}
 import play.api.http.Status
 
@@ -14,7 +14,7 @@ import java.util.Date
 
 import scalaoauth2.provider._
 
-class DefaultUserModule @Inject()(dalUser: UserDAL, dalAuth: Oauth2DAL) extends UserModule {
+class DefaultUserService @Inject()(dalUser: UserDAL, dalAuth: Oauth2DAL) extends UserService {
 
   override def createSession(accessToken: String): Result[String] = {
     dalAuth.findAuthInfoByAccessToken(scalaoauth2.provider.AccessToken(accessToken, None, None, None, new Date())) flatMap {

@@ -6,7 +6,7 @@ import org.shopping.modules.Result
 import scala.concurrent._
 import scalaoauth2.provider.{AuthorizationRequest, GrantHandlerResult, OAuthError}
 
-  trait UserModule extends BaseModule {
+  trait UserService extends BaseService {
 
     def getUserById(uid: String): Result[UserDTO]
 

@@ -54,15 +54,14 @@ class SlickListDAL @Inject()(protected val dbConfigProvider: DatabaseConfigProvi
     db.run(action) map (_ => model)
   }
 
-  override def getListItemsByListAndUser(listId: String, userId: String, offset: Int, count: Int): DAL[(Seq[ListItem], Int)] = {
-    val q = ListProducts.filter(t => t.listId === listId && t.userId === userId)
-    val action = (for {
-      l <- q.take(count).drop(offset).result
-      c <- q.length.result} yield (l, c)).transactionally
+  override def addListItems(model: Seq[ListItem]): DAL[Seq[ListItem]] = {
+    val action = ListProducts ++= model
+    db.run(action) map (_ => model)
+  }
 
-    db.run(action) map {
-      case (l, c) => (l.toList, c)
-    }
+  override def getListItemsByList(listId: String): DAL[Seq[ListItem]] = {
+    val action = ListProducts.filter(t => t.listId === listId).result
+    db run action
   }
 
 }

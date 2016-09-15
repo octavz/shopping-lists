@@ -4,7 +4,7 @@ import com.google.inject.Inject
 import org.shopping.dal.Oauth2DAL
 import org.shopping.db.User
 import org.shopping.dto.{ErrorDTO, JsonDTOFormats}
-import org.shopping.modules.core.BaseModule
+import org.shopping.modules.core.BaseService
 import play.api.libs.json.Json
 import play.api.mvc._
 
@@ -12,7 +12,7 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent._
 import scalaoauth2.provider.{AuthInfo, OAuth2Provider, ProtectedResource}
 
-class BaseController(module: BaseModule)
+class BaseController(module: BaseService)
   extends Controller
     with JsonDTOFormats
     with OAuth2Provider {

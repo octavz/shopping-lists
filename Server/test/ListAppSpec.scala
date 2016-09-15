@@ -4,7 +4,7 @@ import org.shopping.dal.Oauth2DAL
 import org.shopping.db.User
 import org.shopping.dto._
 import org.shopping.modules._
-import org.shopping.modules.core.{ListModule, UserModule}
+import org.shopping.modules.core.{ListService, UserService}
 import org.shopping.util.Gen._
 import org.shopping.util.Time._
 import org.specs2.mock.Mockito
@@ -32,9 +32,9 @@ class ListAppSpec extends PlaySpecification with Mockito {
 
   def anUser = User(id = guid, login = guid, providerToken = None, created = now, updated = now, lastLogin = None, password = guid, nick = guid)
 
-  case class MockContext(app: Application, listModule: ListModule, dalAuth: Oauth2DAL, user: User)
+  case class MockContext(app: Application, listModule: ListService, dalAuth: Oauth2DAL, user: User)
 
-  def app(mp: ListModule = mock[ListModule], dalAuth: Oauth2DAL = mock[Oauth2DAL], u: User = anUser): MockContext = {
+  def app(mp: ListService = mock[ListService], dalAuth: Oauth2DAL = mock[Oauth2DAL], u: User = anUser): MockContext = {
     dalAuth.findAccessToken(anyString) returns Future.successful(Some(AccessToken("token", None, None, None, new java.util.Date())))
     //auth.isAccessTokenExpired(any[AccessToken]) returns false
     dalAuth.findAuthInfoByAccessToken(any[AccessToken]) returns Future.successful(Some(authInfo))
@@ -44,8 +44,8 @@ class ListAppSpec extends PlaySpecification with Mockito {
       .configure(Map(
         "evolutionplugin" -> "disabled"
       ))
-      .overrides(bind[ListModule].toInstance(mp))
-      .overrides(bind[UserModule].toInstance(mock[UserModule]))
+      .overrides(bind[ListService].toInstance(mp))
+      .overrides(bind[UserService].toInstance(mock[UserService]))
       .overrides(bind[Oauth2DAL].toInstance(dalAuth))
       .build()
     MockContext(ret, mp, dalAuth, u)

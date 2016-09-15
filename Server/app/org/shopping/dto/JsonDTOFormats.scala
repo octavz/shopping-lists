@@ -15,7 +15,7 @@ trait JsonDTOFormats extends BaseFormats with ConstraintReads {
   implicit val taskDTO = Json.format[ListItemDTO]
   implicit val errorDTO = Json.writes[ErrorDTO]
 
-  implicit val tasksDTO = Json.format[ListItemListDTO]
+  implicit val tasksDTO = Json.format[ListItemsDTO]
 
   implicit val registerRequestDTO = (
     (__ \ 'login).format[String](maxLength[String](200) keepAnd email) ~
