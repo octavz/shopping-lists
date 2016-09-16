@@ -3,18 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
-using ShList.Code.Abstracts;
-using ShList.Code.Data.Response;
-using ShList.Code.Data.Request;
-using Newtonsoft.Json;
 
-namespace ShList.Code.Repository
+using Newtonsoft.Json;
+using CommonBL.Abstracts;
+using CommonBL.Data.Response;
+using CommonBL.Data.Request;
+
+namespace CommonBL.Repository
 {
     public class UserRepository
     {

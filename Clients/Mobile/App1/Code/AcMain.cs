@@ -6,9 +6,9 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using ShList.Code.Abstracts;
-using ShList.Code.Data.Response;
-using ShList.Code.Repository;
-using ShList.Code.Data.Request;
+using CommonBL.Data.Request;
+using CommonBL.Data.Response;
+using CommonBL.Repository;
 
 namespace ShList.Code
 {
@@ -31,9 +31,9 @@ namespace ShList.Code
             
             btnLogin = FindViewById<Button>(Resource.Id.btnLogin);
             btnLogin.Click += Btnlogin_Click;
-            // Finish();
+             //Finish();
 
-            //  StartActivity(typeof(AcShoppingLists));
+              //StartActivity(typeof(AcShoppingLists));
         }//OnCreate
 
         private void Btnlogin_Click(object sender, EventArgs e)
