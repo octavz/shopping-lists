@@ -17,7 +17,7 @@ class DefaultListService @Inject()(dalUser: UserDAL, dalList: ListDAL) extends L
   override def insertList(dto: ListDTO): Result[ListDTO] = {
     val list = dto.toModel()
     val f = dalList.insertList(list) map (p => resultSync(new ListDTO(p)))
-    f recover { case e: Throwable => resultExSync(e, "addGroup") }
+    f recover { case e: Throwable => resultExSync(e, "insertList") }
   }
 
   var MAX_ALLOWED = 100
@@ -61,13 +61,8 @@ class DefaultListService @Inject()(dalUser: UserDAL, dalList: ListDAL) extends L
     f recover { case e: Throwable => resultExSync(e, "updateList") }
   }
 
-  private def checkUser(userId: String, listId: String): Future[Boolean] = Future.successful {
-    dalList.getListById(listId) map { list =>
-      list.
-
-    }
-    true
-  }
+  private def checkUser(userId: String, listId: String): Future[Boolean] =
+    dalList.getListUsers(listId) map (_.contains(userId))
 
   override def getListItems(listId: String): Result[ListItemsDTO] = {
     val f = checkUser(userId, listId) flatMap {

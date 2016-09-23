@@ -148,3 +148,4 @@ DROP TABLE IF EXISTS lists;
 DROP TABLE IF EXISTS user_sessions;
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS user_statuses;
+DROP TABLE IF EXISTS lists_users;

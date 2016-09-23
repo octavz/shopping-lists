@@ -15,10 +15,6 @@ import scala.concurrent._
 import scala.concurrent.duration._
 import scalaoauth2.provider.AuthInfo
 
-/** .
-  * main test class for DefaultAssetServiceComponent
-  * it mocks AssetRepoComponent
-  */
 @RunWith(classOf[JUnitRunner])
 class ListModuleSpec extends Specification with Mockito {
 
@@ -63,6 +59,7 @@ class ListModuleSpec extends Specification with Mockito {
 
       m.dalList.updateLists(any[SList]) answers (a => dal(a.asInstanceOf[SList]))
       m.dalList.getListById(any) returns dal(Some(genList(authInfo.user.id)))
+      m.dalList.getListUsers(any) returns dal(Seq(dto.userId.get))
       val s = Await.result(m.listModule.updateList(dto), Duration.Inf)
       there was one(m.dalList).updateLists(any[SList])
       there was one(m.dalList).getListById(dto.id.get)

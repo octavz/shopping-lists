@@ -18,6 +18,6 @@ trait ListDAL {
 
   def getListItemsByList(listId: String): DAL[Seq[ListItem]]
 
-
   def getListUsers(listId: String):DAL[Seq[String]]
+
 }

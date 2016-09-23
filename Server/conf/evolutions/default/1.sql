@@ -123,7 +123,7 @@ INSERT INTO users(id, login, nick, provider, provider_token, last_login,  PASSWO
 
 INSERT INTO lists(id,user_id, NAME, description,  status, created, updated) VALUES ('1', '1', 'list name1', 'description', 0,  '2014-06-05 11:52:16.904', '2014-06-05 11:52:16.904');
 INSERT INTO lists(id,user_id, NAME, description,  status, created, updated) VALUES ('2', '1', 'list name2', 'description', 0,  '2014-06-05 11:52:16.904', '2014-06-05 11:52:16.904');
-INSERT INTO lists(id,user_id, NAME, description,  status, created, updated) VALUES ('3', '1', 'list name3', 'description', 0,  '2014-06-05 11:52:16.904', '2014-06-05 11:52:16.904');
+INSERT INTO lists(id,user_id, NAME, description,  status, created, updated) VALUES ('3', '2', 'list name3', 'description', 0,  '2014-06-05 11:52:16.904', '2014-06-05 11:52:16.904');
 
 INSERT INTO entity_types(id, description) VALUES ('1', 'user');
 INSERT INTO entity_types(id, description) VALUES ('2', 'list');
@@ -134,17 +134,17 @@ insert into client_grant_types values(1,1);
 
 # --- !Downs
 
-DROP TABLE labels;
-DROP TABLE entity_types;
-DROP TABLE client_grant_types;
-DROP TABLE grant_types;
-DROP TABLE list_products;
-DROP TABLE auth_codes;
-DROP TABLE access_tokens;
-DROP TABLE lists_users;
-DROP TABLE clients;
-DROP TABLE products;
-DROP TABLE lists;
-DROP TABLE user_sessions;
-DROP TABLE users;
-DROP TABLE user_statuses;
+DROP TABLE IF EXISTS labels;
+DROP TABLE IF EXISTS entity_types;
+DROP TABLE IF EXISTS client_grant_types;
+DROP TABLE IF EXISTS grant_types;
+DROP TABLE IF EXISTS list_products;
+DROP TABLE IF EXISTS auth_codes;
+DROP TABLE IF EXISTS access_tokens;
+DROP TABLE IF EXISTS lists_users;
+DROP TABLE IF EXISTS clients;
+DROP TABLE IF EXISTS products;
+DROP TABLE IF EXISTS lists;
+DROP TABLE IF EXISTS user_sessions;
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS user_statuses;
