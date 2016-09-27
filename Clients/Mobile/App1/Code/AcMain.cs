@@ -18,6 +18,7 @@ namespace ShList.Code
         Button btnLogin = null;
         EditText txtPassword = null;
         EditText txtEmail = null;
+        LinearLayout llLinkSignUp = null;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -28,13 +29,20 @@ namespace ShList.Code
 
             txtEmail = FindViewById<EditText>(Resource.Id.txtEmail);
             txtPassword = FindViewById<EditText>(Resource.Id.txtPassword);
+            llLinkSignUp = FindViewById<LinearLayout>(Resource.Id.llLinkSignUp);
+
+            llLinkSignUp.Click += (s,e) => {
+                StartActivity(typeof(AcCreateAccount));
+            };
             
+
             btnLogin = FindViewById<Button>(Resource.Id.btnLogin);
             btnLogin.Click += Btnlogin_Click;
              //Finish();
 
               //StartActivity(typeof(AcShoppingLists));
         }//OnCreate
+
 
         private void Btnlogin_Click(object sender, EventArgs e)
         {
