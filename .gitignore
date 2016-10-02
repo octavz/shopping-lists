@@ -2,4 +2,7 @@ Clients/Mobile/App1/obj/
 Clients/Mobile/App1/bin/
 Server/target
 Server/project/target
+Server/.idea
 Server/project/project
+Clients/Mobile/CommonBL/bin/
+Clients/Mobile/CommonBL/obj/

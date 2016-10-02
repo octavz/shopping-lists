@@ -6,6 +6,8 @@ trait ListDAL {
 
   def insertList(model: List): DAL[List]
 
+  def addListItems(model: Seq[ListItem]): DAL[Seq[ListItem]]
+
   def getUserLists(uid: String, offset: Int, count: Int): DAL[(Seq[List], Int)]
 
   def updateLists(list: List): DAL[List]
@@ -14,7 +16,8 @@ trait ListDAL {
 
   def addListItem(model: ListItem): DAL[ListItem]
 
-  def getListItemsByListAndUser(listId: String, userId: String, offset: Int, count: Int): DAL[(Seq[ListItem], Int)]
+  def getListItemsByList(listId: String): DAL[Seq[ListItem]]
 
+  def getListUsers(listId: String):DAL[Seq[String]]
 
 }

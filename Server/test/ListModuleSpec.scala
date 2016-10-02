@@ -15,10 +15,6 @@ import scala.concurrent._
 import scala.concurrent.duration._
 import scalaoauth2.provider.AuthInfo
 
-/** .
-  * main test class for DefaultAssetServiceComponent
-  * it mocks AssetRepoComponent
-  */
 @RunWith(classOf[JUnitRunner])
 class ListModuleSpec extends Specification with Mockito {
 
@@ -26,10 +22,10 @@ class ListModuleSpec extends Specification with Mockito {
     User(id = guid, login = guid, password = guid, created = now, updated = now,
       lastLogin = nowo, providerToken = guido, nick = guid), Some("1"), None, None)
 
-  case class MockedContext(listModule: DefaultListModule, dalUser: UserDAL, dalList: ListDAL)
+  case class MockedContext(listModule: DefaultListService, dalUser: UserDAL, dalList: ListDAL)
 
   def module(dalUser: UserDAL = mock[UserDAL], dalList: ListDAL = mock[ListDAL]) = {
-    val ret = new DefaultListModule(dalUser, dalList)
+    val ret = new DefaultListService(dalUser, dalList)
     ret.setAuth(authInfo)
     MockedContext(ret, dalUser, dalList)
   }
@@ -63,6 +59,7 @@ class ListModuleSpec extends Specification with Mockito {
 
       m.dalList.updateLists(any[SList]) answers (a => dal(a.asInstanceOf[SList]))
       m.dalList.getListById(any) returns dal(Some(genList(authInfo.user.id)))
+      m.dalList.getListUsers(any) returns dal(Seq(dto.userId.get))
       val s = Await.result(m.listModule.updateList(dto), Duration.Inf)
       there was one(m.dalList).updateLists(any[SList])
       there was one(m.dalList).getListById(dto.id.get)
@@ -77,7 +74,7 @@ class ListModuleSpec extends Specification with Mockito {
       val s = Await.result(m.listModule.insertList(dto), Duration.Inf)
       there was one(m.dalList).insertList(any[SList])
       s must beLeft
-      val (code, message) = s.merge.asInstanceOf[ResultError]
+      val ErrorDTO(code, message) = s.merge.asInstanceOf[ResultError]
       code === Status.INTERNAL_SERVER_ERROR
       message === "test"
     }
@@ -111,7 +108,7 @@ class ListModuleSpec extends Specification with Mockito {
       val s = Await.result(m.listModule.getUserLists(m.listModule.authData.user.id, 0, 100), Duration.Inf)
       there was one(m.dalList).getUserLists(m.listModule.authData.user.id, 0, 100)
       s must beLeft
-      val (code, message) = s.merge.asInstanceOf[ResultError]
+      val ErrorDTO(code, message) = s.merge.asInstanceOf[ResultError]
       code === Status.INTERNAL_SERVER_ERROR
       message === "Test error"
     }
@@ -122,7 +119,7 @@ class ListModuleSpec extends Specification with Mockito {
       val s = Await.result(m.listModule.getUserLists(m.listModule.authData.user.id, 0, 100), Duration.Inf)
       there was one(m.dalList).getUserLists(m.listModule.authData.user.id, 0, 100)
       s must beLeft
-      val (code, message) = s.merge.asInstanceOf[ResultError]
+      val ErrorDTO(code, message) = s.merge.asInstanceOf[ResultError]
       code === Status.INTERNAL_SERVER_ERROR
       message === "test future"
     }

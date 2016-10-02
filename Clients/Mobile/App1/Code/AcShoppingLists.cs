@@ -10,8 +10,8 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using ShList.Code.Abstracts;
-using ShList.Code.Data;
 using ShList.Code.Controls;
+using CommonBL.Data;
 
 namespace ShList.Code
 {

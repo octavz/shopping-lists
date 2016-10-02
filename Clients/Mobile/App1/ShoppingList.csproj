@@ -16,7 +16,7 @@
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v7.0</TargetFrameworkVersion>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -45,10 +45,6 @@
   <ItemGroup>
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -81,23 +77,22 @@
   <ItemGroup>
     <Compile Include="Code\Abstracts\AActivity.cs" />
     <Compile Include="Code\Abstracts\AControl.cs" />
-    <Compile Include="Code\Abstracts\HelperFactory.cs" />
-    <Compile Include="Code\Abstracts\IHttpHelper.cs" />
+    <Compile Include="Code\AcCreateAccount.cs" />
     <Compile Include="Code\AcShoppingLists.cs" />
     <Compile Include="Code\Controls\CtrlShoppingList.cs" />
-    <Compile Include="Code\Data\Request\ReqLoginDTO.cs" />
-    <Compile Include="Code\Data\Response\ResLoginDTO.cs" />
-    <Compile Include="Code\Data\ShoppingListDTO.cs" />
     <Compile Include="Code\Extended\ShApplication.cs" />
     <Compile Include="Code\AcMain.cs" />
-    <Compile Include="Code\Helpers\MockHttpHelper.cs" />
-    <Compile Include="Code\Repository\UserRepository.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="GettingStarted.Xamarin" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <AndroidResource Include="Resources\layout\CtrlShoppingList.axml">
@@ -107,6 +102,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\AcShoppingLists.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\AcCreateAccount.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -127,9 +125,6 @@
     <None Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Code\Service\" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\values\Colors.xml" />
   </ItemGroup>
   <ItemGroup>
@@ -139,6 +134,12 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values-v21\Styles.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CommonBL\CommonBL.csproj">
+      <Project>{d9de6135-eaa6-46f8-aae9-e98dc560d679}</Project>
+      <Name>CommonBL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Android.Support.Vector.Drawable.23.4.0.1\build\Xamarin.Android.Support.Vector.Drawable.targets" Condition="Exists('..\packages\Xamarin.Android.Support.Vector.Drawable.23.4.0.1\build\Xamarin.Android.Support.Vector.Drawable.targets')" />

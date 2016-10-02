@@ -1,5 +1,6 @@
 package org
 
+import org.shopping.dto.ErrorDTO
 import org.shopping.modules.Result
 import play.api.libs.json.{Json, Writes}
 import play.api.mvc.Results
@@ -41,7 +42,7 @@ package object shopping {
   implicit class ResultTransformer[T <: AnyRef](val result: Result[T]) extends Results {
     def toResponse(implicit m: Writes[T]) = result map {
       case Right(r) => Ok(Json.toJson(r).toString())
-      case Left((code, msg)) => BadRequest(Json.obj("errCode" -> code, "errMessage" -> msg))
+      case Left(ErrorDTO(code, msg)) => BadRequest(Json.obj("errCode" -> code, "errMessage" -> msg))
 
     }
   }

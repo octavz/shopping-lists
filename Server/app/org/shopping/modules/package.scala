@@ -1,10 +1,10 @@
 package org.shopping
 
 import org.shopping.db.User
+import org.shopping.dto.ErrorDTO
 import org.shopping.util.Gen
 
 import scala.concurrent._
-
 import scalaoauth2.provider.AuthInfo
 import ExecutionContext.Implicits.global
 
@@ -19,22 +19,26 @@ package object modules {
 
   }
 
-  type ResultError = (Int, String)
+  type ResultError = ErrorDTO
 
-  type Result[T] = Future[Either[ResultError, T]]
+  type Result[T] = Future[Either[ErrorDTO, T]]
   type AuthData = AuthInfo[User]
 
   def result[T](v: T) = Future.successful(Right(v))
 
   def resultSync[T](v: T) = Right(v)
 
-  def resultError(errCode: Int, errMessage: String, data: String = "") = Future.successful(Left(errCode, errMessage))
+  def resultError(errCode: Int, errMessage: String, data: String = "") = Future.successful(Left(ErrorDTO(errCode, errMessage)))
 
-  def resultErrorSync(errCode: Int, errMessage: String, data: String = "") = Left(errCode, errMessage)
+  def resultError(err: (Int, String)) = err match {
+    case (errCode, errMessage) => Future.successful(Left(ErrorDTO(errCode, errMessage)))
+  }
 
-  def resultEx(ex: Throwable, data: String = "", errCode: Int = 500) = Future.successful(Left(errCode, ex.getMessage))
+  def resultErrorSync(errCode: Int, errMessage: String, data: String = "") = Left(ErrorDTO(errCode, errMessage))
 
-  def resultExSync(ex: Throwable, data: String = "", errCode: Int = 500) = Left(errCode, ex.getMessage)
+  def resultEx(ex: Throwable, data: String = "", errCode: Int = 500) = Future.successful(Left(ErrorDTO(errCode, ex.getMessage)))
+
+  def resultExSync(ex: Throwable, data: String = "", errCode: Int = 500) = Left(ErrorDTO(errCode, ex.getMessage))
 
   object PermProject {
     val OwnerRead = 1
@@ -69,12 +73,12 @@ package object modules {
   implicit class ErrorExtractor[T](val ret: Either[ResultError, T]) {
 
     def errCode = ret match {
-      case Left(er) => er._1
+      case Left(er) => er.errorCode
       case _ => 0
     }
 
     def errMessage = ret match {
-      case Left(er) => er._2
+      case Left(er) => er.message
       case _ => ""
     }
 

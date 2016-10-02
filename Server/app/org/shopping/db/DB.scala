@@ -197,6 +197,18 @@ trait DB {
   }
 
   lazy val ListProducts = new TableQuery(tag => new ListProducts(tag))
+
+  class ListsUsers(_tableTag: Tag) extends Table[ListUser](_tableTag, "lists_users") {
+    def * = (listId, userId) <> (ListUser.tupled, ListUser.unapply)
+
+    val listId = column[String]("list_id", O.PrimaryKey)
+    val userId = column[String]("user_id", O.PrimaryKey)
+
+    lazy val usersFk = foreignKey("lists_user_user_id_fkey", userId, Users)(r => r.id, onUpdate = ForeignKeyAction.NoAction, onDelete = ForeignKeyAction.NoAction)
+    lazy val listsFk = foreignKey("lists_user_list_id_fkey", listId, Lists)(r => r.id, onUpdate = ForeignKeyAction.NoAction, onDelete = ForeignKeyAction.NoAction)
+  }
+
+  lazy val ListsUsers = new TableQuery(tag => new ListsUsers(tag))
 }
 
 case class AccessToken(accessToken: String, refreshToken: Option[String] = None, userId: String, scope: Option[String] = None, expiresIn: Int, created: java.sql.Timestamp, clientId: String)
@@ -226,4 +238,6 @@ case class User(id: String, login: String, nick: String, provider: Int = 0, prov
 case class UserSession(id: String, userId: String)
 
 case class UserStatus(id: Int, description: Option[String] = None)
+
+case class ListUser(listId: String, userId: String)
 

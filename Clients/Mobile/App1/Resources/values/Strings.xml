@@ -2,10 +2,13 @@
 <resources>
   <string name="Hello">Hello World, Click Me!</string>
   <string name="ApplicationName">App1</string>
+  <string name="ActivityCreateAccount">Create Account</string>
   <string name="ActivityShoppingList">Manage lists</string>
   <string name="ListsButtonCreate">Create New</string>
   <string name="Email">Email</string>
   <string name="Password">Password</string>
+  <string name="PasswordRe">Retype Password</string>
   <string name="NoAccount">No account yet? Create one</string>
   <string name="LoginButton">Login</string>
+  <string name="CreateAccountButton">Create Account</string>
 </resources>
