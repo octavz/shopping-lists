@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ivy-module version="2.0" xmlns:e="http://ant.apache.org/ivy/extra">
+	<info organisation="main"
+		module="main_2.11"
+		revision="0.1-SNAPSHOT"
+		status="integration"
+		publication="20161004094102"
+	>
+		<description>
+		main
+		</description>
+	</info>
+	<configurations>
+		<conf name="compile" visibility="public" description=""/>
+		<conf name="runtime" visibility="public" description="" extends="compile"/>
+		<conf name="test" visibility="public" description="" extends="runtime"/>
+		<conf name="provided" visibility="public" description=""/>
+		<conf name="optional" visibility="public" description=""/>
+		<conf name="play-swagger" visibility="private" description=""/>
+		<conf name="compile-internal" visibility="private" description="" extends="compile,optional,provided"/>
+		<conf name="runtime-internal" visibility="private" description="" extends="runtime,optional"/>
+		<conf name="test-internal" visibility="private" description="" extends="test,optional,provided"/>
+		<conf name="plugin" visibility="private" description=""/>
+		<conf name="sources" visibility="public" description=""/>
+		<conf name="docs" visibility="private" description=""/>
+		<conf name="pom" visibility="public" description=""/>
+		<conf name="scala-tool" visibility="private" description=""/>
+		<conf name="ensime-internal" visibility="private" description=""/>
+	</configurations>
+	<publications>
+		<artifact name="main_2.11" type="pom" ext="pom" conf="pom"/>
+		<artifact name="main_2.11" type="jar" ext="jar" conf="compile"/>
+		<artifact name="main_2.11" type="src" ext="jar" conf="sources" e:classifier="sources"/>
+		<artifact name="main_2.11" type="doc" ext="jar" conf="docs" e:classifier="javadoc"/>
+	</publications>
+	<dependencies>
+		<dependency org="org.scala-lang" name="scala-compiler" rev="2.11.8" transitive="false" conf="ensime-internal->default(compile)"/>
+		<dependency org="org.scala-lang" name="scala-compiler" rev="2.11.8" conf="scala-tool->default,optional(default)"/>
+		<dependency org="org.scala-lang" name="scala-library" rev="2.11.8" transitive="false" conf="ensime-internal->default(compile)"/>
+		<dependency org="org.scala-lang" name="scala-library" rev="2.11.8" conf="compile->default(compile)"/>
+		<dependency org="org.scala-lang" name="scala-library" rev="2.11.8" conf="scala-tool->default,optional(default)"/>
+		<dependency org="com.typesafe.play" name="twirl-api_2.11" rev="1.1.1" conf="compile->default(compile)"/>
+		<dependency org="org.scala-lang" name="scala-reflect" rev="2.11.8" transitive="false" conf="ensime-internal->default(compile)"/>
+		<dependency org="org.scala-lang" name="scalap" rev="2.11.8" transitive="false" conf="ensime-internal->default(compile)"/>
+		<dependency org="com.iheart" name="play-swagger_2.11" rev="0.5.2" conf="play-swagger->default(compile)"/>
+		<dependency org="com.typesafe.play" name="play-server_2.11" rev="2.5.6" conf="compile->default(compile)"/>
+		<dependency org="com.typesafe.play" name="play-test_2.11" rev="2.5.6" conf="test->default(compile)"/>
+		<dependency org="com.typesafe.play" name="play-omnidoc_2.11" rev="2.5.6" conf="docs->default(compile)"/>
+		<dependency org="com.typesafe.play" name="play-netty-server_2.11" rev="2.5.6" conf="compile->default(compile)"/>
+		<dependency org="com.typesafe.play" name="play-logback_2.11" rev="2.5.6" conf="compile->default(compile)"/>
+		<dependency org="com.typesafe.play" name="play-specs2_2.11" rev="2.5.6" conf="test->default(compile)"/>
+		<dependency org="com.typesafe.play" name="play-cache_2.11" rev="2.5.6" conf="compile->default(compile)"/>
+		<dependency org="com.typesafe.play" name="play-json_2.11" rev="2.5.6" conf="compile->default(compile)"/>
+		<dependency org="com.typesafe.slick" name="slick_2.11" rev="3.1.1" conf="compile->default(compile)"/>
+		<dependency org="org.postgresql" name="postgresql" rev="9.4-1201-jdbc41" conf="compile->default(compile)"/>
+		<dependency org="com.typesafe.play" name="play-slick_2.11" rev="2.0.0" conf="compile->default(compile)"/>
+		<dependency org="com.typesafe.play" name="play-slick-evolutions_2.11" rev="2.0.0" conf="compile->default(compile)"/>
+		<dependency org="com.nulab-inc" name="play2-oauth2-provider_2.11" rev="0.15.0" conf="compile->default(compile)"/>
+		<dependency org="net.sourceforge.htmlunit" name="htmlunit" rev="2.17" conf="test->default(compile)"/>
+		<dependency org="com.github.nscala-time" name="nscala-time_2.11" rev="2.0.0" conf="compile->default(compile)"/>
+		<dependency org="com.livestream" name="scredis_2.11" rev="2.0.6" conf="compile->default(compile)"/>
+		<dependency org="com.fasterxml.jackson.module" name="jackson-module-scala_2.11" rev="2.7.2" conf="compile->default(compile)"/>
+		<dependency org="org.webjars" name="swagger-ui" rev="2.2.2" conf="compile->default(compile)"/>
+	</dependencies>
+</ivy-module>

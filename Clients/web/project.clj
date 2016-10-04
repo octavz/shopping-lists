@@ -9,7 +9,7 @@
                  [reagent "0.6.0"]
                  [reagent-forms "0.5.25"]
                  [reagent-utils "0.2.0"]
-                 [reagent-reforms "0.4.3"]
+                 [cljs-http "0.1.41"]
                  [ring "1.5.0"]
                  [ring/ring-defaults "0.2.1"]
                  [compojure "1.5.1"]
@@ -28,11 +28,11 @@
              :exclusions [org.clojure/clojure]]]
 
   :ring {:handler web.handler/app
-         :uberwar-name "web.war"}
+         :uberwar-name "shopping-list.war"}
 
   :min-lein-version "2.5.0"
 
-  :uberjar-name "web.jar"
+  :uberjar-name "shopping-list.jar"
 
   :main web.server
 

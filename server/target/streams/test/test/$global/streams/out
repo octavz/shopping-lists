@@ -1,0 +1,126 @@
+[0m[[0mdebug[0m] [0mForking tests - parallelism = false[0m
+[0m[[0mdebug[0m] [0mCreate a single-thread test executor[0m
+[0m[[0mdebug[0m] [0mRunner for org.specs2.runner.Specs2Framework produced 8 initial tasks for 8 tests.[0m
+[0m[[0mdebug[0m] [0m  Running TaskDef(ListModuleSpec, sbt.ForkMain$SubclassFingerscan@5430c617, false, [SuiteSelector])[0m
+[0m[[0minfo[0m] [0mListModuleSpec[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0minfo[0m] [0mList module should[0m
+[0m[[0minfo[0m] [0m  [32m+[0m implement insertList and call dal[0m
+[0m[[0minfo[0m] [0m  [32m+[0m implement updateList and call dal[0m
+[0m[[0minfo[0m] [0m  [32m+[0m return right error when dal crashes[0m
+[0m[[0minfo[0m] [0m  [32m+[0m implement get user lists[0m
+[0m[[0minfo[0m] [0m  [32m+[0m get user lists and call dal[0m
+[0m[[0minfo[0m] [0m  [32m+[0m get user list should handle dal errors[0m
+[0m[[0minfo[0m] [0m  [32m+[0m get user lists and handle future failure[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0minfo[0m] [0mTotal for specification ListModuleSpec[0m
+[0m[[0minfo[0m] [0m[36mFinished in 145 ms[0m[0m
+[0m[[0minfo[0m] [0m[36m[0m[36m7 examples, 0 failure, 0 error[0m[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0mdebug[0m] [0m    Produced 0 nested tasks and 7 events.[0m
+[0m[[0mdebug[0m] [0m  Running TaskDef(UserModuleSpec, sbt.ForkMain$SubclassFingerscan@68e21f15, false, [SuiteSelector])[0m
+[0m[[0minfo[0m] [0mUserModuleSpec[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0minfo[0m] [0mUser module should[0m
+[0m[[0minfo[0m] [0m  [32m+[0m implement createSession[0m
+[0m[[0minfo[0m] [0m  [32m+[0m implement get user by id and call dal[0m
+[0m[[0minfo[0m] [0m  [32m+[0m implement register and call dal[0m
+[0m[[0minfo[0m] [0m  [32m+[0m not call insert if email already exists[0m
+[0m[[0minfo[0m] [0m  [32m+[0m work wih chaining[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0minfo[0m] [0mTotal for specification UserModuleSpec[0m
+[0m[[0minfo[0m] [0m[36mFinished in 18 ms[0m[0m
+[0m[[0minfo[0m] [0m[36m[0m[36m5 examples, 0 failure, 0 error[0m[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0mdebug[0m] [0m    Produced 0 nested tasks and 5 events.[0m
+[0m[[0mdebug[0m] [0m  Running TaskDef(ListDalSpec, sbt.ForkMain$SubclassFingerscan@6962cc87, false, [SuiteSelector])[0m
+[0m[[0minfo[0m] [0mListDalSpec[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0minfo[0m] [0mLists DAL should[0m
+[0m[[0minfo[0m] [0m  [32m+[0m insert list[0m
+[0m[[0minfo[0m] [0m  [32m+[0m get private lists by user[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0minfo[0m] [0mTotal for specification ListDalSpec[0m
+[0m[[0minfo[0m] [0m[36mFinished in 2 seconds, 52 ms[0m[0m
+[0m[[0minfo[0m] [0m[36m[0m[36m2 examples, 0 failure, 0 error[0m[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0mdebug[0m] [0m    Produced 0 nested tasks and 2 events.[0m
+[0m[[0mdebug[0m] [0m  Running TaskDef(ListAppSpec, sbt.ForkMain$SubclassFingerscan@d5d19c, false, [SuiteSelector])[0m
+[0m[[0minfo[0m] [0mListAppSpec[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0minfo[0m] [0mList controller should[0m
+[0m[[0minfo[0m] [0m  [32m+[0m have create list route and authorize[0m
+[0m[[0minfo[0m] [0m  [32m+[0m get all lists[0m
+[0m[[0minfo[0m] [0m  [32m+[0m update lists[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0minfo[0m] [0mTotal for specification ListAppSpec[0m
+[0m[[0minfo[0m] [0m[36mFinished in 448 ms[0m[0m
+[0m[[0minfo[0m] [0m[36m[0m[36m3 examples, 0 failure, 0 error[0m[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0mdebug[0m] [0m    Produced 0 nested tasks and 3 events.[0m
+[0m[[0mdebug[0m] [0m  Running TaskDef(IntegrationSpec, sbt.ForkMain$SubclassFingerscan@64fb9cdd, false, [SuiteSelector])[0m
+[0m[[0minfo[0m] [0mIntegrationSpec[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0minfo[0m] [0mApplication should[0m
+[0m[[0minfo[0m] [0m  [32m+[0m work from within a browser[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0minfo[0m] [0mTotal for specification IntegrationSpec[0m
+[0m[[0minfo[0m] [0m[36mFinished in 0 ms[0m[0m
+[0m[[0minfo[0m] [0m[36m[0m[36m1 example, 0 failure, 0 error[0m[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0mdebug[0m] [0m    Produced 0 nested tasks and 1 events.[0m
+[0m[[0mdebug[0m] [0m  Running TaskDef(UserAppSpec, sbt.ForkMain$SubclassFingerscan@401e43a1, false, [SuiteSelector])[0m
+[0m[[0minfo[0m] [0mUserAppSpec[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0minfo[0m] [0mApplication should[0m
+[0m[[0minfo[0m] [0m  [32m+[0m have external static files attached to root[0m
+[0m[[0minfo[0m] [0m  [32m+[0m render login page[0m
+[0m[[0minfo[0m] [0m  [32m+[0m have login route[0m
+[0m[[0minfo[0m] [0m  [32m+[0m have register route[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0minfo[0m] [0mTotal for specification UserAppSpec[0m
+[0m[[0minfo[0m] [0m[36mFinished in 123 ms[0m[0m
+[0m[[0minfo[0m] [0m[36m[0m[36m4 examples, 0 failure, 0 error[0m[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0mdebug[0m] [0m    Produced 0 nested tasks and 4 events.[0m
+[0m[[0mdebug[0m] [0m  Running TaskDef(UserDALSpec, sbt.ForkMain$SubclassFingerscan@2f30c75e, false, [SuiteSelector])[0m
+[0m[[0minfo[0m] [0mUserDALSpec[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0minfo[0m] [0mUser DAL should[0m
+[0m[[0minfo[0m] [0m  [32m+[0m insertSession, findSessionById, deleteSessionByUser[0m
+[0m[[0minfo[0m] [0m  [32m+[0m insertUser,getUserById, getUserByEmail[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0minfo[0m] [0mTotal for specification UserDALSpec[0m
+[0m[[0minfo[0m] [0m[36mFinished in 262 ms[0m[0m
+[0m[[0minfo[0m] [0m[36m[0m[36m2 examples, 0 failure, 0 error[0m[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0mdebug[0m] [0m    Produced 0 nested tasks and 2 events.[0m
+[0m[[0mdebug[0m] [0m  Running TaskDef(BaseDALSpec, sbt.ForkMain$SubclassFingerscan@6e50873d, false, [SuiteSelector])[0m
+[0m[[0minfo[0m] [0mBaseDALSpec[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0minfo[0m] [0mTotal for specification BaseDALSpec[0m
+[0m[[0minfo[0m] [0m[36mFinished in 0 ms[0m[0m
+[0m[[0minfo[0m] [0m[36m[0m[36m0 example, 0 failure, 0 error[0m[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0mdebug[0m] [0mRunner for com.novocode.junit.JUnitFramework produced 0 initial tasks for 0 tests.[0m
+[0m[[0mdebug[0m] [0mSummary for specs2 not available.[0m
+[0m[[0mdebug[0m] [0mSummary for JUnit not available.[0m
+[0m[[0minfo[0m] [0mPassed: Total 24, Failed 0, Errors 0, Passed 24[0m
+[0m[[0mdebug[0m] [0mPassed tests:[0m
+[0m[[0mdebug[0m] [0m	ListDalSpec[0m
+[0m[[0mdebug[0m] [0m	UserAppSpec[0m
+[0m[[0mdebug[0m] [0m	IntegrationSpec[0m
+[0m[[0mdebug[0m] [0m	UserModuleSpec[0m
+[0m[[0mdebug[0m] [0m	BaseDALSpec[0m
+[0m[[0mdebug[0m] [0m	UserDALSpec[0m
+[0m[[0mdebug[0m] [0m	ListModuleSpec[0m
+[0m[[0mdebug[0m] [0m	ListAppSpec[0m

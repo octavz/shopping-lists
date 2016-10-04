@@ -1,0 +1,94 @@
+run
+reload
+test
+reload
+test
+run
+test
+reload
+test
+reload
+test
+reload
+test
+reload
+test
+reload
+testOnly UserAppSpec
+reload
+testOnly UserAppSpec
+reload
+test
+testOlny UserDALSpec
+testOnly UserDALSpec
+testOlny UserDALSpec
+testOnly UserDALSpec
+reload
+test
+testOnly UserDALSpec
+h2-browser
+testOnly UserDALSpec
+run
+reload
+run
+reload
+dependencyTree
+run
+dependencyBrowseGraphy
+dependencyBrowseGraph
+reload
+run
+reload
+run
+reload
+run
+evicted
+reload
+run
+reload
+run
+reload
+run
+reload
+run
+swagger
+run
+reload
+run
+h2-browser
+run
+last *:swagge
+last *:swagger
+run
+last *:swagger
+run
+clean
+run
+ru
+run
+test
+testOnly UserDALSpec
+~compile
+compile
+clean
+compile
+reload
+test
+testOnly UserAppSpec
+test
+testOnly ProjectAppSpec
+test
+testOnly ProjectDALSpec
+testOnly ListDalSpec
+h2-browser
+testOnly ListDalSpec
+reload
+testOnly ListDalSpec
+testOnly UserDALSpec
+test
+testOnly ProjectAppSpec
+clean
+testOnly ProjectAppSpec
+testOnly ListAppSpec
+test
+run

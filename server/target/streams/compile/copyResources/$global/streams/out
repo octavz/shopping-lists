@@ -1,0 +1,10 @@
+[0m[[0mdebug[0m] [0mCopy resource mappings: [0m
+[0m[[0mdebug[0m] [0m	(/home/octav/projects/shopping-list/server/conf/routes,/home/octav/projects/shopping-list/server/target/scala-2.11/classes/routes)[0m
+[0m[[0mdebug[0m] [0m	(/home/octav/projects/shopping-list/server/conf/swagger.yml,/home/octav/projects/shopping-list/server/target/scala-2.11/classes/swagger.yml)[0m
+[0m[[0mdebug[0m] [0m	(/home/octav/projects/shopping-list/server/conf/evolutions,/home/octav/projects/shopping-list/server/target/scala-2.11/classes/evolutions)[0m
+[0m[[0mdebug[0m] [0m	(/home/octav/projects/shopping-list/server/conf/application.conf,/home/octav/projects/shopping-list/server/target/scala-2.11/classes/application.conf)[0m
+[0m[[0mdebug[0m] [0m	(/home/octav/projects/shopping-list/server/conf/heroku.conf,/home/octav/projects/shopping-list/server/target/scala-2.11/classes/heroku.conf)[0m
+[0m[[0mdebug[0m] [0m	(/home/octav/projects/shopping-list/server/conf/evolutions/test,/home/octav/projects/shopping-list/server/target/scala-2.11/classes/evolutions/test)[0m
+[0m[[0mdebug[0m] [0m	(/home/octav/projects/shopping-list/server/conf/evolutions/default,/home/octav/projects/shopping-list/server/target/scala-2.11/classes/evolutions/default)[0m
+[0m[[0mdebug[0m] [0m	(/home/octav/projects/shopping-list/server/conf/evolutions/test/1.sql,/home/octav/projects/shopping-list/server/target/scala-2.11/classes/evolutions/test/1.sql)[0m
+[0m[[0mdebug[0m] [0m	(/home/octav/projects/shopping-list/server/conf/evolutions/default/1.sql,/home/octav/projects/shopping-list/server/target/scala-2.11/classes/evolutions/default/1.sql)[0m
