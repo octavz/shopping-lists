@@ -988,32 +988,32 @@ namespace ShList
 		public partial class Color
 		{
 			
-			// aapt resource value: 0x7f0b0052
-			public const int abc_background_cache_hint_selector_material_dark = 2131427410;
+			// aapt resource value: 0x7f0b0045
+			public const int abc_background_cache_hint_selector_material_dark = 2131427397;
 			
-			// aapt resource value: 0x7f0b0053
-			public const int abc_background_cache_hint_selector_material_light = 2131427411;
+			// aapt resource value: 0x7f0b0046
+			public const int abc_background_cache_hint_selector_material_light = 2131427398;
 			
-			// aapt resource value: 0x7f0b0054
-			public const int abc_color_highlight_material = 2131427412;
+			// aapt resource value: 0x7f0b0047
+			public const int abc_color_highlight_material = 2131427399;
 			
 			// aapt resource value: 0x7f0b0000
 			public const int abc_input_method_navigation_guard = 2131427328;
 			
-			// aapt resource value: 0x7f0b0055
-			public const int abc_primary_text_disable_only_material_dark = 2131427413;
+			// aapt resource value: 0x7f0b0048
+			public const int abc_primary_text_disable_only_material_dark = 2131427400;
 			
-			// aapt resource value: 0x7f0b0056
-			public const int abc_primary_text_disable_only_material_light = 2131427414;
+			// aapt resource value: 0x7f0b0049
+			public const int abc_primary_text_disable_only_material_light = 2131427401;
 			
-			// aapt resource value: 0x7f0b0057
-			public const int abc_primary_text_material_dark = 2131427415;
+			// aapt resource value: 0x7f0b004a
+			public const int abc_primary_text_material_dark = 2131427402;
 			
-			// aapt resource value: 0x7f0b0058
-			public const int abc_primary_text_material_light = 2131427416;
+			// aapt resource value: 0x7f0b004b
+			public const int abc_primary_text_material_light = 2131427403;
 			
-			// aapt resource value: 0x7f0b0059
-			public const int abc_search_url_text = 2131427417;
+			// aapt resource value: 0x7f0b004c
+			public const int abc_search_url_text = 2131427404;
 			
 			// aapt resource value: 0x7f0b0001
 			public const int abc_search_url_text_normal = 2131427329;
@@ -1024,23 +1024,17 @@ namespace ShList
 			// aapt resource value: 0x7f0b0003
 			public const int abc_search_url_text_selected = 2131427331;
 			
-			// aapt resource value: 0x7f0b005a
-			public const int abc_secondary_text_material_dark = 2131427418;
+			// aapt resource value: 0x7f0b004d
+			public const int abc_secondary_text_material_dark = 2131427405;
 			
-			// aapt resource value: 0x7f0b005b
-			public const int abc_secondary_text_material_light = 2131427419;
-			
-			// aapt resource value: 0x7f0b0047
-			public const int accent = 2131427399;
+			// aapt resource value: 0x7f0b004e
+			public const int abc_secondary_text_material_light = 2131427406;
 			
 			// aapt resource value: 0x7f0b0004
 			public const int accent_material_dark = 2131427332;
 			
 			// aapt resource value: 0x7f0b0005
 			public const int accent_material_light = 2131427333;
-			
-			// aapt resource value: 0x7f0b004d
-			public const int aluminum = 2131427405;
 			
 			// aapt resource value: 0x7f0b0006
 			public const int background_floating_material_dark = 2131427334;
@@ -1053,12 +1047,6 @@ namespace ShList
 			
 			// aapt resource value: 0x7f0b0009
 			public const int background_material_light = 2131427337;
-			
-			// aapt resource value: 0x7f0b004e
-			public const int @base = 2131427406;
-			
-			// aapt resource value: 0x7f0b0048
-			public const int black = 2131427400;
 			
 			// aapt resource value: 0x7f0b000a
 			public const int bright_foreground_disabled_material_dark = 2131427338;
@@ -1144,14 +1132,8 @@ namespace ShList
 			// aapt resource value: 0x7f0b001b
 			public const int hint_foreground_material_light = 2131427355;
 			
-			// aapt resource value: 0x7f0b004f
-			public const int iron = 2131427407;
-			
-			// aapt resource value: 0x7f0b0049
-			public const int jet = 2131427401;
-			
-			// aapt resource value: 0x7f0b004c
-			public const int jumbo = 2131427404;
+			// aapt resource value: 0x7f0b0044
+			public const int itemList = 2131427396;
 			
 			// aapt resource value: 0x7f0b001c
 			public const int material_blue_grey_800 = 2131427356;
@@ -1189,26 +1171,11 @@ namespace ShList
 			// aapt resource value: 0x7f0b0027
 			public const int material_grey_900 = 2131427367;
 			
-			// aapt resource value: 0x7f0b004b
-			public const int monsoon = 2131427403;
-			
-			// aapt resource value: 0x7f0b004a
-			public const int oil = 2131427402;
-			
-			// aapt resource value: 0x7f0b0044
-			public const int primary = 2131427396;
-			
-			// aapt resource value: 0x7f0b0045
-			public const int primary_dark = 2131427397;
-			
 			// aapt resource value: 0x7f0b0028
 			public const int primary_dark_material_dark = 2131427368;
 			
 			// aapt resource value: 0x7f0b0029
 			public const int primary_dark_material_light = 2131427369;
-			
-			// aapt resource value: 0x7f0b0046
-			public const int primary_darker = 2131427398;
 			
 			// aapt resource value: 0x7f0b002a
 			public const int primary_material_dark = 2131427370;
@@ -1227,9 +1194,6 @@ namespace ShList
 			
 			// aapt resource value: 0x7f0b002f
 			public const int primary_text_disabled_material_light = 2131427375;
-			
-			// aapt resource value: 0x7f0b0051
-			public const int red = 2131427409;
 			
 			// aapt resource value: 0x7f0b0030
 			public const int ripple_material_dark = 2131427376;
@@ -1255,20 +1219,17 @@ namespace ShList
 			// aapt resource value: 0x7f0b0037
 			public const int switch_thumb_disabled_material_light = 2131427383;
 			
-			// aapt resource value: 0x7f0b005c
-			public const int switch_thumb_material_dark = 2131427420;
+			// aapt resource value: 0x7f0b004f
+			public const int switch_thumb_material_dark = 2131427407;
 			
-			// aapt resource value: 0x7f0b005d
-			public const int switch_thumb_material_light = 2131427421;
+			// aapt resource value: 0x7f0b0050
+			public const int switch_thumb_material_light = 2131427408;
 			
 			// aapt resource value: 0x7f0b0038
 			public const int switch_thumb_normal_material_dark = 2131427384;
 			
 			// aapt resource value: 0x7f0b0039
 			public const int switch_thumb_normal_material_light = 2131427385;
-			
-			// aapt resource value: 0x7f0b0050
-			public const int white = 2131427408;
 			
 			static Color()
 			{
@@ -1843,16 +1804,22 @@ namespace ShList
 			public const int abc_textfield_search_material = 2130837578;
 			
 			// aapt resource value: 0x7f02004b
-			public const int design_fab_background = 2130837579;
+			public const int delete = 2130837579;
 			
 			// aapt resource value: 0x7f02004c
-			public const int design_snackbar_background = 2130837580;
+			public const int design_fab_background = 2130837580;
 			
 			// aapt resource value: 0x7f02004d
-			public const int Icon = 2130837581;
+			public const int design_snackbar_background = 2130837581;
 			
 			// aapt resource value: 0x7f02004e
-			public const int notification_template_icon_bg = 2130837582;
+			public const int edit = 2130837582;
+			
+			// aapt resource value: 0x7f02004f
+			public const int Icon = 2130837583;
+			
+			// aapt resource value: 0x7f020050
+			public const int notification_template_icon_bg = 2130837584;
 			
 			static Drawable()
 			{
@@ -1867,8 +1834,8 @@ namespace ShList
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f060081
-			public const int action0 = 2131099777;
+			// aapt resource value: 0x7f060084
+			public const int action0 = 2131099780;
 			
 			// aapt resource value: 0x7f06005a
 			public const int action_bar = 2131099738;
@@ -1894,8 +1861,8 @@ namespace ShList
 			// aapt resource value: 0x7f06005b
 			public const int action_context_bar = 2131099739;
 			
-			// aapt resource value: 0x7f060085
-			public const int action_divider = 2131099781;
+			// aapt resource value: 0x7f060088
+			public const int action_divider = 2131099784;
 			
 			// aapt resource value: 0x7f060003
 			public const int action_menu_divider = 2131099651;
@@ -1933,14 +1900,20 @@ namespace ShList
 			// aapt resource value: 0x7f06006f
 			public const int btnCreateList = 2131099759;
 			
+			// aapt resource value: 0x7f06007a
+			public const int btnDelete = 2131099770;
+			
+			// aapt resource value: 0x7f060079
+			public const int btnEdit = 2131099769;
+			
 			// aapt resource value: 0x7f060073
 			public const int btnLogin = 2131099763;
 			
 			// aapt resource value: 0x7f060044
 			public const int buttonPanel = 2131099716;
 			
-			// aapt resource value: 0x7f060082
-			public const int cancel_action = 2131099778;
+			// aapt resource value: 0x7f060085
+			public const int cancel_action = 2131099781;
 			
 			// aapt resource value: 0x7f06002b
 			public const int center = 2131099691;
@@ -1954,8 +1927,8 @@ namespace ShList
 			// aapt resource value: 0x7f060052
 			public const int checkbox = 2131099730;
 			
-			// aapt resource value: 0x7f060088
-			public const int chronometer = 2131099784;
+			// aapt resource value: 0x7f06008b
+			public const int chronometer = 2131099787;
 			
 			// aapt resource value: 0x7f060033
 			public const int clip_horizontal = 2131099699;
@@ -1981,20 +1954,20 @@ namespace ShList
 			// aapt resource value: 0x7f060040
 			public const int default_activity_button = 2131099712;
 			
-			// aapt resource value: 0x7f060079
-			public const int design_bottom_sheet = 2131099769;
+			// aapt resource value: 0x7f06007c
+			public const int design_bottom_sheet = 2131099772;
+			
+			// aapt resource value: 0x7f060083
+			public const int design_menu_item_action_area = 2131099779;
+			
+			// aapt resource value: 0x7f060082
+			public const int design_menu_item_action_area_stub = 2131099778;
+			
+			// aapt resource value: 0x7f060081
+			public const int design_menu_item_text = 2131099777;
 			
 			// aapt resource value: 0x7f060080
-			public const int design_menu_item_action_area = 2131099776;
-			
-			// aapt resource value: 0x7f06007f
-			public const int design_menu_item_action_area_stub = 2131099775;
-			
-			// aapt resource value: 0x7f06007e
-			public const int design_menu_item_text = 2131099774;
-			
-			// aapt resource value: 0x7f06007d
-			public const int design_navigation_view = 2131099773;
+			public const int design_navigation_view = 2131099776;
 			
 			// aapt resource value: 0x7f06000e
 			public const int disableHome = 2131099662;
@@ -2008,8 +1981,8 @@ namespace ShList
 			// aapt resource value: 0x7f06001c
 			public const int end = 2131099676;
 			
-			// aapt resource value: 0x7f06008d
-			public const int end_padder = 2131099789;
+			// aapt resource value: 0x7f060090
+			public const int end_padder = 2131099792;
 			
 			// aapt resource value: 0x7f060023
 			public const int enterAlways = 2131099683;
@@ -2053,8 +2026,8 @@ namespace ShList
 			// aapt resource value: 0x7f06003f
 			public const int image = 2131099711;
 			
-			// aapt resource value: 0x7f06008c
-			public const int info = 2131099788;
+			// aapt resource value: 0x7f06008f
+			public const int info = 2131099791;
 			
 			// aapt resource value: 0x7f060000
 			public const int item_touch_helper_previous_elevation = 2131099648;
@@ -2062,11 +2035,11 @@ namespace ShList
 			// aapt resource value: 0x7f06002f
 			public const int left = 2131099695;
 			
-			// aapt resource value: 0x7f060086
-			public const int line1 = 2131099782;
+			// aapt resource value: 0x7f060089
+			public const int line1 = 2131099785;
 			
-			// aapt resource value: 0x7f06008a
-			public const int line3 = 2131099786;
+			// aapt resource value: 0x7f06008d
+			public const int line3 = 2131099789;
 			
 			// aapt resource value: 0x7f06006d
 			public const int linearLayout1 = 2131099757;
@@ -2089,8 +2062,8 @@ namespace ShList
 			// aapt resource value: 0x7f060076
 			public const int llShopingListMain = 2131099766;
 			
-			// aapt resource value: 0x7f060084
-			public const int media_actions = 2131099780;
+			// aapt resource value: 0x7f060087
+			public const int media_actions = 2131099783;
 			
 			// aapt resource value: 0x7f06001d
 			public const int middle = 2131099677;
@@ -2101,8 +2074,8 @@ namespace ShList
 			// aapt resource value: 0x7f060016
 			public const int multiply = 2131099670;
 			
-			// aapt resource value: 0x7f06007c
-			public const int navigation_header_container = 2131099772;
+			// aapt resource value: 0x7f06007f
+			public const int navigation_header_container = 2131099775;
 			
 			// aapt resource value: 0x7f060021
 			public const int never = 2131099681;
@@ -2200,11 +2173,11 @@ namespace ShList
 			// aapt resource value: 0x7f060013
 			public const int showTitle = 2131099667;
 			
-			// aapt resource value: 0x7f06007b
-			public const int snackbar_action = 2131099771;
+			// aapt resource value: 0x7f06007e
+			public const int snackbar_action = 2131099774;
 			
-			// aapt resource value: 0x7f06007a
-			public const int snackbar_text = 2131099770;
+			// aapt resource value: 0x7f06007d
+			public const int snackbar_text = 2131099773;
 			
 			// aapt resource value: 0x7f060027
 			public const int snap = 2131099687;
@@ -2227,8 +2200,8 @@ namespace ShList
 			// aapt resource value: 0x7f060031
 			public const int start = 2131099697;
 			
-			// aapt resource value: 0x7f060083
-			public const int status_bar_latest_event_content = 2131099779;
+			// aapt resource value: 0x7f060086
+			public const int status_bar_latest_event_content = 2131099782;
 			
 			// aapt resource value: 0x7f060065
 			public const int submit_area = 2131099749;
@@ -2236,17 +2209,17 @@ namespace ShList
 			// aapt resource value: 0x7f06000d
 			public const int tabMode = 2131099661;
 			
-			// aapt resource value: 0x7f06008b
-			public const int text = 2131099787;
+			// aapt resource value: 0x7f06008e
+			public const int text = 2131099790;
 			
-			// aapt resource value: 0x7f060089
-			public const int text2 = 2131099785;
+			// aapt resource value: 0x7f06008c
+			public const int text2 = 2131099788;
 			
 			// aapt resource value: 0x7f06004d
 			public const int textSpacerNoButtons = 2131099725;
 			
-			// aapt resource value: 0x7f060087
-			public const int time = 2131099783;
+			// aapt resource value: 0x7f06008a
+			public const int time = 2131099786;
 			
 			// aapt resource value: 0x7f060043
 			public const int title = 2131099715;
@@ -2260,8 +2233,11 @@ namespace ShList
 			// aapt resource value: 0x7f060047
 			public const int topPanel = 2131099719;
 			
+			// aapt resource value: 0x7f06007b
+			public const int touch_outside = 2131099771;
+			
 			// aapt resource value: 0x7f060078
-			public const int touch_outside = 2131099768;
+			public const int txtDate = 2131099768;
 			
 			// aapt resource value: 0x7f060069
 			public const int txtEmail = 2131099753;
@@ -2515,38 +2491,38 @@ namespace ShList
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f070019
-			public const int ActivityCreateAccount = 2131165209;
-			
 			// aapt resource value: 0x7f07001a
-			public const int ActivityShoppingList = 2131165210;
-			
-			// aapt resource value: 0x7f070018
-			public const int ApplicationName = 2131165208;
-			
-			// aapt resource value: 0x7f070021
-			public const int CreateAccountButton = 2131165217;
-			
-			// aapt resource value: 0x7f07001c
-			public const int Email = 2131165212;
-			
-			// aapt resource value: 0x7f070017
-			public const int Hello = 2131165207;
+			public const int ActivityCreateAccount = 2131165210;
 			
 			// aapt resource value: 0x7f07001b
-			public const int ListsButtonCreate = 2131165211;
+			public const int ActivityShoppingList = 2131165211;
 			
-			// aapt resource value: 0x7f070020
-			public const int LoginButton = 2131165216;
+			// aapt resource value: 0x7f070019
+			public const int ApplicationName = 2131165209;
 			
-			// aapt resource value: 0x7f07001f
-			public const int NoAccount = 2131165215;
+			// aapt resource value: 0x7f070022
+			public const int CreateAccountButton = 2131165218;
 			
 			// aapt resource value: 0x7f07001d
-			public const int Password = 2131165213;
+			public const int Email = 2131165213;
+			
+			// aapt resource value: 0x7f070018
+			public const int Hello = 2131165208;
+			
+			// aapt resource value: 0x7f07001c
+			public const int ListsButtonCreate = 2131165212;
+			
+			// aapt resource value: 0x7f070021
+			public const int LoginButton = 2131165217;
+			
+			// aapt resource value: 0x7f070020
+			public const int NoAccount = 2131165216;
 			
 			// aapt resource value: 0x7f07001e
-			public const int PasswordRe = 2131165214;
+			public const int Password = 2131165214;
+			
+			// aapt resource value: 0x7f07001f
+			public const int PasswordRe = 2131165215;
 			
 			// aapt resource value: 0x7f070000
 			public const int abc_action_bar_home_description = 2131165184;
@@ -2605,6 +2581,9 @@ namespace ShList
 			// aapt resource value: 0x7f070012
 			public const int abc_toolbar_collapse_description = 2131165202;
 			
+			// aapt resource value: 0x7f070017
+			public const int app_name = 2131165207;
+			
 			// aapt resource value: 0x7f070014
 			public const int appbar_scrolling_view_behavior = 2131165204;
 			
@@ -2647,12 +2626,6 @@ namespace ShList
 			
 			// aapt resource value: 0x7f090157
 			public const int AppTheme = 2131296599;
-			
-			// aapt resource value: 0x7f090158
-			public const int AppTheme_Dark = 2131296600;
-			
-			// aapt resource value: 0x7f090159
-			public const int AppTheme_Dark_Dialog = 2131296601;
 			
 			// aapt resource value: 0x7f09008a
 			public const int Base_AlertDialog_AppCompat = 2131296394;
@@ -3082,6 +3055,9 @@ namespace ShList
 			
 			// aapt resource value: 0x7f090140
 			public const int Base_Widget_Design_TabLayout = 2131296576;
+			
+			// aapt resource value: 0x7f090158
+			public const int ListItemText = 2131296600;
 			
 			// aapt resource value: 0x7f090017
 			public const int Platform_AppCompat = 2131296279;
