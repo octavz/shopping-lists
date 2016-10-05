@@ -28,7 +28,10 @@ class DefaultUserService @Inject()(dalUser: UserDAL, dalAuth: Oauth2DAL) extends
             fInsert <- dalUser.insertSession(model)
           } yield resultSync(model.id)
 
-          f recover { case e: Throwable => resultErrorSync(Status.INTERNAL_SERVER_ERROR, e.getMessage) }
+          f recover { case e: Throwable =>
+            e.printStackTrace()
+            resultExSync(e,"createSession",Status.INTERNAL_SERVER_ERROR)
+          }
         }
     }
   }
@@ -75,9 +78,9 @@ class DefaultUserService @Inject()(dalUser: UserDAL, dalAuth: Oauth2DAL) extends
       at <- dalAuth.findAccessToken(token)
       data <- dalAuth.findAuthInfoByAccessToken(at.getOrElse(throw new Exception("Token not found")))
     } yield data match {
-        case Some(info) => resultSync(new UserDTO(info.user))
-        case _ => resultErrorSync(404, "User not found by access token")
-      }
+      case Some(info) => resultSync(new UserDTO(info.user))
+      case _ => resultErrorSync(404, "User not found by access token")
+    }
 
     f recover {
       case e: Throwable => resultExSync(e, "getUserByToken")

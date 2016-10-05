@@ -21,6 +21,7 @@ libraryDependencies ++= Seq(
   specs2 % Test,
   cache,
   json,
+  filters,
   "com.typesafe.slick" %% "slick" % "3.1.1",
   "org.postgresql" % "postgresql" % "9.4-1201-jdbc41",
   "com.typesafe.play" %% "play-slick" % "2.0.0",
