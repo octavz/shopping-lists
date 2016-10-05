@@ -41,7 +41,7 @@ namespace ShList.Code
         {
             ShoppingListDTO lstData = new ShoppingListDTO() { ListName = DateTime.Now.ToString() };
 
-            CtrlShoppingList item = new CtrlShoppingList(ShApplicationContext, lstData);
+            CtrlShoppingList item = new CtrlShoppingList(this,ShApplicationContext, lstData);
             llShoppingLst.AddView(item);
         }//AddNewList
     }

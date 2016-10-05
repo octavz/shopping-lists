@@ -38,9 +38,9 @@ namespace ShList.Code
 
             btnLogin = FindViewById<Button>(Resource.Id.btnLogin);
             btnLogin.Click += Btnlogin_Click;
-             //Finish();
+         
 
-              //StartActivity(typeof(AcShoppingLists));
+         
         }//OnCreate
 
 
@@ -53,6 +53,8 @@ namespace ShList.Code
             };
 
             ResLoginDTO resLogin = new UserRepository().Login(reqLogin);
+
+            StartActivity(typeof(AcShoppingLists));
         }//Btn_login_Click
     }
 }
