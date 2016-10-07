@@ -27,7 +27,7 @@ trait JsonDTOFormats extends BaseFormats with ConstraintReads {
   implicit val listRead = (
     (__ \ 'id).readNullable[String](maxLength[String](50)) ~
       (__ \ 'name).read[String](minLength[String](1) keepAnd maxLength[String](200)) ~
-      (__ \ 'desc).readNullable[String](maxLength[String](1500)) ~
+      (__ \ 'description).readNullable[String](maxLength[String](1500)) ~
       (__ \ 'userId).readNullable[String]
     ) (ListDTO)
 

@@ -3,12 +3,13 @@ package org.shopping.dto
 import org.shopping.db._
 import org.shopping.util.Time
 
-case class ListItemDTO(productId: Option[String], description: Option[String]) {
+case class ListItemDTO(productId: Option[String], quantity: Int, description: Option[String]) {
 
   def this(model: ListItem) = this(
     productId = Some(model.productId),
+    quantity = model.quantity,
     description = model.description
-    )
+  )
 
   def toModel(listId: String, userId: String) = {
     val n = Time.now
@@ -17,6 +18,7 @@ case class ListItemDTO(productId: Option[String], description: Option[String]) {
       productId = productId.getOrElse(""),
       userId = userId,
       description = description,
+      quantity = quantity,
       created = n,
       updated = n)
   }

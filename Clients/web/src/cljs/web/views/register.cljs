@@ -27,7 +27,7 @@
           (go (let [response (<! (c/request-login register-state))]
                 (do
                   ;(aset js/window.location "href" "#login")
-                  (swap! register-state assoc :user-data (:body response))))))))
+                  (swap! register-state assoc :user-data (:body response)) ))))))
 
 (def login-input
   [:div.row

@@ -2,121 +2,85 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7e124409-a1c1-4df7-85d3-21df6c0107f0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/org/shopping/config/CORS.scala" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/org/shopping/config/CORSFilter.scala" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$ae90328c391cf7158f83$$anonfun$$sbtdef$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$ae90328c391cf7158f83$.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$ae90328c391cf7158f83.cache" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$ae90328c391cf7158f83.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/org/shopping/config/CORSFilter$$anonfun$apply$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/org/shopping/config/CORSFilter$$anonfun$apply$10$$anonfun$apply$11.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/org/shopping/config/CORSFilter$$anonfun$apply$10$$anonfun$apply$12.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/org/shopping/config/CORSFilter$$anonfun$apply$10$$anonfun$apply$13.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/org/shopping/config/CORSFilter$$anonfun$apply$10$$anonfun$apply$14.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/org/shopping/config/CORSFilter$$anonfun$apply$10.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/org/shopping/config/CORSFilter$$anonfun$apply$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/org/shopping/config/CORSFilter$$anonfun$apply$3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/org/shopping/config/CORSFilter$$anonfun$apply$4.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/org/shopping/config/CORSFilter$$anonfun$apply$5.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/org/shopping/config/CORSFilter$$anonfun$apply$6.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/org/shopping/config/CORSFilter$$anonfun$apply$7.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/org/shopping/config/CORSFilter$$anonfun$apply$8.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/org/shopping/config/CORSFilter$$anonfun$apply$9.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/org/shopping/config/CORSFilter.class" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Clients/web/src/cljs/web/views/main.cljs" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$0ba39bd89caa9dc3fb39$.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$0ba39bd89caa9dc3fb39.cache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$0ba39bd89caa9dc3fb39.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$33bb67fe8a247bd0cc65$$anonfun$$sbtdef$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$33bb67fe8a247bd0cc65$.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$33bb67fe8a247bd0cc65.cache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$33bb67fe8a247bd0cc65.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$41878c1fe1892061bef5$$anonfun$$sbtdef$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$41878c1fe1892061bef5$.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$41878c1fe1892061bef5.cache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$41878c1fe1892061bef5.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$4808195e36bab32c4411$.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$4808195e36bab32c4411.cache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$4808195e36bab32c4411.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$5920fcf45c1ff882a061$.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$5920fcf45c1ff882a061.cache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$5920fcf45c1ff882a061.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$66625264de8878fb3b0c$$anonfun$$sbtdef$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$66625264de8878fb3b0c$.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$66625264de8878fb3b0c.cache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$66625264de8878fb3b0c.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$71431d9e88cce0fc09fe$$anonfun$$sbtdef$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$71431d9e88cce0fc09fe$.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$71431d9e88cce0fc09fe.cache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$71431d9e88cce0fc09fe.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$93b571f5ddb4ea1683fa$$anonfun$$sbtdef$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$93b571f5ddb4ea1683fa$.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$93b571f5ddb4ea1683fa.cache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$93b571f5ddb4ea1683fa.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$a76be03cecc393c4a6d7$$anonfun$$sbtdef$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$a76be03cecc393c4a6d7$.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$a76be03cecc393c4a6d7.cache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$a76be03cecc393c4a6d7.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$f401f3d2fe25e57cdb37$.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$f401f3d2fe25e57cdb37.cache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$f401f3d2fe25e57cdb37.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$18acd949442108be3eed$$anonfun$$sbtdef$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$18acd949442108be3eed$.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$18acd949442108be3eed.cache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$18acd949442108be3eed.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$7618a892f02e72ee5068$$anonfun$$sbtdef$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$7618a892f02e72ee5068$.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$7618a892f02e72ee5068.cache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$7618a892f02e72ee5068.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$973038ae952b15010d4c$$anonfun$main$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$973038ae952b15010d4c$$anonfun$main$2.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$973038ae952b15010d4c$$anonfun$main$3.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$973038ae952b15010d4c$$anonfun$main$4.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$973038ae952b15010d4c$.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$973038ae952b15010d4c.cache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$973038ae952b15010d4c.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$fb9828b041ee3d171b7b$$anonfun$$sbtdef$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$fb9828b041ee3d171b7b$.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$fb9828b041ee3d171b7b.cache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$fb9828b041ee3d171b7b.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/resolution-cache/reports/default-server-build-ensime-internal.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/streams/$global/dependencyPositions/$global/streams/update_cache_2.10/input_dsp" afterPath="$PROJECT_DIR$/project/target/streams/$global/dependencyPositions/$global/streams/update_cache_2.10/input_dsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/streams/$global/dependencyPositions/$global/streams/update_cache_2.10/output_dsp" afterPath="$PROJECT_DIR$/project/target/streams/$global/dependencyPositions/$global/streams/update_cache_2.10/output_dsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/streams/$global/update/$global/streams/update_cache_2.10/inputs" afterPath="$PROJECT_DIR$/project/target/streams/$global/update/$global/streams/update_cache_2.10/inputs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/streams/$global/update/$global/streams/update_cache_2.10/output" afterPath="$PROJECT_DIR$/project/target/streams/$global/update/$global/streams/update_cache_2.10/output" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/org/shopping/modules/core/impl/DefaultUserService$$anonfun$2$$anonfun$apply$4.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/org/shopping/modules/core/impl/DefaultUserService$$anonfun$2$$anonfun$apply$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/org/shopping/modules/core/impl/DefaultUserService$$anonfun$2.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/org/shopping/modules/core/impl/DefaultUserService$$anonfun$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/org/shopping/modules/core/impl/DefaultUserService$$anonfun$3$$anonfun$apply$5.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/org/shopping/modules/core/impl/DefaultUserService$$anonfun$3$$anonfun$apply$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/org/shopping/modules/core/impl/DefaultUserService$$anonfun$3$$anonfun$apply$6.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/org/shopping/modules/core/impl/DefaultUserService$$anonfun$3$$anonfun$apply$6.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/org/shopping/modules/core/impl/DefaultUserService$$anonfun$3.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/org/shopping/modules/core/impl/DefaultUserService$$anonfun$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/org/shopping/modules/core/impl/DefaultUserService$$anonfun$4$$anonfun$apply$7.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/org/shopping/modules/core/impl/DefaultUserService$$anonfun$4$$anonfun$apply$7.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/org/shopping/modules/core/impl/DefaultUserService$$anonfun$4.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/org/shopping/modules/core/impl/DefaultUserService$$anonfun$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/org/shopping/modules/core/impl/DefaultUserService$$anonfun$createSession$1$$anonfun$apply$1.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/org/shopping/modules/core/impl/DefaultUserService$$anonfun$createSession$1$$anonfun$apply$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/org/shopping/modules/core/impl/DefaultUserService$$anonfun$getUserById$1.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/org/shopping/modules/core/impl/DefaultUserService$$anonfun$getUserById$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/org/shopping/modules/core/impl/DefaultUserService$$anonfun$getUserById$2.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/org/shopping/modules/core/impl/DefaultUserService$$anonfun$getUserById$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/org/shopping/modules/core/impl/DefaultUserService$$anonfun$getUserByToken$1.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/org/shopping/modules/core/impl/DefaultUserService$$anonfun$getUserByToken$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/org/shopping/modules/core/impl/DefaultUserService$$anonfun$login$1$$anonfun$apply$3.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/org/shopping/modules/core/impl/DefaultUserService$$anonfun$login$1$$anonfun$apply$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/org/shopping/modules/core/impl/DefaultUserService$$anonfun$login$1.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/org/shopping/modules/core/impl/DefaultUserService$$anonfun$login$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/org/shopping/modules/core/impl/DefaultUserService$$anonfun$registerUser$1.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/org/shopping/modules/core/impl/DefaultUserService$$anonfun$registerUser$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/org/shopping/modules/core/impl/DefaultUserService$$anonfun$searchUsers$1.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/org/shopping/modules/core/impl/DefaultUserService$$anonfun$searchUsers$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/org/shopping/modules/core/impl/DefaultUserService.class" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/org/shopping/modules/core/impl/DefaultUserService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/BaseDALSpec$TestModule.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/BaseDALSpec$TestModule.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListAppSpec$$anonfun$1$$anonfun$apply$12$$anonfun$apply$13.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListAppSpec$$anonfun$1$$anonfun$apply$12$$anonfun$apply$13.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListAppSpec$$anonfun$1$$anonfun$apply$12$$anonfun$apply$15$$anonfun$apply$18.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListAppSpec$$anonfun$1$$anonfun$apply$12$$anonfun$apply$15$$anonfun$apply$18.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListAppSpec$$anonfun$1$$anonfun$apply$12$$anonfun$apply$15$$anonfun$apply$3.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListAppSpec$$anonfun$1$$anonfun$apply$12$$anonfun$apply$15$$anonfun$apply$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListAppSpec$$anonfun$1$$anonfun$apply$12.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListAppSpec$$anonfun$1$$anonfun$apply$12.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListAppSpec$$anonfun$1$$anonfun$apply$23$$anonfun$apply$24.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListAppSpec$$anonfun$1$$anonfun$apply$23$$anonfun$apply$24.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListAppSpec$$anonfun$1$$anonfun$apply$23$$anonfun$apply$25$$anonfun$apply$28.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListAppSpec$$anonfun$1$$anonfun$apply$23$$anonfun$apply$25$$anonfun$apply$28.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListAppSpec$$anonfun$1$$anonfun$apply$23$$anonfun$apply$25$$anonfun$apply$6.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListAppSpec$$anonfun$1$$anonfun$apply$23$$anonfun$apply$25$$anonfun$apply$6.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListAppSpec$$anonfun$1$$anonfun$apply$23.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListAppSpec$$anonfun$1$$anonfun$apply$23.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListAppSpec$$anonfun$1$$anonfun$apply$35$$anonfun$apply$36.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListAppSpec$$anonfun$1$$anonfun$apply$35$$anonfun$apply$36.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListAppSpec$$anonfun$1$$anonfun$apply$35$$anonfun$apply$37$$anonfun$apply$11.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListAppSpec$$anonfun$1$$anonfun$apply$35$$anonfun$apply$37$$anonfun$apply$11.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListAppSpec$$anonfun$1$$anonfun$apply$35$$anonfun$apply$37$$anonfun$apply$40.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListAppSpec$$anonfun$1$$anonfun$apply$35$$anonfun$apply$37$$anonfun$apply$40.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListAppSpec$$anonfun$1$$anonfun$apply$35.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListAppSpec$$anonfun$1$$anonfun$apply$35.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListAppSpec$$anonfun$app$1.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListAppSpec$$anonfun$app$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListAppSpec$$anonfun$app$2.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListAppSpec$$anonfun$app$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListAppSpec$MockContext$.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListAppSpec$MockContext$.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListAppSpec$MockContext.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListAppSpec$MockContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListAppSpec.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListAppSpec.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListModuleSpec$$anonfun$1$$anonfun$apply$12$$anonfun$apply$13.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListModuleSpec$$anonfun$1$$anonfun$apply$12$$anonfun$apply$13.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListModuleSpec$$anonfun$1$$anonfun$apply$12$$anonfun$apply$14.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListModuleSpec$$anonfun$1$$anonfun$apply$12$$anonfun$apply$14.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListModuleSpec$$anonfun$1$$anonfun$apply$12$$anonfun$apply$15.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListModuleSpec$$anonfun$1$$anonfun$apply$12$$anonfun$apply$15.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListModuleSpec$$anonfun$1$$anonfun$apply$12$$anonfun$apply$16.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListModuleSpec$$anonfun$1$$anonfun$apply$12$$anonfun$apply$16.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListModuleSpec$$anonfun$1$$anonfun$apply$12$$anonfun$apply$17.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListModuleSpec$$anonfun$1$$anonfun$apply$12$$anonfun$apply$17.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListModuleSpec$$anonfun$1$$anonfun$apply$12$$anonfun$apply$18.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListModuleSpec$$anonfun$1$$anonfun$apply$12$$anonfun$apply$18.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListModuleSpec$$anonfun$1$$anonfun$apply$12$$anonfun$apply$19.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListModuleSpec$$anonfun$1$$anonfun$apply$12$$anonfun$apply$19.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListModuleSpec$$anonfun$1$$anonfun$apply$12.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListModuleSpec$$anonfun$1$$anonfun$apply$12.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListModuleSpec$$anonfun$1$$anonfun$apply$6$$anonfun$apply$10.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListModuleSpec$$anonfun$1$$anonfun$apply$6$$anonfun$apply$10.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListModuleSpec$$anonfun$1$$anonfun$apply$6$$anonfun$apply$11.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListModuleSpec$$anonfun$1$$anonfun$apply$6$$anonfun$apply$11.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListModuleSpec$$anonfun$1$$anonfun$apply$6$$anonfun$apply$7.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListModuleSpec$$anonfun$1$$anonfun$apply$6$$anonfun$apply$7.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListModuleSpec$$anonfun$1$$anonfun$apply$6$$anonfun$apply$8.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListModuleSpec$$anonfun$1$$anonfun$apply$6$$anonfun$apply$8.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListModuleSpec$$anonfun$1$$anonfun$apply$6$$anonfun$apply$9.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListModuleSpec$$anonfun$1$$anonfun$apply$6$$anonfun$apply$9.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListModuleSpec$$anonfun$1$$anonfun$apply$6.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListModuleSpec$$anonfun$1$$anonfun$apply$6.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListModuleSpec$$anonfun$1.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListModuleSpec$$anonfun$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListModuleSpec$$anonfun$genString$1.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListModuleSpec$$anonfun$genString$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListModuleSpec$MockedContext$.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListModuleSpec$MockedContext$.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListModuleSpec$MockedContext.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListModuleSpec$MockedContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListModuleSpec.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/ListModuleSpec.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/UserAppSpec$$anonfun$1$$anonfun$apply$17$$anonfun$apply$18$$anonfun$apply$19.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/UserAppSpec$$anonfun$1$$anonfun$apply$17$$anonfun$apply$18$$anonfun$apply$19.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/UserAppSpec$$anonfun$1$$anonfun$apply$17$$anonfun$apply$18.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/UserAppSpec$$anonfun$1$$anonfun$apply$17$$anonfun$apply$18.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/UserAppSpec$$anonfun$1$$anonfun$apply$17.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/UserAppSpec$$anonfun$1$$anonfun$apply$17.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/UserAppSpec$$anonfun$1$$anonfun$apply$23$$anonfun$apply$24.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/UserAppSpec$$anonfun$1$$anonfun$apply$23$$anonfun$apply$24.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/UserAppSpec$$anonfun$1$$anonfun$apply$23$$anonfun$apply$25.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/UserAppSpec$$anonfun$1$$anonfun$apply$23$$anonfun$apply$25.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/UserAppSpec$$anonfun$1$$anonfun$apply$23.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/UserAppSpec$$anonfun$1$$anonfun$apply$23.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/UserAppSpec$$anonfun$1$$anonfun$apply$5.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/UserAppSpec$$anonfun$1$$anonfun$apply$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/UserAppSpec$$anonfun$1$$anonfun$apply$9.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/UserAppSpec$$anonfun$1$$anonfun$apply$9.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/UserAppSpec$TestModule.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/UserAppSpec$TestModule.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/UserAppSpec.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/UserAppSpec.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/UserModuleSpec$$anonfun$1$$anonfun$apply$14.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/UserModuleSpec$$anonfun$1$$anonfun$apply$14.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/UserModuleSpec$$anonfun$1$$anonfun$apply$17$$anonfun$apply$23.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/UserModuleSpec$$anonfun$1$$anonfun$apply$17$$anonfun$apply$23.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/UserModuleSpec$$anonfun$1$$anonfun$apply$17$$anonfun$apply$24.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/UserModuleSpec$$anonfun$1$$anonfun$apply$17$$anonfun$apply$24.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/UserModuleSpec$$anonfun$1$$anonfun$apply$17.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/UserModuleSpec$$anonfun$1$$anonfun$apply$17.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/UserModuleSpec$$anonfun$1$$anonfun$apply$25$$anonfun$apply$31.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/UserModuleSpec$$anonfun$1$$anonfun$apply$25$$anonfun$apply$31.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/UserModuleSpec$$anonfun$1$$anonfun$apply$25$$anonfun$apply$32.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/UserModuleSpec$$anonfun$1$$anonfun$apply$25$$anonfun$apply$32.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/UserModuleSpec$$anonfun$1$$anonfun$apply$25.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/UserModuleSpec$$anonfun$1$$anonfun$apply$25.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/UserModuleSpec$$anonfun$1$$anonfun$apply$5$$anonfun$apply$10.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/UserModuleSpec$$anonfun$1$$anonfun$apply$5$$anonfun$apply$10.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/UserModuleSpec$$anonfun$1$$anonfun$apply$5.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/UserModuleSpec$$anonfun$1$$anonfun$apply$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/UserModuleSpec$MockContext$.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/UserModuleSpec$MockContext$.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/UserModuleSpec$MockContext.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/UserModuleSpec$MockContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/test-classes/UserModuleSpec.class" afterPath="$PROJECT_DIR$/target/scala-2.11/test-classes/UserModuleSpec.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/streams/$global/dependencyPositions/$global/streams/update_cache_2.11/input_dsp" afterPath="$PROJECT_DIR$/target/streams/$global/dependencyPositions/$global/streams/update_cache_2.11/input_dsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/streams/$global/dependencyPositions/$global/streams/update_cache_2.11/output_dsp" afterPath="$PROJECT_DIR$/target/streams/$global/dependencyPositions/$global/streams/update_cache_2.11/output_dsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/streams/$global/update/$global/streams/update_cache_2.11/inputs" afterPath="$PROJECT_DIR$/target/streams/$global/update/$global/streams/update_cache_2.11/inputs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/streams/$global/update/$global/streams/update_cache_2.11/output" afterPath="$PROJECT_DIR$/target/streams/$global/update/$global/streams/update_cache_2.11/output" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/streams/compile/copyResources/$global/streams/copy-resources" afterPath="$PROJECT_DIR$/target/streams/compile/copyResources/$global/streams/copy-resources" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/streams/web-assets/assets/$global/streams/sync-mappings" afterPath="$PROJECT_DIR$/target/streams/web-assets/assets/$global/streams/sync-mappings" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/streams/web-assets/webExportedDirectory/$global/streams/sync-mappings" afterPath="$PROJECT_DIR$/target/streams/web-assets/webExportedDirectory/$global/streams/sync-mappings" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Clients/web/resources/public/css/site.css" afterPath="$PROJECT_DIR$/../Clients/web/resources/public/css/site.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Clients/web/src/cljs/web/core.cljs" afterPath="$PROJECT_DIR$/../Clients/web/src/cljs/web/core.cljs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Clients/web/src/cljs/web/views/home.cljs" afterPath="$PROJECT_DIR$/../Clients/web/src/cljs/web/views/home.cljs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Clients/web/src/cljs/web/views/register.cljs" afterPath="$PROJECT_DIR$/../Clients/web/src/cljs/web/views/register.cljs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/org/shopping/modules/core/impl/DefaultUserService.scala" afterPath="$PROJECT_DIR$/app/org/shopping/modules/core/impl/DefaultUserService.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.sbt" afterPath="$PROJECT_DIR$/build.sbt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conf/application.conf" afterPath="$PROJECT_DIR$/conf/application.conf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/org/shopping/controllers/ListController.scala" afterPath="$PROJECT_DIR$/app/org/shopping/controllers/ListController.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/org/shopping/db/DB.scala" afterPath="$PROJECT_DIR$/app/org/shopping/db/DB.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/org/shopping/dto/JsonDTOFormats.scala" afterPath="$PROJECT_DIR$/app/org/shopping/dto/JsonDTOFormats.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/org/shopping/dto/ListDTO.scala" afterPath="$PROJECT_DIR$/app/org/shopping/dto/ListDTO.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/org/shopping/dto/ListItemDTO.scala" afterPath="$PROJECT_DIR$/app/org/shopping/dto/ListItemDTO.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/org/shopping/modules/core/impl/DefaultListService.scala" afterPath="$PROJECT_DIR$/app/org/shopping/modules/core/impl/DefaultListService.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conf/evolutions/default/1.sql" afterPath="$PROJECT_DIR$/conf/evolutions/default/1.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.ipr" afterPath="$PROJECT_DIR$/main.ipr" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.iws" afterPath="$PROJECT_DIR$/main.iws" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/resolution-cache/default/server-build/scala_2.10/sbt_0.13/0.1-SNAPSHOT/resolved.xml.properties" afterPath="$PROJECT_DIR$/project/target/resolution-cache/default/server-build/scala_2.10/sbt_0.13/0.1-SNAPSHOT/resolved.xml.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/resolution-cache/default/server-build/scala_2.10/sbt_0.13/0.1-SNAPSHOT/resolved.xml.xml" afterPath="$PROJECT_DIR$/project/target/resolution-cache/default/server-build/scala_2.10/sbt_0.13/0.1-SNAPSHOT/resolved.xml.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/resolution-cache/reports/default-server-build-compile-internal.xml" afterPath="$PROJECT_DIR$/project/target/resolution-cache/reports/default-server-build-compile-internal.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/resolution-cache/reports/default-server-build-compile.xml" afterPath="$PROJECT_DIR$/project/target/resolution-cache/reports/default-server-build-compile.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/resolution-cache/reports/default-server-build-docs.xml" afterPath="$PROJECT_DIR$/project/target/resolution-cache/reports/default-server-build-docs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/resolution-cache/reports/default-server-build-ensime-internal.xml" afterPath="$PROJECT_DIR$/project/target/resolution-cache/reports/default-server-build-ensime-internal.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/resolution-cache/reports/default-server-build-optional.xml" afterPath="$PROJECT_DIR$/project/target/resolution-cache/reports/default-server-build-optional.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/resolution-cache/reports/default-server-build-plugin.xml" afterPath="$PROJECT_DIR$/project/target/resolution-cache/reports/default-server-build-plugin.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/resolution-cache/reports/default-server-build-pom.xml" afterPath="$PROJECT_DIR$/project/target/resolution-cache/reports/default-server-build-pom.xml" />
@@ -128,39 +92,18 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/resolution-cache/reports/default-server-build-test-internal.xml" afterPath="$PROJECT_DIR$/project/target/resolution-cache/reports/default-server-build-test-internal.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/resolution-cache/reports/default-server-build-test.xml" afterPath="$PROJECT_DIR$/project/target/resolution-cache/reports/default-server-build-test.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/streams/$global/update/$global/streams/out" afterPath="$PROJECT_DIR$/project/target/streams/$global/update/$global/streams/out" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/.history" afterPath="$PROJECT_DIR$/target/.history" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/resolution-cache/main/main_2.11/0.1-SNAPSHOT/resolved.xml.properties" afterPath="$PROJECT_DIR$/target/resolution-cache/main/main_2.11/0.1-SNAPSHOT/resolved.xml.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/resolution-cache/main/main_2.11/0.1-SNAPSHOT/resolved.xml.xml" afterPath="$PROJECT_DIR$/target/resolution-cache/main/main_2.11/0.1-SNAPSHOT/resolved.xml.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/resolution-cache/reports/main-main_2.11-compile-internal.xml" afterPath="$PROJECT_DIR$/target/resolution-cache/reports/main-main_2.11-compile-internal.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/resolution-cache/reports/main-main_2.11-compile.xml" afterPath="$PROJECT_DIR$/target/resolution-cache/reports/main-main_2.11-compile.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/resolution-cache/reports/main-main_2.11-docs.xml" afterPath="$PROJECT_DIR$/target/resolution-cache/reports/main-main_2.11-docs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/resolution-cache/reports/main-main_2.11-ensime-internal.xml" afterPath="$PROJECT_DIR$/target/resolution-cache/reports/main-main_2.11-ensime-internal.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/resolution-cache/reports/main-main_2.11-optional.xml" afterPath="$PROJECT_DIR$/target/resolution-cache/reports/main-main_2.11-optional.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/resolution-cache/reports/main-main_2.11-play-swagger.xml" afterPath="$PROJECT_DIR$/target/resolution-cache/reports/main-main_2.11-play-swagger.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/resolution-cache/reports/main-main_2.11-plugin.xml" afterPath="$PROJECT_DIR$/target/resolution-cache/reports/main-main_2.11-plugin.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/resolution-cache/reports/main-main_2.11-pom.xml" afterPath="$PROJECT_DIR$/target/resolution-cache/reports/main-main_2.11-pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/resolution-cache/reports/main-main_2.11-provided.xml" afterPath="$PROJECT_DIR$/target/resolution-cache/reports/main-main_2.11-provided.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/resolution-cache/reports/main-main_2.11-runtime-internal.xml" afterPath="$PROJECT_DIR$/target/resolution-cache/reports/main-main_2.11-runtime-internal.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/resolution-cache/reports/main-main_2.11-runtime.xml" afterPath="$PROJECT_DIR$/target/resolution-cache/reports/main-main_2.11-runtime.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/resolution-cache/reports/main-main_2.11-scala-tool.xml" afterPath="$PROJECT_DIR$/target/resolution-cache/reports/main-main_2.11-scala-tool.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/resolution-cache/reports/main-main_2.11-sources.xml" afterPath="$PROJECT_DIR$/target/resolution-cache/reports/main-main_2.11-sources.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/resolution-cache/reports/main-main_2.11-test-internal.xml" afterPath="$PROJECT_DIR$/target/resolution-cache/reports/main-main_2.11-test-internal.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/resolution-cache/reports/main-main_2.11-test.xml" afterPath="$PROJECT_DIR$/target/resolution-cache/reports/main-main_2.11-test.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/scala-2.11/classes/application.conf" afterPath="$PROJECT_DIR$/target/scala-2.11/classes/application.conf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/streams/$global/playCommonClassloader/$global/streams/out" afterPath="$PROJECT_DIR$/target/streams/$global/playCommonClassloader/$global/streams/out" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/streams/$global/swagger/$global/streams/out" afterPath="$PROJECT_DIR$/target/streams/$global/swagger/$global/streams/out" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/streams/$global/update/$global/streams/out" afterPath="$PROJECT_DIR$/target/streams/$global/update/$global/streams/out" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/streams/compile/compileIncremental/$global/streams/export" afterPath="$PROJECT_DIR$/target/streams/compile/compileIncremental/$global/streams/export" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/streams/compile/dependencyClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/target/streams/compile/dependencyClasspath/$global/streams/export" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/streams/compile/externalDependencyClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/target/streams/compile/externalDependencyClasspath/$global/streams/export" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/streams/compile/incCompileSetup/$global/streams/inc_compile_2.11" afterPath="$PROJECT_DIR$/target/streams/compile/incCompileSetup/$global/streams/inc_compile_2.11" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/streams/compile/managedClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/target/streams/compile/managedClasspath/$global/streams/export" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/streams/runtime/dependencyClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/target/streams/runtime/dependencyClasspath/$global/streams/export" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/streams/runtime/externalDependencyClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/target/streams/runtime/externalDependencyClasspath/$global/streams/export" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/streams/runtime/fullClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/target/streams/runtime/fullClasspath/$global/streams/export" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/streams/runtime/managedClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/target/streams/runtime/managedClasspath/$global/streams/export" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/streams/test/externalDependencyClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/target/streams/test/externalDependencyClasspath/$global/streams/export" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/streams/test/managedClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/target/streams/test/managedClasspath/$global/streams/export" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/streams/compile/dependencyClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/project/target/streams/compile/dependencyClasspath/$global/streams/export" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/streams/compile/exportedProducts/$global/streams/export" afterPath="$PROJECT_DIR$/project/target/streams/compile/exportedProducts/$global/streams/export" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/streams/compile/externalDependencyClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/project/target/streams/compile/externalDependencyClasspath/$global/streams/export" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/streams/compile/managedClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/project/target/streams/compile/managedClasspath/$global/streams/export" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/streams/runtime/dependencyClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/project/target/streams/runtime/dependencyClasspath/$global/streams/export" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/streams/runtime/exportedProducts/$global/streams/export" afterPath="$PROJECT_DIR$/project/target/streams/runtime/exportedProducts/$global/streams/export" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/streams/runtime/externalDependencyClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/project/target/streams/runtime/externalDependencyClasspath/$global/streams/export" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/streams/runtime/fullClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/project/target/streams/runtime/fullClasspath/$global/streams/export" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/streams/runtime/internalDependencyClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/project/target/streams/runtime/internalDependencyClasspath/$global/streams/export" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/streams/runtime/managedClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/project/target/streams/runtime/managedClasspath/$global/streams/export" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/ListAppSpec.scala" afterPath="$PROJECT_DIR$/test/ListAppSpec.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/ListModuleSpec.scala" afterPath="$PROJECT_DIR$/test/ListModuleSpec.scala" />
     </list>
     <ignored path="main.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -193,11 +136,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="UserController.scala" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/org/shopping/controllers/UserController.scala">
+      <file leaf-file-name="DefaultListService.scala" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/org/shopping/modules/core/impl/DefaultListService.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="46" column="33" selection-start-line="46" selection-start-column="33" selection-end-line="46" selection-end-column="33" />
+            <state relative-caret-position="731">
+              <caret line="53" column="62" selection-start-line="53" selection-start-column="62" selection-end-line="53" selection-end-column="62" />
               <folding />
             </state>
           </provider>
@@ -221,6 +164,13 @@
         <option value="$PROJECT_DIR$/app/org/shopping/config/CORS.scala" />
         <option value="$PROJECT_DIR$/conf/application.conf" />
         <option value="$PROJECT_DIR$/app/org/shopping/modules/core/impl/DefaultUserService.scala" />
+        <option value="$PROJECT_DIR$/conf/evolutions/default/1.sql" />
+        <option value="$PROJECT_DIR$/app/org/shopping/db/DB.scala" />
+        <option value="$PROJECT_DIR$/app/org/shopping/dto/ListItemDTO.scala" />
+        <option value="$PROJECT_DIR$/app/org/shopping/controllers/ListController.scala" />
+        <option value="$PROJECT_DIR$/app/org/shopping/dto/JsonDTOFormats.scala" />
+        <option value="$PROJECT_DIR$/app/org/shopping/dto/ListDTO.scala" />
+        <option value="$PROJECT_DIR$/app/org/shopping/modules/core/impl/DefaultListService.scala" />
       </list>
     </option>
   </component>
@@ -235,9 +185,9 @@
     <treeState />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1" />
-    <option name="y" value="25" />
-    <option name="width" value="1922" />
+    <option name="x" value="1920" />
+    <option name="y" value="24" />
+    <option name="width" value="1920" />
     <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -265,30 +215,16 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
+        <subPane />
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="Regex">
     <option name="pos1" value="218" />
@@ -301,54 +237,7 @@
     <option name="referencePos" value="0" />
     <option name="showLabels" value="true" />
   </component>
-  <component name="RunManager" selected="Remote.Unnamed">
-    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
-      <module name="" />
-      <option name="DEPLOY" value="true" />
-      <option name="ARTIFACT_NAME" value="" />
-      <option name="PM_INSTALL_OPTIONS" value="" />
-      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
-      <option name="MODE" value="default_activity" />
-      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
-      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
-      <option name="FORCE_STOP_RUNNING_APP" value="true" />
-      <option name="DEBUGGER_TYPE" value="Java" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <Java />
-      <Profilers>
-        <option name="GAPID_DISABLE_PCS" value="false" />
-      </Profilers>
-      <option name="DEEP_LINK" value="" />
-      <option name="ACTIVITY_CLASS" value="" />
-      <method />
-    </configuration>
-    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
-      <module name="" />
-      <option name="TESTING_TYPE" value="0" />
-      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="EXTRA_OPTIONS" value="" />
-      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
-      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
-      <option name="FORCE_STOP_RUNNING_APP" value="true" />
-      <option name="DEBUGGER_TYPE" value="Java" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <Java />
-      <Profilers>
-        <option name="GAPID_DISABLE_PCS" value="false" />
-      </Profilers>
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Remote.9999">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
@@ -381,22 +270,6 @@
       <option name="PARAMETERS" value="" />
       <module name="" />
       <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list />
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
       <method />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
@@ -500,62 +373,6 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="true" type="TestNG" factoryName="TestNG">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="GROUP_NAME" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="OUTPUT_DIRECTORY" />
-      <option name="ANNOTATION_TYPE" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
-      <envs />
-      <properties />
-      <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="TestNGTestDiscovery" factoryName="TestNG Test Discovery" changeList="All">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="GROUP_NAME" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="OUTPUT_DIRECTORY" />
-      <option name="ANNOTATION_TYPE" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
-      <envs />
-      <properties />
-      <listeners />
-      <method />
-    </configuration>
     <configuration default="true" type="uTestRunConfiguration" factoryName="utest">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -571,7 +388,7 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="false" name="Unnamed" type="Remote" factoryName="Remote">
+    <configuration default="false" name="9999" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
       <option name="SHMEM_ADDRESS" value="javadebug" />
@@ -584,14 +401,14 @@
       <method />
     </configuration>
     <list size="1">
-      <item index="0" class="java.lang.String" itemvalue="Remote.Unnamed" />
+      <item index="0" class="java.lang.String" itemvalue="Remote.9999" />
     </list>
     <configuration name="&lt;template&gt;" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" default="true" selected="false">
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
     </configuration>
   </component>
   <component name="SbtLocalSettings">
-    <option name="lastUpdateTimestamp" value="1475586506991" />
+    <option name="lastUpdateTimestamp" value="1475844831060" />
     <option name="availableProjects">
       <map>
         <entry>
@@ -618,7 +435,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="1475586487521" />
+        <entry key="$PROJECT_DIR$" value="1475826782535" />
       </map>
     </option>
     <option name="externalProjectsViewState">
@@ -639,35 +456,38 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="25" width="1922" height="1056" extended-state="6" />
+    <frame x="1920" y="24" width="1920" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="SBT Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="SBT" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4" sideWeight="0.50208336" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Mongo Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Regex" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="SBT Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="SBT" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39920557" sideWeight="0.50208336" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="REPL" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Leiningen" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Mongo Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Regex" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4" sideWeight="0.49791667" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39920557" sideWeight="0.49791667" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969216" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -698,12 +518,6 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="scala-line">
           <url>jar://$USER_HOME$/.ivy2/cache/com.typesafe.play/filters-helpers_2.11/srcs/filters-helpers_2.11-2.5.6-sources.jar!/play/filters/cors/AbstractCORSPolicy.scala</url>
-          <line>54</line>
-          <properties />
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="scala-line">
-          <url>jar://$USER_HOME$/.ivy2/cache/com.typesafe.play/filters-helpers_2.11/srcs/filters-helpers_2.11-2.5.6-sources.jar!/play/filters/cors/AbstractCORSPolicy.scala</url>
           <line>59</line>
           <properties />
           <option name="timeStamp" value="6" />
@@ -720,21 +534,40 @@
           <properties />
           <option name="timeStamp" value="10" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="scala-line">
+          <url>file://$PROJECT_DIR$/app/org/shopping/controllers/ListController.scala</url>
+          <line>23</line>
+          <properties />
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="26" />
+      <option name="time" value="36" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/app/org/shopping/dto/JsonDTOFormats.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding>
+            <marker date="1475846350375" expanded="false" signature="33:94" ph="..." />
+            <marker date="1475846350375" expanded="true" signature="158:1373" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/org/shopping/controllers/UserController.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="46" column="33" selection-start-line="46" selection-start-column="33" selection-end-line="46" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/build.sbt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="552">
           <caret line="24" column="6" selection-start-line="24" selection-start-column="6" selection-end-line="24" selection-end-column="6" />
-          <folding>
-            <marker date="1475586487521" expanded="true" signature="188:656" ph="(...)" />
-            <marker date="1475586487521" expanded="true" signature="685:1372" ph="(...)" />
-            <marker date="1475586487521" expanded="true" signature="1000:1100" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -742,9 +575,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
           <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding>
-            <marker date="1473598578848" expanded="true" signature="754:936" ph="/.../" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -752,7 +582,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="439">
           <caret line="60" column="59" selection-start-line="60" selection-start-column="59" selection-end-line="60" selection-end-column="59" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -760,751 +589,97 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
           <caret line="8" column="39" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
-          <folding>
-            <marker date="1475586717606" expanded="true" signature="36:132" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.ivy2/cache/com.typesafe.play/play_2.11/srcs/play_2.11-2.5.6-sources.jar!/play/api/http/StandardValues.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="304" column="6" selection-start-line="304" selection-start-column="6" selection-end-line="304" selection-end-column="6" />
-          <folding>
-            <marker date="1471991442000" expanded="false" signature="0:76" ph="/.../" />
-            <marker date="1471991442000" expanded="true" signature="100:200" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="359:1690" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="393:429" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="497:533" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="601:636" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="702:737" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="803:845" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="925:975" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="1059:1108" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="1186:1277" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="1309:1411" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="1443:1486" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="1522:1587" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="1692:1722" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="1759:1789" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="1806:1957" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="2071:2874" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="2076:2112" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="2142:2178" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="2207:2243" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="2279:2314" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="2348:2383" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="2410:2452" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="2493:2540" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="2593:2643" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="2688:2731" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="2777:2826" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="2876:2920" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="2951:3001" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="3015:4470" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="4614:7178" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="7180:7222" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="7265:7307" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="7327:7459" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.ivy2/cache/com.typesafe.play/play_2.11/srcs/play_2.11-2.5.6-sources.jar!/play/api/mvc/Results.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="86" column="4" selection-start-line="86" selection-start-column="4" selection-end-line="86" selection-end-column="4" />
-          <folding>
-            <marker date="1471991442000" expanded="false" signature="0:76" ph="/.../" />
-            <marker date="1471991442000" expanded="false" signature="106:715" ph="..." />
-            <marker date="1471991442000" expanded="true" signature="717:1010" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="1139:2187" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="1544:1741" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="2066:2185" ph="..." />
-            <marker date="1471991442000" expanded="true" signature="2074:2185" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="2210:2785" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="2787:3006" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="3067:9118" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="3072:3292" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="3349:3422" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="3426:3614" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="3677:3857" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="3687:3853" ph="(...)" />
-            <marker date="1471991442000" expanded="true" signature="3708:3852" ph="(...)" />
-            <marker date="1471991442000" expanded="true" signature="3749:3851" ph="(...)" />
-            <marker date="1471991442000" expanded="true" signature="3861:4213" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="4260:4421" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="4297:4417" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="4425:4682" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="4745:4877" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="4881:5150" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="5197:5312" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="5316:5605" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="5701:5893" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="5951:6228" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="6268:6403" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="6310:6354" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="6407:6676" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="6762:6987" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="7065:7231" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="7294:7490" ph="..." />
-            <marker date="1471991442000" expanded="true" signature="7382:7490" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="7494:7794" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="7949:8187" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="8350:8384" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="8388:8481" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="8545:8713" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="8595:8709" ph="(...)" />
-            <marker date="1471991442000" expanded="true" signature="8717:8756" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="8810:8987" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="8991:9043" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="9120:9291" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="9395:9428" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="9442:9823" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="9447:9523" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="9658:9688" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="9738:9773" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="9849:10802" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="9854:9989" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="10073:10799" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="10080:10413" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="10498:10727" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="10903:10981" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="11042:22812" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="11080:11226" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="11331:16395" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="11338:11432" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="11506:11587" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="11520:11581" ph="(...)" />
-            <marker date="1471991442000" expanded="true" signature="11700:12240" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="11714:12234" ph="(...)" />
-            <marker date="1471991442000" expanded="true" signature="11738:12046" ph="(...)" />
-            <marker date="1471991442000" expanded="true" signature="11760:12036" ph="(...)" />
-            <marker date="1471991442000" expanded="true" signature="11797:12024" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="12075:12226" ph="(...)" />
-            <marker date="1471991442000" expanded="true" signature="12246:12491" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="12644:12732" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="12738:12983" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="13133:13343" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="13195:13268" ph="(...)" />
-            <marker date="1471991442000" expanded="true" signature="13209:13241" ph="(...)" />
-            <marker date="1471991442000" expanded="true" signature="13349:13675" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="13809:14026" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="14032:14591" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="14678:14848" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="14692:14842" ph="(...)" />
-            <marker date="1471991442000" expanded="true" signature="14854:15417" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="15581:15664" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="15670:15829" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="15988:16203" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="16002:16197" ph="(...)" />
-            <marker date="1471991442000" expanded="true" signature="16063:16189" ph="(...)" />
-            <marker date="1471991442000" expanded="true" signature="16209:16265" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="16315:16391" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="16329:16385" ph="(...)" />
-            <marker date="1471991442000" expanded="true" signature="17251:17360" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="17443:17540" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="17600:17701" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="17911:18021" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="18106:18216" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="21154:21233" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="21280:21405" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="21493:21763" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="21870:22240" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="21972:22170" ph="(...)" />
-            <marker date="1471991442000" expanded="true" signature="22051:22150" ph="(...)" />
-            <marker date="1471991442000" expanded="true" signature="22244:22400" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="22461:22720" ph="/**...*/" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.ivy2/cache/com.typesafe.play/play_2.11/srcs/play_2.11-2.5.6-sources.jar!/play/core/Execution.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
-          <folding>
-            <marker date="1471991442000" expanded="false" signature="0:76" ph="/.../" />
-            <marker date="1471991442000" expanded="false" signature="103:245" ph="..." />
-            <marker date="1471991442000" expanded="true" signature="247:310" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="342:962" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="395:562" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="467:558" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="583:651" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="655:886" ph="/**...*/" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.ivy2/cache/com.typesafe.play/play_2.11/srcs/play_2.11-2.5.6-sources.jar!/play/api/libs/concurrent/Execution.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="11" column="52" selection-start-line="11" selection-start-column="52" selection-end-line="11" selection-end-column="52" />
-          <folding>
-            <marker date="1471991442000" expanded="false" signature="0:76" ph="/.../" />
-            <marker date="1471991442000" expanded="false" signature="118:199" ph="..." />
-            <marker date="1471991442000" expanded="true" signature="218:402" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="240:327" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.ivy2/cache/com.typesafe.play/play-streams_2.11/srcs/play-streams_2.11-2.5.6-sources.jar!/play/api/libs/streams/Accumulator.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="124" column="4" selection-start-line="124" selection-start-column="4" selection-end-line="124" selection-end-column="4" />
-          <folding>
-            <marker date="1471991316000" expanded="false" signature="0:76" ph="/.../" />
-            <marker date="1471991316000" expanded="false" signature="115:453" ph="..." />
-            <marker date="1471991316000" expanded="true" signature="455:725" ph="/**...*/" />
-            <marker date="1471991316000" expanded="true" signature="759:3115" ph="{...}" />
-            <marker date="1471991316000" expanded="true" signature="764:832" ph="/**...*/" />
-            <marker date="1471991316000" expanded="true" signature="916:996" ph="/**...*/" />
-            <marker date="1471991316000" expanded="true" signature="1094:1161" ph="/**...*/" />
-            <marker date="1471991316000" expanded="true" signature="1278:1345" ph="/**...*/" />
-            <marker date="1471991316000" expanded="true" signature="1474:1604" ph="/**...*/" />
-            <marker date="1471991316000" expanded="true" signature="1665:2002" ph="/**...*/" />
-            <marker date="1471991316000" expanded="true" signature="2075:2142" ph="/**...*/" />
-            <marker date="1471991316000" expanded="true" signature="2226:2289" ph="/**...*/" />
-            <marker date="1471991316000" expanded="true" signature="2353:2668" ph="/**...*/" />
-            <marker date="1471991316000" expanded="true" signature="2766:2851" ph="/**...*/" />
-            <marker date="1471991316000" expanded="true" signature="2953:3055" ph="/**...*/" />
-            <marker date="1471991316000" expanded="true" signature="3117:3366" ph="/**...*/" />
-            <marker date="1471991316000" expanded="true" signature="3467:4825" ph="{...}" />
-            <marker date="1471991316000" expanded="true" signature="4411:4457" ph="{...}" />
-            <marker date="1471991316000" expanded="true" signature="4521:4548" ph="{...}" />
-            <marker date="1471991316000" expanded="true" signature="4716:4823" ph="{...}" />
-            <marker date="1471991316000" expanded="true" signature="4827:4915" ph="/**...*/" />
-            <marker date="1471991316000" expanded="true" signature="4997:6166" ph="{...}" />
-            <marker date="1471991316000" expanded="true" signature="5757:5819" ph="{...}" />
-            <marker date="1471991316000" expanded="true" signature="6105:6164" ph="{...}" />
-            <marker date="1471991316000" expanded="true" signature="6351:6645" ph="{...}" />
-            <marker date="1471991316000" expanded="true" signature="6445:6515" ph="{...}" />
-            <marker date="1471991316000" expanded="true" signature="6666:9015" ph="{...}" />
-            <marker date="1471991316000" expanded="true" signature="6805:7225" ph="{...}" />
-            <marker date="1471991316000" expanded="true" signature="6934:7221" ph="(...)" />
-            <marker date="1471991316000" expanded="true" signature="6970:7098" ph="(...)" />
-            <marker date="1471991316000" expanded="true" signature="7107:7215" ph="(...)" />
-            <marker date="1471991316000" expanded="true" signature="7229:7289" ph="/**...*/" />
-            <marker date="1471991316000" expanded="true" signature="7384:7592" ph="/**...*/" />
-            <marker date="1471991316000" expanded="true" signature="7684:7874" ph="/**...*/" />
-            <marker date="1471991316000" expanded="true" signature="7952:8448" ph="/**...*/" />
-            <marker date="1471991316000" expanded="true" signature="8497:8778" ph="{...}" />
-            <marker date="1471991316000" expanded="true" signature="8503:8627" ph="/.../" />
-            <marker date="1471991316000" expanded="true" signature="8782:8850" ph="/**...*/" />
-            <marker date="1471991316000" expanded="true" signature="8964:9012" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.ivy2/cache/com.typesafe.play/filters-helpers_2.11/srcs/filters-helpers_2.11-2.5.6-sources.jar!/play/filters/cors/CORSFilter.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="49" column="13" selection-start-line="49" selection-start-column="13" selection-end-line="49" selection-end-column="13" />
-          <folding>
-            <marker date="1471991448000" expanded="false" signature="0:76" ph="/.../" />
-            <marker date="1471991448000" expanded="false" signature="111:359" ph="..." />
-            <marker date="1471991448000" expanded="true" signature="361:1447" ph="/**...*/" />
-            <marker date="1471991448000" expanded="true" signature="1751:2344" ph="{...}" />
-            <marker date="1471991448000" expanded="true" signature="1912:2049" ph="{...}" />
-            <marker date="1471991448000" expanded="true" signature="2213:2342" ph="{...}" />
-            <marker date="1471991448000" expanded="true" signature="2269:2308" ph="{...}" />
-            <marker date="1471991448000" expanded="true" signature="2314:2338" ph="{...}" />
-            <marker date="1471991448000" expanded="true" signature="2364:2644" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.ivy2/cache/com.typesafe.play/play-netty-server_2.11/srcs/play-netty-server_2.11-2.5.6-sources.jar!/play/core/server/netty/PlayRequestHandler.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="257" column="15" selection-start-line="257" selection-start-column="15" selection-end-line="257" selection-end-column="15" />
-          <folding>
-            <marker date="1471991450000" expanded="false" signature="0:76" ph="/.../" />
-            <marker date="1471991450000" expanded="false" signature="116:1111" ph="..." />
-            <marker date="1471991450000" expanded="true" signature="1147:1217" ph="{...}" />
-            <marker date="1471991450000" expanded="true" signature="1320:12463" ph="{...}" />
-            <marker date="1471991450000" expanded="true" signature="1356:1526" ph="..." />
-            <marker date="1471991450000" expanded="true" signature="1580:1772" ph="..." />
-            <marker date="1471991450000" expanded="true" signature="1955:2118" ph="(...)" />
-            <marker date="1471991450000" expanded="true" signature="1987:2114" ph="(...)" />
-            <marker date="1471991450000" expanded="true" signature="2122:2162" ph="/**...*/" />
-            <marker date="1471991450000" expanded="true" signature="2240:6551" ph="{...}" />
-            <marker date="1471991450000" expanded="true" signature="2491:2633" ph="(...)" />
-            <marker date="1471991450000" expanded="true" signature="2691:3260" ph="{...}" />
-            <marker date="1471991450000" expanded="true" signature="2762:2900" ph="(...)" />
-            <marker date="1471991450000" expanded="true" signature="2982:3055" ph="(...)" />
-            <marker date="1471991450000" expanded="true" signature="3322:3842" ph="{...}" />
-            <marker date="1471991450000" expanded="true" signature="3571:3835" ph="..." />
-            <marker date="1471991450000" expanded="true" signature="3608:3835" ph="{...}" />
-            <marker date="1471991450000" expanded="true" signature="3870:6547" ph="{...}" />
-            <marker date="1471991450000" expanded="true" signature="3963:4265" ph="..." />
-            <marker date="1471991450000" expanded="true" signature="3995:4198" ph="(...)" />
-            <marker date="1471991450000" expanded="true" signature="4107:4188" ph="(...)" />
-            <marker date="1471991450000" expanded="true" signature="4407:5860" ph="..." />
-            <marker date="1471991450000" expanded="true" signature="5028:5569" ph="(...)" />
-            <marker date="1471991450000" expanded="true" signature="5124:5251" ph="..." />
-            <marker date="1471991450000" expanded="true" signature="5294:5558" ph="..." />
-            <marker date="1471991450000" expanded="true" signature="5439:5558" ph="(...)" />
-            <marker date="1471991450000" expanded="true" signature="5472:5557" ph="(...)" />
-            <marker date="1471991450000" expanded="true" signature="5582:5860" ph="(...)" />
-            <marker date="1471991450000" expanded="true" signature="5620:5850" ph="..." />
-            <marker date="1471991450000" expanded="true" signature="5681:5850" ph="(...)" />
-            <marker date="1471991450000" expanded="true" signature="5949:6335" ph="..." />
-            <marker date="1471991450000" expanded="true" signature="6023:6271" ph="(...)" />
-            <marker date="1471991450000" expanded="true" signature="6045:6270" ph="(...)" />
-            <marker date="1471991450000" expanded="true" signature="6141:6260" ph="(...)" />
-            <marker date="1471991450000" expanded="true" signature="6367:6540" ph="..." />
-            <marker date="1471991450000" expanded="true" signature="6555:6642" ph="/.../" />
-            <marker date="1471991450000" expanded="true" signature="6720:7839" ph="{...}" />
-            <marker date="1471991450000" expanded="true" signature="6797:7835" ph="{...}" />
-            <marker date="1471991450000" expanded="true" signature="6838:7829" ph="..." />
-            <marker date="1471991450000" expanded="true" signature="7158:7829" ph="(...)" />
-            <marker date="1471991450000" expanded="true" signature="7279:7588" ph="(...)" />
-            <marker date="1471991450000" expanded="true" signature="7354:7532" ph="{...}" />
-            <marker date="1471991450000" expanded="true" signature="7370:7493" ph="/.../" />
-            <marker date="1471991450000" expanded="true" signature="7610:7819" ph="(...)" />
-            <marker date="1471991450000" expanded="true" signature="7663:7807" ph="..." />
-            <marker date="1471991450000" expanded="true" signature="7912:8640" ph="{...}" />
-            <marker date="1471991450000" expanded="true" signature="7974:8429" ph="/.../" />
-            <marker date="1471991450000" expanded="true" signature="8467:8491" ph="{...}" />
-            <marker date="1471991450000" expanded="true" signature="8497:8636" ph="{...}" />
-            <marker date="1471991450000" expanded="true" signature="8505:8594" ph="/.../" />
-            <marker date="1471991450000" expanded="true" signature="8727:9713" ph="{...}" />
-            <marker date="1471991450000" expanded="true" signature="8745:9709" ph="{...}" />
-            <marker date="1471991450000" expanded="true" signature="8753:8908" ph="/.../" />
-            <marker date="1471991450000" expanded="true" signature="8946:9030" ph="..." />
-            <marker date="1471991450000" expanded="true" signature="9078:9204" ph="..." />
-            <marker date="1471991450000" expanded="true" signature="9489:9604" ph="..." />
-            <marker date="1471991450000" expanded="true" signature="9629:9703" ph="..." />
-            <marker date="1471991450000" expanded="true" signature="9780:10024" ph="{...}" />
-            <marker date="1471991450000" expanded="true" signature="9786:10005" ph="/.../" />
-            <marker date="1471991450000" expanded="true" signature="10112:10333" ph="{...}" />
-            <marker date="1471991450000" expanded="true" signature="10128:10329" ph="{...}" />
-            <marker date="1471991450000" expanded="true" signature="10197:10272" ph="..." />
-            <marker date="1471991450000" expanded="true" signature="10337:10424" ph="/.../" />
-            <marker date="1471991450000" expanded="true" signature="10428:10470" ph="/**...*/" />
-            <marker date="1471991450000" expanded="true" signature="10629:11778" ph="{...}" />
-            <marker date="1471991450000" expanded="true" signature="10989:11094" ph="{...}" />
-            <marker date="1471991450000" expanded="true" signature="11108:11269" ph="(...)" />
-            <marker date="1471991450000" expanded="true" signature="11146:11259" ph="..." />
-            <marker date="1471991450000" expanded="true" signature="11782:11839" ph="/**...*/" />
-            <marker date="1471991450000" expanded="true" signature="11988:12068" ph="/**...*/" />
-            <marker date="1471991450000" expanded="true" signature="12180:12461" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.ivy2/cache/com.typesafe.play/play_2.11/srcs/play_2.11-2.5.6-sources.jar!/play/api/mvc/Http.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="206" column="10" selection-start-line="206" selection-start-column="10" selection-end-line="206" selection-end-column="10" />
-          <folding>
-            <marker date="1471991442000" expanded="false" signature="0:76" ph="/.../" />
-            <marker date="1471991442000" expanded="true" signature="85:30455" ph="{...}" />
-            <marker date="1471991442000" expanded="false" signature="110:527" ph="..." />
-            <marker date="1471991442000" expanded="true" signature="580:658" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="703:793" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="880:6646" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="887:921" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="944:980" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="1020:1332" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="1358:1390" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="1417:1452" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="1481:1517" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="1547:1590" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="1642:1678" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="1709:1877" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="1913:1956" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="1986:2074" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="2161:2228" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="2331:2389" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="2418:2637" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="2500:2631" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="2643:2677" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="2734:2856" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="2913:3107" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="3113:3232" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="3293:3376" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="3382:3534" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="3580:3668" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="3674:3710" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="3820:3898" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="3995:4069" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="4158:4206" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="4287:4417" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="4536:4637" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="4744:4817" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="5004:5126" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="5195:5250" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="5256:5292" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="5817:6579" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="6094:6573" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="6609:6641" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="6671:7367" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="6823:6901" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="7000:7363" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="7141:7357" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="7204:7349" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="7889:7894" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="7898:7982" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="8082:8796" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="8101:8137" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="8159:8205" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="8246:8791" ph="..." />
-            <marker date="1471991442000" expanded="true" signature="8261:8791" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="9370:9375" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="9394:9961" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="9441:9957" ph="..." />
-            <marker date="1471991442000" expanded="true" signature="9456:9957" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="9965:10033" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="10101:10632" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="10636:10903" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="10998:12458" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="11149:11472" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="11577:11635" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="11818:12139" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="12246:12305" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="12462:12683" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="12747:14915" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="12754:12819" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="12875:12918" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="13003:13094" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="13231:13326" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="13332:13415" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="13487:13563" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="13662:13788" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="13680:13771" ph="(...)" />
-            <marker date="1471991442000" expanded="true" signature="13794:13837" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="13884:13941" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="13974:14114" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="14120:14216" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="14315:14364" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="14412:14686" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="14484:14627" ph="(...)" />
-            <marker date="1471991442000" expanded="true" signature="14692:14770" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="14934:15006" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="15010:15077" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="15111:19105" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="15118:15153" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="15187:15282" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="15311:15380" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="15420:15542" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="15572:15659" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="15700:15755" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="15799:15914" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="15943:15979" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="16004:16041" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="16082:16132" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="16185:16434" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="16216:16316" ph="(...)" />
-            <marker date="1471991442000" expanded="true" signature="16440:16492" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="16545:17758" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="16584:16767" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="16775:17025" ph="/.../" />
-            <marker date="1471991442000" expanded="true" signature="17071:17297" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="17107:17134" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="17140:17289" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="17212:17258" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="17333:17591" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="17764:17814" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="17857:17981" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="17987:18039" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="18113:18162" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="18168:18220" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="18275:18514" ph="..." />
-            <marker date="1471991442000" expanded="true" signature="18312:18514" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="18448:18508" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="18591:18760" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="18826:19040" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="19109:19238" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="19315:20319" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="19322:19400" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="19447:19506" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="19552:19800" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="19835:19925" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="19931:20141" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="20189:20275" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="20323:20384" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="20431:21035" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="21039:21170" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="21245:22262" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="21252:21328" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="21375:21438" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="21484:21743" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="21778:21868" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="21874:22087" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="22135:22218" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="22266:22325" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="22368:22951" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="22955:23483" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="23666:23980" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="24101:24178" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="24182:24218" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="24263:24570" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="24270:24341" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="24389:24467" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="24574:24624" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="24642:30453" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="24722:25172" ph="/**...*/" />
-            <marker date="1471991442000" expanded="false" signature="25292:25444" ph="..." />
-            <marker date="1471991442000" expanded="true" signature="25557:25763" ph="..." />
-            <marker date="1471991442000" expanded="true" signature="25570:25763" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="25604:25719" ph="..." />
-            <marker date="1471991442000" expanded="true" signature="25611:25719" ph="(...)" />
-            <marker date="1471991442000" expanded="true" signature="25825:26028" ph="..." />
-            <marker date="1471991442000" expanded="true" signature="25838:26028" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="25872:25984" ph="..." />
-            <marker date="1471991442000" expanded="true" signature="25879:25984" ph="(...)" />
-            <marker date="1471991442000" expanded="true" signature="26095:26293" ph="..." />
-            <marker date="1471991442000" expanded="true" signature="26107:26293" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="26244:26287" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="26299:26460" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="26523:26944" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="26601:26886" ph="(...)" />
-            <marker date="1471991442000" expanded="true" signature="26950:27111" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="27171:27333" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="27234:27327" ph="(...)" />
-            <marker date="1471991442000" expanded="true" signature="27247:27319" ph="(...)" />
-            <marker date="1471991442000" expanded="true" signature="27339:27508" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="27576:28388" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="27610:27691" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="27697:28382" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="27711:28245" ph="(...)" />
-            <marker date="1471991442000" expanded="true" signature="27946:28235" ph="(...)" />
-            <marker date="1471991442000" expanded="true" signature="28256:28374" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="28394:28555" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="28620:28934" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="28632:28811" ph="(...)" />
-            <marker date="1471991442000" expanded="true" signature="28696:28797" ph="(...)" />
-            <marker date="1471991442000" expanded="true" signature="28724:28787" ph="(...)" />
-            <marker date="1471991442000" expanded="true" signature="28822:28928" ph="(...)" />
-            <marker date="1471991442000" expanded="true" signature="28940:29184" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="29268:29808" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="29349:29593" ph="(...)" />
-            <marker date="1471991442000" expanded="true" signature="29364:29510" ph="/.../" />
-            <marker date="1471991442000" expanded="true" signature="29600:29670" ph="..." />
-            <marker date="1471991442000" expanded="true" signature="29814:30046" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="30127:30449" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="30244:30314" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.ivy2/cache/com.typesafe.play/play-netty-server_2.11/srcs/play-netty-server_2.11-2.5.6-sources.jar!/play/core/server/netty/NettyHeadersWrapper.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="24" column="50" selection-start-line="24" selection-start-column="50" selection-end-line="24" selection-end-column="50" />
-          <folding>
-            <marker date="1471991450000" expanded="false" signature="0:76" ph="/.../" />
-            <marker date="1471991450000" expanded="false" signature="116:208" ph="..." />
-            <marker date="1471991450000" expanded="true" signature="210:357" ph="/**...*/" />
-            <marker date="1471991450000" expanded="true" signature="449:1118" ph="{...}" />
-            <marker date="1471991450000" expanded="true" signature="500:790" ph="{...}" />
-            <marker date="1471991450000" expanded="true" signature="506:660" ph="/.../" />
-            <marker date="1471991450000" expanded="true" signature="687:773" ph="{...}" />
-            <marker date="1471991450000" expanded="true" signature="916:1033" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.ivy2/cache/com.typesafe.play/play_2.11/srcs/play_2.11-2.5.6-sources.jar!/play/api/mvc/Action.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="116" column="4" selection-start-line="116" selection-start-column="4" selection-end-line="116" selection-end-column="4" />
-          <folding>
-            <marker date="1471991442000" expanded="false" signature="0:76" ph="/.../" />
-            <marker date="1471991442000" expanded="false" signature="106:290" ph="..." />
-            <marker date="1471991442000" expanded="true" signature="292:662" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="678:764" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="809:868" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="870:1165" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="1260:1691" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="1273:1367" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="1431:1688" ph="..." />
-            <marker date="1471991442000" expanded="true" signature="1462:1688" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="1693:1743" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="1767:1922" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="1854:1920" ph="..." />
-            <marker date="1471991442000" expanded="true" signature="1874:1920" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="1924:2226" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="2267:3630" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="2291:2331" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="2359:2440" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="2472:2607" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="2724:3203" ph="..." />
-            <marker date="1471991442000" expanded="true" signature="2745:3185" ph="(...)" />
-            <marker date="1471991442000" expanded="true" signature="2773:2859" ph="..." />
-            <marker date="1471991442000" expanded="true" signature="2887:3181" ph="..." />
-            <marker date="1471991442000" expanded="true" signature="3018:3138" ph="(...)" />
-            <marker date="1471991442000" expanded="true" signature="3094:3130" ph="(...)" />
-            <marker date="1471991442000" expanded="true" signature="3149:3181" ph="(...)" />
-            <marker date="1471991442000" expanded="true" signature="3207:3326" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="3423:3517" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="3586:3627" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="3632:3732" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="3824:7642" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="3839:4255" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="4328:4616" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="4469:4612" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="4620:5012" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="5094:5595" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="5235:5591" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="5279:5541" ph="..." />
-            <marker date="1471991442000" expanded="true" signature="5303:5536" ph="(...)" />
-            <marker date="1471991442000" expanded="true" signature="5599:6304" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="6398:6731" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="6539:6727" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="6583:6677" ph="..." />
-            <marker date="1471991442000" expanded="true" signature="6601:6672" ph="(...)" />
-            <marker date="1471991442000" expanded="true" signature="6735:7102" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="7205:7640" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="7346:7636" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="7390:7586" ph="..." />
-            <marker date="1471991442000" expanded="true" signature="7414:7581" ph="(...)" />
-            <marker date="1471991442000" expanded="true" signature="7644:7702" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="7721:9059" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="7820:7851" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="7968:8092" ph="..." />
-            <marker date="1471991442000" expanded="true" signature="7986:8092" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="8096:8328" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="8469:8503" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="8507:8741" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="8901:9056" ph="..." />
-            <marker date="1471991442000" expanded="true" signature="8919:9056" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="9061:9532" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="9568:11090" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="9583:9944" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="10031:10188" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="10295:10476" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="10550:10718" ph="..." />
-            <marker date="1471991442000" expanded="true" signature="10575:10718" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="10722:10906" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="11092:11149" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="11212:15704" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="11227:11589" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="11674:11744" ph="..." />
-            <marker date="1471991442000" expanded="true" signature="11692:11744" ph="(...)" />
-            <marker date="1471991442000" expanded="true" signature="11748:11996" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="12112:12353" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="12494:12919" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="13068:13481" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="13605:14018" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="14111:14661" ph="..." />
-            <marker date="1471991442000" expanded="true" signature="14124:14661" ph="(...)" />
-            <marker date="1471991442000" expanded="true" signature="14139:14660" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="14221:14584" ph="..." />
-            <marker date="1471991442000" expanded="true" signature="14665:14882" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="14974:15158" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="15310:15702" ph="..." />
-            <marker date="1471991442000" expanded="true" signature="15331:15702" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="15706:15757" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="15803:15952" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="15954:16105" ph="/.../" />
-            <marker date="1471991442000" expanded="true" signature="16107:16358" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="16422:17038" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="16426:16807" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="17040:17263" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="17330:17716" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="17334:17561" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="17718:17965" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="18019:18541" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="18023:18363" ph="/**...*/" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.ivy2/cache/com.typesafe.play/play-iteratees_2.11/srcs/play-iteratees_2.11-2.5.6-sources.jar!/play/api/libs/iteratee/Execution.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="18" column="56" selection-start-line="18" selection-start-column="56" selection-end-line="18" selection-end-column="56" />
-          <folding>
-            <marker date="1471991320000" expanded="false" signature="0:76" ph="/.../" />
-            <marker date="1471991320000" expanded="false" signature="116:239" ph="..." />
-            <marker date="1471991320000" expanded="true" signature="241:308" ph="/**...*/" />
-            <marker date="1471991320000" expanded="true" signature="326:4981" ph="{...}" />
-            <marker date="1471991320000" expanded="true" signature="433:597" ph="{...}" />
-            <marker date="1471991320000" expanded="true" signature="601:1070" ph="/**...*/" />
-            <marker date="1471991320000" expanded="true" signature="1124:4978" ph="{...}" />
-            <marker date="1471991320000" expanded="true" signature="1131:2395" ph="/.../" />
-            <marker date="1471991320000" expanded="true" signature="2571:3810" ph="{...}" />
-            <marker date="1471991320000" expanded="true" signature="2595:3804" ph="{...}" />
-            <marker date="1471991320000" expanded="true" signature="2695:3052" ph="..." />
-            <marker date="1471991320000" expanded="true" signature="2713:2795" ph="/.../" />
-            <marker date="1471991320000" expanded="true" signature="2917:3012" ph="/.../" />
-            <marker date="1471991320000" expanded="true" signature="3196:3297" ph="/.../" />
-            <marker date="1471991320000" expanded="true" signature="3308:3454" ph="..." />
-            <marker date="1471991320000" expanded="true" signature="3576:3675" ph="..." />
-            <marker date="1471991320000" expanded="true" signature="3816:3893" ph="/**...*/" />
-            <marker date="1471991320000" expanded="true" signature="3950:4909" ph="{...}" />
-            <marker date="1471991320000" expanded="true" signature="3974:4903" ph="{...}" />
-            <marker date="1471991320000" expanded="true" signature="4145:4311" ph="..." />
-            <marker date="1471991320000" expanded="true" signature="4364:4774" ph="..." />
-            <marker date="1471991320000" expanded="true" signature="4436:4645" ph="/.../" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.ivy2/cache/com.typesafe.play/play_2.11/srcs/play_2.11-2.5.6-sources.jar!/play/api/mvc/Filters.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="61" column="10" selection-start-line="61" selection-start-column="10" selection-end-line="61" selection-end-column="10" />
-          <folding>
-            <marker date="1471991442000" expanded="false" signature="0:76" ph="/.../" />
-            <marker date="1471991442000" expanded="false" signature="106:261" ph="..." />
-            <marker date="1471991442000" expanded="true" signature="285:508" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="381:506" ph="..." />
-            <marker date="1471991442000" expanded="true" signature="410:506" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="510:867" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="905:3430" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="954:1308" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="1447:3428" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="1473:3424" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="1619:3417" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="1981:2126" ph="(...)" />
-            <marker date="1471991442000" expanded="true" signature="1982:2125" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="2157:2555" ph="(...)" />
-            <marker date="1471991442000" expanded="true" signature="2158:2554" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="2183:2443" ph="/.../" />
-            <marker date="1471991442000" expanded="true" signature="2584:3409" ph="(...)" />
-            <marker date="1471991442000" expanded="true" signature="2612:3408" ph="(...)" />
-            <marker date="1471991442000" expanded="true" signature="2643:2848" ph="(...)" />
-            <marker date="1471991442000" expanded="true" signature="2861:3398" ph="(...)" />
-            <marker date="1471991442000" expanded="true" signature="2910:3322" ph="/.../" />
-            <marker date="1471991442000" expanded="true" signature="3337:3386" ph="..." />
-            <marker date="1471991442000" expanded="true" signature="3446:3716" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="3572:3714" ph="..." />
-            <marker date="1471991442000" expanded="true" signature="3583:3714" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="3718:3786" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="3802:3958" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="3865:3956" ph="..." />
-            <marker date="1471991442000" expanded="true" signature="3873:3956" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="4077:4193" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="4142:4191" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="4195:4263" ph="/**...*/" />
-            <marker date="1471991442000" expanded="true" signature="4284:4566" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="4377:4564" ph="..." />
-            <marker date="1471991442000" expanded="true" signature="4397:4564" ph="{...}" />
-            <marker date="1471991442000" expanded="true" signature="4467:4560" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://$USER_HOME$/.ivy2/cache/com.typesafe.play/play_2.11/srcs/play_2.11-2.5.6-sources.jar!/play/api/http/StandardValues.scala" />
+    <entry file="jar://$USER_HOME$/.ivy2/cache/com.typesafe.play/play_2.11/srcs/play_2.11-2.5.6-sources.jar!/play/api/mvc/Results.scala" />
+    <entry file="jar://$USER_HOME$/.ivy2/cache/com.typesafe.play/play_2.11/srcs/play_2.11-2.5.6-sources.jar!/play/core/Execution.scala" />
+    <entry file="jar://$USER_HOME$/.ivy2/cache/com.typesafe.play/play_2.11/srcs/play_2.11-2.5.6-sources.jar!/play/api/libs/concurrent/Execution.scala" />
+    <entry file="jar://$USER_HOME$/.ivy2/cache/com.typesafe.play/play-streams_2.11/srcs/play-streams_2.11-2.5.6-sources.jar!/play/api/libs/streams/Accumulator.scala" />
+    <entry file="jar://$USER_HOME$/.ivy2/cache/com.typesafe.play/filters-helpers_2.11/srcs/filters-helpers_2.11-2.5.6-sources.jar!/play/filters/cors/CORSFilter.scala" />
+    <entry file="jar://$USER_HOME$/.ivy2/cache/com.typesafe.play/play-netty-server_2.11/srcs/play-netty-server_2.11-2.5.6-sources.jar!/play/core/server/netty/PlayRequestHandler.scala" />
+    <entry file="jar://$USER_HOME$/.ivy2/cache/com.typesafe.play/play_2.11/srcs/play_2.11-2.5.6-sources.jar!/play/api/mvc/Http.scala" />
+    <entry file="jar://$USER_HOME$/.ivy2/cache/com.typesafe.play/play-netty-server_2.11/srcs/play-netty-server_2.11-2.5.6-sources.jar!/play/core/server/netty/NettyHeadersWrapper.scala" />
+    <entry file="jar://$USER_HOME$/.ivy2/cache/com.typesafe.play/play_2.11/srcs/play_2.11-2.5.6-sources.jar!/play/api/mvc/Action.scala" />
+    <entry file="jar://$USER_HOME$/.ivy2/cache/com.typesafe.play/play-iteratees_2.11/srcs/play-iteratees_2.11-2.5.6-sources.jar!/play/api/libs/iteratee/Execution.scala" />
+    <entry file="jar://$USER_HOME$/.ivy2/cache/com.typesafe.play/play_2.11/srcs/play_2.11-2.5.6-sources.jar!/play/api/mvc/Filters.scala" />
     <entry file="file://$PROJECT_DIR$/app/org/shopping/modules/core/UserService.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="276">
           <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
-          <folding>
-            <marker date="1475436235004" expanded="false" signature="42:243" ph="..." />
-            <marker date="1475436235004" expanded="true" signature="285:707" ph="{...}" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.ivy2/cache/com.nulab-inc/scala-oauth2-core_2.11/srcs/scala-oauth2-core_2.11-0.15.0-sources.jar!/scalaoauth2/provider/TokenEndpoint.scala" />
+    <entry file="jar://$USER_HOME$/.ivy2/cache/com.nulab-inc/scala-oauth2-core_2.11/srcs/scala-oauth2-core_2.11-0.15.0-sources.jar!/scalaoauth2/provider/GrantHandler.scala" />
+    <entry file="file://$PROJECT_DIR$/app/org/shopping/modules/package.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="28" column="6" selection-start-line="28" selection-start-column="6" selection-end-line="28" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.ivy2/cache/org.scala-lang/scala-library/srcs/scala-library-2.11.8-sources.jar!/scala/concurrent/Future.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="252" column="11" selection-start-line="252" selection-start-column="11" selection-end-line="252" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/org/shopping/dal/impl/SlickUserDAL.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="31" column="4" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/org/shopping/modules/core/impl/DefaultUserService.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/org/shopping/dto/ListItemsDTO.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="35" selection-start-line="2" selection-start-column="35" selection-end-line="2" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conf/evolutions/default/1.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="139" column="28" selection-start-line="139" selection-start-column="28" selection-end-line="139" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/org/shopping/db/DB.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="212" column="0" selection-start-line="212" selection-start-column="0" selection-end-line="212" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/org/shopping/dto/ListItemDTO.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/org/shopping/controllers/UserController.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-108">
+          <caret line="85" column="30" selection-start-line="85" selection-start-column="30" selection-end-line="85" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="jar://$USER_HOME$/.ivy2/cache/com.typesafe.play/filters-helpers_2.11/srcs/filters-helpers_2.11-2.5.6-sources.jar!/play/filters/cors/AbstractCORSPolicy.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="66" column="0" selection-start-line="65" selection-start-column="0" selection-end-line="66" selection-end-column="40" />
+        <state relative-caret-position="354">
+          <caret line="63" column="39" selection-start-line="63" selection-start-column="39" selection-end-line="63" selection-end-column="39" />
           <folding>
             <marker date="1471991448000" expanded="false" signature="0:76" ph="/.../" />
             <marker date="1471991448000" expanded="false" signature="111:387" ph="..." />
@@ -1577,287 +752,95 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.ivy2/cache/com.nulab-inc/scala-oauth2-core_2.11/srcs/scala-oauth2-core_2.11-0.15.0-sources.jar!/scalaoauth2/provider/TokenEndpoint.scala">
+    <entry file="jar://$USER_HOME$/.ivy2/cache/com.nulab-inc/scala-oauth2-core_2.11/srcs/scala-oauth2-core_2.11-0.15.0-sources.jar!/scalaoauth2/provider/AccessTokenFetcher.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="17" column="27" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
-          <folding>
-            <marker date="1432806484000" expanded="false" signature="37:164" ph="..." />
-            <marker date="1432806484000" expanded="true" signature="186:1586" ph="{...}" />
-            <marker date="1432806484000" expanded="true" signature="249:447" ph="(...)" />
-            <marker date="1432806484000" expanded="true" signature="587:1584" ph="..." />
-            <marker date="1432806484000" expanded="true" signature="846:1223" ph="(...)" />
-            <marker date="1432806484000" expanded="true" signature="934:1161" ph="(...)" />
-            <marker date="1432806484000" expanded="true" signature="977:1043" ph="{...}" />
-            <marker date="1432806484000" expanded="true" signature="1049:1153" ph="{...}" />
-            <marker date="1432806484000" expanded="true" signature="1170:1217" ph="(...)" />
-            <marker date="1432806484000" expanded="true" signature="1234:1515" ph="(...)" />
-            <marker date="1432806484000" expanded="true" signature="1285:1361" ph="{...}" />
-            <marker date="1432806484000" expanded="true" signature="1367:1509" ph="{...}" />
-            <marker date="1432806484000" expanded="true" signature="1450:1501" ph="(...)" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.ivy2/cache/com.nulab-inc/scala-oauth2-core_2.11/srcs/scala-oauth2-core_2.11-0.15.0-sources.jar!/scalaoauth2/provider/GrantHandler.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="24" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="24" selection-end-column="49" />
-          <folding>
-            <marker date="1432806484000" expanded="false" signature="37:118" ph="..." />
-            <marker date="1432806484000" expanded="true" signature="288:1647" ph="{...}" />
-            <marker date="1432806484000" expanded="true" signature="292:613" ph="/**...*/" />
-            <marker date="1432806484000" expanded="true" signature="834:876" ph="/**...*/" />
-            <marker date="1432806484000" expanded="true" signature="990:1644" ph="{...}" />
-            <marker date="1432806484000" expanded="true" signature="1043:1640" ph="(...)" />
-            <marker date="1432806484000" expanded="true" signature="1101:1420" ph="{...}" />
-            <marker date="1432806484000" expanded="true" signature="1150:1302" ph="..." />
-            <marker date="1432806484000" expanded="true" signature="1173:1234" ph="(...)" />
-            <marker date="1432806484000" expanded="true" signature="1245:1302" ph="(...)" />
-            <marker date="1432806484000" expanded="true" signature="1426:1634" ph="(...)" />
-            <marker date="1432806484000" expanded="true" signature="1469:1626" ph="(...)" />
-            <marker date="1432806484000" expanded="true" signature="1689:2639" ph="{...}" />
-            <marker date="1432806484000" expanded="true" signature="1868:2637" ph="{...}" />
-            <marker date="1432806484000" expanded="true" signature="2101:2633" ph="(...)" />
-            <marker date="1432806484000" expanded="true" signature="2315:2356" ph="{...}" />
-            <marker date="1432806484000" expanded="true" signature="2419:2627" ph="(...)" />
-            <marker date="1432806484000" expanded="true" signature="2462:2619" ph="(...)" />
-            <marker date="1432806484000" expanded="true" signature="2677:3456" ph="{...}" />
-            <marker date="1432806484000" expanded="true" signature="2856:3454" ph="{...}" />
-            <marker date="1432806484000" expanded="true" signature="2925:2996" ph="{...}" />
-            <marker date="1432806484000" expanded="true" signature="3134:3450" ph="(...)" />
-            <marker date="1432806484000" expanded="true" signature="3503:4164" ph="{...}" />
-            <marker date="1432806484000" expanded="true" signature="3682:4161" ph="{...}" />
-            <marker date="1432806484000" expanded="true" signature="3893:4157" ph="(...)" />
-            <marker date="1432806484000" expanded="true" signature="4211:5174" ph="{...}" />
-            <marker date="1432806484000" expanded="true" signature="4390:5171" ph="{...}" />
-            <marker date="1432806484000" expanded="true" signature="4678:5167" ph="(...)" />
-            <marker date="1432806484000" expanded="true" signature="4870:4911" ph="{...}" />
-            <marker date="1432806484000" expanded="true" signature="4994:5041" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/org/shopping/modules/package.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="28" column="6" selection-start-line="28" selection-start-column="6" selection-end-line="28" selection-end-column="6" />
-          <folding>
-            <marker date="1475436234980" expanded="false" signature="29:216" ph="..." />
-            <marker date="1475436234980" expanded="true" signature="241:2408" ph="{...}" />
-            <marker date="1475436234980" expanded="true" signature="301:424" ph="{...}" />
-            <marker date="1475436234980" expanded="true" signature="324:419" ph="..." />
-            <marker date="1475436234980" expanded="true" signature="334:419" ph="{...}" />
-            <marker date="1475436234980" expanded="true" signature="798:902" ph="..." />
-            <marker date="1475436234980" expanded="true" signature="808:902" ph="{...}" />
-            <marker date="1475436234980" expanded="true" signature="1284:1545" ph="{...}" />
-            <marker date="1475436234980" expanded="true" signature="1617:2052" ph="{...}" />
-            <marker date="1475436234980" expanded="true" signature="1701:2047" ph="{...}" />
-            <marker date="1475436234980" expanded="true" signature="1759:1964" ph="{...}" />
-            <marker date="1475436234980" expanded="true" signature="1852:1956" ph="..." />
-            <marker date="1475436234980" expanded="true" signature="1863:1956" ph="{...}" />
-            <marker date="1475436234980" expanded="true" signature="1984:2041" ph="{...}" />
-            <marker date="1475436234980" expanded="true" signature="2122:2405" ph="{...}" />
-            <marker date="1475436234980" expanded="true" signature="2143:2214" ph="..." />
-            <marker date="1475436234980" expanded="true" signature="2153:2214" ph="{...}" />
-            <marker date="1475436234980" expanded="true" signature="2237:2307" ph="..." />
-            <marker date="1475436234980" expanded="true" signature="2247:2307" ph="{...}" />
-            <marker date="1475436234980" expanded="true" signature="2325:2401" ph="..." />
-            <marker date="1475436234980" expanded="true" signature="2335:2401" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.ivy2/cache/org.scala-lang/scala-library/srcs/scala-library-2.11.8-sources.jar!/scala/concurrent/Future.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="252" column="11" selection-start-line="252" selection-start-column="11" selection-end-line="252" selection-end-column="11" />
-          <folding>
-            <marker date="1457105194000" expanded="false" signature="0:524" ph="/.../" />
-            <marker date="1457105194000" expanded="false" signature="559:1190" ph="..." />
-            <marker date="1457105194000" expanded="true" signature="1194:3479" ph="/**...*/" />
-            <marker date="1457105194000" expanded="true" signature="3518:16416" ph="{...}" />
-            <marker date="1457105194000" expanded="true" signature="3523:3782" ph="/.../" />
-            <marker date="1457105194000" expanded="true" signature="3870:4254" ph="/**...*/" />
-            <marker date="1457105194000" expanded="true" signature="4346:4505" ph="..." />
-            <marker date="1457105194000" expanded="true" signature="4357:4505" ph="(...)" />
-            <marker date="1457105194000" expanded="true" signature="4509:4952" ph="/**...*/" />
-            <marker date="1457105194000" expanded="true" signature="5079:5254" ph="..." />
-            <marker date="1457105194000" expanded="true" signature="5090:5254" ph="(...)" />
-            <marker date="1457105194000" expanded="true" signature="5258:5560" ph="/**...*/" />
-            <marker date="1457105194000" expanded="true" signature="5690:5901" ph="/**...*/" />
-            <marker date="1457105194000" expanded="true" signature="5932:6214" ph="/**...*/" />
-            <marker date="1457105194000" expanded="true" signature="6268:6818" ph="/**...*/" />
-            <marker date="1457105194000" expanded="true" signature="6853:7116" ph="{...}" />
-            <marker date="1457105194000" expanded="true" signature="6942:7099" ph="(...)" />
-            <marker date="1457105194000" expanded="true" signature="7149:7292" ph="/**...*/" />
-            <marker date="1457105194000" expanded="true" signature="7396:8033" ph="/**...*/" />
-            <marker date="1457105194000" expanded="true" signature="8141:8389" ph="{...}" />
-            <marker date="1457105194000" expanded="true" signature="8239:8372" ph="(...)" />
-            <marker date="1457105194000" expanded="true" signature="8393:8636" ph="/**...*/" />
-            <marker date="1457105194000" expanded="true" signature="8711:8825" ph="{...}" />
-            <marker date="1457105194000" expanded="true" signature="8829:9136" ph="/**...*/" />
-            <marker date="1457105194000" expanded="true" signature="9223:9715" ph="{...}" />
-            <marker date="1457105194000" expanded="true" signature="9315:9698" ph="(...)" />
-            <marker date="1457105194000" expanded="true" signature="9408:9692" ph="..." />
-            <marker date="1457105194000" expanded="true" signature="9423:9650" ph="{...}" />
-            <marker date="1457105194000" expanded="true" signature="9719:10363" ph="/**...*/" />
-            <marker date="1457105194000" expanded="true" signature="10471:10587" ph="..." />
-            <marker date="1457105194000" expanded="true" signature="10475:10587" ph="(...)" />
-            <marker date="1457105194000" expanded="true" signature="10591:10628" ph="/**...*/" />
-            <marker date="1457105194000" expanded="true" signature="10742:11491" ph="/**...*/" />
-            <marker date="1457105194000" expanded="true" signature="11590:11733" ph="..." />
-            <marker date="1457105194000" expanded="true" signature="11594:11733" ph="(...)" />
-            <marker date="1457105194000" expanded="true" signature="11737:12248" ph="/**...*/" />
-            <marker date="1457105194000" expanded="true" signature="12356:12449" ph="{...}" />
-            <marker date="1457105194000" expanded="true" signature="12453:12911" ph="/**...*/" />
-            <marker date="1457105194000" expanded="true" signature="13031:13288" ph="{...}" />
-            <marker date="1457105194000" expanded="true" signature="13073:13271" ph="(...)" />
-            <marker date="1457105194000" expanded="true" signature="13292:13637" ph="/**...*/" />
-            <marker date="1457105194000" expanded="true" signature="13686:13953" ph="{...}" />
-            <marker date="1457105194000" expanded="true" signature="13772:13936" ph="(...)" />
-            <marker date="1457105194000" expanded="true" signature="13957:14537" ph="/**...*/" />
-            <marker date="1457105194000" expanded="true" signature="14593:14912" ph="{...}" />
-            <marker date="1457105194000" expanded="true" signature="14674:14895" ph="(...)" />
-            <marker date="1457105194000" expanded="true" signature="14747:14889" ph="..." />
-            <marker date="1457105194000" expanded="true" signature="14763:14889" ph="{...}" />
-            <marker date="1457105194000" expanded="true" signature="14916:15079" ph="/**...*/" />
-            <marker date="1457105194000" expanded="true" signature="15135:15370" ph="{...}" />
-            <marker date="1457105194000" expanded="true" signature="15197:15285" ph="{...}" />
-            <marker date="1457105194000" expanded="true" signature="15374:16150" ph="/**...*/" />
-            <marker date="1457105194000" expanded="true" signature="16250:16413" ph="{...}" />
-            <marker date="1457105194000" expanded="true" signature="16292:16396" ph="(...)" />
-            <marker date="1457105194000" expanded="true" signature="16420:16555" ph="/**...*/" />
-            <marker date="1457105194000" expanded="true" signature="16570:23401" ph="{...}" />
-            <marker date="1457105194000" expanded="true" signature="16632:17101" ph="(...)" />
-            <marker date="1457105194000" expanded="true" signature="17105:17299" ph="/**...*/" />
-            <marker date="1457105194000" expanded="true" signature="17387:17578" ph="/**...*/" />
-            <marker date="1457105194000" expanded="true" signature="17660:17865" ph="/**...*/" />
-            <marker date="1457105194000" expanded="true" signature="17946:18383" ph="/**...*/" />
-            <marker date="1457105194000" expanded="true" signature="18507:18697" ph="/**...*/" />
-            <marker date="1457105194000" expanded="true" signature="18857:19005" ph="{...}" />
-            <marker date="1457105194000" expanded="true" signature="18896:18959" ph="(...)" />
-            <marker date="1457105194000" expanded="true" signature="19009:19106" ph="/**...*/" />
-            <marker date="1457105194000" expanded="true" signature="19220:19370" ph="{...}" />
-            <marker date="1457105194000" expanded="true" signature="19374:19501" ph="/**...*/" />
-            <marker date="1457105194000" expanded="true" signature="19690:20263" ph="{...}" />
-            <marker date="1457105194000" expanded="true" signature="19801:20259" ph="{...}" />
-            <marker date="1457105194000" expanded="true" signature="19959:20063" ph="{...}" />
-            <marker date="1457105194000" expanded="true" signature="20120:20174" ph="{...}" />
-            <marker date="1457105194000" expanded="true" signature="20267:20693" ph="/**...*/" />
-            <marker date="1457105194000" expanded="true" signature="20850:20950" ph="{...}" />
-            <marker date="1457105194000" expanded="true" signature="20954:21202" ph="/**...*/" />
-            <marker date="1457105194000" expanded="true" signature="21331:21484" ph="{...}" />
-            <marker date="1457105194000" expanded="true" signature="21488:21840" ph="/**...*/" />
-            <marker date="1457105194000" expanded="true" signature="22011:22143" ph="..." />
-            <marker date="1457105194000" expanded="true" signature="22044:22127" ph="(...)" />
-            <marker date="1457105194000" expanded="true" signature="22147:23070" ph="/.../" />
-            <marker date="1457105194000" expanded="true" signature="23172:23399" ph="{...}" />
-            <marker date="1457105194000" expanded="true" signature="23403:23743" ph="/**...*/" />
-            <marker date="1457105194000" expanded="true" signature="23769:23792" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/org/shopping/dal/impl/SlickUserDAL.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="31" column="4" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
-          <folding>
-            <marker date="1473613979960" expanded="false" signature="38:352" ph="..." />
-            <marker date="1473613979960" expanded="true" signature="533:1998" ph="{...}" />
-            <marker date="1473613979960" expanded="true" signature="658:707" ph="{...}" />
-            <marker date="1473613979960" expanded="true" signature="784:898" ph="..." />
-            <marker date="1473613979960" expanded="true" signature="826:898" ph="(...)" />
-            <marker date="1473613979960" expanded="true" signature="960:1054" ph="{...}" />
-            <marker date="1473613979960" expanded="true" signature="1109:1216" ph="{...}" />
-            <marker date="1473613979960" expanded="true" signature="1152:1212" ph="(...)" />
-            <marker date="1473613979960" expanded="true" signature="1269:1315" ph="{...}" />
-            <marker date="1473613979960" expanded="true" signature="1383:1509" ph="{...}" />
-            <marker date="1473613979960" expanded="true" signature="1434:1505" ph="(...)" />
-            <marker date="1473613979960" expanded="true" signature="1601:1996" ph="{...}" />
-          </folding>
+        <state relative-caret-position="561">
+          <caret line="33" column="4" selection-start-line="33" selection-start-column="4" selection-end-line="33" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/org/shopping/dal/impl/SlickOauth2DAL.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="30" column="30" selection-start-line="30" selection-start-column="30" selection-end-line="30" selection-end-column="30" />
-          <folding>
-            <marker date="1473609155271" expanded="false" signature="38:448" ph="..." />
-            <marker date="1473609155271" expanded="true" signature="617:5747" ph="{...}" />
-            <marker date="1473609155271" expanded="true" signature="780:1110" ph="{...}" />
-            <marker date="1473609155271" expanded="true" signature="1196:1321" ph="{...}" />
-            <marker date="1473609155271" expanded="true" signature="1426:2022" ph="{...}" />
-            <marker date="1473609155271" expanded="true" signature="1884:2018" ph="{...}" />
-            <marker date="1473609155271" expanded="true" signature="2138:2512" ph="{...}" />
-            <marker date="1473609155271" expanded="true" signature="2168:2326" ph="/.../" />
-            <marker date="1473609155271" expanded="true" signature="2628:2946" ph="{...}" />
-            <marker date="1473609155271" expanded="true" signature="2780:2942" ph="(...)" />
-            <marker date="1473609155271" expanded="true" signature="2810:2936" ph="(...)" />
-            <marker date="1473609155271" expanded="true" signature="3074:3111" ph="{...}" />
-            <marker date="1473609155271" expanded="true" signature="3211:3482" ph="{...}" />
-            <marker date="1473609155271" expanded="true" signature="3316:3478" ph="(...)" />
-            <marker date="1473609155271" expanded="true" signature="3346:3472" ph="(...)" />
-            <marker date="1473609155271" expanded="true" signature="3547:3608" ph="{...}" />
-            <marker date="1473609155271" expanded="true" signature="3690:3770" ph="{...}" />
-            <marker date="1473609155271" expanded="true" signature="3850:3931" ph="{...}" />
-            <marker date="1473609155271" expanded="true" signature="4059:4285" ph="..." />
-            <marker date="1473609155271" expanded="true" signature="4105:4285" ph="{...}" />
-            <marker date="1473609155271" expanded="true" signature="4129:4239" ph="..." />
-            <marker date="1473609155271" expanded="true" signature="4155:4239" ph="{...}" />
-            <marker date="1473609155271" expanded="true" signature="4389:4611" ph="..." />
-            <marker date="1473609155271" expanded="true" signature="4428:4611" ph="{...}" />
-            <marker date="1473609155271" expanded="true" signature="4452:4565" ph="..." />
-            <marker date="1473609155271" expanded="true" signature="4478:4565" ph="{...}" />
-            <marker date="1473609155271" expanded="true" signature="4683:4894" ph="{...}" />
-            <marker date="1473609155271" expanded="true" signature="4771:4890" ph="(...)" />
-            <marker date="1473609155271" expanded="true" signature="4982:5203" ph="..." />
-            <marker date="1473609155271" expanded="true" signature="5009:5203" ph="{...}" />
-            <marker date="1473609155271" expanded="true" signature="5041:5157" ph="..." />
-            <marker date="1473609155271" expanded="true" signature="5067:5157" ph="{...}" />
-            <marker date="1473609155271" expanded="true" signature="5319:5567" ph="..." />
-            <marker date="1473609155271" expanded="true" signature="5337:5567" ph="(...)" />
-            <marker date="1473609155271" expanded="true" signature="5343:5554" ph="/.../" />
-            <marker date="1473609155271" expanded="true" signature="5629:5744" ph="{...}" />
-          </folding>
+        <state relative-caret-position="507">
+          <caret line="115" column="48" selection-start-line="115" selection-start-column="48" selection-end-line="115" selection-end-column="48" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/org/shopping/modules/core/impl/DefaultUserService.scala">
+    <entry file="jar://$USER_HOME$/.ivy2/cache/com.nulab-inc/scala-oauth2-core_2.11/srcs/scala-oauth2-core_2.11-0.15.0-sources.jar!/scalaoauth2/provider/ProtectedResource.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
+        <state relative-caret-position="289">
           <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/org/shopping/modules/core/ListService.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/org/shopping/controllers/ListController.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="11" column="64" selection-start-line="11" selection-start-column="64" selection-end-line="11" selection-end-column="64" />
           <folding>
-            <marker date="1475588549508" expanded="false" signature="47:417" ph="..." />
-            <marker date="1475588549508" expanded="true" signature="512:3195" ph="{...}" />
-            <marker date="1475588549508" expanded="true" signature="583:1281" ph="{...}" />
-            <marker date="1475588549508" expanded="true" signature="708:1277" ph="{...}" />
-            <marker date="1475588549508" expanded="true" signature="758:830" ph="{...}" />
-            <marker date="1475588549508" expanded="true" signature="836:1271" ph="{...}" />
-            <marker date="1475588549508" expanded="true" signature="1122:1261" ph="{...}" />
-            <marker date="1475588549508" expanded="true" signature="1157:1249" ph="..." />
-            <marker date="1475588549508" expanded="true" signature="1385:1569" ph="{...}" />
-            <marker date="1475588549508" expanded="true" signature="1463:1565" ph="{...}" />
-            <marker date="1475588549508" expanded="true" signature="1629:1894" ph="{...}" />
-            <marker date="1475588549508" expanded="true" signature="1675:1734" ph="{...}" />
-            <marker date="1475588549508" expanded="true" signature="1743:1812" ph="{...}" />
-            <marker date="1475588549508" expanded="true" signature="1968:2407" ph="{...}" />
-            <marker date="1475588549508" expanded="true" signature="2062:2254" ph="{...}" />
-            <marker date="1475588549508" expanded="true" signature="2473:2905" ph="{...}" />
-            <marker date="1475588549508" expanded="true" signature="2678:2816" ph="{...}" />
-            <marker date="1475588549508" expanded="true" signature="2832:2900" ph="{...}" />
-            <marker date="1475588549508" expanded="true" signature="2999:3192" ph="{...}" />
-            <marker date="1475588549508" expanded="true" signature="3123:3188" ph="(...)" />
+            <marker date="1475846232958" expanded="false" signature="42:262" ph="..." />
+            <marker date="1475846232958" expanded="true" signature="355:3196" ph="{...}" />
+            <marker date="1475846232958" expanded="true" signature="379:973" ph="..." />
+            <marker date="1475846232958" expanded="true" signature="392:973" ph="(...)" />
+            <marker date="1475846232958" expanded="true" signature="448:915" ph="(...)" />
+            <marker date="1475846232958" expanded="true" signature="492:829" ph="(...)" />
+            <marker date="1475846232958" expanded="true" signature="1006:1671" ph="..." />
+            <marker date="1475846232958" expanded="true" signature="1019:1671" ph="(...)" />
+            <marker date="1475846232958" expanded="true" signature="1075:1613" ph="(...)" />
+            <marker date="1475846232958" expanded="true" signature="1119:1527" ph="(...)" />
+            <marker date="1475846232958" expanded="true" signature="1739:2026" ph="..." />
+            <marker date="1475846232958" expanded="true" signature="1752:2026" ph="(...)" />
+            <marker date="1475846232958" expanded="true" signature="1814:1941" ph="(...)" />
+            <marker date="1475846232958" expanded="true" signature="2065:2692" ph="..." />
+            <marker date="1475846232958" expanded="true" signature="2078:2692" ph="(...)" />
+            <marker date="1475846232958" expanded="true" signature="2134:2634" ph="(...)" />
+            <marker date="1475846232958" expanded="true" signature="2178:2548" ph="(...)" />
+            <marker date="1475846232958" expanded="true" signature="2731:2982" ph="..." />
+            <marker date="1475846232958" expanded="true" signature="2744:2982" ph="(...)" />
+            <marker date="1475846232958" expanded="true" signature="2800:2906" ph="(...)" />
+            <marker date="1475846232958" expanded="true" signature="3023:3192" ph="..." />
+            <marker date="1475846232958" expanded="true" signature="3036:3192" ph="(...)" />
+            <marker date="1475846232958" expanded="true" signature="3082:3186" ph="(...)" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/org/shopping/controllers/UserController.scala">
+    <entry file="file://$PROJECT_DIR$/app/org/shopping/controllers/BaseController.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="46" column="33" selection-start-line="46" selection-start-column="33" selection-end-line="46" selection-end-column="33" />
+        <state relative-caret-position="102">
+          <caret line="16" column="20" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/org/shopping/dto/ListDTO.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/org/shopping/dto/JsonDTOFormats.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding>
+            <marker date="1475846350375" expanded="false" signature="33:94" ph="..." />
+            <marker date="1475846350375" expanded="true" signature="158:1373" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/org/shopping/modules/core/impl/DefaultListService.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="53" column="62" selection-start-line="53" selection-start-column="62" selection-end-line="53" selection-end-column="62" />
           <folding />
         </state>
       </provider>

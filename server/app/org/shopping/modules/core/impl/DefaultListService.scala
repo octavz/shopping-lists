@@ -15,7 +15,7 @@ import scala.language.postfixOps
 class DefaultListService @Inject()(dalUser: UserDAL, dalList: ListDAL) extends ListService {
 
   override def insertList(dto: ListDTO): Result[ListDTO] = {
-    val list = dto.toModel()
+    val list = dto.toModel
     val f = dalList.insertList(list) map (p => resultSync(new ListDTO(p)))
     f recover { case e: Throwable => resultExSync(e, "insertList") }
   }
@@ -51,7 +51,7 @@ class DefaultListService @Inject()(dalUser: UserDAL, dalList: ListDAL) extends L
           if (!res) throw new Exception("Not valid")
           dalList.getListById(dto.id.get) flatMap {
             case None => resultError(Status.NOT_FOUND, "List not found")
-            case Some(list) => dalList.updateLists(dto.toModel()) map { p =>
+            case Some(list) => dalList.updateLists(dto.toModel) map { p =>
               resultSync(new ListDTO(p))
             }
           }

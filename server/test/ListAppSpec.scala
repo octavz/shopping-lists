@@ -82,7 +82,7 @@ class ListAppSpec extends PlaySpecification with Mockito {
 
     "get all lists" in {
       val module = app()
-      val p = ListDTO(id = guido, name = guid, desc = guido, userId = Some("userId"))
+      val p = ListDTO(id = guido, name = guid, description = guido, userId = Some("userId"))
       module.listModule.getUserLists("id", 0, 10) returns result(ListsDTO(items = List(p), total = 1))
       running(module.app) {
         val page = route(module.app, FakeRequest(GET, "/api/user/id/lists?offset=0&count=10").withHeaders("Authorization" -> "OAuth token"))
@@ -96,21 +96,21 @@ class ListAppSpec extends PlaySpecification with Mockito {
         arr.size === 1
         arr.head \ "id" === JsDefined(JsString(p.id.get))
         arr.head \ "name" === JsDefined(JsString(p.name))
-        arr.head \ "desc" === JsDefined(JsString(p.desc.get))
+        arr.head \ "desc" === JsDefined(JsString(p.description.get))
       }
 
     }
 
     "update lists" in {
       val module = app()
-      val p = ListDTO(id = guido, name = guid, desc = guido, userId = Some("userId"))
+      val p = ListDTO(id = guido, name = guid, description = guido, userId = Some("userId"))
       module.listModule.updateList(any) returns result(p)
       running(module.app) {
         val page = route(module.app, FakeRequest(PUT, "/api/list/id").withHeaders("Authorization" -> "OAuth token").withJsonBody(Json.parse(
           s"""
                 {
                 "name":"${p.name}",
-                "desc":"${p.desc}"
+                "desc":"${p.description}"
                 }
               """)))
         Await.ready(page.get, Duration.Inf)
@@ -121,7 +121,7 @@ class ListAppSpec extends PlaySpecification with Mockito {
         there was one(module.listModule).setAuth(authInfo)
         there was one(module.listModule).updateList(any)
         json \ "name" === JsDefined(JsString(p.name))
-        json \ "desc" === JsDefined(JsString(p.desc.get))
+        json \ "desc" === JsDefined(JsString(p.description.get))
       }
     }
 

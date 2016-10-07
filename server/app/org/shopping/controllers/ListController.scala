@@ -18,7 +18,7 @@ class ListController @Inject()(listModule: ListService) extends BaseController(l
           authorize {
             implicit authInfo =>
               try {
-                val dto = json.as[ListDTO]
+                val dto = json.as[ListDTO].copy(userId = Some(authInfo.user.id))
                 listModule.insertList(dto) map (responseOk(_))
               } catch {
                 case je: JsResultException => asyncBadRequest(je.errors.mkString(","))

@@ -19,6 +19,7 @@
       </profile>
     </annotationProcessing>
   </component>
+  <component name="CopyrightManager" default="" />
   <component name="Encoding">
     <file url="PROJECT" charset="UTF-8" />
   </component>
@@ -209,6 +210,7 @@
     <library name="SBT: aopalliance:aopalliance:1.0:jar">
       <CLASSES>
         <root url="jar://$USER_HOME$/Apps/activator-1.3.4/repository/aopalliance/aopalliance/1.0/jars/aopalliance.jar!/" />
+        <root url="jar://$USER_HOME$/.ivy2/cache/aopalliance/aopalliance/jars/aopalliance-1.0.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES>
@@ -218,6 +220,7 @@
     <library name="SBT: cglib:cglib-nodep:2.1_3:jar">
       <CLASSES>
         <root url="jar://$USER_HOME$/Apps/activator-1.3.4/repository/cglib/cglib-nodep/2.1_3/jars/cglib-nodep.jar!/" />
+        <root url="jar://$USER_HOME$/.ivy2/cache/cglib/cglib-nodep/jars/cglib-nodep-2.1_3.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES>
@@ -380,6 +383,7 @@
     <library name="SBT: com.novocode:junit-interface:0.11:jar">
       <CLASSES>
         <root url="jar://$USER_HOME$/Apps/activator-1.3.4/repository/com.novocode/junit-interface/0.11/jars/junit-interface.jar!/" />
+        <root url="jar://$USER_HOME$/.ivy2/cache/com.novocode/junit-interface/jars/junit-interface-0.11.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES>
@@ -740,6 +744,7 @@
     <library name="SBT: commons-io:commons-io:2.4:jar">
       <CLASSES>
         <root url="jar://$USER_HOME$/Apps/activator-1.3.4/repository/commons-io/commons-io/2.4/jars/commons-io.jar!/" />
+        <root url="jar://$USER_HOME$/.ivy2/cache/commons-io/commons-io/jars/commons-io-2.4.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES>
@@ -837,6 +842,7 @@
     <library name="SBT: javax.inject:javax.inject:1:jar">
       <CLASSES>
         <root url="jar://$USER_HOME$/Apps/activator-1.3.4/repository/javax.inject/javax.inject/1/jars/javax.inject.jar!/" />
+        <root url="jar://$USER_HOME$/.ivy2/cache/javax.inject/javax.inject/jars/javax.inject-1.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES>
@@ -846,6 +852,7 @@
     <library name="SBT: javax.transaction:jta:1.1:jar">
       <CLASSES>
         <root url="jar://$USER_HOME$/Apps/activator-1.3.4/repository/javax.transaction/jta/1.1/jars/jta.jar!/" />
+        <root url="jar://$USER_HOME$/.ivy2/cache/javax.transaction/jta/jars/jta-1.1.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES>
@@ -855,6 +862,7 @@
     <library name="SBT: javax.validation:validation-api:1.1.0.Final:jar">
       <CLASSES>
         <root url="jar://$USER_HOME$/Apps/activator-1.3.4/repository/javax.validation/validation-api/1.1.0.Final/jars/validation-api.jar!/" />
+        <root url="jar://$USER_HOME$/.ivy2/cache/javax.validation/validation-api/jars/validation-api-1.1.0.Final.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES>
@@ -873,6 +881,7 @@
     <library name="SBT: junit:junit:4.12:jar">
       <CLASSES>
         <root url="jar://$USER_HOME$/Apps/activator-1.3.4/repository/junit/junit/4.12/jars/junit.jar!/" />
+        <root url="jar://$USER_HOME$/.ivy2/cache/junit/junit/jars/junit-4.12.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES>
@@ -1062,6 +1071,7 @@
     <library name="SBT: org.hamcrest:hamcrest-core:1.3:jar">
       <CLASSES>
         <root url="jar://$USER_HOME$/Apps/activator-1.3.4/repository/org.hamcrest/hamcrest-core/1.3/jars/hamcrest-core.jar!/" />
+        <root url="jar://$USER_HOME$/.ivy2/cache/org.hamcrest/hamcrest-core/jars/hamcrest-core-1.3.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES>
@@ -1080,6 +1090,7 @@
     <library name="SBT: org.javassist:javassist:3.19.0-GA:jar">
       <CLASSES>
         <root url="jar://$USER_HOME$/Apps/activator-1.3.4/repository/org.javassist/javassist/3.19.0-GA/bundles/javassist.jar!/" />
+        <root url="jar://$USER_HOME$/.ivy2/cache/org.javassist/javassist/bundles/javassist-3.19.0-GA.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES>
@@ -1107,6 +1118,7 @@
     <library name="SBT: org.mockito:mockito-core:1.9.5:jar">
       <CLASSES>
         <root url="jar://$USER_HOME$/Apps/activator-1.3.4/repository/org.mockito/mockito-core/1.9.5/jars/mockito-core.jar!/" />
+        <root url="jar://$USER_HOME$/.ivy2/cache/org.mockito/mockito-core/jars/mockito-core-1.9.5.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES>
@@ -1116,6 +1128,7 @@
     <library name="SBT: org.objenesis:objenesis:1.0:jar">
       <CLASSES>
         <root url="jar://$USER_HOME$/Apps/activator-1.3.4/repository/org.objenesis/objenesis/1.0/jars/objenesis.jar!/" />
+        <root url="jar://$USER_HOME$/.ivy2/cache/org.objenesis/objenesis/jars/objenesis-1.0.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES>
@@ -1134,6 +1147,7 @@
     <library name="SBT: org.reactivestreams:reactive-streams:1.0.0:jar">
       <CLASSES>
         <root url="jar://$USER_HOME$/Apps/activator-1.3.4/repository/org.reactivestreams/reactive-streams/1.0.0/jars/reactive-streams.jar!/" />
+        <root url="jar://$USER_HOME$/.ivy2/cache/org.reactivestreams/reactive-streams/jars/reactive-streams-1.0.0.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES>
@@ -1231,6 +1245,7 @@
     <library name="SBT: org.scala-stm:scala-stm_2.11:0.7:jar">
       <CLASSES>
         <root url="jar://$USER_HOME$/Apps/activator-1.3.4/repository/org.scala-stm/scala-stm_2.11/0.7/jars/scala-stm_2.11.jar!/" />
+        <root url="jar://$USER_HOME$/.ivy2/cache/org.scala-stm/scala-stm_2.11/jars/scala-stm_2.11-0.7.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES>
@@ -1490,6 +1505,7 @@
     <library name="SBT: org.w3c.css:sac:1.3:jar">
       <CLASSES>
         <root url="jar://$USER_HOME$/Apps/activator-1.3.4/repository/org.w3c.css/sac/1.3/jars/sac.jar!/" />
+        <root url="jar://$USER_HOME$/.ivy2/cache/org.w3c.css/sac/jars/sac-1.3.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES>
@@ -1499,6 +1515,7 @@
     <library name="SBT: org.webbitserver:webbit:0.4.14:jar">
       <CLASSES>
         <root url="jar://$USER_HOME$/Apps/activator-1.3.4/repository/org.webbitserver/webbit/0.4.14/jars/webbit.jar!/" />
+        <root url="jar://$USER_HOME$/.ivy2/cache/org.webbitserver/webbit/jars/webbit-0.4.14.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES>
@@ -1542,6 +1559,7 @@
     <library name="SBT: xerces:xercesImpl:2.11.0:jar">
       <CLASSES>
         <root url="jar://$USER_HOME$/Apps/activator-1.3.4/repository/xerces/xercesImpl/2.11.0/jars/xercesImpl.jar!/" />
+        <root url="jar://$USER_HOME$/.ivy2/cache/xerces/xercesImpl/jars/xercesImpl-2.11.0.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES>
@@ -1551,6 +1569,7 @@
     <library name="SBT: xml-apis:xml-apis:1.4.01:jar">
       <CLASSES>
         <root url="jar://$USER_HOME$/Apps/activator-1.3.4/repository/xml-apis/xml-apis/1.4.01/jars/xml-apis.jar!/" />
+        <root url="jar://$USER_HOME$/.ivy2/cache/xml-apis/xml-apis/jars/xml-apis-1.4.01.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES>

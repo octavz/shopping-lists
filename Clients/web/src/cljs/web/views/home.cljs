@@ -7,6 +7,7 @@
   [:div [:h2 "Welcome to web"]
    [:div [:a {:href "/#login"} "go to login page"]]
    [:div [:a {:href "/#register"} "go to register page"]]
+   [:div [:a {:href "/#main"} "go to main page"]]
    [:div [:a {:href "/#about"} "go to about page"]] ])
 
 (defn about-page []

@@ -6,3 +6,5 @@ server/.idea
 server/project/project
 Clients/Mobile/CommonBL/bin/
 Clients/Mobile/CommonBL/obj/
+Clients/web/.idea
+Clients/web/web.iml

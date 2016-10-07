@@ -44,7 +44,7 @@ class ListModuleSpec extends Specification with Mockito {
 
     "implement insertList and call dal" in {
       val m = module()
-      val dto = ListDTO(id = guido, name = guid, desc = guido, userId = Some("userId"))
+      val dto = ListDTO(id = guido, name = guid, description = guido, userId = Some("userId"))
 
       m.dalList.insertList(any[SList]) answers (a => dal(a.asInstanceOf[SList]))
 
@@ -55,7 +55,7 @@ class ListModuleSpec extends Specification with Mockito {
 
     "implement updateList and call dal" in {
       val m = module()
-      val dto = ListDTO(id = guido, name = guid, desc = guido, userId = Some("userId"))
+      val dto = ListDTO(id = guido, name = guid, description = guido, userId = Some("userId"))
 
       m.dalList.updateLists(any[SList]) answers (a => dal(a.asInstanceOf[SList]))
       m.dalList.getListById(any) returns dal(Some(genList(authInfo.user.id)))
@@ -68,7 +68,7 @@ class ListModuleSpec extends Specification with Mockito {
 
     "return right error when dal crashes" in {
       val m = module()
-      val dto = ListDTO(id = guido, name = guid, desc = guido, userId = Some("userId"))
+      val dto = ListDTO(id = guido, name = guid, description = guido, userId = Some("userId"))
 
       m.dalList.insertList(any[SList]) returns Future.failed(new Exception("test"))
       val s = Await.result(m.listModule.insertList(dto), Duration.Inf)
@@ -99,7 +99,7 @@ class ListModuleSpec extends Specification with Mockito {
       ret.items.size === 1
       ret.items.head.id.get === p1.id
       ret.items.head.name === p1.name
-      ret.items.head.desc === p1.description
+      ret.items.head.description === p1.description
     }
 
     "get user list should handle dal errors" in {

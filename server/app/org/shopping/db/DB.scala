@@ -180,7 +180,7 @@ trait DB {
   lazy val UserStatuses = new TableQuery(tag => new UserStatuses(tag))
 
   class ListProducts(_tableTag: Tag) extends Table[ListItem](_tableTag, "list_products") {
-    def * = (listId, productId, userId, description, status, created, updated) <> (ListItem.tupled, ListItem.unapply)
+    def * = (listId, productId, userId, description, status, quantity, created, updated) <> (ListItem.tupled, ListItem.unapply)
 
     val listId = column[String]("list_id", O.PrimaryKey, O.Length(40, varying = true))
     val productId = column[String]("product_id", O.PrimaryKey, O.Length(40, varying = true))
@@ -188,6 +188,7 @@ trait DB {
     val userId = column[String]("user_id", O.Length(40, varying = true))
     val description = column[Option[String]]("description", O.Default(None))
     val status = column[Short]("status", O.Default(0))
+    val quantity = column[Int]("quantity", O.Default(0))
     val created = column[java.sql.Timestamp]("created")
     val updated = column[java.sql.Timestamp]("updated")
 
@@ -231,7 +232,7 @@ case class List(id: String, userId: String, name: String, description: Option[St
 
 case class Product(id: String, userId: String, subject: String, description: Option[String] = None, status: Short = 0, created: java.sql.Timestamp, updated: java.sql.Timestamp)
 
-case class ListItem(listId: String, productId: String, userId: String, description: Option[String], status: Short = 0, created: java.sql.Timestamp, updated: java.sql.Timestamp)
+case class ListItem(listId: String, productId: String, userId: String, description: Option[String], status: Short = 0, quantity: Int, created: java.sql.Timestamp, updated: java.sql.Timestamp)
 
 case class User(id: String, login: String, nick: String, provider: Int = 0, providerToken: Option[String] = None, lastLogin: Option[java.sql.Timestamp] = None, status: Int = 0, password: String = "", created: java.sql.Timestamp, updated: java.sql.Timestamp)
 
