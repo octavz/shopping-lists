@@ -12,4 +12,7 @@
   <string name="NoAccount">No account yet? Create one</string>
   <string name="LoginButton">Login</string>
   <string name="CreateAccountButton">Create Account</string>
+  <string name="DeleteList">Are you sure that you want to delete this list?</string>
+  <string name="Yes">Yes</string>
+  <string name="No">No</string>
 </resources>

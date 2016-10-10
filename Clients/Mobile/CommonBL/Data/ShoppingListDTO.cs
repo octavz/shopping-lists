@@ -8,6 +8,17 @@ namespace CommonBL.Data
 {
     public class ShoppingListDTO
     {
+
+        public ShoppingListDTO()
+        {
+
+        }
+
+        public int Id { get; set; }
+
         public string ListName { get; set; }
+
+        public DateTime ListDate { get; set; }
+        
     }
 }
