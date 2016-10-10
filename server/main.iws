@@ -1,109 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7e124409-a1c1-4df7-85d3-21df6c0107f0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Clients/web/src/cljs/web/views/main.cljs" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$0ba39bd89caa9dc3fb39$.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$0ba39bd89caa9dc3fb39.cache" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$0ba39bd89caa9dc3fb39.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$33bb67fe8a247bd0cc65$$anonfun$$sbtdef$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$33bb67fe8a247bd0cc65$.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$33bb67fe8a247bd0cc65.cache" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$33bb67fe8a247bd0cc65.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$41878c1fe1892061bef5$$anonfun$$sbtdef$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$41878c1fe1892061bef5$.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$41878c1fe1892061bef5.cache" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$41878c1fe1892061bef5.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$4808195e36bab32c4411$.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$4808195e36bab32c4411.cache" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$4808195e36bab32c4411.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$5920fcf45c1ff882a061$.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$5920fcf45c1ff882a061.cache" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$5920fcf45c1ff882a061.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$66625264de8878fb3b0c$$anonfun$$sbtdef$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$66625264de8878fb3b0c$.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$66625264de8878fb3b0c.cache" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$66625264de8878fb3b0c.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$71431d9e88cce0fc09fe$$anonfun$$sbtdef$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$71431d9e88cce0fc09fe$.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$71431d9e88cce0fc09fe.cache" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$71431d9e88cce0fc09fe.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$93b571f5ddb4ea1683fa$$anonfun$$sbtdef$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$93b571f5ddb4ea1683fa$.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$93b571f5ddb4ea1683fa.cache" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$93b571f5ddb4ea1683fa.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$a76be03cecc393c4a6d7$$anonfun$$sbtdef$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$a76be03cecc393c4a6d7$.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$a76be03cecc393c4a6d7.cache" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$a76be03cecc393c4a6d7.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$f401f3d2fe25e57cdb37$.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$f401f3d2fe25e57cdb37.cache" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/project/target/config-classes/$f401f3d2fe25e57cdb37.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$18acd949442108be3eed$$anonfun$$sbtdef$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$18acd949442108be3eed$.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$18acd949442108be3eed.cache" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$18acd949442108be3eed.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$7618a892f02e72ee5068$$anonfun$$sbtdef$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$7618a892f02e72ee5068$.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$7618a892f02e72ee5068.cache" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$7618a892f02e72ee5068.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$973038ae952b15010d4c$$anonfun$main$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$973038ae952b15010d4c$$anonfun$main$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$973038ae952b15010d4c$$anonfun$main$3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$973038ae952b15010d4c$$anonfun$main$4.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$973038ae952b15010d4c$.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$973038ae952b15010d4c.cache" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$973038ae952b15010d4c.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$fb9828b041ee3d171b7b$$anonfun$$sbtdef$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$fb9828b041ee3d171b7b$.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$fb9828b041ee3d171b7b.cache" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/config-classes/$fb9828b041ee3d171b7b.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project/target/resolution-cache/reports/default-server-build-ensime-internal.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/streams/$global/dependencyPositions/$global/streams/update_cache_2.10/input_dsp" afterPath="$PROJECT_DIR$/project/target/streams/$global/dependencyPositions/$global/streams/update_cache_2.10/input_dsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/streams/$global/dependencyPositions/$global/streams/update_cache_2.10/output_dsp" afterPath="$PROJECT_DIR$/project/target/streams/$global/dependencyPositions/$global/streams/update_cache_2.10/output_dsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/streams/$global/update/$global/streams/update_cache_2.10/inputs" afterPath="$PROJECT_DIR$/project/target/streams/$global/update/$global/streams/update_cache_2.10/inputs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/streams/$global/update/$global/streams/update_cache_2.10/output" afterPath="$PROJECT_DIR$/project/target/streams/$global/update/$global/streams/update_cache_2.10/output" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Clients/web/resources/public/css/site.css" afterPath="$PROJECT_DIR$/../Clients/web/resources/public/css/site.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Clients/web/src/cljs/web/core.cljs" afterPath="$PROJECT_DIR$/../Clients/web/src/cljs/web/core.cljs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Clients/web/src/cljs/web/views/home.cljs" afterPath="$PROJECT_DIR$/../Clients/web/src/cljs/web/views/home.cljs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Clients/web/src/cljs/web/views/register.cljs" afterPath="$PROJECT_DIR$/../Clients/web/src/cljs/web/views/register.cljs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/org/shopping/controllers/ListController.scala" afterPath="$PROJECT_DIR$/app/org/shopping/controllers/ListController.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/org/shopping/db/DB.scala" afterPath="$PROJECT_DIR$/app/org/shopping/db/DB.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/org/shopping/dto/JsonDTOFormats.scala" afterPath="$PROJECT_DIR$/app/org/shopping/dto/JsonDTOFormats.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/org/shopping/dto/ListDTO.scala" afterPath="$PROJECT_DIR$/app/org/shopping/dto/ListDTO.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/org/shopping/dto/ListItemDTO.scala" afterPath="$PROJECT_DIR$/app/org/shopping/dto/ListItemDTO.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/org/shopping/modules/core/impl/DefaultListService.scala" afterPath="$PROJECT_DIR$/app/org/shopping/modules/core/impl/DefaultListService.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conf/evolutions/default/1.sql" afterPath="$PROJECT_DIR$/conf/evolutions/default/1.sql" />
+    <list default="true" id="7e124409-a1c1-4df7-85d3-21df6c0107f0" name="Default" comment="k">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.ipr" afterPath="$PROJECT_DIR$/main.ipr" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.iws" afterPath="$PROJECT_DIR$/main.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/resolution-cache/default/server-build/scala_2.10/sbt_0.13/0.1-SNAPSHOT/resolved.xml.properties" afterPath="$PROJECT_DIR$/project/target/resolution-cache/default/server-build/scala_2.10/sbt_0.13/0.1-SNAPSHOT/resolved.xml.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/resolution-cache/default/server-build/scala_2.10/sbt_0.13/0.1-SNAPSHOT/resolved.xml.xml" afterPath="$PROJECT_DIR$/project/target/resolution-cache/default/server-build/scala_2.10/sbt_0.13/0.1-SNAPSHOT/resolved.xml.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/resolution-cache/reports/default-server-build-compile-internal.xml" afterPath="$PROJECT_DIR$/project/target/resolution-cache/reports/default-server-build-compile-internal.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/resolution-cache/reports/default-server-build-compile.xml" afterPath="$PROJECT_DIR$/project/target/resolution-cache/reports/default-server-build-compile.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/resolution-cache/reports/default-server-build-docs.xml" afterPath="$PROJECT_DIR$/project/target/resolution-cache/reports/default-server-build-docs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/resolution-cache/reports/default-server-build-optional.xml" afterPath="$PROJECT_DIR$/project/target/resolution-cache/reports/default-server-build-optional.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/resolution-cache/reports/default-server-build-plugin.xml" afterPath="$PROJECT_DIR$/project/target/resolution-cache/reports/default-server-build-plugin.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/resolution-cache/reports/default-server-build-pom.xml" afterPath="$PROJECT_DIR$/project/target/resolution-cache/reports/default-server-build-pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/resolution-cache/reports/default-server-build-provided.xml" afterPath="$PROJECT_DIR$/project/target/resolution-cache/reports/default-server-build-provided.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/resolution-cache/reports/default-server-build-runtime-internal.xml" afterPath="$PROJECT_DIR$/project/target/resolution-cache/reports/default-server-build-runtime-internal.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/resolution-cache/reports/default-server-build-runtime.xml" afterPath="$PROJECT_DIR$/project/target/resolution-cache/reports/default-server-build-runtime.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/resolution-cache/reports/default-server-build-scala-tool.xml" afterPath="$PROJECT_DIR$/project/target/resolution-cache/reports/default-server-build-scala-tool.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/resolution-cache/reports/default-server-build-sources.xml" afterPath="$PROJECT_DIR$/project/target/resolution-cache/reports/default-server-build-sources.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/resolution-cache/reports/default-server-build-test-internal.xml" afterPath="$PROJECT_DIR$/project/target/resolution-cache/reports/default-server-build-test-internal.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/resolution-cache/reports/default-server-build-test.xml" afterPath="$PROJECT_DIR$/project/target/resolution-cache/reports/default-server-build-test.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/streams/$global/update/$global/streams/out" afterPath="$PROJECT_DIR$/project/target/streams/$global/update/$global/streams/out" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/streams/compile/dependencyClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/project/target/streams/compile/dependencyClasspath/$global/streams/export" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/streams/compile/exportedProducts/$global/streams/export" afterPath="$PROJECT_DIR$/project/target/streams/compile/exportedProducts/$global/streams/export" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/streams/compile/externalDependencyClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/project/target/streams/compile/externalDependencyClasspath/$global/streams/export" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/streams/compile/managedClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/project/target/streams/compile/managedClasspath/$global/streams/export" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/streams/runtime/dependencyClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/project/target/streams/runtime/dependencyClasspath/$global/streams/export" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/streams/runtime/exportedProducts/$global/streams/export" afterPath="$PROJECT_DIR$/project/target/streams/runtime/exportedProducts/$global/streams/export" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/streams/runtime/externalDependencyClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/project/target/streams/runtime/externalDependencyClasspath/$global/streams/export" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/streams/runtime/fullClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/project/target/streams/runtime/fullClasspath/$global/streams/export" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/streams/runtime/internalDependencyClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/project/target/streams/runtime/internalDependencyClasspath/$global/streams/export" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project/target/streams/runtime/managedClasspath/$global/streams/export" afterPath="$PROJECT_DIR$/project/target/streams/runtime/managedClasspath/$global/streams/export" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/ListAppSpec.scala" afterPath="$PROJECT_DIR$/test/ListAppSpec.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/ListModuleSpec.scala" afterPath="$PROJECT_DIR$/test/ListModuleSpec.scala" />
     </list>
     <ignored path="main.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -115,6 +15,7 @@
     <ignored path="$PROJECT_DIR$/target/web/" />
     <ignored path="$PROJECT_DIR$/project/project/target/" />
     <ignored path="$PROJECT_DIR$/project/target/" />
+    <ignored path=".idea/dataSources.local.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -135,18 +36,38 @@
     <favorites_list name="main" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="DefaultListService.scala" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/org/shopping/modules/core/impl/DefaultListService.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="731">
-              <caret line="53" column="62" selection-start-line="53" selection-start-column="62" selection-end-line="53" selection-end-column="62" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf>
+          <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/public/client/src/actions/index.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="119">
+                  <caret line="7" column="56" selection-start-line="7" selection-start-column="56" selection-end-line="7" selection-end-column="56" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="mapping.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/public/client/src/reducers/mapping.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="272">
+                  <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+                  <folding>
+                    <element signature="e#0#172#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -171,8 +92,32 @@
         <option value="$PROJECT_DIR$/app/org/shopping/dto/JsonDTOFormats.scala" />
         <option value="$PROJECT_DIR$/app/org/shopping/dto/ListDTO.scala" />
         <option value="$PROJECT_DIR$/app/org/shopping/modules/core/impl/DefaultListService.scala" />
+        <option value="$PROJECT_DIR$/public/client/src/components/Main.js" />
+        <option value="$PROJECT_DIR$/public/client/public/index.html" />
+        <option value="$PROJECT_DIR$/public/client/package.json" />
+        <option value="$PROJECT_DIR$/public/client/src/components/MainSection.js" />
+        <option value="$PROJECT_DIR$/public/client/src/components/Login.js" />
+        <option value="$PROJECT_DIR$/public/client/src/reducers/todos.js" />
+        <option value="$PROJECT_DIR$/public/client/src/reducers/index.js" />
+        <option value="$PROJECT_DIR$/public/client/src/containers/App.js" />
+        <option value="$PROJECT_DIR$/public/client/src/components/TodoTextInput.js" />
+        <option value="$PROJECT_DIR$/public/client/src/components/Header.js" />
+        <option value="$PROJECT_DIR$/public/client/src/components/TodoItem.js" />
+        <option value="$PROJECT_DIR$/public/client/src/components/Lists.js" />
+        <option value="$PROJECT_DIR$/public/client/src/components/ListTextInput.js" />
+        <option value="$PROJECT_DIR$/public/client/src/constants/ActionTypes.js" />
+        <option value="$PROJECT_DIR$/public/client/src/actions/index.js" />
+        <option value="$PROJECT_DIR$/public/client/src/components/Home.js" />
+        <option value="$PROJECT_DIR$/public/client/src/components/ListItem.js" />
+        <option value="$PROJECT_DIR$/public/client/src/reducers/mapping.js" />
       </list>
     </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -183,6 +128,9 @@
   </component>
   <component name="MavenProjectNavigator">
     <treeState />
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/public/client/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="1920" />
@@ -209,22 +157,34 @@
       <hideEmptyPackages />
       <abbreviatePackageNames />
       <autoscrollToSource />
-      <autoscrollFromSource />
+      <autoscrollFromSource ProjectPane="true" />
       <sortByType />
       <manualOrder />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane />
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.tabs" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="js-jscs-nodeInterpreter" value="/usr/bin/node" />
+    <property name="full.screen.before.presentation.mode" value="false" />
+    <property name="nodejs_interpreter_path" value="/usr/bin/node" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/client/src/components" />
+    </key>
   </component>
   <component name="Regex">
     <option name="pos1" value="218" />
@@ -270,6 +230,74 @@
       <option name="PARAMETERS" value="" />
       <module name="" />
       <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="myFilePath" />
+      <option name="GLUE" />
+      <option name="myNameFilter" />
+      <option name="myGeneratedName" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
+      <option name="BCName" value="" />
+      <option name="IOSSimulatorSdkPath" value="" />
+      <option name="adlOptions" value="" />
+      <option name="airProgramParameters" value="" />
+      <option name="appDescriptorForEmulator" value="Android" />
+      <option name="debugTransport" value="USB" />
+      <option name="debuggerSdkRaw" value="BC SDK" />
+      <option name="emulator" value="NexusOne" />
+      <option name="emulatorAdlOptions" value="" />
+      <option name="fastPackaging" value="true" />
+      <option name="fullScreenHeight" value="0" />
+      <option name="fullScreenWidth" value="0" />
+      <option name="launchUrl" value="false" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="/usr/bin/flashplayerdebugger" />
+        </LauncherParameters>
+      </option>
+      <option name="mobileRunTarget" value="Emulator" />
+      <option name="moduleName" value="" />
+      <option name="overriddenMainClass" value="" />
+      <option name="overriddenOutputFileName" value="" />
+      <option name="overrideMainClass" value="false" />
+      <option name="runTrusted" value="true" />
+      <option name="screenDpi" value="0" />
+      <option name="screenHeight" value="0" />
+      <option name="screenWidth" value="0" />
+      <option name="url" value="http://" />
+      <option name="usbDebugPort" value="7936" />
+      <method />
+    </configuration>
+    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" package_name="" scope="Class">
+      <option name="BCName" value="" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="/usr/bin/flashplayerdebugger" />
+        </LauncherParameters>
+      </option>
+      <option name="moduleName" value="" />
+      <option name="trusted" value="true" />
       <method />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
@@ -335,6 +363,9 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -371,6 +402,22 @@
       <setting name="testKind" value="Class" />
       <setting name="showProgressMessages" value="true" />
       <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run-script" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="osgi.bnd.run" factoryName="Run Launcher">
+      <method />
+    </configuration>
+    <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
       <method />
     </configuration>
     <configuration default="true" type="uTestRunConfiguration" factoryName="utest">
@@ -452,8 +499,14 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1475586379191</updated>
+      <workItem from="1476091029752" duration="586000" />
+      <workItem from="1476091636866" duration="16000" />
+      <workItem from="1476091667616" duration="13830000" />
     </task>
     <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="14432000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="24" width="1920" height="1056" extended-state="6" />
@@ -465,30 +518,71 @@
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39920557" sideWeight="0.50208336" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="REPL" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Leiningen" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Mongo Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297769" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15520833" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Regex" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328807" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39920557" sideWeight="0.49791667" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="REPL" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Leiningen" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Mongo Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39920557" sideWeight="0.49791667" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969216" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39920557" sideWeight="0.50208336" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="REPL" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Leiningen" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Mongo Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Regex" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39920557" sideWeight="0.49791667" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="SBT Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="SBT" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297769" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15520833" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.328807" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -541,62 +635,11 @@
           <option name="timeStamp" value="32" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="36" />
+      <option name="time" value="38" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/org/shopping/dto/JsonDTOFormats.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding>
-            <marker date="1475846350375" expanded="false" signature="33:94" ph="..." />
-            <marker date="1475846350375" expanded="true" signature="158:1373" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/org/shopping/controllers/UserController.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="46" column="33" selection-start-line="46" selection-start-column="33" selection-end-line="46" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.sbt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="552">
-          <caret line="24" column="6" selection-start-line="24" selection-start-column="6" selection-end-line="24" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project/plugins.sbt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/conf/application.conf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="439">
-          <caret line="60" column="59" selection-start-line="60" selection-start-column="59" selection-end-line="60" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/org/shopping/config/CORS.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="8" column="39" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.ivy2/cache/com.typesafe.play/play_2.11/srcs/play_2.11-2.5.6-sources.jar!/play/api/http/StandardValues.scala" />
-    <entry file="jar://$USER_HOME$/.ivy2/cache/com.typesafe.play/play_2.11/srcs/play_2.11-2.5.6-sources.jar!/play/api/mvc/Results.scala" />
-    <entry file="jar://$USER_HOME$/.ivy2/cache/com.typesafe.play/play_2.11/srcs/play_2.11-2.5.6-sources.jar!/play/core/Execution.scala" />
-    <entry file="jar://$USER_HOME$/.ivy2/cache/com.typesafe.play/play_2.11/srcs/play_2.11-2.5.6-sources.jar!/play/api/libs/concurrent/Execution.scala" />
-    <entry file="jar://$USER_HOME$/.ivy2/cache/com.typesafe.play/play-streams_2.11/srcs/play-streams_2.11-2.5.6-sources.jar!/play/api/libs/streams/Accumulator.scala" />
     <entry file="jar://$USER_HOME$/.ivy2/cache/com.typesafe.play/filters-helpers_2.11/srcs/filters-helpers_2.11-2.5.6-sources.jar!/play/filters/cors/CORSFilter.scala" />
     <entry file="jar://$USER_HOME$/.ivy2/cache/com.typesafe.play/play-netty-server_2.11/srcs/play-netty-server_2.11-2.5.6-sources.jar!/play/core/server/netty/PlayRequestHandler.scala" />
     <entry file="jar://$USER_HOME$/.ivy2/cache/com.typesafe.play/play_2.11/srcs/play_2.11-2.5.6-sources.jar!/play/api/mvc/Http.scala" />
@@ -830,18 +873,325 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
           <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding>
-            <marker date="1475846350375" expanded="false" signature="33:94" ph="..." />
-            <marker date="1475846350375" expanded="true" signature="158:1373" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/org/shopping/modules/core/impl/DefaultListService.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="53" column="62" selection-start-line="53" selection-start-column="62" selection-end-line="53" selection-end-column="62" />
+        <state relative-caret-position="561">
+          <caret line="58" column="4" selection-start-line="58" selection-start-column="4" selection-end-line="58" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/client/src/components/Footer.spec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/client/src/components/Footer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/client/src/actions/index.spec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="3" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/client/src/constants/TodoFilters.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/EcmaScript5.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="95" column="43" selection-start-line="95" selection-start-column="43" selection-end-line="95" selection-end-column="43" />
+          <folding>
+            <marker date="1473404238000" expanded="true" signature="0:55" ph="/**@param {Object} object ...*/" />
+            <marker date="1473404238000" expanded="true" signature="99:150" ph="/**@param {Object} obj ...*/" />
+            <marker date="1473404238000" expanded="true" signature="196:268" ph="/**@param {Object} obj ...*/" />
+            <marker date="1473404238000" expanded="true" signature="326:419" ph="/**@param {Object} obj ...*/" />
+            <marker date="1473404238000" expanded="true" signature="472:545" ph="/**@param {Object} obj ...*/" />
+            <marker date="1473404238000" expanded="true" signature="596:646" ph="/**@param {Object} obj ...*/" />
+            <marker date="1473404238000" expanded="true" signature="679:729" ph="/**@param {Object} obj ...*/" />
+            <marker date="1473404238000" expanded="true" signature="777:854" ph="/**@param {Object} proto ...*/" />
+            <marker date="1473404238000" expanded="true" signature="897:948" ph="/**@param {Object} obj ...*/" />
+            <marker date="1473404238000" expanded="true" signature="991:1042" ph="/**@param {Object} obj ...*/" />
+            <marker date="1473404238000" expanded="true" signature="1075:1127" ph="/**@param {Object} obj ...*/" />
+            <marker date="1473404238000" expanded="true" signature="1164:1215" ph="/**@param {Object} obj ...*/" />
+            <marker date="1473404238000" expanded="true" signature="1250:1302" ph="/**@param {Object} obj ...*/" />
+            <marker date="1473404238000" expanded="true" signature="1340:1387" ph="/**@param {} obj ...*/" />
+            <marker date="1473404238000" expanded="true" signature="1422:1521" ph="/**@param {function(, =, number=, Array.&lt;T&gt;=)} callback ...*/" />
+            <marker date="1473404238000" expanded="true" signature="1583:1682" ph="/**@param {function(, =, number=, Array.&lt;T&gt;=)} callback ...*/" />
+            <marker date="1473404238000" expanded="true" signature="1749:1825" ph="/**@param {T} searchElement ...*/" />
+            <marker date="1473404238000" expanded="true" signature="1890:1966" ph="/**@param {T} searchElement ...*/" />
+            <marker date="1473404238000" expanded="true" signature="2035:2132" ph="/**@param {function(T=, number=, Array.&lt;T&gt;=)} callback ...*/" />
+            <marker date="1473404238000" expanded="true" signature="2188:2287" ph="/**@param {function(T=, number=, Array.&lt;T&gt;=)} callback ...*/" />
+            <marker date="1473404238000" expanded="true" signature="2344:2438" ph="/**@param {function(T=, number=, Array.&lt;T&gt;=)} callback ...*/" />
+            <marker date="1473404238000" expanded="true" signature="2496:2591" ph="/**@param {function(T=, number=, Array.&lt;T&gt;=)} callback ...*/" />
+            <marker date="1473404238000" expanded="true" signature="2645:2742" ph="/**@param {function(T=, number=, Array.&lt;T&gt;=)} callback ...*/" />
+            <marker date="1473404238000" expanded="true" signature="2797:2828" ph="/**@class Array ...*/" />
+            <marker date="1473404238000" expanded="true" signature="2839:2862" ph="/**@return {string} ...*/" />
+            <marker date="1473404238000" expanded="true" signature="2902:2925" ph="/**@return {string} ...*/" />
+            <marker date="1473404238000" expanded="true" signature="2968:3052" ph="/**@param {T} thisArg ...*/" />
+            <marker date="1473404238000" expanded="true" signature="3106:3213" ph="/**@param {} value ...*/" />
+            <marker date="1473404238000" expanded="true" signature="3266:3335" ph="/**@param {string} jsonString ...*/" />
+            <marker date="1473404238000" expanded="true" signature="3393:3424" ph="/**@static ...*/" />
+            <marker date="1473404238000" expanded="true" signature="3451:3474" ph="/**@return {string} ...*/" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/client/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding>
+            <marker date="1476098883228" expanded="true" signature="31:855" ph="..." />
+            <marker date="1476098883228" expanded="true" signature="40:396" ph="..." />
+            <marker date="1476098883228" expanded="true" signature="405:847" ph="..." />
+            <marker date="1476098883228" expanded="true" signature="457:835" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/client/src/components/MainSection.spec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="6" selection-start-line="24" selection-start-column="6" selection-end-line="24" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/client/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="20" column="34" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.ivy2/cache/xalan/xalan/jars/xalan-2.7.2.jar!/org/apache/bcel/generic/LoadInstruction.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/client/src/components/Login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
+          <folding>
+            <marker date="1476105674425" expanded="true" signature="85:1644" ph="{...}" />
+            <marker date="1476105674425" expanded="true" signature="111:153" ph="{...}" />
+            <marker date="1476105674425" expanded="true" signature="168:1642" ph="{...}" />
+            <marker date="1476105674425" expanded="true" signature="199:1626" ph="&lt;form/&gt;" />
+            <marker date="1476105674425" expanded="true" signature="250:582" ph="&lt;div/&gt;" />
+            <marker date="1476105674425" expanded="true" signature="397:559" ph="&lt;div/&gt;" />
+            <marker date="1476105674425" expanded="true" signature="599:946" ph="&lt;div/&gt;" />
+            <marker date="1476105674425" expanded="true" signature="752:923" ph="&lt;div/&gt;" />
+            <marker date="1476105674425" expanded="true" signature="963:1329" ph="&lt;div/&gt;" />
+            <marker date="1476105674425" expanded="true" signature="1012:1306" ph="&lt;div/&gt;" />
+            <marker date="1476105674425" expanded="true" signature="1080:1279" ph="&lt;div/&gt;" />
+            <marker date="1476105674425" expanded="true" signature="1135:1248" ph="&lt;label/&gt;" />
+            <marker date="1476105674425" expanded="true" signature="1346:1606" ph="&lt;div/&gt;" />
+            <marker date="1476105674425" expanded="true" signature="1395:1583" ph="&lt;div/&gt;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/client/src/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding>
+            <marker date="1476088683024" expanded="true" signature="7:238" ph="..." />
+            <marker date="1476088683024" expanded="true" signature="286:336" ph="&lt;Provider/&gt;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/client/src/reducers/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding>
+            <marker date="1476109140851" expanded="true" signature="7:69" ph="..." />
+            <marker date="1476109140851" expanded="true" signature="107:118" ph="{&quot;items&quot;: items...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/client/src/components/MainSection.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="57" column="20" selection-start-line="57" selection-start-column="20" selection-end-line="57" selection-end-column="20" />
+          <folding>
+            <marker date="1476108315422" expanded="true" signature="7:192" ph="..." />
+            <marker date="1476108315422" expanded="true" signature="215:335" ph="{...}" />
+            <marker date="1476108315422" expanded="true" signature="388:2346" ph="{...}" />
+            <marker date="1476108315422" expanded="true" signature="413:508" ph="{&quot;todos&quot;: PropTypes.array.isRequired...}" />
+            <marker date="1476108315422" expanded="true" signature="575:626" ph="{...}" />
+            <marker date="1476108315422" expanded="true" signature="655:694" ph="{...}" />
+            <marker date="1476108315422" expanded="true" signature="732:1066" ph="{...}" />
+            <marker date="1476108315422" expanded="true" signature="808:1060" ph="{...}" />
+            <marker date="1476108315422" expanded="true" signature="847:1036" ph="&lt;input/&gt;" />
+            <marker date="1476108315422" expanded="true" signature="1101:1599" ph="{...}" />
+            <marker date="1476108315422" expanded="true" signature="1259:1593" ph="{...}" />
+            <marker date="1476108315422" expanded="true" signature="1298:1569" ph="&lt;Footer/&gt;" />
+            <marker date="1476108315422" expanded="true" signature="1614:2344" ph="{...}" />
+            <marker date="1476108315422" expanded="true" signature="1961:2328" ph="&lt;section/&gt;" />
+            <marker date="1476108315422" expanded="true" signature="2059:2253" ph="&lt;ul/&gt;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/client/src/components/Header.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding>
+            <marker date="1476108083901" expanded="true" signature="7:95" ph="..." />
+            <marker date="1476108083901" expanded="true" signature="143:560" ph="{...}" />
+            <marker date="1476108083901" expanded="true" signature="166:210" ph="{&quot;addTodo&quot;: PropTypes.func.isRequired...}" />
+            <marker date="1476108083901" expanded="true" signature="235:306" ph="{...}" />
+            <marker date="1476108083901" expanded="true" signature="264:302" ph="{...}" />
+            <marker date="1476108083901" expanded="true" signature="319:558" ph="{...}" />
+            <marker date="1476108083901" expanded="true" signature="340:548" ph="&lt;header/&gt;" />
+            <marker date="1476108083901" expanded="true" signature="399:532" ph="&lt;ListTextInput/&gt;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/client/src/containers/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="20" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
+          <folding>
+            <marker date="1476107200437" expanded="true" signature="7:182" ph="..." />
+            <marker date="1476107200437" expanded="true" signature="223:285" ph="&lt;div/&gt;" />
+            <marker date="1476107200437" expanded="true" signature="289:442" ph="//..." />
+            <marker date="1476107200437" expanded="true" signature="478:503" ph="{&quot;data&quot;: state.items...}" />
+            <marker date="1476107200437" expanded="true" signature="546:604" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/client/src/components/ListTextInput.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="22" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
+          <folding>
+            <marker date="1476108415362" expanded="true" signature="7:87" ph="..." />
+            <marker date="1476108415362" expanded="true" signature="142:1168" ph="{...}" />
+            <marker date="1476108415362" expanded="true" signature="165:329" ph="{&quot;onSave&quot;: PropTypes.func.isRequired...}" />
+            <marker date="1476108415362" expanded="true" signature="341:378" ph="{...}" />
+            <marker date="1476108415362" expanded="true" signature="402:584" ph="{...}" />
+            <marker date="1476108415362" expanded="true" signature="467:580" ph="{...}" />
+            <marker date="1476108415362" expanded="true" signature="529:574" ph="{...}" />
+            <marker date="1476108415362" expanded="true" signature="608:657" ph="{...}" />
+            <marker date="1476108415362" expanded="true" signature="679:761" ph="{...}" />
+            <marker date="1476108415362" expanded="true" signature="710:757" ph="{...}" />
+            <marker date="1476108415362" expanded="true" signature="774:1166" ph="{...}" />
+            <marker date="1476108415362" expanded="true" signature="795:1156" ph="&lt;input/&gt;" />
+            <marker date="1476108415362" expanded="true" signature="833:921" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/client/src/constants/ActionTypes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/client/src/components/Home.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="52" selection-start-line="22" selection-start-column="52" selection-end-line="22" selection-end-column="52" />
+          <folding>
+            <marker date="1476108935906" expanded="true" signature="7:171" ph="..." />
+            <marker date="1476108935906" expanded="true" signature="217:748" ph="{...}" />
+            <marker date="1476108935906" expanded="true" signature="242:337" ph="{&quot;data&quot;: PropTypes.object.isRequired...}" />
+            <marker date="1476108935906" expanded="true" signature="352:746" ph="{...}" />
+            <marker date="1476108935906" expanded="true" signature="446:517" ph="{...}" />
+            <marker date="1476108935906" expanded="true" signature="523:740" ph="{...}" />
+            <marker date="1476108935906" expanded="true" signature="562:716" ph="&lt;div/&gt;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/client/src/components/Lists.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding>
+            <marker date="1476108327990" expanded="true" signature="7:83" ph="..." />
+            <marker date="1476108327990" expanded="true" signature="131:646" ph="{...}" />
+            <marker date="1476108327990" expanded="true" signature="156:251" ph="{&quot;lists&quot;: PropTypes.array.isRequired...}" />
+            <marker date="1476108327990" expanded="true" signature="266:644" ph="{...}" />
+            <marker date="1476108327990" expanded="true" signature="376:628" ph="&lt;section/&gt;" />
+            <marker date="1476108327990" expanded="true" signature="419:605" ph="&lt;ul/&gt;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/client/src/components/ListItem.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="41" column="55" selection-start-line="41" selection-start-column="55" selection-end-line="41" selection-end-column="55" />
+          <folding>
+            <marker date="1476109073303" expanded="true" signature="7:131" ph="..." />
+            <marker date="1476109073303" expanded="true" signature="181:1386" ph="{...}" />
+            <marker date="1476109073303" expanded="true" signature="204:331" ph="{&quot;item&quot;: PropTypes.object.isRequired...}" />
+            <marker date="1476109073303" expanded="true" signature="343:367" ph="{...}" />
+            <marker date="1476109073303" expanded="true" signature="397:439" ph="{...}" />
+            <marker date="1476109073303" expanded="true" signature="470:629" ph="{...}" />
+            <marker date="1476109073303" expanded="true" signature="499:538" ph="{...}" />
+            <marker date="1476109073303" expanded="true" signature="544:587" ph="{...}" />
+            <marker date="1476109073303" expanded="true" signature="642:1384" ph="{...}" />
+            <marker date="1476109073303" expanded="true" signature="733:934" ph="{...}" />
+            <marker date="1476109073303" expanded="true" signature="761:920" ph="&lt;ListTextInput/&gt;" />
+            <marker date="1476109073303" expanded="true" signature="940:1214" ph="{...}" />
+            <marker date="1476109073303" expanded="true" signature="968:1200" ph="&lt;div/&gt;" />
+            <marker date="1476109073303" expanded="true" signature="1001:1090" ph="&lt;label/&gt;" />
+            <marker date="1476109073303" expanded="true" signature="1101:1185" ph="&lt;button/&gt;" />
+            <marker date="1476109073303" expanded="true" signature="1235:1374" ph="&lt;li/&gt;" />
+            <marker date="1476109073303" expanded="true" signature="1261:1341" ph="{&quot;completed&quot;: item.completed...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/client/src/actions/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="56" selection-start-line="7" selection-start-column="56" selection-end-line="7" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/client/src/reducers/mapping.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#172#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

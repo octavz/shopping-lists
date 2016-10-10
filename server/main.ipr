@@ -39,6 +39,13 @@
       <projects_view />
     </option>
   </component>
+  <component name="JavaScriptLibraryMappings">
+    <file url="file://$PROJECT_DIR$/public/client" libraries="{server/public/client/node_modules}" />
+    <includedPredefinedLibrary name="ECMAScript 6" />
+  </component>
+  <component name="JavaScriptSettings">
+    <option name="languageLevel" value="JSX" />
+  </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_STRING" value="-encoding utf8 -g" />
   </component>
