@@ -20,7 +20,7 @@ namespace ShList.Code
     public class AcShoppingLists : AActivity
     {
         LinearLayout llShoppingLst = null;
-        Button btnCreateList = null;        
+        Button btnCreateList = null;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -32,17 +32,28 @@ namespace ShList.Code
             // Get our button from the layout resource,
             // and attach an event to it
             llShoppingLst = FindViewById<LinearLayout>(Resource.Id.listShopping);
-            btnCreateList = FindViewById<Button>(Resource.Id.btnCreateList);            
+            btnCreateList = FindViewById<Button>(Resource.Id.btnCreateList);
 
             btnCreateList.Click += AddNewList;
         }//OnCreate
 
         private void AddNewList(object sender, EventArgs e)
         {
-            ShoppingListDTO lstData = new ShoppingListDTO() { ListName = DateTime.Now.ToString() };
+            ShoppingListDTO lstData = new ShoppingListDTO()
+            {
+                ListName = "New List",
+                ListDate = DateTime.Now,
+            };
 
-            CtrlShoppingList item = new CtrlShoppingList(this,ShApplicationContext, lstData);
-            llShoppingLst.AddView(item);
+            CtrlShoppingList item = new CtrlShoppingList(this, ShApplicationContext, lstData);
+            item.Event_DeleteItem += (int id) =>
+            {
+                var view = FindViewById<CtrlShoppingList>(id);
+                ((view as View).Parent as ViewGroup).RemoveView(view);                
+            };
+            llShoppingLst.AddView(item, 0);
         }//AddNewList
+
+
     }
 }

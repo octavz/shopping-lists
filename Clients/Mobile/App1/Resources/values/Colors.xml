@@ -1,4 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <resources>
   <color name="itemList">#E43F3F</color>
+  <color name="itemBorder">#C0C0C0</color>
 </resources>

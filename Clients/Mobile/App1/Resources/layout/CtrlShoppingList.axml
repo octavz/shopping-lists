@@ -6,7 +6,12 @@
     android:clickable="true"
     android:minWidth="25px"
     android:id="@+id/llShopingListMain"
-    android:minHeight="25px">
+    android:minHeight="25px"
+    android:baselineAligned="true"
+    android:padding="10dip"
+    android:background="@drawable/border">
+
+
     <LinearLayout
         android:layout_weight="1"
         android:layout_width="fill_parent"
@@ -34,6 +39,7 @@
             android:id="@+id/txtDate"
             android:gravity="right" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -45,6 +51,7 @@
             android:id="@+id/btnEdit"
             android:background="@drawable/edit"
             android:layout_margin="5dp" />
+
         <ImageButton
             android:layout_width="30dp"
             android:layout_height="30dp"
