@@ -1,11 +1,13 @@
 ﻿<resources>
 
   <!-- Base application theme. -->
-  <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+  <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
     <!-- Customize your theme here. -->
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
   </style>
 
- 
+  <!-- Standard animations for wallpapers. -->
   <style name="ListItemText">
     <item name="android:textColor">@color/itemList</item>
   </style>

@@ -11,7 +11,7 @@ namespace CommonBL.Data
 
         public ShoppingListDTO()
         {
-
+            ListName = string.Empty;
         }
 
         public int Id { get; set; }

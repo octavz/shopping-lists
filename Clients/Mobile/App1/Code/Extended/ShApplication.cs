@@ -14,7 +14,7 @@ namespace ShList.Extended.Code
 {
     [Application]
     public class ShApplication : Application
-    {
+    {        
         public ShApplication(IntPtr javaReference, JniHandleOwnership transfer) : base(javaReference, transfer)
         {
         }
@@ -25,7 +25,6 @@ namespace ShList.Extended.Code
         public override void OnCreate()
         {
             base.OnCreate();
-
 
         }//OnCreate
 

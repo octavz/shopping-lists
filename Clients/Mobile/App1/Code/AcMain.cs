@@ -9,6 +9,10 @@ using ShList.Code.Abstracts;
 using CommonBL.Data.Request;
 using CommonBL.Data.Response;
 using CommonBL.Repository;
+using V7Toolbar = Android.Support.V7.Widget.Toolbar;
+using Android.Support.V7.App;
+using Android.Support.V4.Widget;
+using Android.Support.Design.Widget;
 
 namespace ShList.Code
 {
@@ -20,6 +24,9 @@ namespace ShList.Code
         EditText txtEmail = null;
         LinearLayout llLinkSignUp = null;
 
+        DrawerLayout drawerLayout;
+        NavigationView navigationView;
+
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -27,6 +34,16 @@ namespace ShList.Code
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.AcMain);
 
+            /*
+            var toolbar = FindViewById<V7Toolbar>(Resource.Id.toolbar);
+            SetSupportActionBar(toolbar);
+            SupportActionBar.SetDisplayHomeAsUpEnabled(true);
+            SupportActionBar.SetDisplayShowTitleEnabled(false);
+            SupportActionBar.SetHomeButtonEnabled(true);
+            SupportActionBar.SetHomeAsUpIndicator(Resource.Drawable.ic_menu);
+            drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
+            navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
+            */
             txtEmail = FindViewById<EditText>(Resource.Id.txtEmail);
             txtPassword = FindViewById<EditText>(Resource.Id.txtPassword);
             llLinkSignUp = FindViewById<LinearLayout>(Resource.Id.llLinkSignUp);
