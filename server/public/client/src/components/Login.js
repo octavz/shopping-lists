@@ -1,10 +1,14 @@
-import React, {Component} from 'react'
+import React, {Component, PropTypes} from 'react'
 
 export default class Login extends Component {
+    static propTypes = {
+        userData: PropTypes.object.isRequired,
+        actions: PropTypes.object.isRequired
+    };
 
     handleLogin = e => {
         console.log("doing login")
-    }
+    };
 
     render() {
         return (
