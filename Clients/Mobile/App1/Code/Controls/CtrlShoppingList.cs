@@ -22,6 +22,7 @@ namespace ShList.Code.Controls
     {
         private ShoppingListDTO m_Data = null;
         private Activity m_ParentActivity = null;
+        private TextView lstNm = null;
 
         public event Action<int> Event_DeleteItem = null;
 
@@ -40,13 +41,13 @@ namespace ShList.Code.Controls
 
         void Initialize()
         {
-            TextView lstNm = FindViewById<TextView>(Resource.Id.txtListName);
+            lstNm = FindViewById<TextView>(Resource.Id.txtListName);
             TextView lstDate = FindViewById<TextView>(Resource.Id.txtDate);
 
             LinearLayout llShopingListMain = FindViewById<LinearLayout>(Resource.Id.llShopingListMain);
             ImageButton btnDelete = FindViewById<ImageButton>(Resource.Id.btnDelete);
             ImageButton btnEdit = FindViewById<ImageButton>(Resource.Id.btnEdit);
-            lstNm.Text = m_Data.ListName;
+            lstNm.Text = string.IsNullOrEmpty(m_Data.ListName) ? "New List" : m_Data.ListName;            
             lstDate.Text = m_Data.ListDate.ToString("MMM/dd/yyy hh:mm:ss");
             llShopingListMain.Click += ShoppingList_Click;
             btnDelete.Click += BtnDelete_Click;
@@ -71,12 +72,16 @@ namespace ShList.Code.Controls
             alert.GetButton((int)DialogButtonType.Positive).Click += (senderAlert, args) =>
              {
                  if (!string.IsNullOrEmpty(txtLstName.Text))
+                 {
+                     m_Data.ListName = txtLstName.Text;
+                     lstNm.Text = txtLstName.Text;
                      alert.Dismiss();
+                 }
                  else
                  {
-                     Android.Graphics.Drawables.Drawable  icon = ContextCompat.GetDrawable(ShApplicationContext, Resource.Drawable.val_error);
+                     Android.Graphics.Drawables.Drawable icon = ContextCompat.GetDrawable(ShApplicationContext, Resource.Drawable.val_error);
                      txtLstName.SetError("List name should not be empty!", null);
-                     txtLstName.SetCompoundDrawablesWithIntrinsicBounds(0, 0, Resource.Drawable.val_error, 0);                     
+                     txtLstName.SetCompoundDrawablesWithIntrinsicBounds(0, 0, Resource.Drawable.val_error, 0);
                  }
              };
         }//BtnEdit_Click
@@ -108,7 +113,7 @@ namespace ShList.Code.Controls
         }
 
 
-        //public string ListName   { get { return string.IsNullOrEmpty(m_Data.ListName) ? string.Empty : m_Data.ListName; } }
+       public ShoppingListDTO Data  { get { return m_Data; } }
 
     }//CtrlShoppingList
 }

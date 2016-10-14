@@ -14,7 +14,7 @@ using ShList.Extended.Code;
 
 namespace ShList.Code.Abstracts
 {
-    public abstract class AActivity : Activity
+    public abstract class AActivity : AppCompatActivity
     {
 
         /// <summary>

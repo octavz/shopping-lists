@@ -12,12 +12,13 @@ using Android.Widget;
 using ShList.Code.Abstracts;
 using ShList.Code.Controls;
 using CommonBL.Data;
+using CommonBL.Managers;
 
 namespace ShList.Code
 {
 
     [Activity(Label = "@string/ActivityShoppingList")]
-    public class AcShoppingLists : AActivity
+    public class AcShoppingLists : APrivateActivity
     {
         LinearLayout llShoppingLst = null;
         Button btnCreateList = null;
@@ -28,28 +29,24 @@ namespace ShList.Code
 
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.AcShoppingLists);
-
-            // Get our button from the layout resource,
-            // and attach an event to it
+            
             llShoppingLst = FindViewById<LinearLayout>(Resource.Id.listShopping);
             btnCreateList = FindViewById<Button>(Resource.Id.btnCreateList);
 
             btnCreateList.Click += AddNewList;
+
         }//OnCreate
 
         private void AddNewList(object sender, EventArgs e)
         {
-            ShoppingListDTO lstData = new ShoppingListDTO()
-            {
-                ListName = "New List",
-                ListDate = DateTime.Now,
-            };
+            ShoppingListDTO newList = ListsManager.Instance.CreateNewList();
 
-            CtrlShoppingList item = new CtrlShoppingList(this, ShApplicationContext, lstData);
+            CtrlShoppingList item = new CtrlShoppingList(this, ShApplicationContext, newList);
             item.Event_DeleteItem += (int id) =>
             {
                 var view = FindViewById<CtrlShoppingList>(id);
-                ((view as View).Parent as ViewGroup).RemoveView(view);                
+                ((view as View).Parent as ViewGroup).RemoveView(view);
+                ListsManager.Instance.DeleteList(view.Data);
             };
             llShoppingLst.AddView(item, 0);
         }//AddNewList

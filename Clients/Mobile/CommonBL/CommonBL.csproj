@@ -50,6 +50,7 @@
     <Compile Include="Data\Response\ResLoginDTO.cs" />
     <Compile Include="Data\ShoppingListDTO.cs" />
     <Compile Include="Helpers\MockHttpHelper.cs" />
+    <Compile Include="Managers\ListsManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\UserRepository.cs" />
   </ItemGroup>
