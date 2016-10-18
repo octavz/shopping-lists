@@ -13,7 +13,7 @@ namespace CommonBL.Helpers
     {        
         Dictionary<Type, string> m_dicTypesGet = new Dictionary<Type, string>()
         {
-            {typeof(ReqLoginDTO),@"{email:""aaa@aaa.aa"",userId:3}"},
+            {typeof(ReqLoginDTO),@"{email:""aaa@aaa.aa"",userId:3,code:-1}"},
         };
       
         string IHttpHelper.HttpGet<T>(T req,string path) 

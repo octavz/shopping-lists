@@ -9,5 +9,6 @@ namespace CommonBL.Data.Response
     {
         public string Email { get; set; }
         public int UserId { get; set; }
+        public int  Code { get; set; } //if is successfull is 0 else error
     }
 }
