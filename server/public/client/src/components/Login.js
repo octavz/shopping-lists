@@ -1,4 +1,5 @@
 import React, {Component, PropTypes} from 'react'
+import {Link} from 'react-router'
 
 export default class Login extends Component {
     static propTypes = {
@@ -55,6 +56,11 @@ export default class Login extends Component {
                 <div className="form-group">
                     <div className="col-sm-offset-2 col-sm-10">
                         <button type="button" onClick={this.handleLogin} className="btn btn-default">Sign in</button>
+                    </div>
+                </div>
+                <div className="form-group">
+                    <div className="col-sm-offset-2 col-sm-10">
+                        <Link to="/register">Register</Link>
                     </div>
                 </div>
             </form>

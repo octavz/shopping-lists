@@ -2,7 +2,7 @@ import React from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import Home from '../components/Home'
-import * as TodoActions from '../actions'
+import * as AppActions from '../actions'
 
 const App = ({lists, actions}) => (
     <div>
@@ -22,7 +22,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    actions: bindActionCreators(TodoActions, dispatch)
+    actions: bindActionCreators(AppActions, dispatch)
 });
 
 export default connect(

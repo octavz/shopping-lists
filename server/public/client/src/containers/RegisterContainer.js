@@ -1,12 +1,12 @@
 import React from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import Login from '../components/Login'
+import Register from '../components/Register'
 import * as AppActions from '../actions'
 
-const LoginContainer = ({userData, actions}) => (
+const RegisterContainer = ({userData, actions}) => (
     <div>
-        <Login userData={userData} actions={actions}/>
+        <Register userData={userData} actions={actions}/>
     </div>
 );
 
@@ -28,4 +28,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(LoginContainer)
+)(RegisterContainer)
