@@ -17,6 +17,7 @@ const initialState = {
     lists: [
         {
             id: "111",
+            clientId: "111",
             name: 'My list no 1',
             items: [
                 {
@@ -33,6 +34,7 @@ const initialState = {
         },
         {
             id: "112",
+            clientId: "112",
             name: 'My list no 2',
             items: [
                 {
@@ -45,26 +47,29 @@ const initialState = {
     ]
 }
 
-export default function items(state = initialState, action) {
-    var currentList = () => {
-        var {lists} = state;
-        return lists.filter(l => l.id === action.listId)[0]
-    };
+export function guid() {
+    function s4() {
+        return Math.floor((1 + Math.random()) * 0x10000)
+            .toString(16)
+            .substring(1);
+    }
 
+    return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+        s4() + '-' + s4() + s4() + s4();
+}
+
+export default function items(state = initialState, action) {
     switch (action.type) {
         case DELETE_LIST:
             console.log("delete list");
             return ({
                 ...state,
                 lists: state.lists.filter(l => l.id !== action.listId),
-            })
+            });
         case ADD_LIST:
             return {
-                lists: [currentList().push({
-                    text: action.text,
-                    productId: action.productId
-                }), ...state.lists.filter(l => l.id !== action.listId)],
-                ...state
+                userData: state.userData,
+                lists: [...state.lists, {clientId: guid(), name: action.text}]
             };
         case DELETE_LIST_ITEM:
             console.log(action);

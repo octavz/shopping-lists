@@ -1,12 +1,16 @@
 #!/bin/sh
 
-APP_HOME=/home/octav/Planner
+APP_HOME=/home/octav/projects/shopping-list/server
+
+cd $APP_HOME
+
+sbt clean stage
 
 PID_PATH=$APP_HOME"/target/universal/stage/RUNNING_PID"
 
 run()
 {
- activator -mem 150 start
+ sbt -mem 150 start
 }
 
 cd $APP_HOME

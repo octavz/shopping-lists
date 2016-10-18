@@ -33,6 +33,7 @@ POST         /login                      @org.shopping.controllers.UserControlle
 #     type: "string"
 # responses:
 #   201:
+#     description: Item created
 #     schema:
 #       $ref: '#/definitions/org.shopping.dto.ListDTO'
 #   401:
@@ -64,6 +65,7 @@ POST         /api/list                   @org.shopping.controllers.ListControlle
 #     type: "string"
 # responses:
 #   201:
+#     description: Item created
 #     schema:
 #       $ref: '#/definitions/org.shopping.dto.ListDTO'
 #   401:
@@ -123,6 +125,7 @@ DELETE       /api/list/:listId           @org.shopping.controllers.ListControlle
 #     type: "string"
 # responses:
 #   201:
+#     description: Item created
 #     schema:
 #       $ref: '#/definitions/org.shopping.dto.ListItemsDTO'
 #   404:
@@ -178,6 +181,7 @@ GET         /api/list/:listId/items      @org.shopping.controllers.ListControlle
 #       $ref: '#/definitions/org.shopping.dto.LoginRequestDTO'
 # responses:
 #   201:
+#     description: Item created
 #     schema:
 #       $ref: '#/definitions/org.shopping.dto.LoginResponseDTO'
 ###
@@ -246,6 +250,7 @@ GET          /api/users                   @org.shopping.controllers.UserControll
 #       $ref: '#/definitions/org.shopping.dto.RegisterRequestDTO'
 # responses:
 #   201:
+#     description: Item created
 #     schema:
 #       $ref: '#/definitions/org.shopping.dto.RegisterResponseDTO'
 ###
