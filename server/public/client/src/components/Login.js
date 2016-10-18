@@ -10,19 +10,37 @@ export default class Login extends Component {
         console.log("doing login")
     };
 
+    state = {
+        login: '', password: '', isAuthenticated: false
+    };
+
+    handleLoginChange = e => {
+        this.setState({...this.state, login: e.target.value });
+        console.log(this.state);
+    };
+
+    handlePassChange = e => {
+        this.setState({...this.state, password: e.target.value});
+        console.log(this.state);
+    };
+
     render() {
         return (
             <form className="form-horizontal">
                 <div className="form-group">
                     <label htmlFor="inputEmail3" className="col-sm-2 control-label">Email</label>
                     <div className="col-sm-10">
-                        <input type="email" className="form-control" id="inputEmail3" placeholder="Email"/>
+                        <input type="email" className="form-control" id="inputEmail3" placeholder="Email"
+                               value={this.state.login} onChange={this.handleLoginChange}/>
                     </div>
                 </div>
                 <div className="form-group">
                     <label htmlFor="inputPassword3" className="col-sm-2 control-label">Password</label>
                     <div className="col-sm-10">
-                        <input type="password" className="form-control" id="inputPassword3" placeholder="Password"/>
+                        <input type="password"
+                               className="form-control" id="inputPassword3" placeholder="Password"
+                               value={this.state.password}
+                               onChange={this.handlePassChange}/>
                     </div>
                 </div>
                 <div className="form-group">

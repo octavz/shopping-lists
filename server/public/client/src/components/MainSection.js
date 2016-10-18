@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react'
-import TodoItem from './ListItem'
+import ListItem from './ListItem'
 import Footer from './Footer'
 import {SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE} from '../constants/TodoFilters'
 

@@ -1,13 +1,12 @@
 import React from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import Home from '../components/Home'
 import Login from '../components/Login'
 import * as TodoActions from '../actions'
 
-const App = ({state, actions}) => (
+const LoginContainer = ({userData, actions}) => (
     <div>
-        <Login userData={state.userData} actions={actions}/>
+        <Login userData={userData} actions={actions}/>
     </div>
 );
 
@@ -19,15 +18,14 @@ const App = ({state, actions}) => (
 // }
 
 const mapStateToProps = state => ({
-    data: state.items,
-    userData: state.userData
+    userData: state.items.userData
 });
 
 const mapDispatchToProps = dispatch => ({
     actions: bindActionCreators(TodoActions, dispatch)
-})
+});
 
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(App)
+)(LoginContainer)

@@ -6,7 +6,7 @@ export default class Lists extends Component {
     static propTypes = {
         lists: PropTypes.array.isRequired,
         actions: PropTypes.object.isRequired
-    }
+    };
 
     render() {
         const {lists, actions} = this.props;

@@ -27,4 +27,3 @@
      [:h2 "Lists"]
      [bind-fields main-form document]
      [:label (str @document)]]))
-
