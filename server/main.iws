@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7e124409-a1c1-4df7-85d3-21df6c0107f0" name="Default" comment="k">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.iws" afterPath="$PROJECT_DIR$/main.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/run.sh" afterPath="$PROJECT_DIR$/run.sh" />
-    </list>
+    <list default="true" id="7e124409-a1c1-4df7-85d3-21df6c0107f0" name="Default" comment="k" />
     <ignored path="main.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/target/resolution-cache/" />
@@ -768,12 +765,12 @@
       <workItem from="1476091667616" duration="14525000" />
       <workItem from="1476164292566" duration="334000" />
       <workItem from="1476451008577" duration="3983000" />
-      <workItem from="1476688271514" duration="15268000" />
+      <workItem from="1476688271514" duration="15314000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34712000" />
+    <option name="totallyTimeSpent" value="34758000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="24" width="1920" height="1056" extended-state="6" />
