@@ -10,7 +10,7 @@ PID_PATH=$APP_HOME"/target/universal/stage/RUNNING_PID"
 
 run()
 {
- activator -mem 150 start
+ sbt -mem 150 start
 }
 
 cd $APP_HOME
