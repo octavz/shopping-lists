@@ -12,7 +12,8 @@ const initialState = {
     userData: {
         key: "auth-key",
         email: "user@email.com",
-        name: "Popescu Ion"
+        name: "Popescu Ion",
+        loggedIn: false
     },
     lists: [
         {

@@ -1,12 +1,12 @@
 import React from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import Login from '../components/Login'
+import Home from '../components/Home'
 import * as AppActions from '../actions'
 
-const LoginContainer = ({userData, actions}) => (
+const ItemsContainer = ({lists, actions}) => (
     <div>
-        <Login userData={userData} actions={actions}/>
+        <Home lists={lists} actions={actions}/>
     </div>
 );
 
@@ -18,7 +18,7 @@ const LoginContainer = ({userData, actions}) => (
 // }
 
 const mapStateToProps = state => ({
-    userData: state.items.userData
+    lists: state.lists,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -28,4 +28,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(LoginContainer)
+)(ItemsContainer)
