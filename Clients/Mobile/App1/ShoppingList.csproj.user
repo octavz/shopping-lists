@@ -3,7 +3,7 @@
   <PropertyGroup>
     <AndroidDesignerPreferredDevice>Nexus 5</AndroidDesignerPreferredDevice>
     <ProjectView>ShowAllFiles</ProjectView>
-    <SelectedDevice>5" KitKat %284.4%29 XXHDPI Phone</SelectedDevice>
+    <SelectedDevice>Android_Accelerated_x86</SelectedDevice>
     <AndroidDesignerPreferredTheme>Theme.DeviceDefault</AndroidDesignerPreferredTheme>
   </PropertyGroup>
 </Project>

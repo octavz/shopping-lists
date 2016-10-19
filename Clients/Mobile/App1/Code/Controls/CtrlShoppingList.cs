@@ -14,6 +14,7 @@ using ShList.Extended.Code;
 using CommonBL.Data;
 using Android.Graphics.Drawables;
 using Android.Support.V4.Content;
+using ShList.Code.Extended;
 
 namespace ShList.Code.Controls
 {
@@ -77,12 +78,9 @@ namespace ShList.Code.Controls
                      lstNm.Text = txtLstName.Text;
                      alert.Dismiss();
                  }
-                 else
-                 {
-                     Android.Graphics.Drawables.Drawable icon = ContextCompat.GetDrawable(ShApplicationContext, Resource.Drawable.val_error);
-                     txtLstName.SetError("List name should not be empty!", null);
-                     txtLstName.SetCompoundDrawablesWithIntrinsicBounds(0, 0, Resource.Drawable.val_error, 0);
-                 }
+                 else                 
+                     txtLstName.ShowError("List name should not be empty!", ShApplicationContext);
+                 
              };
         }//BtnEdit_Click
 

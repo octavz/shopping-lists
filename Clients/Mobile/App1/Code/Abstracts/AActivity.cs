@@ -11,11 +11,13 @@ using Android.Views;
 using Android.Widget;
 using Android.Support.V7.App;
 using ShList.Extended.Code;
+using Android.Support.V4.Content;
 
 namespace ShList.Code.Abstracts
 {
     public abstract class AActivity : AppCompatActivity
     {
+       
 
         /// <summary>
         /// Shopping list - Application Cotext
