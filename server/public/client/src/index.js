@@ -10,7 +10,7 @@ import AppContainer from "./containers/AppContainer";
 import ItemsContainer from "./containers/ItemsContainer";
 import thunk from 'redux-thunk';
 
-const store = createStore(reducer, thunk);
+const store = createStore(reducer, applyMiddleware(thunk));
 
 render(
     <Provider store={store}>
