@@ -1,23 +1,26 @@
 import React from 'react'
 import {render} from 'react-dom'
-import {createStore} from 'redux'
+import {createStore, applyMiddleware} from 'redux'
 import {Provider} from 'react-redux'
 import reducer from './reducers'
 import 'todomvc-app-css/index.css'
-import {Router, Route, browserHistory} from 'react-router'
-import LoginContainer from "./containers/LoginContainer";
-import App from "./containers/AppContainer";
-import MainSection from "./components/MainSection";
+import {Router, Route, IndexRoute, browserHistory} from 'react-router'
+import RegisterContainer from "./containers/RegisterContainer";
+import AppContainer from "./containers/AppContainer";
+import ItemsContainer from "./containers/ItemsContainer";
+import thunk from 'redux-thunk';
 
-const store = createStore(reducer);
+const store = createStore(reducer, applyMiddleware(thunk));
 
 render(
     <Provider store={store}>
         <Router history={browserHistory}>
-            <Route path="/" component={LoginContainer}>
-                <Route path="login" component={LoginContainer}/>
-                <Route path="lists" component={App}/>
-                <Route path="list/:id" component={MainSection}/>
+            <Route path="/">
+                <IndexRoute component={AppContainer}/>
+                <Route path="login" component={AppContainer}/>
+                <Route path="register" component={RegisterContainer}/>
+                <Route path="lists" component={AppContainer}/>
+                <Route path="list/:id" component={ItemsContainer}/>
             </Route>
         </Router>
     </Provider>,

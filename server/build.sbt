@@ -29,7 +29,6 @@ libraryDependencies ++= Seq(
   "com.nulab-inc" %% "play2-oauth2-provider" % "0.15.0",
   //    "org.mockito" % "mockito-all" % "2.0.2-beta",
   //"com.wix" %% "accord-core" % "0.4-SNAPSHOT",
-  "net.sourceforge.htmlunit" % "htmlunit" % "2.17" % "test",
   "com.github.nscala-time" %% "nscala-time" % "2.0.0",
   "com.livestream" %% "scredis" % "2.0.6",
   "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.7.2",

@@ -153,6 +153,7 @@ POST         /api/list/:listId/items      @org.shopping.controllers.ListControll
 #     type: "string"
 # responses:
 #   200:
+#     description: get list b id
 #     schema:
 #       $ref: '#/definitions/org.shopping.dto.ListDTO'
 #   404:
@@ -201,6 +202,7 @@ POST         /api/login                  @org.shopping.controllers.UserControlle
 #     type: "string"
 # responses:
 #   200:
+#     description: get user by session
 #     schema:
 #       $ref: '#/definitions/org.shopping.dto.UserDTO'
 #   401:
@@ -224,6 +226,7 @@ GET          /api/user                   @org.shopping.controllers.UserControlle
 #     type: "string"
 # responses:
 #   200:
+#     description: get items
 #     schema:
 #       $ref: '#/definitions/org.shopping.dto.UsersDTO'
 #   401:
@@ -270,6 +273,7 @@ POST         /api/register               @org.shopping.controllers.UserControlle
 #     type: "string"
 # responses:
 #   200:
+#     description: get items
 #     schema:
 #       $ref: '#/definitions/org.shopping.dto.ListsDTO'
 #   401:
