@@ -79,7 +79,7 @@ namespace ShList.Code.Controls
                      alert.Dismiss();
                  }
                  else                 
-                     txtLstName.ShowError("List name should not be empty!", ShApplicationContext);
+                     txtLstName.ShowError(ShApplicationContext.GetString(Resource.String.EmptyListName), ShApplicationContext);
                  
              };
         }//BtnEdit_Click

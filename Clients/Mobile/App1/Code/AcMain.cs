@@ -43,7 +43,8 @@ namespace ShList.Code
 
             llLinkSignUp.Click += (s, e) =>
             {
-                StartActivity(typeof(AcCreateAccount));
+                var intAcc = new Intent(this, typeof(AcNewAccount));
+                StartActivity(intAcc);
             };
 
 
@@ -53,7 +54,7 @@ namespace ShList.Code
         }//OnCreate
 
 
-        private void Btnlogin_Click(object sender, EventArgs e)
+        private async void Btnlogin_Click(object sender, EventArgs e)
         {
             string email = txtEmail.Text;
             string password = txtPassword.Text;
@@ -61,7 +62,7 @@ namespace ShList.Code
 
             if (string.IsNullOrEmpty(email) || !Tools.IsEmailValid(email))
             {                
-                txtEmail.ShowError("Enter a valid email address", ShApplicationContext);
+                txtEmail.ShowError(ShApplicationContext.GetString(Resource.String.InvalidEmailFormat), ShApplicationContext);
                 bIsValid = false;
             }
             else            
@@ -70,7 +71,7 @@ namespace ShList.Code
 
             if (string.IsNullOrEmpty(password) || password.Length < 4 || password.Length > 10)
             {
-                txtPassword.ShowError("Password should be between 4 and 10 alphanumeric characters", ShApplicationContext);
+                txtPassword.ShowError(ShApplicationContext.GetString(Resource.String.InvalidPasswordFormat), ShApplicationContext);
                 bIsValid = false;
             }
             else
@@ -84,12 +85,14 @@ namespace ShList.Code
                 Email = txtEmail.Text,
                 Password = txtPassword.Text
             };
-
-            ResLoginDTO resLogin = new UserRepository().Login(reqLogin);
+            
+            /*
+            ResLoginDTO resLogin = await UserRepository.Instance.Login(reqLogin);
 
             if (resLogin.Code != 0)
             {
             }
+            */
             StartActivity(typeof(AcShoppingLists));
         }//Btn_login_Click
 

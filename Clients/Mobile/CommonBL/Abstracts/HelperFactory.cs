@@ -9,9 +9,14 @@ namespace CommonBL.Abstracts
 {
     public class HelperFactory
     {
+        public const bool PRODUCTION_MODE = true;
+
         public static IHttpHelper GetHttpHelper()
-        {         
-            return new MockHttpHelper();
-        }
+        {
+            if (PRODUCTION_MODE)
+                return new ServerHttpHelper();
+            else
+                return new MockHttpHelper();
+        }//GetHttpHelper
     }
 }

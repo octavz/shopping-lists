@@ -15,6 +15,7 @@ namespace ShList.Code.Extended
 {
     public static class ExtEditText
     {
+
         /// <summary>
         /// ShowError
         /// </summary>
