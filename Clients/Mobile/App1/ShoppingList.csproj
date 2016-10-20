@@ -83,7 +83,7 @@
     <Compile Include="Code\Abstracts\AControl.cs" />
     <Compile Include="Code\Abstracts\AFragment.cs" />
     <Compile Include="Code\Abstracts\APrivateActivity.cs" />
-    <Compile Include="Code\AcCreateAccount.cs" />
+    <Compile Include="Code\AcNewAccount.cs" />
     <Compile Include="Code\AcShoppingLists.cs" />
     <Compile Include="Code\Controls\CtrlShoppingList.cs" />
     <Compile Include="Code\Extended\ExtEditText.cs" />
@@ -111,9 +111,6 @@
     <AndroidResource Include="Resources\layout\AcShoppingLists.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\AcCreateAccount.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
     <AndroidResource Include="Resources\layout\dlgeditlist.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
@@ -123,6 +120,7 @@
     <AndroidResource Include="Resources\layout\HeaderToolbar.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\AcNewAccount.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\AcMain.axml">

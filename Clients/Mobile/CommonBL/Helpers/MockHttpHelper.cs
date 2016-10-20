@@ -4,8 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
-
+using System.Threading.Tasks;
 
 namespace CommonBL.Helpers
 {
@@ -15,26 +14,35 @@ namespace CommonBL.Helpers
         {
             {typeof(ReqLoginDTO),@"{email:""aaa@aaa.aa"",userId:3,code:-1}"},
         };
-      
-        string IHttpHelper.HttpGet<T>(T req,string path) 
+
+        Dictionary<Type, string> m_dicTypesPut = new Dictionary<Type, string>()
+        { };
+
+        Dictionary<Type, string> m_dicTypesPatch = new Dictionary<Type, string>()
+        { };
+
+        Dictionary<Type, string> m_dicTypesDelete = new Dictionary<Type, string>()
+        { };
+
+        async Task<string> IHttpHelper.HttpGet<T>(T req,string path) 
         {
-            return m_dicTypesGet[typeof(T)];            
+            return await Task.Run(() => m_dicTypesGet[typeof(T)]);
         }//HttpGet
 
 
-        string IHttpHelper.HttpPut<T>(T req, string path)
+        async Task<string> IHttpHelper.HttpPut<T>(T req, string path)
         {
-            return string.Empty;
+            return await Task.Run(() => m_dicTypesPut[typeof(T)]);
         }
 
-        string IHttpHelper.HttpPatch<T>(T req, string path)
+        async Task<string> IHttpHelper.HttpPatch<T>(T req, string path)
         {
-            return string.Empty;
+            return await Task.Run(() => m_dicTypesPatch[typeof(T)]);
         }
 
-        string IHttpHelper.HttpDelete<T>(T req, string path)
+        async Task<string> IHttpHelper.HttpDelete<T>(T req, string path)
         {
-            return string.Empty;
+            return await Task.Run(() => m_dicTypesDelete[typeof(T)]);
         }
     }
 }

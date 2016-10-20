@@ -1915,11 +1915,11 @@ namespace ShList
 			// aapt resource value: 0x7f06002a
 			public const int bottom = 2131099690;
 			
-			// aapt resource value: 0x7f060070
-			public const int btnCreateAccount = 2131099760;
+			// aapt resource value: 0x7f060079
+			public const int btnCreateAccount = 2131099769;
 			
-			// aapt resource value: 0x7f060073
-			public const int btnCreateList = 2131099763;
+			// aapt resource value: 0x7f06006f
+			public const int btnCreateList = 2131099759;
 			
 			// aapt resource value: 0x7f06007e
 			public const int btnDelete = 2131099774;
@@ -1927,8 +1927,8 @@ namespace ShList
 			// aapt resource value: 0x7f06007d
 			public const int btnEdit = 2131099773;
 			
-			// aapt resource value: 0x7f060077
-			public const int btnLogin = 2131099767;
+			// aapt resource value: 0x7f060074
+			public const int btnLogin = 2131099764;
 			
 			// aapt resource value: 0x7f060044
 			public const int buttonPanel = 2131099716;
@@ -1993,8 +1993,8 @@ namespace ShList
 			// aapt resource value: 0x7f06000e
 			public const int disableHome = 2131099662;
 			
-			// aapt resource value: 0x7f060072
-			public const int editListName = 2131099762;
+			// aapt resource value: 0x7f06006e
+			public const int editListName = 2131099758;
 			
 			// aapt resource value: 0x7f06005c
 			public const int edit_query = 2131099740;
@@ -2062,23 +2062,23 @@ namespace ShList
 			// aapt resource value: 0x7f060093
 			public const int line3 = 2131099795;
 			
-			// aapt resource value: 0x7f060071
-			public const int linearLayout1 = 2131099761;
+			// aapt resource value: 0x7f06006d
+			public const int linearLayout1 = 2131099757;
 			
-			// aapt resource value: 0x7f060079
-			public const int linkSignup = 2131099769;
+			// aapt resource value: 0x7f060076
+			public const int linkSignup = 2131099766;
 			
 			// aapt resource value: 0x7f06000b
 			public const int listMode = 2131099659;
 			
-			// aapt resource value: 0x7f060075
-			public const int listShopping = 2131099765;
+			// aapt resource value: 0x7f060071
+			public const int listShopping = 2131099761;
 			
 			// aapt resource value: 0x7f060041
 			public const int list_item = 2131099713;
 			
-			// aapt resource value: 0x7f060078
-			public const int llLinkSignUp = 2131099768;
+			// aapt resource value: 0x7f060075
+			public const int llLinkSignUp = 2131099765;
 			
 			// aapt resource value: 0x7f06007a
 			public const int llShopingListMain = 2131099770;
@@ -2149,8 +2149,8 @@ namespace ShList
 			// aapt resource value: 0x7f06004c
 			public const int scrollView = 2131099724;
 			
-			// aapt resource value: 0x7f060074
-			public const int scrollView1 = 2131099764;
+			// aapt resource value: 0x7f060070
+			public const int scrollView1 = 2131099760;
 			
 			// aapt resource value: 0x7f060039
 			public const int scrollable = 2131099705;
@@ -2275,20 +2275,20 @@ namespace ShList
 			// aapt resource value: 0x7f060089
 			public const int txtDlgListName = 2131099785;
 			
-			// aapt resource value: 0x7f06006d
-			public const int txtEmail = 2131099757;
+			// aapt resource value: 0x7f060072
+			public const int txtEmail = 2131099762;
 			
 			// aapt resource value: 0x7f06007b
 			public const int txtListName = 2131099771;
 			
-			// aapt resource value: 0x7f060076
-			public const int txtPassword = 2131099766;
+			// aapt resource value: 0x7f060073
+			public const int txtPassword = 2131099763;
 			
-			// aapt resource value: 0x7f06006e
-			public const int txtPassword1 = 2131099758;
+			// aapt resource value: 0x7f060077
+			public const int txtPassword1 = 2131099767;
 			
-			// aapt resource value: 0x7f06006f
-			public const int txtPassword2 = 2131099759;
+			// aapt resource value: 0x7f060078
+			public const int txtPassword2 = 2131099768;
 			
 			// aapt resource value: 0x7f060009
 			public const int up = 2131099657;
@@ -2431,13 +2431,13 @@ namespace ShList
 			public const int AcBase = 2130903065;
 			
 			// aapt resource value: 0x7f03001a
-			public const int AcCreateAccount = 2130903066;
+			public const int AcListItems = 2130903066;
 			
 			// aapt resource value: 0x7f03001b
-			public const int AcListItems = 2130903067;
+			public const int AcMain = 2130903067;
 			
 			// aapt resource value: 0x7f03001c
-			public const int AcMain = 2130903068;
+			public const int AcNewAccount = 2130903068;
 			
 			// aapt resource value: 0x7f03001d
 			public const int AcShoppingLists = 2130903069;
@@ -2552,6 +2552,9 @@ namespace ShList
 		public partial class String
 		{
 			
+			// aapt resource value: 0x7f07002e
+			public const int AccountExists = 2131165230;
+			
 			// aapt resource value: 0x7f07001a
 			public const int ActivityCreateAccount = 2131165210;
 			
@@ -2573,8 +2576,17 @@ namespace ShList
 			// aapt resource value: 0x7f07001d
 			public const int Email = 2131165213;
 			
+			// aapt resource value: 0x7f07002d
+			public const int EmptyListName = 2131165229;
+			
 			// aapt resource value: 0x7f070018
 			public const int Hello = 2131165208;
+			
+			// aapt resource value: 0x7f07002a
+			public const int InvalidEmailFormat = 2131165226;
+			
+			// aapt resource value: 0x7f07002b
+			public const int InvalidPasswordFormat = 2131165227;
 			
 			// aapt resource value: 0x7f070023
 			public const int ListName = 2131165219;
@@ -2602,6 +2614,9 @@ namespace ShList
 			
 			// aapt resource value: 0x7f07001f
 			public const int PasswordRe = 2131165215;
+			
+			// aapt resource value: 0x7f07002c
+			public const int PasswordsMatch = 2131165228;
 			
 			// aapt resource value: 0x7f070028
 			public const int Yes = 2131165224;
