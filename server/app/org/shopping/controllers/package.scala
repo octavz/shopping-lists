@@ -18,6 +18,7 @@ package object controllers {
     Future.successful(BadRequest( s"""{"errCode":0, "errMessage":${msg}}"""))
   }
 
+
   def responseOk[T <: AnyRef](a: T)(implicit m: Writes[T]) = Ok(Json.toJson(a))
 
 }

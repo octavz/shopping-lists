@@ -20,18 +20,19 @@ class BaseController(module: BaseService)
 
   //val authHandler = inject[Oauth2DAL]
 
+  def err(code: Int, message: String) = Json.toJson(ErrorDTO(code, message))
+
   def authorize[A](callback: AuthInfo[User] => Future[Result])(implicit request: play.api.mvc.Request[A]): Future[Result] = {
     val f = ProtectedResource.handleRequest(request, dalAuth) flatMap {
-      case Left(e) if e.statusCode == 400 => Future.successful(BadRequest(Json.toJson(ErrorDTO(401, e.description))).withHeaders(responseOAuthErrorHeader(e)))
-      case Left(e) if e.statusCode == 401 => Future.successful(Unauthorized(Json.toJson(ErrorDTO(401, "UNAUTHORIZED"))).withHeaders(responseOAuthErrorHeader(e)))
+      case Left(e) if e.statusCode == 400 => Future.successful(BadRequest(err(401, e.description)).withHeaders(responseOAuthErrorHeader(e)))
+      case Left(e) if e.statusCode == 401 => Future.successful(Unauthorized(err(401, "UNAUTHORIZED")).withHeaders(responseOAuthErrorHeader(e)))
       case Right(authInfo) =>
         module.setAuth(authInfo)
         callback(authInfo)
     }
 
     f recover {
-      case e: Throwable =>
-        BadRequest.withHeaders(("500", e.getMessage))
+      case e: Throwable => BadRequest(err(500, e.getMessage))
     }
 
   }

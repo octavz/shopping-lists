@@ -60,10 +60,10 @@ class UserController @Inject()(userModule: UserService) extends BaseController(u
             if (request.accepts("text/html")) {
               Future.successful(Ok(views.html.users.login.render()))
             } else {
-              Future.successful(Unauthorized)
+              Future.successful(Unauthorized(err(401, "Unauthorized")))
             }
         }
-      }.getOrElse(Future.successful(BadRequest("Wrong json")))
+      }.getOrElse(Future.successful(BadRequest(err(400, "Wrong json"))))
   }
 
   def loginPostForm = Action.async {
@@ -82,7 +82,7 @@ class UserController @Inject()(userModule: UserService) extends BaseController(u
           if (request.accepts("text/html")) {
             Future.successful(Ok(views.html.users.login.render()))
           } else {
-            Future.successful(Unauthorized)
+            Future.successful(Unauthorized(err(401, "Unauthorized")))
           }
       }
   }
@@ -95,22 +95,21 @@ class UserController @Inject()(userModule: UserService) extends BaseController(u
           userModule.registerUser(dto).toResponse
         } catch {
           case e: Throwable =>
-            Future.successful(BadRequest(s"Wrong json: ${
-              e.getMessage
-            }"))
+            Future.successful(BadRequest(err(400, s"Wrong json: ${e.getMessage}")))
         }
-      }.getOrElse(Future.successful(BadRequest("@aaa.comWrong json")))
+      }.getOrElse(Future.successful(BadRequest(err(400, "Wrong json"))))
   }
 
   private def internalLogin(login: String, password: String) =
     userModule.login(auth(login, password)) flatMap {
       case Right(r) =>
         userModule.getUserByToken(r.accessToken) map {
-          u =>
+          case Right(u) =>
             Ok(Json.obj("accessToken" -> r.accessToken) ++ Json.toJson(u).as[JsObject])
+          case Left(err) => InternalServerError(Json.toJson(err))
         }
-      case _ =>
-        Future.successful(Unauthorized)
+      case Left(oerr) =>
+        Future.successful(Unauthorized(err(oerr.statusCode, oerr.description)))
     }
 
   def registerAndLogin = Action.async {
@@ -125,11 +124,9 @@ class UserController @Inject()(userModule: UserService) extends BaseController(u
           }
         } catch {
           case e: Throwable =>
-            Future.successful(BadRequest(s"Wrong json: ${
-              e.getMessage
-            }"))
+            Future.successful(BadRequest(err(400, s"Wrong json: ${e.getMessage}")))
         }
-      }.getOrElse(Future.successful(BadRequest("@aaa.comWrong json")))
+      }.getOrElse(Future.successful(BadRequest(err(400, "Wrong json"))))
   }
 
   def getUserById(userId: String) = Action.async {
@@ -137,10 +134,7 @@ class UserController @Inject()(userModule: UserService) extends BaseController(u
       try {
         userModule.getUserById(userId).toResponse
       } catch {
-        case e: Throwable =>
-          Future.successful(BadRequest(s"Wrong json: ${
-            e.getMessage
-          }"))
+        case e: Throwable => Future.successful(BadRequest(err(400, s"Wrong json: ${e.getMessage}")))
       }
   }
 
@@ -153,9 +147,7 @@ class UserController @Inject()(userModule: UserService) extends BaseController(u
         }
       } catch {
         case e: Throwable =>
-          Future.successful(BadRequest(s"Wrong json: ${
-            e.getMessage
-          }"))
+          Future.successful(BadRequest(err(400, s"Wrong json: ${e.getMessage}")))
       }
   }
 
@@ -168,9 +160,7 @@ class UserController @Inject()(userModule: UserService) extends BaseController(u
         }
       } catch {
         case e: Throwable =>
-          Future.successful(BadRequest(s"Wrong json: ${
-            e.getMessage
-          }"))
+          Future.successful(BadRequest(err(400, s"Wrong json: ${e.getMessage}")))
       }
   }
 

@@ -2,24 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7e124409-a1c1-4df7-85d3-21df6c0107f0" name="Default" comment="k">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/org/shopping/config/ErrorHandler.scala" afterPath="$PROJECT_DIR$/app/org/shopping/config/ErrorHandler.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/org/shopping/controllers/BaseController.scala" afterPath="$PROJECT_DIR$/app/org/shopping/controllers/BaseController.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/org/shopping/controllers/UserController.scala" afterPath="$PROJECT_DIR$/app/org/shopping/controllers/UserController.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/org/shopping/dal/impl/SlickUserDAL.scala" afterPath="$PROJECT_DIR$/app/org/shopping/dal/impl/SlickUserDAL.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/org/shopping/dto/LoginRequestDTO.scala" afterPath="$PROJECT_DIR$/app/org/shopping/dto/LoginRequestDTO.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/org/shopping/controllers/package.scala" afterPath="$PROJECT_DIR$/app/org/shopping/controllers/package.scala" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/org/shopping/dto/LoginResponseDTO.scala" afterPath="$PROJECT_DIR$/app/org/shopping/dto/LoginResponseDTO.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/org/shopping/dto/RegisterRequestDTO.scala" afterPath="$PROJECT_DIR$/app/org/shopping/dto/RegisterRequestDTO.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conf/routes" afterPath="$PROJECT_DIR$/conf/routes" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.ipr" afterPath="$PROJECT_DIR$/main.ipr" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.iws" afterPath="$PROJECT_DIR$/main.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/client/src/actions/index.js" afterPath="$PROJECT_DIR$/public/client/src/actions/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/client/src/components/Login.js" afterPath="$PROJECT_DIR$/public/client/src/components/Login.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/client/src/constants/ActionTypes.js" afterPath="$PROJECT_DIR$/public/client/src/constants/ActionTypes.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/client/src/containers/AppContainer.js" afterPath="$PROJECT_DIR$/public/client/src/containers/AppContainer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/client/src/index.js" afterPath="$PROJECT_DIR$/public/client/src/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/client/src/reducers/index.js" afterPath="$PROJECT_DIR$/public/client/src/reducers/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/client/src/reducers/mapping.js" afterPath="$PROJECT_DIR$/public/client/src/reducers/mapping.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/BaseDALSpec.scala" afterPath="$PROJECT_DIR$/test/BaseDALSpec.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/ListAppSpec.scala" afterPath="$PROJECT_DIR$/test/ListAppSpec.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/UserAppSpec.scala" afterPath="$PROJECT_DIR$/test/UserAppSpec.scala" />
     </list>
     <ignored path="main.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -54,11 +42,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="package.scala" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/org/shopping/package.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="680">
+              <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="UserController.scala" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/org/shopping/controllers/UserController.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
-              <caret line="107" column="34" selection-start-line="107" selection-start-column="34" selection-end-line="107" selection-end-column="34" />
+            <state relative-caret-position="952">
+              <caret line="99" column="36" selection-start-line="99" selection-start-column="36" selection-end-line="99" selection-end-column="36" />
               <folding>
                 <element signature="e#35#66#0" expanded="true" />
               </folding>
@@ -66,67 +64,64 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="routes" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/conf/routes">
+      <file leaf-file-name="Results.scala" pinned="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/.ivy2/cache/com.typesafe.play/play_2.11/srcs/play_2.11-2.5.6-sources.jar!/play/api/mvc/Results.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
-              <caret line="257" column="0" selection-start-line="257" selection-start-column="0" selection-end-line="257" selection-end-column="0" />
+            <state relative-caret-position="325">
+              <caret line="558" column="6" selection-start-line="558" selection-start-column="6" selection-end-line="558" selection-end-column="6" />
+              <folding>
+                <element signature="n#!!doc" expanded="false" />
+                <element signature="e#99#139#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OAuthError.class" pinned="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/.ivy2/cache/com.nulab-inc/scala-oauth2-core_2.11/jars/scala-oauth2-core_2.11-0.15.0.jar!/scalaoauth2/provider/OAuthError.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" column="30" selection-start-line="1" selection-start-column="30" selection-end-line="1" selection-end-column="30" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RegisterResponseDTO.scala" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/org/shopping/dto/RegisterResponseDTO.scala">
+      <file leaf-file-name="BaseController.scala" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/org/shopping/controllers/BaseController.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+            <state relative-caret-position="408">
+              <caret line="34" column="45" selection-start-line="34" selection-start-column="45" selection-end-line="34" selection-end-column="45" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserAppSpec.scala" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/UserAppSpec.scala">
+      <file leaf-file-name="package.scala" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/org/shopping/controllers/package.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="331">
-              <caret line="67" column="101" selection-start-line="67" selection-start-column="101" selection-end-line="67" selection-end-column="101" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="204">
+              <caret line="16" column="20" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JsonDTOFormats.scala" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/org/shopping/dto/JsonDTOFormats.scala">
+      <file leaf-file-name="Json.scala" pinned="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/.ivy2/cache/com.typesafe.play/play-json_2.11/srcs/play-json_2.11-2.5.6-sources.jar!/play/api/libs/json/Json.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="33" column="46" selection-start-line="33" selection-start-column="46" selection-end-line="33" selection-end-column="46" />
-              <folding>
-                <element signature="e#26#66#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="325">
+              <caret line="117" column="6" selection-start-line="117" selection-start-column="6" selection-end-line="117" selection-end-column="6" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserModuleSpec.scala" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/UserModuleSpec.scala">
+      <file leaf-file-name="ListController.scala" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/org/shopping/controllers/ListController.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#25#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserDTO.scala" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/org/shopping/dto/UserDTO.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="5" column="11" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
+            <state relative-caret-position="527">
+              <caret line="83" column="18" selection-start-line="83" selection-start-column="18" selection-end-line="83" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -135,28 +130,18 @@
       <file leaf-file-name="UserService.scala" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/org/shopping/modules/core/UserService.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
+            <state relative-caret-position="204">
+              <caret line="16" column="60" selection-start-line="16" selection-start-column="60" selection-end-line="16" selection-end-column="60" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DefaultUserService.scala" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/org/shopping/modules/core/impl/DefaultUserService.scala">
+      <file leaf-file-name="OAuthException.scala" pinned="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/.ivy2/cache/com.nulab-inc/scala-oauth2-core_2.11/srcs/scala-oauth2-core_2.11-0.15.0-sources.jar!/scalaoauth2/provider/OAuthException.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="663">
-              <caret line="63" column="20" selection-start-line="63" selection-start-column="20" selection-end-line="63" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RegisterRequestDTO.scala" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/org/shopping/dto/RegisterRequestDTO.scala">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="11" column="163" selection-start-line="11" selection-start-column="163" selection-end-line="11" selection-end-column="163" />
+            <state relative-caret-position="34">
+              <caret line="2" column="40" selection-start-line="2" selection-start-column="40" selection-end-line="2" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -175,9 +160,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/org/shopping/config/CORSFilter.scala" />
-        <option value="$PROJECT_DIR$/app/org/shopping/config/CORS.scala" />
-        <option value="$PROJECT_DIR$/conf/application.conf" />
         <option value="$PROJECT_DIR$/app/org/shopping/modules/core/impl/DefaultUserService.scala" />
         <option value="$PROJECT_DIR$/conf/evolutions/default/1.sql" />
         <option value="$PROJECT_DIR$/app/org/shopping/db/DB.scala" />
@@ -223,9 +205,12 @@
         <option value="$PROJECT_DIR$/test/BaseDALSpec.scala" />
         <option value="$PROJECT_DIR$/test/ListAppSpec.scala" />
         <option value="$PROJECT_DIR$/conf/routes" />
-        <option value="$PROJECT_DIR$/app/org/shopping/controllers/UserController.scala" />
         <option value="$PROJECT_DIR$/test/UserAppSpec.scala" />
         <option value="$PROJECT_DIR$/app/org/shopping/dto/RegisterRequestDTO.scala" />
+        <option value="$PROJECT_DIR$/app/org/shopping/dto/LoginResponseDTO.scala" />
+        <option value="$PROJECT_DIR$/app/org/shopping/controllers/package.scala" />
+        <option value="$PROJECT_DIR$/app/org/shopping/controllers/BaseController.scala" />
+        <option value="$PROJECT_DIR$/app/org/shopping/controllers/UserController.scala" />
       </list>
     </option>
   </component>
@@ -657,12 +642,12 @@
       <workItem from="1476797391192" duration="2370000" />
       <workItem from="1476857496119" duration="171000" />
       <workItem from="1476859420733" duration="2444000" />
-      <workItem from="1476873309298" duration="28947000" />
+      <workItem from="1476873309298" duration="30795000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="72062000" />
+    <option name="totallyTimeSpent" value="73910000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1920" height="1056" extended-state="6" />
@@ -778,56 +763,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/client/src/components/Home.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/client/src/containers/LoginContainer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/target/scala-2.11/api/org/shopping/dto/BaseFormats.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2958">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/client/src/constants/TodoFilters.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/client/src/components/MainSection.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="66" selection-start-line="3" selection-start-column="66" selection-end-line="3" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/client/src/containers/RegisterContainer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="2" selection-start-line="21" selection-start-column="2" selection-end-line="21" selection-end-column="2" />
-          <folding>
-            <element signature="e#0#25#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/client/src/reducers/mapping.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
@@ -963,26 +898,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/org/shopping/modules/package.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="23" column="7" selection-start-line="23" selection-start-column="7" selection-end-line="23" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/target/scala-2.11/api/org/shopping/dto/LoginRequestDTO.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/org/shopping/package.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="42" column="8" selection-start-line="42" selection-start-column="8" selection-end-line="42" selection-end-column="8" />
           <folding />
         </state>
       </provider>
@@ -999,14 +918,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="22" column="6" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/org/shopping/controllers/BaseController.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="16" column="20" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
           <folding />
         </state>
       </provider>
@@ -1118,20 +1029,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/org/shopping/controllers/ListController.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="20" column="34" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/ListAppSpec.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="58" column="23" selection-start-line="58" selection-start-column="23" selection-end-line="58" selection-end-column="23" />
           <folding>
-            <element signature="e#0#25#0" expanded="true" />
+            <element signature="e#0#25#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1152,13 +1055,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/org/shopping/controllers/UserController.scala">
+    <entry file="file://$PROJECT_DIR$/test/UserModuleSpec.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="107" column="34" selection-start-line="107" selection-start-column="34" selection-end-line="107" selection-end-column="34" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/org/shopping/modules/core/impl/DefaultUserService.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="63" column="20" selection-start-line="63" selection-start-column="20" selection-end-line="63" selection-end-column="20" />
           <folding>
-            <element signature="e#35#66#0" expanded="true" />
+            <element signature="e#40#71#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/UserAppSpec.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="620">
+          <caret line="84" column="34" selection-start-line="84" selection-start-column="34" selection-end-line="84" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/org/shopping/dto/RegisterRequestDTO.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/org/shopping/dto/LoginResponseDTO.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1170,56 +1107,105 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/UserAppSpec.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="67" column="101" selection-start-line="67" selection-start-column="101" selection-end-line="67" selection-end-column="101" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/org/shopping/dto/JsonDTOFormats.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="33" column="46" selection-start-line="33" selection-start-column="46" selection-end-line="33" selection-end-column="46" />
+        <state relative-caret-position="187">
+          <caret line="11" column="37" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
           <folding>
             <element signature="e#26#66#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/UserModuleSpec.scala">
+    <entry file="file://$PROJECT_DIR$/app/org/shopping/modules/package.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="289">
+          <caret line="23" column="32" selection-start-line="23" selection-start-column="32" selection-end-line="23" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.ivy2/cache/com.nulab-inc/scala-oauth2-core_2.11/srcs/scala-oauth2-core_2.11-0.15.0-sources.jar!/scalaoauth2/provider/OAuthException.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="40" selection-start-line="2" selection-start-column="40" selection-end-line="2" selection-end-column="40" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/org/shopping/modules/core/UserService.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
+        <state relative-caret-position="204">
+          <caret line="16" column="60" selection-start-line="16" selection-start-column="60" selection-end-line="16" selection-end-column="60" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/org/shopping/modules/core/impl/DefaultUserService.scala">
+    <entry file="jar://$USER_HOME$/.ivy2/cache/com.typesafe.play/play-json_2.11/srcs/play-json_2.11-2.5.6-sources.jar!/play/api/libs/json/Json.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="63" column="20" selection-start-line="63" selection-start-column="20" selection-end-line="63" selection-end-column="20" />
+        <state relative-caret-position="325">
+          <caret line="117" column="6" selection-start-line="117" selection-start-column="6" selection-end-line="117" selection-end-column="6" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/org/shopping/dto/RegisterRequestDTO.scala">
+    <entry file="file://$PROJECT_DIR$/app/org/shopping/package.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="11" column="163" selection-start-line="11" selection-start-column="163" selection-end-line="11" selection-end-column="163" />
+        <state relative-caret-position="680">
+          <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.ivy2/cache/com.nulab-inc/scala-oauth2-core_2.11/jars/scala-oauth2-core_2.11-0.15.0.jar!/scalaoauth2/provider/OAuthError.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="30" selection-start-line="1" selection-start-column="30" selection-end-line="1" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.ivy2/cache/com.typesafe.play/play_2.11/srcs/play_2.11-2.5.6-sources.jar!/play/api/mvc/Results.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="558" column="6" selection-start-line="558" selection-start-column="6" selection-end-line="558" selection-end-column="6" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+            <element signature="e#99#139#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/org/shopping/controllers/package.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="16" column="20" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/org/shopping/controllers/BaseController.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="34" column="45" selection-start-line="34" selection-start-column="45" selection-end-line="34" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/org/shopping/controllers/UserController.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="952">
+          <caret line="99" column="36" selection-start-line="99" selection-start-column="36" selection-end-line="99" selection-end-column="36" />
+          <folding>
+            <element signature="e#35#66#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/org/shopping/controllers/ListController.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="83" column="18" selection-start-line="83" selection-start-column="18" selection-end-line="83" selection-end-column="18" />
           <folding />
         </state>
       </provider>

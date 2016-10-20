@@ -12,4 +12,3 @@ case class RegisterRequestDTO(login: String, password: String) {
     User(id = Gen.guid, login = login, providerToken = Some(login), created = n, updated = n, lastLogin = None, password = password, nick = login.takeWhile(_ != '@'))
   }
 }
-
