@@ -29,6 +29,7 @@ class SlickUserDAL @Inject()(protected val dbConfigProvider: DatabaseConfigProvi
 
   override def deleteSessionByUser(uid: String): DAL[Int] = {
     val action = sqlu"delete from user_sessions where user_id = $uid"
+    println(action.statements)
     db.run(action)
   }
 

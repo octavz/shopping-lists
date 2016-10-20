@@ -1,12 +1,4 @@
-import {
-    ADD_LIST,
-    DELETE_LIST,
-    DELETE_LIST_ITEM,
-    EDIT_LIST,
-    COMPLETE_LIST_ITEM,
-    COMPLETE_ALL,
-    CLEAR_COMPLETED
-} from '../constants/ActionTypes'
+import * as types from '../constants/ActionTypes'
 
 const initialState = {
     userData: {
@@ -61,25 +53,25 @@ export function guid() {
 
 export default function items(state = initialState, action) {
     switch (action.type) {
-        case DELETE_LIST:
+        case types.DELETE_LIST:
             console.log("delete list");
             return ({
                 ...state,
                 lists: state.lists.filter(l => l.id !== action.listId),
             });
-        case ADD_LIST:
+        case types.ADD_LIST:
             return {
                 userData: state.userData,
                 lists: [...state.lists, {clientId: guid(), name: action.text}]
             };
-        case DELETE_LIST_ITEM:
+        case types.DELETE_LIST_ITEM:
             console.log(action);
             return state;
         // return state.filter(todo =>
         //     todo.id !== action.id
         // )
 
-        case EDIT_LIST:
+        case types.EDIT_LIST:
             console.log(action);
             return state;
         // return state.filter(todo =>
@@ -89,7 +81,7 @@ export default function items(state = initialState, action) {
         //         todo
         // )
 
-        case COMPLETE_LIST_ITEM:
+        case types.COMPLETE_LIST_ITEM:
             console.log(action);
             return state;
         // return state.filter(todo =>
@@ -99,7 +91,7 @@ export default function items(state = initialState, action) {
         //         todo
         // )
 
-        case COMPLETE_ALL:
+        case types.COMPLETE_ALL:
             console.log(action);
             return state;
         // const areAllMarked = state.every(todo => todo.completed)
@@ -108,11 +100,13 @@ export default function items(state = initialState, action) {
         //     completed: !areAllMarked
         // }))
 
-        case CLEAR_COMPLETED:
+        case types.CLEAR_COMPLETED:
             console.log(action);
             return state;
         //return state.filter(todo => todo.completed === false)
-
+        case types.LOGIN_RECEIVED:
+            console.log(action);
+            return {...state, userData: action.userData};
         default:
             return state
     }

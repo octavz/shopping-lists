@@ -85,7 +85,7 @@ class BaseDALSpec extends PlaySpecification with Mockito {
           "slick.dbs.test.db.driver" -> "org.postgresql.Driver",
           "slick.dbs.test.db.url" -> s"jdbc:postgresql://localhost:5432/mytest",
           "slick.dbs.test.db.user" -> "postgres",
-          "slick.dbs.test.db.password" -> ""
+          "slick.dbs.test.db.password" -> "root"
         ))
       .in(Mode.Test)
 

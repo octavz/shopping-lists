@@ -1,20 +1,19 @@
 import React from 'react'
 import {render} from 'react-dom'
-import {createStore, applyMiddleware} from 'redux'
 import {Provider} from 'react-redux'
-import reducer from './reducers'
-import 'todomvc-app-css/index.css'
 import {Router, Route, IndexRoute, browserHistory} from 'react-router'
 import RegisterContainer from "./containers/RegisterContainer";
 import AppContainer from "./containers/AppContainer";
 import ItemsContainer from "./containers/ItemsContainer";
-import thunk from 'redux-thunk';
+import {syncHistoryWithStore} from 'react-router-redux'
+import store from './store'
 
-const store = createStore(reducer, applyMiddleware(thunk));
+
+const history = syncHistoryWithStore(browserHistory, store);
 
 render(
     <Provider store={store}>
-        <Router history={browserHistory}>
+        <Router history={history}>
             <Route path="/">
                 <IndexRoute component={AppContainer}/>
                 <Route path="login" component={AppContainer}/>

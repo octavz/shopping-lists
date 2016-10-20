@@ -9,6 +9,7 @@ case class RegisterRequestDTO(login: String, password: String) {
 
   def toModel = {
     val n = Time.now
-    User(id = Gen.guid, login = login, providerToken = Some(login), created = n, updated = n, lastLogin = None, password = password, nick = login)
+    User(id = Gen.guid, login = login, providerToken = Some(login), created = n, updated = n, lastLogin = None, password = password, nick = login.takeWhile(_ != '@'))
   }
 }
+

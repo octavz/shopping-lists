@@ -255,9 +255,9 @@ GET          /api/users                   @org.shopping.controllers.UserControll
 #   201:
 #     description: Item created
 #     schema:
-#       $ref: '#/definitions/org.shopping.dto.RegisterResponseDTO'
+#       $ref: '#/definitions/org.shopping.dto.LoginResponseDTO'
 ###
-POST         /api/register               @org.shopping.controllers.UserController.register
+POST         /api/register               @org.shopping.controllers.UserController.registerAndLogin
 
 ###
 # tags:

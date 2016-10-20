@@ -76,6 +76,8 @@ class UserAppSpec extends PlaySpecification with Mockito {
 
     "have register route" in {
       val service = newComp
+      service.getUserByToken(any) returns Future.successful(Right(UserDTO("login", "pass", "id", "nick")))
+      service.login(any) returns Future.successful(Right(GrantHandlerResult(tokenType = "1", accessToken = "at", expiresIn = None, refreshToken = None, scope = None)))
       service.registerUser(any[RegisterRequestDTO]) answers (u => result(u.asInstanceOf[RegisterRequestDTO]))
       val a = app(service)
       running(a) {
@@ -91,7 +93,7 @@ class UserAppSpec extends PlaySpecification with Mockito {
         val res = Await.result(page.get, Duration.Inf)
         val json = contentAsJson(page.get)
         println(json)
-        (json \ "login").get === JsString("test@test.com")
+        (json \ "login").get === JsString("login")
       }
     }
 

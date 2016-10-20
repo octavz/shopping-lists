@@ -5,12 +5,22 @@ import * as AppActions from '../actions'
 import Header from '../components/Header'
 import Lists from '../components/Lists'
 import Login from '../components/Login'
+import store from '../store'
 
 class AppContainer extends Component {
 
+    constructor(props) {
+        super(props);
+        this.handleLogin = this.handleLogin.bind(this);
+    }
+
     static contextTypes = {
-        router: PropTypes.object
+        router: PropTypes.object.isRequired
     };
+
+    handleLogin(login, pass) {
+        return store.dispatch(AppActions.loginUser(login, pass));
+    }
 
     componentWillMount() {
         if (this.props.state.userData.loggedIn) {
@@ -21,7 +31,7 @@ class AppContainer extends Component {
     }
 
     render() {
-        var {state, actions} = this.props;
+        const {state, actions} = this.props;
         if (state.userData.loggedIn) {
             return (
                 <div>
@@ -31,17 +41,15 @@ class AppContainer extends Component {
             )
         } else {
             return (
-                <Login userData={state.userData} actions={actions}/>
+                <Login userData={state.userData} onLogin={this.handleLogin}/>
             )
         }
     }
 }
 
-// App.propTypes = {
-//     lists: PropTypes.array.isRequired,
-//     user: PropTypes.object.isRequired,
-//     actions: PropTypes.object.isRequired
-// }
+AppContainer.propTypes = {
+    actions: PropTypes.object.isRequired
+};
 
 const mapStateToProps = state => ({
     state: state.items,

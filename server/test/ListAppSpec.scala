@@ -66,7 +66,7 @@ class ListAppSpec extends PlaySpecification with Mockito {
             """
             {
             "name":"list",
-            "desc":"123456"
+            "description":"123456"
             }
             """)))
         page must beSome
@@ -76,7 +76,7 @@ class ListAppSpec extends PlaySpecification with Mockito {
         there was one(module.listModule).insertList(any[ListDTO])
         val json = contentAsJson(page.get)
         json \ "name" === JsDefined(JsString("list"))
-        json \ "desc" === JsDefined(JsString("123456"))
+        json \ "description" === JsDefined(JsString("123456"))
       }
     }
 
@@ -96,7 +96,7 @@ class ListAppSpec extends PlaySpecification with Mockito {
         arr.size === 1
         arr.head \ "id" === JsDefined(JsString(p.id.get))
         arr.head \ "name" === JsDefined(JsString(p.name))
-        arr.head \ "desc" === JsDefined(JsString(p.description.get))
+        arr.head \ "description" === JsDefined(JsString(p.description.get))
       }
 
     }
@@ -110,7 +110,7 @@ class ListAppSpec extends PlaySpecification with Mockito {
           s"""
                 {
                 "name":"${p.name}",
-                "desc":"${p.description}"
+                "description":"${p.description}"
                 }
               """)))
         Await.ready(page.get, Duration.Inf)
@@ -121,7 +121,7 @@ class ListAppSpec extends PlaySpecification with Mockito {
         there was one(module.listModule).setAuth(authInfo)
         there was one(module.listModule).updateList(any)
         json \ "name" === JsDefined(JsString(p.name))
-        json \ "desc" === JsDefined(JsString(p.description.get))
+        json \ "description" === JsDefined(JsString(p.description.get))
       }
     }
 

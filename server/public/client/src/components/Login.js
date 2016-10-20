@@ -4,15 +4,11 @@ import {Link} from 'react-router'
 export default class Login extends Component {
     static propTypes = {
         userData: PropTypes.object.isRequired,
-        actions: PropTypes.object.isRequired
-    };
-
-    handleLogin = e => {
-        console.log("doing login")
+        onLogin: PropTypes.func.isRequired
     };
 
     state = {
-        login: '', password: '', isAuthenticated: false
+        login: 'aaa@aaa.com', password: '123456', isAuthenticated: false
     };
 
     handleLoginChange = e => {
@@ -55,7 +51,7 @@ export default class Login extends Component {
                 </div>
                 <div className="form-group">
                     <div className="col-sm-offset-2 col-sm-10">
-                        <button type="button" onClick={this.handleLogin} className="btn btn-default">Sign in</button>
+                        <button type="button" onClick={() => this.props.onLogin(this.state.login, this.state.password)} className="btn btn-default">Sign in</button>
                     </div>
                 </div>
                 <div className="form-group">
