@@ -20,8 +20,11 @@
   <string name="Yes">Yes</string>
   <string name="No">No</string>
   <string name="InvalidEmailFormat">Enter a valid email address</string>
-  <string name="InvalidPasswordFormat">Password should be between 4 and 10 alphanumeric characters</string>
+  <string name="InvalidPasswordFormat">Password should be between 6 and 10 alphanumeric characters</string>
   <string name="PasswordsMatch">Passwords do not match</string>
   <string name="EmptyListName">List name should not be empty</string>
   <string name="AccountExists">This account already exists</string>
+  <string name="PleaseWait">Please wait...</string>
+  <string name="CreatingAccount">Creating account...</string>
+  <string name="LogOut">Log Out</string>
 </resources>

@@ -1,16 +1,17 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-  <group android:checkableBehavior="single">   
+  <group android:checkableBehavior="single">
     <item
       android:id="@+id/nav_discussion"
       android:icon="@drawable/edit"
       android:title="Discussion" />
+    <item
+      android:id="@+id/nav_discussion2"
+      android:icon="@drawable/edit"
+      android:title="Discussion" />
+    <item
+      android:id="@+id/nav_logout"
+      android:icon="@drawable/logout"
+      android:title="@string/LogOut" />
   </group>
-  <item android:title="Sub items">
-    <menu>
-      <item
-        android:icon="@drawable/delete"
-        android:title="Sub item 1" />    
-    </menu>
-  </item>
 </menu>

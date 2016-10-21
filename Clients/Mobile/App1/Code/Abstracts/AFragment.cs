@@ -16,6 +16,6 @@ namespace ShList.Code.Abstracts
     public abstract class AFragment: Fragment
     {
 
-        public ShApplication ShApplicationContext { get { return ((AActivity)this.Activity).ShApplicationContext; } }
+        public ShApplication ShAppContext { get { return ((AActivity)this.Activity).ShAppContext; } }
     }
 }

@@ -11,5 +11,8 @@ namespace CommonBL.Data.Response
     {
         public string login { get; set; }
         public string password { get; set; }
+        public string accessToken { get; set; }
+        public string nick { get; set; }
+        public string id { get; set; }
     }
 }

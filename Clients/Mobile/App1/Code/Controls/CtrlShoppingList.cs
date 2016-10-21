@@ -79,7 +79,7 @@ namespace ShList.Code.Controls
                      alert.Dismiss();
                  }
                  else                 
-                     txtLstName.ShowError(ShApplicationContext.GetString(Resource.String.EmptyListName), ShApplicationContext);
+                     txtLstName.ShowError(ShAppContext.GetString(Resource.String.EmptyListName), ShAppContext);
                  
              };
         }//BtnEdit_Click
@@ -107,7 +107,7 @@ namespace ShList.Code.Controls
 
         private void ShoppingList_Click(object sender, EventArgs e)
         {
-            Toast.MakeText(ShApplicationContext, "Click on item", ToastLength.Short).Show();
+            Toast.MakeText(ShAppContext, "Click on item", ToastLength.Short).Show();
         }
 
 
