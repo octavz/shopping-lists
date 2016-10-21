@@ -134,6 +134,9 @@ insert into client_grant_types values(1,1);
 
 ALTER TABLE LIST_PRODUCTS ADD QUANTITY INT;
 
+ALTER TABLE public.users
+  DROP CONSTRAINT users_nick_key;
+
 # --- !Downs
 
 DROP TABLE IF EXISTS labels;
@@ -150,3 +153,4 @@ DROP TABLE IF EXISTS lists;
 DROP TABLE IF EXISTS user_sessions;
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS user_statuses;
+

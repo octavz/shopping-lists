@@ -132,6 +132,9 @@ insert into grant_types(id, grant_type) values(1, 'password');
 insert into clients(id, secret) values(1, 'secret');
 insert into client_grant_types values(1,1);
 
+ALTER TABLE public.users
+  DROP CONSTRAINT users_nick_key;
+
 # --- !Downs
 
 DROP TABLE IF EXISTS labels;

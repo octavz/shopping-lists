@@ -47,7 +47,7 @@ class ListController @Inject()(listModule: ListService) extends BaseController(l
         } catch {
           case e: Throwable => asyncBadRequest(e)
         }
-      }.getOrElse(asyncBadRequest(new Exception("Bad Json")))
+      }.getOrElse(asyncBadRequest("Bad Json"))
   }
 
   def getUserLists(userId: String, offset: Int, count: Int) =
@@ -81,7 +81,7 @@ class ListController @Inject()(listModule: ListService) extends BaseController(l
         } catch {
           case e: Throwable => asyncBadRequest(e)
         }
-      }.getOrElse(asyncBadRequest(new Exception("Bad Json")))
+      }.getOrElse(asyncBadRequest("Bad Json"))
   }
 
   def getListItems(listId: String) = Action.async {
