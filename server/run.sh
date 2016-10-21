@@ -4,13 +4,13 @@ APP_HOME=/home/octav/projects/shopping-list/server
 
 cd $APP_HOME
 
-sbt clean stage
+#sbt clean stage
 
 PID_PATH=$APP_HOME"/target/universal/stage/RUNNING_PID"
 
 run()
 {
- sbt -mem 150 start
+ sbt -mem 250 start
 }
 
 cd $APP_HOME

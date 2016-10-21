@@ -52,8 +52,9 @@ class UserController @Inject()(userModule: UserService) extends BaseController(u
               Future.successful(Redirect("/public.html").withCookies(Cookie("access_token", r.accessToken)))
             } else {
               userModule.getUserByToken(r.accessToken) map {
-                u =>
-                  Ok(Json.obj("accessToken" -> r.accessToken) ++ Json.toJson(u).as[JsObject])
+                case Right(u) =>
+                  Ok(Json.obj("accessToken" -> r.accessToken) ++ Json.toJson(u.copy(password = "")).as[JsObject])
+                case Left(errDto) => BadRequest(err(errDto.message))
               }
             }
           case _ =>
@@ -105,7 +106,7 @@ class UserController @Inject()(userModule: UserService) extends BaseController(u
       case Right(r) =>
         userModule.getUserByToken(r.accessToken) map {
           case Right(u) =>
-            Ok(Json.obj("accessToken" -> r.accessToken) ++ Json.toJson(u).as[JsObject])
+            Ok(Json.obj("accessToken" -> r.accessToken) ++ Json.toJson(u.copy(password = "")).as[JsObject])
           case Left(err) => InternalServerError(Json.toJson(err))
         }
       case Left(oerr) =>
