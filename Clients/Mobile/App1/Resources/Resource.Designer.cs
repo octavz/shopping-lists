@@ -1830,11 +1830,14 @@ namespace ShList
 			// aapt resource value: 0x7f020050
 			public const int Icon = 2130837584;
 			
-			// aapt resource value: 0x7f020052
-			public const int notification_template_icon_bg = 2130837586;
-			
 			// aapt resource value: 0x7f020051
-			public const int val_error = 2130837585;
+			public const int logout = 2130837585;
+			
+			// aapt resource value: 0x7f020053
+			public const int notification_template_icon_bg = 2130837587;
+			
+			// aapt resource value: 0x7f020052
+			public const int val_error = 2130837586;
 			
 			static Drawable()
 			{
@@ -2097,6 +2100,12 @@ namespace ShList
 			
 			// aapt resource value: 0x7f060097
 			public const int nav_discussion = 2131099799;
+			
+			// aapt resource value: 0x7f060098
+			public const int nav_discussion2 = 2131099800;
+			
+			// aapt resource value: 0x7f060099
+			public const int nav_logout = 2131099801;
 			
 			// aapt resource value: 0x7f06006c
 			public const int navigationView = 2131099756;
@@ -2570,6 +2579,9 @@ namespace ShList
 			// aapt resource value: 0x7f070022
 			public const int CreateAccountButton = 2131165218;
 			
+			// aapt resource value: 0x7f070030
+			public const int CreatingAccount = 2131165232;
+			
 			// aapt resource value: 0x7f070027
 			public const int DeleteList = 2131165223;
 			
@@ -2597,6 +2609,9 @@ namespace ShList
 			// aapt resource value: 0x7f07001c
 			public const int ListsButtonCreate = 2131165212;
 			
+			// aapt resource value: 0x7f070031
+			public const int LogOut = 2131165233;
+			
 			// aapt resource value: 0x7f070021
 			public const int LoginButton = 2131165217;
 			
@@ -2617,6 +2632,9 @@ namespace ShList
 			
 			// aapt resource value: 0x7f07002c
 			public const int PasswordsMatch = 2131165228;
+			
+			// aapt resource value: 0x7f07002f
+			public const int PleaseWait = 2131165231;
 			
 			// aapt resource value: 0x7f070028
 			public const int Yes = 2131165224;

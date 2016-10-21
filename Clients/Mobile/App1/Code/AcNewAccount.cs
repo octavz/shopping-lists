@@ -44,6 +44,11 @@ namespace ShList.Code
             btnCreate.Click += BtnCreate_Click;
         }//OnCreate
 
+        /// <summary>
+        /// BtnCreate_Click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void BtnCreate_Click(object sender, EventArgs e)
         {
             string email = txtEmail.Text;
@@ -53,16 +58,16 @@ namespace ShList.Code
 
             if (string.IsNullOrEmpty(email) || !Tools.IsEmailValid(email))
             {
-                txtEmail.ShowError(ShApplicationContext.GetString(Resource.String.InvalidEmailFormat), ShApplicationContext);
+                txtEmail.ShowError(ShAppContext.GetString(Resource.String.InvalidEmailFormat), ShAppContext);
                 bIsValid = false;
             }
             else
                 txtEmail.HideError();
 
 
-            if (string.IsNullOrEmpty(password1) || password1.Length < 4 || password1.Length > 10)
+            if (string.IsNullOrEmpty(password1) || password1.Length < 6 || password1.Length > 10)
             {
-                txtPassword1.ShowError(ShApplicationContext.GetString(Resource.String.InvalidPasswordFormat), ShApplicationContext);
+                txtPassword1.ShowError(ShAppContext.GetString(Resource.String.InvalidPasswordFormat), ShAppContext);
                 bIsValid = false;
             }
             else
@@ -70,7 +75,7 @@ namespace ShList.Code
 
             if (password1 != password2)
             {
-                txtPassword2.ShowError(ShApplicationContext.GetString(Resource.String.PasswordsMatch), ShApplicationContext);
+                txtPassword2.ShowError(ShAppContext.GetString(Resource.String.PasswordsMatch), ShAppContext);
                 bIsValid = false;
             }
             else
@@ -79,14 +84,25 @@ namespace ShList.Code
             if (!bIsValid)
                 return;
 
+            var progressDialog = ProgressDialog.Show(this, ShAppContext.GetString(Resource.String.PleaseWait), ShAppContext.GetString(Resource.String.CreatingAccount), true);
+
             ReqNewAccountDTO reqDTO = new ReqNewAccountDTO() { login = email, password = password1 };
             ResNewAccountDTO resAccount = await UserRepository.Instance.CreateAccount(reqDTO);
+            progressDialog.Dismiss();
 
             if (resAccount.errCode == (int)ErrorCodes.CREATE_ACCOUNT_ALREADY_EXITS)
             {
-                txtEmail.ShowError(ShApplicationContext.GetString(Resource.String.AccountExists), ShApplicationContext);
+                txtEmail.ShowError(ShAppContext.GetString(Resource.String.AccountExists), ShAppContext);
                 return;
-            }
+            }//endif
+
+            ShAppContext.UserId = resAccount.id;
+            ShAppContext.UserToken = resAccount.accessToken;
+            ShAppContext.UserNick = resAccount.nick;
+            ShAppContext.UserLogin = resAccount.login;
+
+            StartActivity(typeof(AcShoppingLists));
+            Finish();
         }//BtnCreate_Click
     }
 }

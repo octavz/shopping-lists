@@ -33,9 +33,15 @@ namespace ShList.Code
         {
             base.OnCreate(bundle);
 
-            // Set our view from the "main" layout resource
-            SetContentView(Resource.Layout.AcMain);
+            if (!string.IsNullOrEmpty(ShAppContext.UserToken))
+            {
+                StartActivity(typeof(AcShoppingLists));
+                Finish();
+                return;
+            }//we have a token
 
+            // Set our view from the "main" layout resource
+            SetContentView(Resource.Layout.AcMain);         
 
             txtEmail = FindViewById<EditText>(Resource.Id.txtEmail);
             txtPassword = FindViewById<EditText>(Resource.Id.txtPassword);
@@ -45,6 +51,7 @@ namespace ShList.Code
             {
                 var intAcc = new Intent(this, typeof(AcNewAccount));
                 StartActivity(intAcc);
+                Finish();
             };
 
 
@@ -62,16 +69,16 @@ namespace ShList.Code
 
             if (string.IsNullOrEmpty(email) || !Tools.IsEmailValid(email))
             {                
-                txtEmail.ShowError(ShApplicationContext.GetString(Resource.String.InvalidEmailFormat), ShApplicationContext);
+                txtEmail.ShowError(ShAppContext.GetString(Resource.String.InvalidEmailFormat), ShAppContext);
                 bIsValid = false;
             }
             else            
                 txtEmail.HideError();
 
 
-            if (string.IsNullOrEmpty(password) || password.Length < 4 || password.Length > 10)
+            if (string.IsNullOrEmpty(password) || password.Length < 6 || password.Length > 10)
             {
-                txtPassword.ShowError(ShApplicationContext.GetString(Resource.String.InvalidPasswordFormat), ShApplicationContext);
+                txtPassword.ShowError(ShAppContext.GetString(Resource.String.InvalidPasswordFormat), ShAppContext);
                 bIsValid = false;
             }
             else
@@ -94,6 +101,7 @@ namespace ShList.Code
             }
             */
             StartActivity(typeof(AcShoppingLists));
+            Finish();
         }//Btn_login_Click
 
 

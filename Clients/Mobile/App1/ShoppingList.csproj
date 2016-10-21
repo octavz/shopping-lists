@@ -169,6 +169,9 @@
     <AndroidResource Include="Resources\drawable\val_error.png" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidResource Include="Resources\drawable\logout.png" />
+  </ItemGroup>
+  <ItemGroup>
     <AndroidResource Include="Resources\menu\menu_base.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

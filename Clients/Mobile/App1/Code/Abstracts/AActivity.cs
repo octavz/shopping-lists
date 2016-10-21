@@ -22,7 +22,7 @@ namespace ShList.Code.Abstracts
         /// <summary>
         /// Shopping list - Application Cotext
         /// </summary>
-        public ShApplication ShApplicationContext { get { return (ShApplication)base.ApplicationContext; } }
+        public ShApplication ShAppContext { get { return (ShApplication)base.ApplicationContext; } }
         
         
     }

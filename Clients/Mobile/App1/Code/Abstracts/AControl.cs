@@ -26,6 +26,6 @@ namespace ShList.Code.Abstracts
         /// <summary>
         /// Shopping list - Application Cotext
         /// </summary>
-        public ShApplication ShApplicationContext { get { return m_Context; } }
+        public ShApplication ShAppContext { get { return m_Context; } }
     }
 }

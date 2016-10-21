@@ -41,7 +41,7 @@ namespace ShList.Code
         {
             ShoppingListDTO newList = ListsManager.Instance.CreateNewList();
 
-            CtrlShoppingList item = new CtrlShoppingList(this, ShApplicationContext, newList);
+            CtrlShoppingList item = new CtrlShoppingList(this, ShAppContext, newList);
             item.Event_DeleteItem += (int id) =>
             {
                 var view = FindViewById<CtrlShoppingList>(id);
