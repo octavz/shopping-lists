@@ -1,6 +1,7 @@
 module Messages exposing (..)
 
 import Http exposing (..)
+import Models exposing (..)
 
 
 type LoginMsg
@@ -9,9 +10,9 @@ type LoginMsg
     | PostMessage String
     | ShowErrors
     | Fetch
-    | FetchSuccess String
+    | FetchSuccess UserModel
     | FetchError Http.Error
 
 
 type Msg
-    =  Login LoginMsg
+    = Login LoginMsg

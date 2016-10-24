@@ -2,8 +2,9 @@ module Models exposing (..)
 
 
 type alias Model =
-    { userData : LoginViewModel
+    { userData : UserModel
     , lists : List ShopList
+    , loginView : LoginViewModel
     }
 
 
@@ -12,6 +13,13 @@ type alias LoginViewModel =
     , password : String
     , signinAttempts : Int
     , message : Maybe String
+    }
+
+
+type alias UserModel =
+    { login : String
+    , name : String
+    , key : String
     }
 
 
@@ -32,8 +40,8 @@ type alias ShopListItem =
 
 emptyLoginModel : LoginViewModel
 emptyLoginModel =
-    { login = ""
-    , password = ""
+    { login = "aaa@aaa.com"
+    , password = "123456"
     , signinAttempts = 0
     , message = Nothing
     }

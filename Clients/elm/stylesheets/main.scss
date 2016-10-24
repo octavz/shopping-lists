@@ -1,14 +1,20 @@
-ui-app > ui-container {
-  padding-top: 60px;
-  max-width: 900px;
-  margin: 0 auto;
+html, body, .container-table {
+    height: 100%;
+}
 
-  div {
-    font-size: 30px;
-    margin-bottom: 30px;
+.container-table {
+    display: table;
+}
 
-    span {
-      margin-right: 10px;
-    }
+.vertical-center-row {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+
+@for $i from 1 through 100 {
+  .top#{$i} {
+    margin-top:#{$i}px
   }
 }
+

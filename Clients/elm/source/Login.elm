@@ -1,22 +1,34 @@
-module Login exposing (update, view)
+module Login exposing (..)
 
 import Html exposing (label, text, input, button, div, h1)
-import Bootstrap.Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onInput, onClick, targetValue)
 import Html.App
 import Http
 import Json.Encode as Encode exposing (encode)
-import Json.Decode as Decode
+import Json.Decode as Json exposing ((:=))
 import String
-import Task exposing (Task, andThen, onError, succeed)
+import Task
 import Debug
 import Models exposing (..)
 import Messages exposing (..)
 
 
+loginDto : LoginViewModel -> String
+loginDto model =
+    Encode.encode 0
+        (Encode.object
+            [ ( "login", Encode.string model.login )
+            , ( "password", Encode.string model.password )
+            , ( "clientId", Encode.string "1" )
+            , ( "grantType", Encode.string "password" )
+            , ( "clientSecret", Encode.string "secret" )
+            ]
+        )
+
+
 loginUrl =
-    "http://localhost/login"
+    "http://localhost:9000/api/login"
 
 
 getErrors { login, password } =
@@ -40,37 +52,28 @@ errItem msg =
     div [] [ text msg ]
 
 
-field lbl typ handler =
-    let
-        lblWidth =
-            style [ ( "width", "120px" ) ]
-    in
-        div [ class "row" ]
-            [ div [ class "col-md-4" ] [ label [ for lbl, lblWidth ] [ text lbl ] ]
-            , input [ name lbl, type' typ, handler ] []
-            ]
+userDecoder : Json.Decoder UserModel
+userDecoder =
+    Json.object3 UserModel
+        ("login" := Json.string)
+        ("nick" := Json.string)
+        ("accessToken" := Json.string)
 
 
-encode model =
-    Encode.encode 0
-        (Encode.object
-            [ ( "login", Encode.string model.login )
-            , ( "password", Encode.string model.password )
-            ]
-        )
-
-
-fetch : LoginViewModel -> Task Http.Error String
 fetch model =
-    (Http.fromJson Decode.string
-        (Http.send Http.defaultSettings
-            { verb = "POST"
-            , headers = [ ( "Content-Type", "application/json" ) ]
-            , url = loginUrl
-            , body = Http.string (encode model)
-            }
-        )
-    )
+    let
+        future =
+            Http.send Http.defaultSettings
+                { verb = "POST"
+                , headers =
+                    [ ( "Content-Type", "application/json" )
+                    , ( "Accept", "application/json" )
+                    ]
+                , url = loginUrl
+                , body = Http.string (loginDto model)
+                }
+    in
+        (Http.fromJson userDecoder future)
 
 
 login : LoginViewModel -> Cmd LoginMsg
@@ -97,21 +100,57 @@ view model =
 
                 Just msg ->
                     div [] [ text msg ]
-
-        --clickHandler =
-        --if List.length errors == 0 then
-        --login model
-        --else
-        --ShowErrors
     in
-        div
-            [ class "container center-block" ]
-            [ div [ class "row" ] [ h1 [] [ text "Sign In" ] ]
-            , div [ class "row" ] [ message ]
-            , field "Login" "text" (onInput UpdateLogin)
-            , field "Password" "password" (onInput UpdatePassword)
-            , div [ class "row" ] [ button [ onClick Fetch ] [ text "Login" ] ]
-            , div [ class "errors" ] viewErrors
+        div [ class "container" ]
+            [ div [ class "row" ]
+                [ div [ class "col-xs-4 col-xs-offset-4" ]
+                    [ div [ class "row top5" ]
+                        [ h1 []
+                            [ text "Sign In" ]
+                        ]
+                    , div [ class "row top5" ]
+                        [ message ]
+                    , div
+                        [ class "row top5" ]
+                        [ div [ class "col-sm-4" ]
+                            [ label [ class "text-right", for "login" ]
+                                [ text "Login:" ]
+                            ]
+                        , div [ class "col-sm-8" ]
+                            [ input
+                                [ name "login"
+                                , type' "text"
+                                , onInput UpdateLogin
+                                , value model.login
+                                ]
+                                []
+                            ]
+                        ]
+                    , div [ class "row top5" ]
+                        [ div [ class "col-sm-4" ]
+                            [ label [ class "text-right", for "pass" ]
+                                [ text "Password:" ]
+                            ]
+                        , div [ class "col-sm-8" ]
+                            [ input
+                                [ name "pass"
+                                , type' "password"
+                                , onInput UpdatePassword
+                                , value model.password
+                                ]
+                                []
+                            ]
+                        ]
+                    , div [ class "row top7" ]
+                        [ div [ class "col-md-2 col-md-offset-5" ]
+                            [ button [ onClick Fetch, class "btn btn-default" ]
+                                [ text "Login" ]
+                            ]
+                        ]
+                    , div [ class "row errors" ]
+                        viewErrors
+                    ]
+                ]
             ]
 
 
@@ -136,10 +175,14 @@ update action model =
             )
 
         Fetch ->
-            ( model, (login model) )
+            ( model, login model )
 
-        FetchSuccess name ->
-            ( model, Cmd.none )
+        FetchSuccess s ->
+            let
+                d =
+                    Debug.log "FetchSucces" s
+            in
+                ( model, Cmd.none )
 
         FetchError error ->
             ( { model | message = Just (toString error) }, Cmd.none )
