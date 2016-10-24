@@ -1,0 +1,118 @@
+var _gdotdesign$elm_ui$Ui_Modal$open = function (model) {
+	return _elm_lang$core$Native_Utils.update(
+		model,
+		{open: true});
+};
+var _gdotdesign$elm_ui$Ui_Modal$close = function (model) {
+	return _elm_lang$core$Native_Utils.update(
+		model,
+		{open: false});
+};
+var _gdotdesign$elm_ui$Ui_Modal$update = F2(
+	function (action, model) {
+		var _p0 = action;
+		return _gdotdesign$elm_ui$Ui_Modal$close(model);
+	});
+var _gdotdesign$elm_ui$Ui_Modal$init = {closeable: true, backdrop: true, open: false};
+var _gdotdesign$elm_ui$Ui_Modal$Model = F3(
+	function (a, b, c) {
+		return {closeable: a, backdrop: b, open: c};
+	});
+var _gdotdesign$elm_ui$Ui_Modal$ViewModel = F3(
+	function (a, b, c) {
+		return {content: a, footer: b, title: c};
+	});
+var _gdotdesign$elm_ui$Ui_Modal$Close = {ctor: 'Close'};
+var _gdotdesign$elm_ui$Ui_Modal$render = F3(
+	function (address, viewModel, model) {
+		var closeIcon = model.closeable ? _elm_lang$core$Native_List.fromArray(
+			[
+				A3(
+				_gdotdesign$elm_ui$Ui$icon,
+				'close',
+				true,
+				_elm_lang$core$Native_List.fromArray(
+					[
+						_elm_lang$html$Html_Events$onClick(
+						address(_gdotdesign$elm_ui$Ui_Modal$Close))
+					]))
+			]) : _elm_lang$core$Native_List.fromArray(
+			[]);
+		var closeAction = (model.closeable && model.backdrop) ? _elm_lang$core$Native_List.fromArray(
+			[
+				_elm_lang$html$Html_Events$onClick(
+				address(_gdotdesign$elm_ui$Ui_Modal$Close))
+			]) : _elm_lang$core$Native_List.fromArray(
+			[]);
+		var backdrop = _elm_lang$core$Native_List.fromArray(
+			[
+				A3(
+				_elm_lang$html$Html$node,
+				'ui-modal-backdrop',
+				closeAction,
+				_elm_lang$core$Native_List.fromArray(
+					[]))
+			]);
+		return A3(
+			_elm_lang$html$Html$node,
+			'ui-modal',
+			_elm_lang$core$Native_List.fromArray(
+				[
+					_elm_lang$html$Html_Attributes$classList(
+					_elm_lang$core$Native_List.fromArray(
+						[
+							{ctor: '_Tuple2', _0: 'ui-modal-open', _1: model.open}
+						]))
+				]),
+			A2(
+				_elm_lang$core$Basics_ops['++'],
+				_elm_lang$core$Native_List.fromArray(
+					[
+						A3(
+						_elm_lang$html$Html$node,
+						'ui-modal-wrapper',
+						_elm_lang$core$Native_List.fromArray(
+							[]),
+						_elm_lang$core$Native_List.fromArray(
+							[
+								A3(
+								_elm_lang$html$Html$node,
+								'ui-modal-header',
+								_elm_lang$core$Native_List.fromArray(
+									[]),
+								A2(
+									_elm_lang$core$Basics_ops['++'],
+									_elm_lang$core$Native_List.fromArray(
+										[
+											A3(
+											_elm_lang$html$Html$node,
+											'ui-modal-title',
+											_elm_lang$core$Native_List.fromArray(
+												[]),
+											_elm_lang$core$Native_List.fromArray(
+												[
+													_elm_lang$html$Html$text(viewModel.title)
+												]))
+										]),
+									closeIcon)),
+								A3(
+								_elm_lang$html$Html$node,
+								'ui-modal-content',
+								_elm_lang$core$Native_List.fromArray(
+									[]),
+								viewModel.content),
+								A3(
+								_elm_lang$html$Html$node,
+								'ui-modal-footer',
+								_elm_lang$core$Native_List.fromArray(
+									[]),
+								viewModel.footer)
+							]))
+					]),
+				model.backdrop ? backdrop : _elm_lang$core$Native_List.fromArray(
+					[])));
+	});
+var _gdotdesign$elm_ui$Ui_Modal$view = F3(
+	function (address, viewModel, model) {
+		return A3(_gdotdesign$elm_ui$Ui_Modal$render, address, viewModel, model);
+	});

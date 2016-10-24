@@ -1,0 +1,75 @@
+var _gdotdesign$elm_ui$Ui_Input$setValue = F2(
+	function (value, model) {
+		return _elm_lang$core$Native_Utils.update(
+			model,
+			{value: value});
+	});
+var _gdotdesign$elm_ui$Ui_Input$update = F2(
+	function (msg, model) {
+		var _p0 = msg;
+		var _p1 = _p0._0;
+		return {
+			ctor: '_Tuple2',
+			_0: A2(_gdotdesign$elm_ui$Ui_Input$setValue, _p1, model),
+			_1: A2(_gdotdesign$elm_ui$Ui_Helpers_Emitter$sendString, model.uid, _p1)
+		};
+	});
+var _gdotdesign$elm_ui$Ui_Input$subscribe = F2(
+	function (msg, model) {
+		return A2(_gdotdesign$elm_ui$Ui_Helpers_Emitter$listenString, model.uid, msg);
+	});
+var _gdotdesign$elm_ui$Ui_Input$init = F2(
+	function (value, placeholder) {
+		return {
+			placeholder: placeholder,
+			uid: _gdotdesign$elm_ui$Ui_Native_Uid$uid(
+				{ctor: '_Tuple0'}),
+			disabled: false,
+			readonly: false,
+			value: value,
+			kind: 'text'
+		};
+	});
+var _gdotdesign$elm_ui$Ui_Input$Model = F6(
+	function (a, b, c, d, e, f) {
+		return {placeholder: a, disabled: b, readonly: c, value: d, kind: e, uid: f};
+	});
+var _gdotdesign$elm_ui$Ui_Input$Input = function (a) {
+	return {ctor: 'Input', _0: a};
+};
+var _gdotdesign$elm_ui$Ui_Input$render = function (model) {
+	return A3(
+		_elm_lang$html$Html$node,
+		'ui-input',
+		_elm_lang$core$Native_List.fromArray(
+			[
+				_elm_lang$html$Html_Attributes$classList(
+				_elm_lang$core$Native_List.fromArray(
+					[
+						{ctor: '_Tuple2', _0: 'disabled', _1: model.disabled},
+						{ctor: '_Tuple2', _0: 'readonly', _1: model.readonly}
+					]))
+			]),
+		_elm_lang$core$Native_List.fromArray(
+			[
+				A3(
+				_elm_lang$html$Html$node,
+				'input',
+				_elm_lang$core$Native_List.fromArray(
+					[
+						_elm_lang$html$Html_Attributes$placeholder(model.placeholder),
+						A2(_elm_lang$html$Html_Attributes$attribute, 'id', model.uid),
+						_elm_lang$html$Html_Attributes$readonly(model.readonly),
+						_elm_lang$html$Html_Attributes$disabled(model.disabled),
+						_elm_lang$html$Html_Attributes$value(model.value),
+						_elm_lang$html$Html_Attributes$spellcheck(false),
+						_elm_lang$html$Html_Attributes$type$(model.kind),
+						_elm_lang$html$Html_Events$onInput(_gdotdesign$elm_ui$Ui_Input$Input)
+					]),
+				_elm_lang$core$Native_List.fromArray(
+					[]))
+			]));
+};
+var _gdotdesign$elm_ui$Ui_Input$view = function (model) {
+	return A2(_elm_lang$html$Html_Lazy$lazy, _gdotdesign$elm_ui$Ui_Input$render, model);
+};

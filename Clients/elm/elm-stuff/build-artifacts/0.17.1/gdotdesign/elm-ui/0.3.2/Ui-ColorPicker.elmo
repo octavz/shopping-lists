@@ -1,0 +1,179 @@
+var _gdotdesign$elm_ui$Ui_ColorPicker$setValue = F2(
+	function (color, model) {
+		return _elm_lang$core$Native_Utils.update(
+			model,
+			{
+				colorPanel: A2(_gdotdesign$elm_ui$Ui_ColorPanel$setValue, color, model.colorPanel)
+			});
+	});
+var _gdotdesign$elm_ui$Ui_ColorPicker$subscribe = F2(
+	function (msg, model) {
+		return A2(_gdotdesign$elm_ui$Ui_ColorPanel$subscribe, msg, model.colorPanel);
+	});
+var _gdotdesign$elm_ui$Ui_ColorPicker$init = function (color) {
+	return {
+		colorPanel: _gdotdesign$elm_ui$Ui_ColorPanel$init(color),
+		dropdownPosition: 'bottom',
+		disabled: false,
+		readonly: false,
+		open: false
+	};
+};
+var _gdotdesign$elm_ui$Ui_ColorPicker$Model = F5(
+	function (a, b, c, d, e) {
+		return {colorPanel: a, dropdownPosition: b, disabled: c, readonly: d, open: e};
+	});
+var _gdotdesign$elm_ui$Ui_ColorPicker$NoOp = {ctor: 'NoOp'};
+var _gdotdesign$elm_ui$Ui_ColorPicker$Blur = {ctor: 'Blur'};
+var _gdotdesign$elm_ui$Ui_ColorPicker$Close = function (a) {
+	return {ctor: 'Close', _0: a};
+};
+var _gdotdesign$elm_ui$Ui_ColorPicker$Focus = function (a) {
+	return {ctor: 'Focus', _0: a};
+};
+var _gdotdesign$elm_ui$Ui_ColorPicker$Toggle = function (a) {
+	return {ctor: 'Toggle', _0: a};
+};
+var _gdotdesign$elm_ui$Ui_ColorPicker$ColorPanel = function (a) {
+	return {ctor: 'ColorPanel', _0: a};
+};
+var _gdotdesign$elm_ui$Ui_ColorPicker$subscriptions = function (model) {
+	return A2(
+		_elm_lang$core$Platform_Sub$map,
+		_gdotdesign$elm_ui$Ui_ColorPicker$ColorPanel,
+		_gdotdesign$elm_ui$Ui_ColorPanel$subscriptions(model.colorPanel));
+};
+var _gdotdesign$elm_ui$Ui_ColorPicker$update = F2(
+	function (action, model) {
+		var _p0 = action;
+		switch (_p0.ctor) {
+			case 'ColorPanel':
+				var _p1 = A2(_gdotdesign$elm_ui$Ui_ColorPanel$update, _p0._0, model.colorPanel);
+				var colorPanel = _p1._0;
+				var effect = _p1._1;
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{colorPanel: colorPanel}),
+					_1: A2(_elm_lang$core$Platform_Cmd$map, _gdotdesign$elm_ui$Ui_ColorPicker$ColorPanel, effect)
+				};
+			case 'Focus':
+				return {
+					ctor: '_Tuple2',
+					_0: A2(_gdotdesign$elm_ui$Ui_Helpers_Dropdown$openWithDimensions, _p0._0, model),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'Close':
+				return {
+					ctor: '_Tuple2',
+					_0: _gdotdesign$elm_ui$Ui_Helpers_Dropdown$close(model),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'Blur':
+				return {
+					ctor: '_Tuple2',
+					_0: _gdotdesign$elm_ui$Ui_Helpers_Dropdown$close(model),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'Toggle':
+				return {
+					ctor: '_Tuple2',
+					_0: A2(_gdotdesign$elm_ui$Ui_Helpers_Dropdown$toggleWithDimensions, _p0._0, model),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			default:
+				return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+		}
+	});
+var _gdotdesign$elm_ui$Ui_ColorPicker$render = function (model) {
+	var open = model.open && (_elm_lang$core$Basics$not(model.disabled) && _elm_lang$core$Basics$not(model.readonly));
+	var actions = A2(
+		_gdotdesign$elm_ui$Ui$enabledActions,
+		model,
+		_elm_lang$core$Native_List.fromArray(
+			[
+				A2(_gdotdesign$elm_ui$Ui_Helpers_Dropdown$onWithDimensions, 'focus', _gdotdesign$elm_ui$Ui_ColorPicker$Focus),
+				_elm_lang$html$Html_Events$onBlur(_gdotdesign$elm_ui$Ui_ColorPicker$Blur),
+				_gdotdesign$elm_ui$Ui_Helpers_Dropdown$onKeysWithDimensions(
+				_elm_lang$core$Native_List.fromArray(
+					[
+						{ctor: '_Tuple2', _0: 27, _1: _gdotdesign$elm_ui$Ui_ColorPicker$Close},
+						{ctor: '_Tuple2', _0: 13, _1: _gdotdesign$elm_ui$Ui_ColorPicker$Toggle}
+					]))
+			]));
+	var color = _gdotdesign$elm_ui$Ext_Color$toCSSRgba(model.colorPanel.value);
+	return A3(
+		_elm_lang$html$Html$node,
+		'ui-color-picker',
+		A2(
+			_elm_lang$core$Basics_ops['++'],
+			_elm_lang$core$Native_List.fromArray(
+				[
+					_elm_lang$html$Html_Attributes$classList(
+					_elm_lang$core$Native_List.fromArray(
+						[
+							{ctor: '_Tuple2', _0: 'dropdown-open', _1: open},
+							{ctor: '_Tuple2', _0: 'disabled', _1: model.disabled},
+							{ctor: '_Tuple2', _0: 'readonly', _1: model.readonly}
+						]))
+				]),
+			A2(
+				_elm_lang$core$Basics_ops['++'],
+				actions,
+				_gdotdesign$elm_ui$Ui$tabIndex(model))),
+		_elm_lang$core$Native_List.fromArray(
+			[
+				A2(
+				_elm_lang$html$Html$div,
+				_elm_lang$core$Native_List.fromArray(
+					[]),
+				_elm_lang$core$Native_List.fromArray(
+					[
+						_elm_lang$html$Html$text(color)
+					])),
+				A3(
+				_elm_lang$html$Html$node,
+				'ui-color-picker-rect',
+				_elm_lang$core$Native_List.fromArray(
+					[]),
+				_elm_lang$core$Native_List.fromArray(
+					[
+						A2(
+						_elm_lang$html$Html$div,
+						_elm_lang$core$Native_List.fromArray(
+							[
+								_elm_lang$html$Html_Attributes$style(
+								_elm_lang$core$Native_List.fromArray(
+									[
+										{ctor: '_Tuple2', _0: 'background-color', _1: color}
+									]))
+							]),
+						_elm_lang$core$Native_List.fromArray(
+							[]))
+					])),
+				A3(
+				_gdotdesign$elm_ui$Ui_Helpers_Dropdown$view,
+				_gdotdesign$elm_ui$Ui_ColorPicker$NoOp,
+				model.dropdownPosition,
+				_elm_lang$core$Native_List.fromArray(
+					[
+						A3(
+						_elm_lang$html$Html$node,
+						'ui-dropdown-overlay',
+						_elm_lang$core$Native_List.fromArray(
+							[
+								_elm_lang$html$Html_Events$onClick(_gdotdesign$elm_ui$Ui_ColorPicker$Blur)
+							]),
+						_elm_lang$core$Native_List.fromArray(
+							[])),
+						A2(
+						_elm_lang$html$Html_App$map,
+						_gdotdesign$elm_ui$Ui_ColorPicker$ColorPanel,
+						_gdotdesign$elm_ui$Ui_ColorPanel$view(model.colorPanel))
+					]))
+			]));
+};
+var _gdotdesign$elm_ui$Ui_ColorPicker$view = function (model) {
+	return A2(_elm_lang$html$Html_Lazy$lazy, _gdotdesign$elm_ui$Ui_ColorPicker$render, model);
+};

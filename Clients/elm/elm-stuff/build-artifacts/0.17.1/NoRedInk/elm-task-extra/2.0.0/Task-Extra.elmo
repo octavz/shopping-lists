@@ -1,0 +1,63 @@
+var _NoRedInk$elm_task_extra$Task_Extra$never = function (n) {
+	never:
+	while (true) {
+		var _v0 = n;
+		n = _v0;
+		continue never;
+	}
+};
+var _NoRedInk$elm_task_extra$Task_Extra$performFailproof = _elm_lang$core$Task$perform(_NoRedInk$elm_task_extra$Task_Extra$never);
+var _NoRedInk$elm_task_extra$Task_Extra$delay = F2(
+	function (time, task) {
+		return A2(
+			_elm_lang$core$Task$andThen,
+			_elm_lang$core$Process$sleep(time),
+			function (_p0) {
+				return task;
+			});
+	});
+var _NoRedInk$elm_task_extra$Task_Extra$loop = F2(
+	function (every, task) {
+		return A2(
+			_elm_lang$core$Task$andThen,
+			task,
+			function (_p1) {
+				return A2(
+					_elm_lang$core$Task$andThen,
+					_elm_lang$core$Process$sleep(every),
+					function (_p2) {
+						return A2(_NoRedInk$elm_task_extra$Task_Extra$loop, every, task);
+					});
+			});
+	});
+var _NoRedInk$elm_task_extra$Task_Extra$optional = function (list) {
+	var _p3 = list;
+	if (_p3.ctor === '[]') {
+		return _elm_lang$core$Task$succeed(
+			_elm_lang$core$Native_List.fromArray(
+				[]));
+	} else {
+		var _p5 = _p3._1;
+		return A2(
+			_elm_lang$core$Task$onError,
+			A2(
+				_elm_lang$core$Task$andThen,
+				_p3._0,
+				function (value) {
+					return A2(
+						_elm_lang$core$Task$map,
+						F2(
+							function (x, y) {
+								return A2(_elm_lang$core$List_ops['::'], x, y);
+							})(value),
+						_NoRedInk$elm_task_extra$Task_Extra$optional(_p5));
+				}),
+			function (_p4) {
+				return _NoRedInk$elm_task_extra$Task_Extra$optional(_p5);
+			});
+	}
+};
+var _NoRedInk$elm_task_extra$Task_Extra$parallel = function (tasks) {
+	return _elm_lang$core$Task$sequence(
+		A2(_elm_lang$core$List$map, _elm_lang$core$Process$spawn, tasks));
+};

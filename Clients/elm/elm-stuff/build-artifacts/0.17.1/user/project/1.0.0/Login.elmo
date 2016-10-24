@@ -1,0 +1,280 @@
+var _user$project$Login$encode = function (model) {
+	return A2(
+		_elm_lang$core$Json_Encode$encode,
+		0,
+		_elm_lang$core$Json_Encode$object(
+			_elm_lang$core$Native_List.fromArray(
+				[
+					{
+					ctor: '_Tuple2',
+					_0: 'login',
+					_1: _elm_lang$core$Json_Encode$string(model.login)
+				},
+					{
+					ctor: '_Tuple2',
+					_0: 'password',
+					_1: _elm_lang$core$Json_Encode$string(model.password)
+				}
+				])));
+};
+var _user$project$Login$field = F3(
+	function (lbl, typ, handler) {
+		var lblWidth = _elm_lang$html$Html_Attributes$style(
+			_elm_lang$core$Native_List.fromArray(
+				[
+					{ctor: '_Tuple2', _0: 'width', _1: '120px'}
+				]));
+		return A2(
+			_elm_lang$html$Html$div,
+			_elm_lang$core$Native_List.fromArray(
+				[
+					_elm_lang$html$Html_Attributes$class('row')
+				]),
+			_elm_lang$core$Native_List.fromArray(
+				[
+					A2(
+					_elm_lang$html$Html$div,
+					_elm_lang$core$Native_List.fromArray(
+						[
+							_elm_lang$html$Html_Attributes$class('col-md-4')
+						]),
+					_elm_lang$core$Native_List.fromArray(
+						[
+							A2(
+							_elm_lang$html$Html$label,
+							_elm_lang$core$Native_List.fromArray(
+								[
+									_elm_lang$html$Html_Attributes$for(lbl),
+									lblWidth
+								]),
+							_elm_lang$core$Native_List.fromArray(
+								[
+									_elm_lang$html$Html$text(lbl)
+								]))
+						])),
+					A2(
+					_elm_lang$html$Html$input,
+					_elm_lang$core$Native_List.fromArray(
+						[
+							_elm_lang$html$Html_Attributes$name(lbl),
+							_elm_lang$html$Html_Attributes$type$(typ),
+							handler
+						]),
+					_elm_lang$core$Native_List.fromArray(
+						[]))
+				]));
+	});
+var _user$project$Login$errItem = function (msg) {
+	return A2(
+		_elm_lang$html$Html$div,
+		_elm_lang$core$Native_List.fromArray(
+			[]),
+		_elm_lang$core$Native_List.fromArray(
+			[
+				_elm_lang$html$Html$text(msg)
+			]));
+};
+var _user$project$Login$getErrors = function (_p0) {
+	var _p1 = _p0;
+	var errors = _elm_lang$core$Native_List.fromArray(
+		[
+			{
+			ctor: '_Tuple2',
+			_0: _elm_lang$core$String$isEmpty(_p1.login),
+			_1: 'Login is required.'
+		},
+			{
+			ctor: '_Tuple2',
+			_0: _elm_lang$core$String$isEmpty(_p1.password),
+			_1: 'Password is required.'
+		}
+		]);
+	return A2(
+		_elm_lang$core$List$filterMap,
+		function (_p2) {
+			var _p3 = _p2;
+			return _p3._0 ? _elm_lang$core$Maybe$Just(_p3._1) : _elm_lang$core$Maybe$Nothing;
+		},
+		errors);
+};
+var _user$project$Login$view = function (model) {
+	var message = function () {
+		var _p4 = model.message;
+		if (_p4.ctor === 'Nothing') {
+			return A2(
+				_elm_lang$html$Html$div,
+				_elm_lang$core$Native_List.fromArray(
+					[]),
+				_elm_lang$core$Native_List.fromArray(
+					[]));
+		} else {
+			return A2(
+				_elm_lang$html$Html$div,
+				_elm_lang$core$Native_List.fromArray(
+					[]),
+				_elm_lang$core$Native_List.fromArray(
+					[
+						_elm_lang$html$Html$text(_p4._0)
+					]));
+		}
+	}();
+	var errors = _user$project$Login$getErrors(model);
+	var viewErrors = (_elm_lang$core$Native_Utils.cmp(model.signinAttempts, 0) > 0) ? A2(_elm_lang$core$List$map, _user$project$Login$errItem, errors) : _elm_lang$core$Native_List.fromArray(
+		[]);
+	return A2(
+		_elm_lang$html$Html$div,
+		_elm_lang$core$Native_List.fromArray(
+			[
+				_elm_lang$html$Html_Attributes$class('container center-block')
+			]),
+		_elm_lang$core$Native_List.fromArray(
+			[
+				A2(
+				_elm_lang$html$Html$div,
+				_elm_lang$core$Native_List.fromArray(
+					[
+						_elm_lang$html$Html_Attributes$class('row')
+					]),
+				_elm_lang$core$Native_List.fromArray(
+					[
+						A2(
+						_elm_lang$html$Html$h1,
+						_elm_lang$core$Native_List.fromArray(
+							[]),
+						_elm_lang$core$Native_List.fromArray(
+							[
+								_elm_lang$html$Html$text('Sign In')
+							]))
+					])),
+				A2(
+				_elm_lang$html$Html$div,
+				_elm_lang$core$Native_List.fromArray(
+					[
+						_elm_lang$html$Html_Attributes$class('row')
+					]),
+				_elm_lang$core$Native_List.fromArray(
+					[message])),
+				A3(
+				_user$project$Login$field,
+				'Login',
+				'text',
+				_elm_lang$html$Html_Events$onInput(_user$project$Messages$UpdateLogin)),
+				A3(
+				_user$project$Login$field,
+				'Password',
+				'password',
+				_elm_lang$html$Html_Events$onInput(_user$project$Messages$UpdatePassword)),
+				A2(
+				_elm_lang$html$Html$div,
+				_elm_lang$core$Native_List.fromArray(
+					[
+						_elm_lang$html$Html_Attributes$class('row')
+					]),
+				_elm_lang$core$Native_List.fromArray(
+					[
+						A2(
+						_elm_lang$html$Html$button,
+						_elm_lang$core$Native_List.fromArray(
+							[
+								_elm_lang$html$Html_Events$onClick(_user$project$Messages$Fetch)
+							]),
+						_elm_lang$core$Native_List.fromArray(
+							[
+								_elm_lang$html$Html$text('Login')
+							]))
+					])),
+				A2(
+				_elm_lang$html$Html$div,
+				_elm_lang$core$Native_List.fromArray(
+					[
+						_elm_lang$html$Html_Attributes$class('errors')
+					]),
+				viewErrors)
+			]));
+};
+var _user$project$Login$loginUrl = 'http://localhost/login';
+var _user$project$Login$fetch = function (model) {
+	return A2(
+		_evancz$elm_http$Http$fromJson,
+		_elm_lang$core$Json_Decode$string,
+		A2(
+			_evancz$elm_http$Http$send,
+			_evancz$elm_http$Http$defaultSettings,
+			{
+				verb: 'POST',
+				headers: _elm_lang$core$Native_List.fromArray(
+					[
+						{ctor: '_Tuple2', _0: 'Content-Type', _1: 'application/json'}
+					]),
+				url: _user$project$Login$loginUrl,
+				body: _evancz$elm_http$Http$string(
+					_user$project$Login$encode(model))
+			}));
+};
+var _user$project$Login$login = function (model) {
+	return A3(
+		_elm_lang$core$Task$perform,
+		_user$project$Messages$FetchError,
+		_user$project$Messages$FetchSuccess,
+		_user$project$Login$fetch(model));
+};
+var _user$project$Login$update = F2(
+	function (action, model) {
+		var _p5 = A2(_elm_lang$core$Debug$log, 'INFO', action);
+		switch (_p5.ctor) {
+			case 'UpdateLogin':
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{login: _p5._0}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'UpdatePassword':
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{password: _p5._0}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'ShowErrors':
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{signinAttempts: model.signinAttempts + 1}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'PostMessage':
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{
+							signinAttempts: model.signinAttempts + 1,
+							message: _elm_lang$core$Maybe$Just(_p5._0)
+						}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'Fetch':
+				return {
+					ctor: '_Tuple2',
+					_0: model,
+					_1: _user$project$Login$login(model)
+				};
+			case 'FetchSuccess':
+				return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+			default:
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{
+							message: _elm_lang$core$Maybe$Just(
+								_elm_lang$core$Basics$toString(_p5._0))
+						}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+		}
+	});

@@ -1,0 +1,166 @@
+var _gdotdesign$elm_ui$Ui_IconButton$model = F5(
+	function (text, size, kind, glyph, side) {
+		return {disabled: false, readonly: false, glyph: glyph, kind: kind, size: size, side: side, text: text};
+	});
+var _gdotdesign$elm_ui$Ui_IconButton$render = F2(
+	function (msg, model) {
+		var span = A3(
+			_elm_lang$html$Html$node,
+			'span',
+			_elm_lang$core$Native_List.fromArray(
+				[]),
+			_elm_lang$core$Native_List.fromArray(
+				[
+					_elm_lang$html$Html$text(model.text)
+				]));
+		var icon = A3(
+			_gdotdesign$elm_ui$Ui$icon,
+			model.glyph,
+			false,
+			_elm_lang$core$Native_List.fromArray(
+				[]));
+		var children = _elm_lang$core$Native_Utils.eq(model.side, 'left') ? _elm_lang$core$Native_List.fromArray(
+			[icon, span]) : _elm_lang$core$Native_List.fromArray(
+			[span, icon]);
+		return A3(
+			_elm_lang$html$Html$node,
+			'ui-icon-button',
+			A2(_gdotdesign$elm_ui$Ui_Button$attributes, msg, model),
+			A2(
+				_elm_lang$core$Basics_ops['++'],
+				_elm_lang$core$Native_List.fromArray(
+					[_gdotdesign$elm_ui$Ui_Helpers_Ripple$view]),
+				children));
+	});
+var _gdotdesign$elm_ui$Ui_IconButton$view = F2(
+	function (msg, model) {
+		return A3(_elm_lang$html$Html_Lazy$lazy2, _gdotdesign$elm_ui$Ui_IconButton$render, msg, model);
+	});
+var _gdotdesign$elm_ui$Ui_IconButton$primary = F4(
+	function (text, glyph, side, msg) {
+		return A3(
+			_elm_lang$html$Html_Lazy$lazy2,
+			_gdotdesign$elm_ui$Ui_IconButton$render,
+			msg,
+			A5(_gdotdesign$elm_ui$Ui_IconButton$model, text, 'medium', 'primary', glyph, side));
+	});
+var _gdotdesign$elm_ui$Ui_IconButton$primarySmall = F4(
+	function (text, glyph, side, msg) {
+		return A3(
+			_elm_lang$html$Html_Lazy$lazy2,
+			_gdotdesign$elm_ui$Ui_IconButton$render,
+			msg,
+			A5(_gdotdesign$elm_ui$Ui_IconButton$model, text, 'small', 'primary', glyph, side));
+	});
+var _gdotdesign$elm_ui$Ui_IconButton$primaryBig = F4(
+	function (text, glyph, side, msg) {
+		return A3(
+			_elm_lang$html$Html_Lazy$lazy2,
+			_gdotdesign$elm_ui$Ui_IconButton$render,
+			msg,
+			A5(_gdotdesign$elm_ui$Ui_IconButton$model, text, 'big', 'primary', glyph, side));
+	});
+var _gdotdesign$elm_ui$Ui_IconButton$danger = F4(
+	function (text, glyph, side, msg) {
+		return A3(
+			_elm_lang$html$Html_Lazy$lazy2,
+			_gdotdesign$elm_ui$Ui_IconButton$render,
+			msg,
+			A5(_gdotdesign$elm_ui$Ui_IconButton$model, text, 'medium', 'danger', glyph, side));
+	});
+var _gdotdesign$elm_ui$Ui_IconButton$dangerSmall = F4(
+	function (text, glyph, side, msg) {
+		return A3(
+			_elm_lang$html$Html_Lazy$lazy2,
+			_gdotdesign$elm_ui$Ui_IconButton$render,
+			msg,
+			A5(_gdotdesign$elm_ui$Ui_IconButton$model, text, 'small', 'danger', glyph, side));
+	});
+var _gdotdesign$elm_ui$Ui_IconButton$dangerBig = F4(
+	function (text, glyph, side, msg) {
+		return A3(
+			_elm_lang$html$Html_Lazy$lazy2,
+			_gdotdesign$elm_ui$Ui_IconButton$render,
+			msg,
+			A5(_gdotdesign$elm_ui$Ui_IconButton$model, text, 'big', 'danger', glyph, side));
+	});
+var _gdotdesign$elm_ui$Ui_IconButton$secondary = F4(
+	function (text, glyph, side, msg) {
+		return A3(
+			_elm_lang$html$Html_Lazy$lazy2,
+			_gdotdesign$elm_ui$Ui_IconButton$render,
+			msg,
+			A5(_gdotdesign$elm_ui$Ui_IconButton$model, text, 'medium', 'secondary', glyph, side));
+	});
+var _gdotdesign$elm_ui$Ui_IconButton$secondarySmall = F4(
+	function (text, glyph, side, msg) {
+		return A3(
+			_elm_lang$html$Html_Lazy$lazy2,
+			_gdotdesign$elm_ui$Ui_IconButton$render,
+			msg,
+			A5(_gdotdesign$elm_ui$Ui_IconButton$model, text, 'small', 'secondary', glyph, side));
+	});
+var _gdotdesign$elm_ui$Ui_IconButton$secondaryBig = F4(
+	function (text, glyph, side, msg) {
+		return A3(
+			_elm_lang$html$Html_Lazy$lazy2,
+			_gdotdesign$elm_ui$Ui_IconButton$render,
+			msg,
+			A5(_gdotdesign$elm_ui$Ui_IconButton$model, text, 'big', 'secondary', glyph, side));
+	});
+var _gdotdesign$elm_ui$Ui_IconButton$success = F4(
+	function (text, glyph, side, msg) {
+		return A3(
+			_elm_lang$html$Html_Lazy$lazy2,
+			_gdotdesign$elm_ui$Ui_IconButton$render,
+			msg,
+			A5(_gdotdesign$elm_ui$Ui_IconButton$model, text, 'medium', 'success', glyph, side));
+	});
+var _gdotdesign$elm_ui$Ui_IconButton$successSmall = F4(
+	function (text, glyph, side, msg) {
+		return A3(
+			_elm_lang$html$Html_Lazy$lazy2,
+			_gdotdesign$elm_ui$Ui_IconButton$render,
+			msg,
+			A5(_gdotdesign$elm_ui$Ui_IconButton$model, text, 'small', 'success', glyph, side));
+	});
+var _gdotdesign$elm_ui$Ui_IconButton$successBig = F4(
+	function (text, glyph, side, msg) {
+		return A3(
+			_elm_lang$html$Html_Lazy$lazy2,
+			_gdotdesign$elm_ui$Ui_IconButton$render,
+			msg,
+			A5(_gdotdesign$elm_ui$Ui_IconButton$model, text, 'big', 'success', glyph, side));
+	});
+var _gdotdesign$elm_ui$Ui_IconButton$warning = F4(
+	function (text, glyph, side, msg) {
+		return A3(
+			_elm_lang$html$Html_Lazy$lazy2,
+			_gdotdesign$elm_ui$Ui_IconButton$render,
+			msg,
+			A5(_gdotdesign$elm_ui$Ui_IconButton$model, text, 'medium', 'warning', glyph, side));
+	});
+var _gdotdesign$elm_ui$Ui_IconButton$warningSmall = F4(
+	function (text, glyph, side, msg) {
+		return A3(
+			_elm_lang$html$Html_Lazy$lazy2,
+			_gdotdesign$elm_ui$Ui_IconButton$render,
+			msg,
+			A5(_gdotdesign$elm_ui$Ui_IconButton$model, text, 'small', 'warning', glyph, side));
+	});
+var _gdotdesign$elm_ui$Ui_IconButton$warningBig = F4(
+	function (text, glyph, side, msg) {
+		return A3(
+			_elm_lang$html$Html_Lazy$lazy2,
+			_gdotdesign$elm_ui$Ui_IconButton$render,
+			msg,
+			A5(_gdotdesign$elm_ui$Ui_IconButton$model, text, 'big', 'warning', glyph, side));
+	});
+var _gdotdesign$elm_ui$Ui_IconButton$init = F2(
+	function (glyph, text) {
+		return {disabled: false, readonly: false, kind: 'primary', size: 'medium', glyph: glyph, side: 'left', text: text};
+	});
+var _gdotdesign$elm_ui$Ui_IconButton$Model = F7(
+	function (a, b, c, d, e, f, g) {
+		return {disabled: a, readonly: b, glyph: c, text: d, kind: e, side: f, size: g};
+	});

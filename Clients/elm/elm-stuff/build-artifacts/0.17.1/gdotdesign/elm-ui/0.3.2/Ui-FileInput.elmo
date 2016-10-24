@@ -1,0 +1,218 @@
+var _gdotdesign$elm_ui$Ui_FileInput$renderFileStatus = function (model) {
+	var _p0 = model.file;
+	if (_p0.ctor === 'Just') {
+		var _p1 = _p0._0;
+		return A3(
+			_elm_lang$html$Html$node,
+			'ui-file-input-info',
+			_elm_lang$core$Native_List.fromArray(
+				[]),
+			_elm_lang$core$Native_List.fromArray(
+				[
+					A3(
+					_elm_lang$html$Html$node,
+					'ui-file-input-name',
+					_elm_lang$core$Native_List.fromArray(
+						[]),
+					_elm_lang$core$Native_List.fromArray(
+						[
+							_elm_lang$html$Html$text(_p1.name)
+						])),
+					A3(
+					_elm_lang$html$Html$node,
+					'ui-file-input-size',
+					_elm_lang$core$Native_List.fromArray(
+						[]),
+					_elm_lang$core$Native_List.fromArray(
+						[
+							_elm_lang$html$Html$text(
+							A2(
+								_elm_lang$core$Basics_ops['++'],
+								'Size: ',
+								A2(_ggb$numeral_elm$Numeral$format, '0.0b', _p1.size)))
+						])),
+					A3(
+					_elm_lang$html$Html$node,
+					'ui-file-input-type',
+					_elm_lang$core$Native_List.fromArray(
+						[]),
+					_elm_lang$core$Native_List.fromArray(
+						[
+							_elm_lang$html$Html$text(
+							A2(_elm_lang$core$Basics_ops['++'], 'Type: ', _p1.mimeType))
+						]))
+				]));
+	} else {
+		return A3(
+			_elm_lang$html$Html$node,
+			'ui-file-input-no-file',
+			_elm_lang$core$Native_List.fromArray(
+				[]),
+			_elm_lang$core$Native_List.fromArray(
+				[
+					_elm_lang$html$Html$text('No file is selected!')
+				]));
+	}
+};
+var _gdotdesign$elm_ui$Ui_FileInput$subscribe = F2(
+	function (msg, model) {
+		return A2(_gdotdesign$elm_ui$Ui_Helpers_Emitter$listenFile, model.uid, msg);
+	});
+var _gdotdesign$elm_ui$Ui_FileInput$init = function (accept) {
+	return {
+		uid: _gdotdesign$elm_ui$Ui_Native_Uid$uid(
+			{ctor: '_Tuple0'}),
+		readonly: false,
+		disabled: false,
+		accept: accept,
+		file: _elm_lang$core$Maybe$Nothing
+	};
+};
+var _gdotdesign$elm_ui$Ui_FileInput$Model = F5(
+	function (a, b, c, d, e) {
+		return {file: a, disabled: b, readonly: c, accept: d, uid: e};
+	});
+var _gdotdesign$elm_ui$Ui_FileInput$NoOp = {ctor: 'NoOp'};
+var _gdotdesign$elm_ui$Ui_FileInput$Clear = {ctor: 'Clear'};
+var _gdotdesign$elm_ui$Ui_FileInput$Selected = function (a) {
+	return {ctor: 'Selected', _0: a};
+};
+var _gdotdesign$elm_ui$Ui_FileInput$update = F2(
+	function (msg, model) {
+		var _p2 = msg;
+		switch (_p2.ctor) {
+			case 'Open':
+				return {
+					ctor: '_Tuple2',
+					_0: model,
+					_1: A3(
+						_elm_lang$core$Task$perform,
+						function (_p3) {
+							return _elm_lang$core$Native_Utils.crash(
+								'Ui.FileInput',
+								{
+									start: {line: 96, column: 36},
+									end: {line: 96, column: 47}
+								})('');
+						},
+						_gdotdesign$elm_ui$Ui_FileInput$Selected,
+						_p2._0)
+				};
+			case 'Selected':
+				var _p4 = _p2._0;
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{
+							file: _elm_lang$core$Maybe$Just(_p4)
+						}),
+					_1: A2(_gdotdesign$elm_ui$Ui_Helpers_Emitter$sendFile, model.uid, _p4)
+				};
+			case 'Clear':
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{file: _elm_lang$core$Maybe$Nothing}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			default:
+				return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+		}
+	});
+var _gdotdesign$elm_ui$Ui_FileInput$Open = function (a) {
+	return {ctor: 'Open', _0: a};
+};
+var _gdotdesign$elm_ui$Ui_FileInput$render = function (model) {
+	var attributes = A2(
+		_gdotdesign$elm_ui$Ui$enabledActions,
+		model,
+		_elm_lang$core$Native_List.fromArray(
+			[
+				A2(
+				_elm_lang$html$Html_Events$on,
+				'click',
+				A2(_gdotdesign$elm_ui$Ui_Native_FileManager$openSingleDecoder, model.accept, _gdotdesign$elm_ui$Ui_FileInput$Open))
+			]));
+	var label = A2(
+		_elm_lang$core$Maybe$withDefault,
+		'No file is selected!',
+		A2(
+			_elm_lang$core$Maybe$map,
+			function (_) {
+				return _.name;
+			},
+			model.file));
+	return A3(
+		_elm_lang$html$Html$node,
+		'ui-file-input',
+		A2(
+			_elm_lang$core$Basics_ops['++'],
+			_elm_lang$core$Native_List.fromArray(
+				[
+					_elm_lang$html$Html_Attributes$classList(
+					_elm_lang$core$Native_List.fromArray(
+						[
+							{ctor: '_Tuple2', _0: 'disabled', _1: model.disabled},
+							{ctor: '_Tuple2', _0: 'readonly', _1: model.readonly}
+						]))
+				]),
+			attributes),
+		_elm_lang$core$Native_List.fromArray(
+			[
+				A2(
+				_elm_lang$html$Html$div,
+				_elm_lang$core$Native_List.fromArray(
+					[]),
+				_elm_lang$core$Native_List.fromArray(
+					[
+						_elm_lang$html$Html$text(label)
+					])),
+				A2(
+				_gdotdesign$elm_ui$Ui_Button$view,
+				_gdotdesign$elm_ui$Ui_FileInput$NoOp,
+				{readonly: model.readonly, disabled: model.disabled, kind: 'primary', text: 'Browse', size: 'medium'})
+			]));
+};
+var _gdotdesign$elm_ui$Ui_FileInput$view = function (model) {
+	return A2(_elm_lang$html$Html_Lazy$lazy, _gdotdesign$elm_ui$Ui_FileInput$render, model);
+};
+var _gdotdesign$elm_ui$Ui_FileInput$renderDetails = function (model) {
+	var attributes = A2(
+		_gdotdesign$elm_ui$Ui$enabledActions,
+		model,
+		_elm_lang$core$Native_List.fromArray(
+			[
+				A2(
+				_elm_lang$html$Html_Events$on,
+				'click',
+				A2(_gdotdesign$elm_ui$Ui_Native_FileManager$openSingleDecoder, model.accept, _gdotdesign$elm_ui$Ui_FileInput$Open))
+			]));
+	return A3(
+		_elm_lang$html$Html$node,
+		'ui-file-input-details',
+		A2(
+			_elm_lang$core$Basics_ops['++'],
+			_elm_lang$core$Native_List.fromArray(
+				[
+					_elm_lang$html$Html_Attributes$classList(
+					_elm_lang$core$Native_List.fromArray(
+						[
+							{ctor: '_Tuple2', _0: 'disabled', _1: model.disabled},
+							{ctor: '_Tuple2', _0: 'readonly', _1: model.readonly}
+						]))
+				]),
+			attributes),
+		_elm_lang$core$Native_List.fromArray(
+			[
+				_gdotdesign$elm_ui$Ui_FileInput$renderFileStatus(model),
+				A2(
+				_gdotdesign$elm_ui$Ui_Button$view,
+				_gdotdesign$elm_ui$Ui_FileInput$NoOp,
+				{readonly: model.readonly, disabled: model.disabled, kind: 'primary', text: 'Browse', size: 'medium'})
+			]));
+};
+var _gdotdesign$elm_ui$Ui_FileInput$viewDetails = function (model) {
+	return A2(_elm_lang$html$Html_Lazy$lazy, _gdotdesign$elm_ui$Ui_FileInput$renderDetails, model);
+};

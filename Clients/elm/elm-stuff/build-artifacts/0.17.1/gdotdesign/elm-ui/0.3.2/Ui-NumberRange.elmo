@@ -1,0 +1,237 @@
+var _gdotdesign$elm_ui$Ui_NumberRange$handleClick = F2(
+	function (value, model) {
+		var drag = A2(_gdotdesign$elm_ui$Ui_Helpers_Drag$handleClick, value, model.drag);
+		return _elm_lang$core$Native_Utils.eq(model.drag, drag) ? model : _elm_lang$core$Native_Utils.update(
+			model,
+			{drag: drag});
+	});
+var _gdotdesign$elm_ui$Ui_NumberRange$sendValue = function (model) {
+	return {
+		ctor: '_Tuple2',
+		_0: model,
+		_1: A2(_gdotdesign$elm_ui$Ui_Helpers_Emitter$sendFloat, model.uid, model.value)
+	};
+};
+var _gdotdesign$elm_ui$Ui_NumberRange$setValue = F2(
+	function (value, model) {
+		return _elm_lang$core$Native_Utils.eq(model.value, value) ? model : _elm_lang$core$Native_Utils.update(
+			model,
+			{
+				value: A3(_elm_lang$core$Basics$clamp, model.min, model.max, value)
+			});
+	});
+var _gdotdesign$elm_ui$Ui_NumberRange$increment = function (model) {
+	return _gdotdesign$elm_ui$Ui_NumberRange$sendValue(
+		A2(_gdotdesign$elm_ui$Ui_NumberRange$setValue, model.value + model.step, model));
+};
+var _gdotdesign$elm_ui$Ui_NumberRange$decrement = function (model) {
+	return _gdotdesign$elm_ui$Ui_NumberRange$sendValue(
+		A2(_gdotdesign$elm_ui$Ui_NumberRange$setValue, model.value - model.step, model));
+};
+var _gdotdesign$elm_ui$Ui_NumberRange$handleMove = F3(
+	function (x, y, model) {
+		var diff = A3(_gdotdesign$elm_ui$Ui_Helpers_Drag$diff, x, y, model.drag).left;
+		return model.drag.dragging ? _gdotdesign$elm_ui$Ui_NumberRange$sendValue(
+			A2(_gdotdesign$elm_ui$Ui_NumberRange$setValue, model.startValue - ((0 - diff) * model.step), model)) : {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+	});
+var _gdotdesign$elm_ui$Ui_NumberRange$endEdit = function (model) {
+	var _p0 = model.editing;
+	if (_p0 === false) {
+		return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+	} else {
+		return _gdotdesign$elm_ui$Ui_NumberRange$sendValue(
+			A2(
+				_gdotdesign$elm_ui$Ui_NumberRange$setValue,
+				A2(
+					_elm_lang$core$Result$withDefault,
+					0,
+					_elm_lang$core$String$toFloat(model.inputValue)),
+				_elm_lang$core$Native_Utils.update(
+					model,
+					{editing: false})));
+	}
+};
+var _gdotdesign$elm_ui$Ui_NumberRange$update = F2(
+	function (msg, model) {
+		var _p1 = msg;
+		switch (_p1.ctor) {
+			case 'Increment':
+				return _gdotdesign$elm_ui$Ui_NumberRange$increment(model);
+			case 'Decrement':
+				return _gdotdesign$elm_ui$Ui_NumberRange$decrement(model);
+			case 'Save':
+				return _gdotdesign$elm_ui$Ui_NumberRange$endEdit(model);
+			case 'Move':
+				return A3(_gdotdesign$elm_ui$Ui_NumberRange$handleMove, _p1._0._0, _p1._0._1, model);
+			case 'Click':
+				return {
+					ctor: '_Tuple2',
+					_0: A2(_gdotdesign$elm_ui$Ui_NumberRange$handleClick, _p1._0, model),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'Input':
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{inputValue: _p1._0}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'Blur':
+				return _gdotdesign$elm_ui$Ui_NumberRange$endEdit(model);
+			case 'Edit':
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{
+							editing: true,
+							inputValue: A2(_gdotdesign$elm_ui$Ext_Number$toFixed, model.round, model.value)
+						}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			default:
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{
+							drag: A3(_gdotdesign$elm_ui$Ui_Helpers_Drag$lift, _p1._0._1, _p1._0._0, model.drag),
+							startValue: model.value
+						}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+		}
+	});
+var _gdotdesign$elm_ui$Ui_NumberRange$subscribe = F2(
+	function (msg, model) {
+		return A2(_gdotdesign$elm_ui$Ui_Helpers_Emitter$listenFloat, model.uid, msg);
+	});
+var _gdotdesign$elm_ui$Ui_NumberRange$init = function (value) {
+	return {
+		uid: _gdotdesign$elm_ui$Ui_Native_Uid$uid(
+			{ctor: '_Tuple0'}),
+		startValue: value,
+		drag: _gdotdesign$elm_ui$Ui_Helpers_Drag$init,
+		disabled: false,
+		readonly: false,
+		editing: false,
+		inputValue: '',
+		value: value,
+		affix: '',
+		min: 0 - (1 / 0),
+		max: 1 / 0,
+		round: 0,
+		step: 1
+	};
+};
+var _gdotdesign$elm_ui$Ui_NumberRange$Model = function (a) {
+	return function (b) {
+		return function (c) {
+			return function (d) {
+				return function (e) {
+					return function (f) {
+						return function (g) {
+							return function (h) {
+								return function (i) {
+									return function (j) {
+										return function (k) {
+											return function (l) {
+												return function (m) {
+													return {inputValue: a, startValue: b, drag: c, disabled: d, readonly: e, editing: f, affix: g, value: h, step: i, min: j, max: k, round: l, uid: m};
+												};
+											};
+										};
+									};
+								};
+							};
+						};
+					};
+				};
+			};
+		};
+	};
+};
+var _gdotdesign$elm_ui$Ui_NumberRange$Save = {ctor: 'Save'};
+var _gdotdesign$elm_ui$Ui_NumberRange$Blur = {ctor: 'Blur'};
+var _gdotdesign$elm_ui$Ui_NumberRange$Edit = {ctor: 'Edit'};
+var _gdotdesign$elm_ui$Ui_NumberRange$Decrement = {ctor: 'Decrement'};
+var _gdotdesign$elm_ui$Ui_NumberRange$Increment = {ctor: 'Increment'};
+var _gdotdesign$elm_ui$Ui_NumberRange$Click = function (a) {
+	return {ctor: 'Click', _0: a};
+};
+var _gdotdesign$elm_ui$Ui_NumberRange$Input = function (a) {
+	return {ctor: 'Input', _0: a};
+};
+var _gdotdesign$elm_ui$Ui_NumberRange$Lift = function (a) {
+	return {ctor: 'Lift', _0: a};
+};
+var _gdotdesign$elm_ui$Ui_NumberRange$render = function (model) {
+	var attributes = model.editing ? _elm_lang$core$Native_List.fromArray(
+		[
+			_elm_lang$html$Html_Attributes$value(model.inputValue)
+		]) : _elm_lang$core$Native_List.fromArray(
+		[
+			_elm_lang$html$Html_Attributes$value(
+			A2(
+				_elm_lang$core$Basics_ops['++'],
+				A2(_gdotdesign$elm_ui$Ext_Number$toFixed, model.round, model.value),
+				model.affix))
+		]);
+	var actions = (model.readonly || model.disabled) ? _elm_lang$core$Native_List.fromArray(
+		[]) : (model.editing ? _elm_lang$core$Native_List.fromArray(
+		[
+			_elm_lang$html$Html_Events$onInput(_gdotdesign$elm_ui$Ui_NumberRange$Input),
+			_gdotdesign$elm_ui$Html_Events_Extra$onEnterPreventDefault(_gdotdesign$elm_ui$Ui_NumberRange$Save)
+		]) : _elm_lang$core$Native_List.fromArray(
+		[
+			A3(_gdotdesign$elm_ui$Html_Events_Geometry$onWithDimensions, 'mousedown', false, _gdotdesign$elm_ui$Ui_NumberRange$Lift),
+			A2(_gdotdesign$elm_ui$Html_Events_Extra$onStop, 'dblclick', _gdotdesign$elm_ui$Ui_NumberRange$Edit),
+			_gdotdesign$elm_ui$Html_Events_Extra$onKeys(
+			_elm_lang$core$Native_List.fromArray(
+				[
+					{ctor: '_Tuple2', _0: 40, _1: _gdotdesign$elm_ui$Ui_NumberRange$Decrement},
+					{ctor: '_Tuple2', _0: 38, _1: _gdotdesign$elm_ui$Ui_NumberRange$Increment},
+					{ctor: '_Tuple2', _0: 37, _1: _gdotdesign$elm_ui$Ui_NumberRange$Decrement},
+					{ctor: '_Tuple2', _0: 39, _1: _gdotdesign$elm_ui$Ui_NumberRange$Increment},
+					{ctor: '_Tuple2', _0: 13, _1: _gdotdesign$elm_ui$Ui_NumberRange$Edit}
+				]))
+		]));
+	var inputElement = A2(
+		_elm_lang$html$Html$input,
+		A2(
+			_elm_lang$core$Basics_ops['++'],
+			_elm_lang$core$Native_List.fromArray(
+				[
+					_elm_lang$html$Html_Events$onBlur(_gdotdesign$elm_ui$Ui_NumberRange$Blur),
+					_elm_lang$html$Html_Attributes$readonly(
+					_elm_lang$core$Basics$not(model.editing)),
+					_elm_lang$html$Html_Attributes$disabled(model.disabled)
+				]),
+			A2(_elm_lang$core$Basics_ops['++'], attributes, actions)),
+		_elm_lang$core$Native_List.fromArray(
+			[]));
+	return A3(
+		_elm_lang$html$Html$node,
+		'ui-number-range',
+		_elm_lang$core$Native_List.fromArray(
+			[
+				_elm_lang$html$Html_Attributes$classList(
+				_elm_lang$core$Native_List.fromArray(
+					[
+						{ctor: '_Tuple2', _0: 'disabled', _1: model.disabled},
+						{ctor: '_Tuple2', _0: 'readonly', _1: model.readonly}
+					]))
+			]),
+		_elm_lang$core$Native_List.fromArray(
+			[inputElement]));
+};
+var _gdotdesign$elm_ui$Ui_NumberRange$view = function (model) {
+	return A2(_elm_lang$html$Html_Lazy$lazy, _gdotdesign$elm_ui$Ui_NumberRange$render, model);
+};
+var _gdotdesign$elm_ui$Ui_NumberRange$Move = function (a) {
+	return {ctor: 'Move', _0: a};
+};
+var _gdotdesign$elm_ui$Ui_NumberRange$subscriptions = function (model) {
+	return A3(_gdotdesign$elm_ui$Ui_Helpers_Drag$subscriptions, _gdotdesign$elm_ui$Ui_NumberRange$Move, _gdotdesign$elm_ui$Ui_NumberRange$Click, model.drag.dragging);
+};

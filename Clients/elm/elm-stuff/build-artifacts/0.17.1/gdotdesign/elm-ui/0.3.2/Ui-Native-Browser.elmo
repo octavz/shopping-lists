@@ -1,0 +1,49 @@
+var _gdotdesign$elm_ui$Ui_Native_Browser$setTitle = function (title) {
+	return _gdotdesign$elm_ui$Native_Browser.setTitle(title);
+};
+var _gdotdesign$elm_ui$Ui_Native_Browser$alert = function (message) {
+	return _gdotdesign$elm_ui$Native_Browser.alert(message);
+};
+var _gdotdesign$elm_ui$Ui_Native_Browser$redirect = function (url) {
+	return _gdotdesign$elm_ui$Native_Browser.redirect(url);
+};
+var _gdotdesign$elm_ui$Ui_Native_Browser$openWindow = function (url) {
+	return _gdotdesign$elm_ui$Native_Browser.openWindow(url);
+};
+var _gdotdesign$elm_ui$Ui_Native_Browser$emptyLocation = {pathname: '', hostname: '', protocol: '', search: '', host: '', hash: '', port$: 0};
+var _gdotdesign$elm_ui$Ui_Native_Browser$Location = F7(
+	function (a, b, c, d, e, f, g) {
+		return {pathname: a, hostname: b, protocol: c, search: d, host: e, hash: f, port$: g};
+	});
+var _gdotdesign$elm_ui$Ui_Native_Browser$decodeLocation = function () {
+	var convertPort = function (port$) {
+		return _elm_lang$core$Json_Decode$succeed(
+			A2(
+				_elm_lang$core$Result$withDefault,
+				0,
+				_elm_lang$core$String$toInt(port$)));
+	};
+	return A8(
+		_elm_lang$core$Json_Decode$object7,
+		_gdotdesign$elm_ui$Ui_Native_Browser$Location,
+		A2(_elm_lang$core$Json_Decode_ops[':='], 'pathname', _elm_lang$core$Json_Decode$string),
+		A2(_elm_lang$core$Json_Decode_ops[':='], 'hostname', _elm_lang$core$Json_Decode$string),
+		A2(_elm_lang$core$Json_Decode_ops[':='], 'protocol', _elm_lang$core$Json_Decode$string),
+		A2(_elm_lang$core$Json_Decode_ops[':='], 'search', _elm_lang$core$Json_Decode$string),
+		A2(_elm_lang$core$Json_Decode_ops[':='], 'host', _elm_lang$core$Json_Decode$string),
+		A2(_elm_lang$core$Json_Decode_ops[':='], 'hash', _elm_lang$core$Json_Decode$string),
+		A2(
+			_elm_lang$core$Json_Decode$andThen,
+			A2(_elm_lang$core$Json_Decode_ops[':='], 'port', _elm_lang$core$Json_Decode$string),
+			convertPort));
+}();
+var _gdotdesign$elm_ui$Ui_Native_Browser$location = function (_p0) {
+	return A2(
+		_elm_lang$core$Result$withDefault,
+		_gdotdesign$elm_ui$Ui_Native_Browser$emptyLocation,
+		A2(
+			_elm_lang$core$Json_Decode$decodeValue,
+			_gdotdesign$elm_ui$Ui_Native_Browser$decodeLocation,
+			_gdotdesign$elm_ui$Native_Browser.location(
+				{ctor: '_Tuple0'})));
+};

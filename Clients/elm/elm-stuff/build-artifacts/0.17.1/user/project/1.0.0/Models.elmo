@@ -1,0 +1,17 @@
+var _user$project$Models$emptyLoginModel = {login: '', password: '', signinAttempts: 0, message: _elm_lang$core$Maybe$Nothing};
+var _user$project$Models$Model = F2(
+	function (a, b) {
+		return {userData: a, lists: b};
+	});
+var _user$project$Models$LoginViewModel = F4(
+	function (a, b, c, d) {
+		return {login: a, password: b, signinAttempts: c, message: d};
+	});
+var _user$project$Models$ShopList = F4(
+	function (a, b, c, d) {
+		return {id: a, name: b, created: c, items: d};
+	});
+var _user$project$Models$ShopListItem = F3(
+	function (a, b, c) {
+		return {id: a, name: b, quantity: c};
+	});

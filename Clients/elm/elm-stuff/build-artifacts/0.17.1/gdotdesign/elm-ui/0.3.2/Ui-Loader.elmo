@@ -1,0 +1,113 @@
+var _gdotdesign$elm_ui$Ui_Loader$loadingRectangles = A2(
+	_elm_lang$html$Html$div,
+	_elm_lang$core$Native_List.fromArray(
+		[
+			_elm_lang$html$Html_Attributes$class('ui-loader-rectangles')
+		]),
+	_elm_lang$core$Native_List.fromArray(
+		[
+			A2(
+			_elm_lang$html$Html$div,
+			_elm_lang$core$Native_List.fromArray(
+				[]),
+			_elm_lang$core$Native_List.fromArray(
+				[])),
+			A2(
+			_elm_lang$html$Html$div,
+			_elm_lang$core$Native_List.fromArray(
+				[]),
+			_elm_lang$core$Native_List.fromArray(
+				[])),
+			A2(
+			_elm_lang$html$Html$div,
+			_elm_lang$core$Native_List.fromArray(
+				[]),
+			_elm_lang$core$Native_List.fromArray(
+				[]))
+		]));
+var _gdotdesign$elm_ui$Ui_Loader$finish = function (model) {
+	return _elm_lang$core$Native_Utils.update(
+		model,
+		{loading: false, shown: false});
+};
+var _gdotdesign$elm_ui$Ui_Loader$render = F3(
+	function (kind, content, model) {
+		return A3(
+			_elm_lang$html$Html$node,
+			'ui-loader',
+			_elm_lang$core$Native_List.fromArray(
+				[
+					_elm_lang$html$Html_Attributes$classList(
+					_elm_lang$core$Native_List.fromArray(
+						[
+							{
+							ctor: '_Tuple2',
+							_0: A2(_elm_lang$core$Basics_ops['++'], 'ui-loader-', kind),
+							_1: true
+						},
+							{ctor: '_Tuple2', _0: 'loading', _1: model.shown}
+						]))
+				]),
+			content);
+	});
+var _gdotdesign$elm_ui$Ui_Loader$view = F3(
+	function (kind, content, model) {
+		return A4(_elm_lang$html$Html_Lazy$lazy3, _gdotdesign$elm_ui$Ui_Loader$render, kind, content, model);
+	});
+var _gdotdesign$elm_ui$Ui_Loader$overlayView = function (model) {
+	return A3(
+		_gdotdesign$elm_ui$Ui_Loader$view,
+		'overlay',
+		_elm_lang$core$Native_List.fromArray(
+			[_gdotdesign$elm_ui$Ui_Loader$loadingRectangles]),
+		model);
+};
+var _gdotdesign$elm_ui$Ui_Loader$barView = function (model) {
+	return A3(
+		_gdotdesign$elm_ui$Ui_Loader$view,
+		'bar',
+		_elm_lang$core$Native_List.fromArray(
+			[]),
+		model);
+};
+var _gdotdesign$elm_ui$Ui_Loader$update = F2(
+	function (msg, model) {
+		var _p0 = msg;
+		if (_p0.ctor === 'Show') {
+			return model.loading ? {
+				ctor: '_Tuple2',
+				_0: _elm_lang$core$Native_Utils.update(
+					model,
+					{shown: true}),
+				_1: _elm_lang$core$Platform_Cmd$none
+			} : {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+		} else {
+			return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+		}
+	});
+var _gdotdesign$elm_ui$Ui_Loader$init = function (timeout) {
+	return {timeout: timeout, loading: false, shown: false};
+};
+var _gdotdesign$elm_ui$Ui_Loader$Model = F3(
+	function (a, b, c) {
+		return {timeout: a, loading: b, shown: c};
+	});
+var _gdotdesign$elm_ui$Ui_Loader$NoOp = {ctor: 'NoOp'};
+var _gdotdesign$elm_ui$Ui_Loader$Show = {ctor: 'Show'};
+var _gdotdesign$elm_ui$Ui_Loader$start = function (model) {
+	return {
+		ctor: '_Tuple2',
+		_0: _elm_lang$core$Native_Utils.update(
+			model,
+			{loading: true}),
+		_1: A3(
+			_elm_lang$core$Task$perform,
+			function (_p1) {
+				return _gdotdesign$elm_ui$Ui_Loader$NoOp;
+			},
+			function (_p2) {
+				return _gdotdesign$elm_ui$Ui_Loader$Show;
+			},
+			_elm_lang$core$Process$sleep(model.timeout))
+	};
+};

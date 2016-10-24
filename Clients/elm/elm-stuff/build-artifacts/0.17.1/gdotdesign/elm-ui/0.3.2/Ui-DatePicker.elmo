@@ -1,0 +1,213 @@
+var _gdotdesign$elm_ui$Ui_DatePicker$setValue = F2(
+	function (date, model) {
+		return _elm_lang$core$Native_Utils.update(
+			model,
+			{
+				calendar: A2(_gdotdesign$elm_ui$Ui_Calendar$setValue, date, model.calendar)
+			});
+	});
+var _gdotdesign$elm_ui$Ui_DatePicker$subscribe = F2(
+	function (msg, model) {
+		return A2(_gdotdesign$elm_ui$Ui_Calendar$subscribe, msg, model.calendar);
+	});
+var _gdotdesign$elm_ui$Ui_DatePicker$init = function (date) {
+	return {
+		calendar: _gdotdesign$elm_ui$Ui_Calendar$init(date),
+		dropdownPosition: 'bottom',
+		format: _rluiten$elm_date_extra$Date_Extra_Format$isoDateFormat,
+		closeOnSelect: false,
+		disabled: false,
+		readonly: false,
+		open: false
+	};
+};
+var _gdotdesign$elm_ui$Ui_DatePicker$Model = F7(
+	function (a, b, c, d, e, f, g) {
+		return {calendar: a, dropdownPosition: b, closeOnSelect: c, format: d, disabled: e, readonly: f, open: g};
+	});
+var _gdotdesign$elm_ui$Ui_DatePicker$Blur = {ctor: 'Blur'};
+var _gdotdesign$elm_ui$Ui_DatePicker$NoOp = {ctor: 'NoOp'};
+var _gdotdesign$elm_ui$Ui_DatePicker$Select = function (a) {
+	return {ctor: 'Select', _0: a};
+};
+var _gdotdesign$elm_ui$Ui_DatePicker$subscriptions = function (model) {
+	return A2(_gdotdesign$elm_ui$Ui_Calendar$subscribe, _gdotdesign$elm_ui$Ui_DatePicker$Select, model.calendar);
+};
+var _gdotdesign$elm_ui$Ui_DatePicker$Calendar = function (a) {
+	return {ctor: 'Calendar', _0: a};
+};
+var _gdotdesign$elm_ui$Ui_DatePicker$update = F2(
+	function (action, model) {
+		var _p0 = action;
+		switch (_p0.ctor) {
+			case 'Calendar':
+				var _p1 = A2(_gdotdesign$elm_ui$Ui_Calendar$update, _p0._0, model.calendar);
+				var calendar = _p1._0;
+				var effect = _p1._1;
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{calendar: calendar}),
+					_1: A2(_elm_lang$core$Platform_Cmd$map, _gdotdesign$elm_ui$Ui_DatePicker$Calendar, effect)
+				};
+			case 'Select':
+				var updatedModel = model.closeOnSelect ? _gdotdesign$elm_ui$Ui_Helpers_Dropdown$close(model) : model;
+				return {ctor: '_Tuple2', _0: updatedModel, _1: _elm_lang$core$Platform_Cmd$none};
+			case 'Focus':
+				return {
+					ctor: '_Tuple2',
+					_0: A2(_gdotdesign$elm_ui$Ui_Helpers_Dropdown$openWithDimensions, _p0._0, model),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'Close':
+				return {
+					ctor: '_Tuple2',
+					_0: _gdotdesign$elm_ui$Ui_Helpers_Dropdown$close(model),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'Blur':
+				return {
+					ctor: '_Tuple2',
+					_0: _gdotdesign$elm_ui$Ui_Helpers_Dropdown$close(model),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'Toggle':
+				return {
+					ctor: '_Tuple2',
+					_0: A2(_gdotdesign$elm_ui$Ui_Helpers_Dropdown$toggleWithDimensions, _p0._0, model),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'Decrement':
+				return {
+					ctor: '_Tuple2',
+					_0: A2(
+						_gdotdesign$elm_ui$Ui_Helpers_Dropdown$openWithDimensions,
+						_p0._0,
+						_elm_lang$core$Native_Utils.update(
+							model,
+							{
+								calendar: _gdotdesign$elm_ui$Ui_Calendar$previousDay(model.calendar)
+							})),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'Increment':
+				return {
+					ctor: '_Tuple2',
+					_0: A2(
+						_gdotdesign$elm_ui$Ui_Helpers_Dropdown$openWithDimensions,
+						_p0._0,
+						_elm_lang$core$Native_Utils.update(
+							model,
+							{
+								calendar: _gdotdesign$elm_ui$Ui_Calendar$nextDay(model.calendar)
+							})),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			default:
+				return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+		}
+	});
+var _gdotdesign$elm_ui$Ui_DatePicker$Close = function (a) {
+	return {ctor: 'Close', _0: a};
+};
+var _gdotdesign$elm_ui$Ui_DatePicker$Focus = function (a) {
+	return {ctor: 'Focus', _0: a};
+};
+var _gdotdesign$elm_ui$Ui_DatePicker$Toggle = function (a) {
+	return {ctor: 'Toggle', _0: a};
+};
+var _gdotdesign$elm_ui$Ui_DatePicker$Decrement = function (a) {
+	return {ctor: 'Decrement', _0: a};
+};
+var _gdotdesign$elm_ui$Ui_DatePicker$Increment = function (a) {
+	return {ctor: 'Increment', _0: a};
+};
+var _gdotdesign$elm_ui$Ui_DatePicker$render = F2(
+	function (locale, model) {
+		var open = model.open && (_elm_lang$core$Basics$not(model.disabled) && _elm_lang$core$Basics$not(model.readonly));
+		var actions = A2(
+			_gdotdesign$elm_ui$Ui$enabledActions,
+			model,
+			_elm_lang$core$Native_List.fromArray(
+				[
+					A2(_gdotdesign$elm_ui$Ui_Helpers_Dropdown$onWithDimensions, 'focus', _gdotdesign$elm_ui$Ui_DatePicker$Focus),
+					A2(_gdotdesign$elm_ui$Ui_Helpers_Dropdown$onWithDimensions, 'mousedown', _gdotdesign$elm_ui$Ui_DatePicker$Toggle),
+					_elm_lang$html$Html_Events$onBlur(_gdotdesign$elm_ui$Ui_DatePicker$Blur),
+					_gdotdesign$elm_ui$Ui_Helpers_Dropdown$onKeysWithDimensions(
+					_elm_lang$core$Native_List.fromArray(
+						[
+							{ctor: '_Tuple2', _0: 27, _1: _gdotdesign$elm_ui$Ui_DatePicker$Close},
+							{ctor: '_Tuple2', _0: 13, _1: _gdotdesign$elm_ui$Ui_DatePicker$Toggle},
+							{ctor: '_Tuple2', _0: 40, _1: _gdotdesign$elm_ui$Ui_DatePicker$Increment},
+							{ctor: '_Tuple2', _0: 38, _1: _gdotdesign$elm_ui$Ui_DatePicker$Decrement},
+							{ctor: '_Tuple2', _0: 39, _1: _gdotdesign$elm_ui$Ui_DatePicker$Increment},
+							{ctor: '_Tuple2', _0: 37, _1: _gdotdesign$elm_ui$Ui_DatePicker$Decrement}
+						]))
+				]));
+		return A3(
+			_elm_lang$html$Html$node,
+			'ui-date-picker',
+			A2(
+				_elm_lang$core$Basics_ops['++'],
+				_elm_lang$core$Native_List.fromArray(
+					[
+						_elm_lang$html$Html_Attributes$classList(
+						_elm_lang$core$Native_List.fromArray(
+							[
+								{ctor: '_Tuple2', _0: 'dropdown-open', _1: open},
+								{ctor: '_Tuple2', _0: 'disabled', _1: model.disabled},
+								{ctor: '_Tuple2', _0: 'readonly', _1: model.readonly}
+							]))
+					]),
+				A2(
+					_elm_lang$core$Basics_ops['++'],
+					actions,
+					_gdotdesign$elm_ui$Ui$tabIndex(model))),
+			_elm_lang$core$Native_List.fromArray(
+				[
+					A2(
+					_elm_lang$html$Html$div,
+					_elm_lang$core$Native_List.fromArray(
+						[]),
+					_elm_lang$core$Native_List.fromArray(
+						[
+							_elm_lang$html$Html$text(
+							A3(
+								_rluiten$elm_date_extra$Date_Extra_Format$format,
+								_rluiten$elm_date_extra$Date_Extra_Config_Configs$getConfig(locale),
+								model.format,
+								model.calendar.value))
+						])),
+					A3(
+					_gdotdesign$elm_ui$Ui$icon,
+					'calendar',
+					false,
+					_elm_lang$core$Native_List.fromArray(
+						[])),
+					A3(
+					_gdotdesign$elm_ui$Ui_Helpers_Dropdown$view,
+					_gdotdesign$elm_ui$Ui_DatePicker$NoOp,
+					model.dropdownPosition,
+					_elm_lang$core$Native_List.fromArray(
+						[
+							A3(
+							_elm_lang$html$Html$node,
+							'ui-dropdown-overlay',
+							_elm_lang$core$Native_List.fromArray(
+								[
+									_elm_lang$html$Html_Events$onClick(_gdotdesign$elm_ui$Ui_DatePicker$Blur)
+								]),
+							_elm_lang$core$Native_List.fromArray(
+								[])),
+							A2(
+							_elm_lang$html$Html_App$map,
+							_gdotdesign$elm_ui$Ui_DatePicker$Calendar,
+							A2(_gdotdesign$elm_ui$Ui_Calendar$view, locale, model.calendar))
+						]))
+				]));
+	});
+var _gdotdesign$elm_ui$Ui_DatePicker$view = F2(
+	function (locale, model) {
+		return A3(_elm_lang$html$Html_Lazy$lazy2, _gdotdesign$elm_ui$Ui_DatePicker$render, locale, model);
+	});

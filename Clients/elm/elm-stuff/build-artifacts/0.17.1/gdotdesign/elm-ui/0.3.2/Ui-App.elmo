@@ -1,0 +1,43 @@
+var _gdotdesign$elm_ui$Ui_App$render = F3(
+	function (address, model, children) {
+		return A3(
+			_elm_lang$html$Html$node,
+			'ui-app',
+			_elm_lang$core$Native_List.fromArray(
+				[]),
+			A2(
+				_elm_lang$core$Basics_ops['++'],
+				_elm_lang$core$Native_List.fromArray(
+					[
+						A3(
+						_elm_lang$html$Html$node,
+						'meta',
+						_elm_lang$core$Native_List.fromArray(
+							[
+								_elm_lang$html$Html_Attributes$content('initial-scale=1.0, user-scalable=no'),
+								_elm_lang$html$Html_Attributes$name('viewport')
+							]),
+						_elm_lang$core$Native_List.fromArray(
+							[]))
+					]),
+				children));
+	});
+var _gdotdesign$elm_ui$Ui_App$view = F3(
+	function (address, model, children) {
+		return A4(_elm_lang$html$Html_Lazy$lazy3, _gdotdesign$elm_ui$Ui_App$render, address, model, children);
+	});
+var _gdotdesign$elm_ui$Ui_App$update = F2(
+	function (msg, model) {
+		var _p0 = msg;
+		return {
+			ctor: '_Tuple2',
+			_0: model,
+			_1: _gdotdesign$elm_ui$Ui_Time$updateTime(_p0._0)
+		};
+	});
+var _gdotdesign$elm_ui$Ui_App$init = {};
+var _gdotdesign$elm_ui$Ui_App$Model = {};
+var _gdotdesign$elm_ui$Ui_App$Tick = function (a) {
+	return {ctor: 'Tick', _0: a};
+};
+var _gdotdesign$elm_ui$Ui_App$subscriptions = A2(_elm_lang$core$Time$every, 1000, _gdotdesign$elm_ui$Ui_App$Tick);

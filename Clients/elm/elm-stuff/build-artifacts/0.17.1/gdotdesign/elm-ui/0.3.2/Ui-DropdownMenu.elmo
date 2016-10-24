@@ -1,0 +1,181 @@
+var _gdotdesign$elm_ui$Ui_DropdownMenu$open = F2(
+	function (_p0, model) {
+		var _p1 = _p0;
+		var _p4 = _p1.window;
+		var _p3 = _p1.parent;
+		var _p2 = _p1.dropdown;
+		var rightSpace = (_p3.right - _p2.width) - model.offsetLeft;
+		var rightPosition = rightSpace;
+		var leftPosition = _p3.left + model.offsetLeft;
+		var leftSpace = (_p3.left + _p2.width) + model.offsetLeft;
+		var left = _elm_lang$core$Native_Utils.eq(model.favoredSides.horizontal, 'right') ? ((_elm_lang$core$Native_Utils.cmp(rightSpace, 0) > 0) ? rightPosition : leftPosition) : ((_elm_lang$core$Native_Utils.cmp(leftSpace, _p4.width) < 0) ? leftPosition : rightPosition);
+		var bottomPosition = _p3.bottom + model.offsetTop;
+		var bottomSpace = _p4.height - ((_p3.bottom + _p2.height) + model.offsetTop);
+		var topSpace = (_p3.top - _p2.height) - model.offsetTop;
+		var topPosition = topSpace;
+		var top = _elm_lang$core$Native_Utils.eq(model.favoredSides.vertical, 'top') ? ((_elm_lang$core$Native_Utils.cmp(topSpace, 0) > 0) ? topPosition : bottomPosition) : ((_elm_lang$core$Native_Utils.cmp(bottomSpace, 0) > 0) ? bottomPosition : topPosition);
+		return _elm_lang$core$Native_Utils.update(
+			model,
+			{top: top, left: left, open: true});
+	});
+var _gdotdesign$elm_ui$Ui_DropdownMenu$close = function (model) {
+	return _elm_lang$core$Native_Utils.update(
+		model,
+		{open: false});
+};
+var _gdotdesign$elm_ui$Ui_DropdownMenu$item = F2(
+	function (attributes, children) {
+		return A3(_elm_lang$html$Html$node, 'ui-dropdown-menu-item', attributes, children);
+	});
+var _gdotdesign$elm_ui$Ui_DropdownMenu$update = F2(
+	function (action, model) {
+		var _p5 = action;
+		switch (_p5.ctor) {
+			case 'Toggle':
+				return A2(_gdotdesign$elm_ui$Ui_DropdownMenu$open, _p5._0, model);
+			case 'NoOp':
+				return model;
+			default:
+				return _elm_lang$core$Basics$not(_p5._0) ? _elm_lang$core$Native_Utils.update(
+					model,
+					{open: false}) : model;
+		}
+	});
+var _gdotdesign$elm_ui$Ui_DropdownMenu$init = {
+	offsetLeft: 0,
+	offsetTop: 5,
+	open: false,
+	left: 0,
+	top: 0,
+	favoredSides: {horizontal: 'left', vertical: 'bottom'}
+};
+var _gdotdesign$elm_ui$Ui_DropdownMenu$Model = F6(
+	function (a, b, c, d, e, f) {
+		return {offsetLeft: a, offsetTop: b, left: c, top: d, open: e, favoredSides: f};
+	});
+var _gdotdesign$elm_ui$Ui_DropdownMenu$ViewModel = F2(
+	function (a, b) {
+		return {element: a, items: b};
+	});
+var _gdotdesign$elm_ui$Ui_DropdownMenu$Dimensions = F3(
+	function (a, b, c) {
+		return {dropdown: a, parent: b, window: c};
+	});
+var _gdotdesign$elm_ui$Ui_DropdownMenu$decodeDimensions = F2(
+	function (parent, dropdown) {
+		return A4(
+			_elm_lang$core$Json_Decode$object3,
+			_gdotdesign$elm_ui$Ui_DropdownMenu$Dimensions,
+			A2(
+				_elm_lang$core$Json_Decode$at,
+				_elm_lang$core$Native_List.fromArray(
+					['target']),
+				A2(
+					_gdotdesign$elm_ui$Ui_Native_Dom$withClosest,
+					parent,
+					A2(_gdotdesign$elm_ui$Ui_Native_Dom$withSelector, dropdown, _gdotdesign$elm_ui$Html_Events_Geometry$decodeElementDimensions))),
+			A2(
+				_elm_lang$core$Json_Decode$at,
+				_elm_lang$core$Native_List.fromArray(
+					['target']),
+				A2(
+					_gdotdesign$elm_ui$Ui_Native_Dom$withClosest,
+					parent,
+					A2(_gdotdesign$elm_ui$Ui_Native_Dom$withSelector, '*:first-child', _gdotdesign$elm_ui$Html_Events_Geometry$decodeElementDimensions))),
+			_gdotdesign$elm_ui$Html_Events_Geometry$decodeWindowSize);
+	});
+var _gdotdesign$elm_ui$Ui_DropdownMenu$openHandler = F4(
+	function (parent, dropdown, event, msg) {
+		return A3(
+			_elm_lang$html$Html_Events$onWithOptions,
+			event,
+			_elm_lang$html$Html_Events$defaultOptions,
+			A2(
+				_elm_lang$core$Json_Decode$map,
+				msg,
+				A2(_gdotdesign$elm_ui$Ui_DropdownMenu$decodeDimensions, parent, dropdown)));
+	});
+var _gdotdesign$elm_ui$Ui_DropdownMenu$NoOp = {ctor: 'NoOp'};
+var _gdotdesign$elm_ui$Ui_DropdownMenu$Click = function (a) {
+	return {ctor: 'Click', _0: a};
+};
+var _gdotdesign$elm_ui$Ui_DropdownMenu$subscriptions = function (model) {
+	return model.open ? _elm_lang$core$Platform_Sub$batch(
+		_elm_lang$core$Native_List.fromArray(
+			[
+				_elm_lang$mouse$Mouse$downs(
+				function (_p6) {
+					return _gdotdesign$elm_ui$Ui_DropdownMenu$Click(
+						function (_p7) {
+							return false;
+						}(_p6));
+				}),
+				_gdotdesign$elm_ui$Ui_Native_Scrolls$scrolls(
+				_gdotdesign$elm_ui$Ui_DropdownMenu$Click(false))
+			])) : _elm_lang$core$Platform_Sub$none;
+};
+var _gdotdesign$elm_ui$Ui_DropdownMenu$Toggle = function (a) {
+	return {ctor: 'Toggle', _0: a};
+};
+var _gdotdesign$elm_ui$Ui_DropdownMenu$render = F3(
+	function (viewModel, address, model) {
+		return A3(
+			_elm_lang$html$Html$node,
+			'ui-dropdown-menu',
+			_elm_lang$core$Native_List.fromArray(
+				[
+					A4(
+					_gdotdesign$elm_ui$Ui_DropdownMenu$openHandler,
+					'ui-dropdown-menu',
+					'ui-dropdown-menu-items',
+					'mouseup',
+					function (_p8) {
+						return address(
+							_gdotdesign$elm_ui$Ui_DropdownMenu$Toggle(_p8));
+					})
+				]),
+			_elm_lang$core$Native_List.fromArray(
+				[
+					viewModel.element,
+					A3(
+					_elm_lang$html$Html$node,
+					'ui-dropdown-menu-items',
+					_elm_lang$core$Native_List.fromArray(
+						[
+							A2(
+							_gdotdesign$elm_ui$Html_Events_Extra$onStop,
+							'mousedown',
+							address(_gdotdesign$elm_ui$Ui_DropdownMenu$NoOp)),
+							_elm_lang$html$Html_Attributes$classList(
+							_elm_lang$core$Native_List.fromArray(
+								[
+									{ctor: '_Tuple2', _0: 'open', _1: model.open}
+								])),
+							_elm_lang$html$Html_Attributes$style(
+							_elm_lang$core$Native_List.fromArray(
+								[
+									{
+									ctor: '_Tuple2',
+									_0: 'top',
+									_1: A2(
+										_elm_lang$core$Basics_ops['++'],
+										_elm_lang$core$Basics$toString(model.top),
+										'px')
+								},
+									{
+									ctor: '_Tuple2',
+									_0: 'left',
+									_1: A2(
+										_elm_lang$core$Basics_ops['++'],
+										_elm_lang$core$Basics$toString(model.left),
+										'px')
+								}
+								]))
+						]),
+					viewModel.items)
+				]));
+	});
+var _gdotdesign$elm_ui$Ui_DropdownMenu$view = F3(
+	function (viewModel, address, model) {
+		return A4(_elm_lang$html$Html_Lazy$lazy3, _gdotdesign$elm_ui$Ui_DropdownMenu$render, viewModel, address, model);
+	});

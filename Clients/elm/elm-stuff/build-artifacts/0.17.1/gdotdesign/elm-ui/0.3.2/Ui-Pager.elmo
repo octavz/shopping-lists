@@ -1,0 +1,151 @@
+var _gdotdesign$elm_ui$Ui_Pager$select = F2(
+	function (page, model) {
+		var isSamePage = _elm_lang$core$Native_Utils.eq(model.active, page);
+		var canAnimate = _elm_lang$core$Native_Utils.eq(
+			model.left,
+			_elm_lang$core$Native_List.fromArray(
+				[])) && _elm_lang$core$Native_Utils.eq(
+			model.center,
+			_elm_lang$core$Native_List.fromArray(
+				[]));
+		return (canAnimate && _elm_lang$core$Basics$not(isSamePage)) ? _elm_lang$core$Native_Utils.update(
+			model,
+			{
+				left: _elm_lang$core$Native_List.fromArray(
+					[model.active]),
+				center: _elm_lang$core$Native_List.fromArray(
+					[page])
+			}) : model;
+	});
+var _gdotdesign$elm_ui$Ui_Pager$update = F2(
+	function (action, model) {
+		var _p0 = action;
+		if (_p0.ctor === 'End') {
+			return _elm_lang$core$Native_Utils.update(
+				model,
+				{
+					left: _elm_lang$core$Native_List.fromArray(
+						[])
+				});
+		} else {
+			return _elm_lang$core$Native_Utils.update(
+				model,
+				{
+					center: _elm_lang$core$Native_List.fromArray(
+						[]),
+					active: _p0._0
+				});
+		}
+	});
+var _gdotdesign$elm_ui$Ui_Pager$init = function (active) {
+	return {
+		height: '100vh',
+		width: '100vw',
+		active: active,
+		center: _elm_lang$core$Native_List.fromArray(
+			[]),
+		left: _elm_lang$core$Native_List.fromArray(
+			[])
+	};
+};
+var _gdotdesign$elm_ui$Ui_Pager$Model = F5(
+	function (a, b, c, d, e) {
+		return {center: a, left: b, height: c, width: d, active: e};
+	});
+var _gdotdesign$elm_ui$Ui_Pager$End = function (a) {
+	return {ctor: 'End', _0: a};
+};
+var _gdotdesign$elm_ui$Ui_Pager$Active = function (a) {
+	return {ctor: 'Active', _0: a};
+};
+var _gdotdesign$elm_ui$Ui_Pager$render = F3(
+	function (address, pages, model) {
+		var renderPage = F2(
+			function (index, page) {
+				var decoder = function (msg) {
+					return A2(
+						_elm_lang$core$Json_Decode$at,
+						_elm_lang$core$Native_List.fromArray(
+							['target', '_page']),
+						_elm_lang$core$Json_Decode$succeed(msg));
+				};
+				var attributes = A2(_elm_lang$core$List$member, index, model.left) ? _elm_lang$core$Native_List.fromArray(
+					[
+						_elm_lang$html$Html_Attributes$classList(
+						_elm_lang$core$Native_List.fromArray(
+							[
+								{ctor: '_Tuple2', _0: 'animating', _1: true}
+							])),
+						_elm_lang$html$Html_Attributes$style(
+						_elm_lang$core$Native_List.fromArray(
+							[
+								{ctor: '_Tuple2', _0: 'left', _1: '-100%'}
+							])),
+						_gdotdesign$elm_ui$Html_Events_Extra$onTransitionEnd(
+						decoder(
+							address(
+								_gdotdesign$elm_ui$Ui_Pager$End(index))))
+					]) : (A2(_elm_lang$core$List$member, index, model.center) ? _elm_lang$core$Native_List.fromArray(
+					[
+						_elm_lang$html$Html_Attributes$style(
+						_elm_lang$core$Native_List.fromArray(
+							[
+								{ctor: '_Tuple2', _0: 'left', _1: '0%'}
+							])),
+						_elm_lang$html$Html_Attributes$classList(
+						_elm_lang$core$Native_List.fromArray(
+							[
+								{ctor: '_Tuple2', _0: 'animating', _1: true}
+							])),
+						_gdotdesign$elm_ui$Html_Events_Extra$onTransitionEnd(
+						decoder(
+							address(
+								_gdotdesign$elm_ui$Ui_Pager$Active(index))))
+					]) : (_elm_lang$core$Native_Utils.eq(index, model.active) ? _elm_lang$core$Native_List.fromArray(
+					[
+						_elm_lang$html$Html_Attributes$style(
+						_elm_lang$core$Native_List.fromArray(
+							[
+								{ctor: '_Tuple2', _0: 'left', _1: '0%'}
+							]))
+					]) : _elm_lang$core$Native_List.fromArray(
+					[
+						_elm_lang$html$Html_Attributes$style(
+						_elm_lang$core$Native_List.fromArray(
+							[
+								{ctor: '_Tuple2', _0: 'left', _1: '100%'},
+								{ctor: '_Tuple2', _0: 'visibility', _1: 'hidden'}
+							]))
+					])));
+				return A3(
+					_elm_lang$html$Html$node,
+					'ui-page',
+					A2(
+						_elm_lang$core$List_ops['::'],
+						A2(
+							_elm_lang$html$Html_Attributes$property,
+							'_page',
+							_elm_lang$core$Json_Encode$string(
+								_elm_lang$core$Basics$toString(index))),
+						attributes),
+					_elm_lang$core$Native_List.fromArray(
+						[page]));
+			});
+		return A3(
+			_elm_lang$html$Html$node,
+			'ui-pager',
+			_elm_lang$core$Native_List.fromArray(
+				[
+					_elm_lang$html$Html_Attributes$style(
+					_elm_lang$core$Native_List.fromArray(
+						[
+							{ctor: '_Tuple2', _0: 'width', _1: model.width},
+							{ctor: '_Tuple2', _0: 'height', _1: model.height}
+						]))
+				]),
+			A2(_elm_lang$core$List$indexedMap, renderPage, pages));
+	});
+var _gdotdesign$elm_ui$Ui_Pager$view = F3(
+	function (address, pages, model) {
+		return A4(_elm_lang$html$Html_Lazy$lazy3, _gdotdesign$elm_ui$Ui_Pager$render, address, pages, model);
+	});

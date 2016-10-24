@@ -1,0 +1,28 @@
+var _gdotdesign$elm_ui$Ui_Native_Dom$decodeElementFunction = F3(
+	function ($function, param, decoder) {
+		return A3(_gdotdesign$elm_ui$Native_Dom.decodeElementFunction, $function, param, decoder);
+	});
+var _gdotdesign$elm_ui$Ui_Native_Dom$withBoundingClientRect = function (decoder) {
+	return A3(_gdotdesign$elm_ui$Ui_Native_Dom$decodeElementFunction, 'dimensions', '', decoder);
+};
+var _gdotdesign$elm_ui$Ui_Native_Dom$withClosest = F2(
+	function (selector, decoder) {
+		return A3(_gdotdesign$elm_ui$Ui_Native_Dom$decodeElementFunction, 'closest', selector, decoder);
+	});
+var _gdotdesign$elm_ui$Ui_Native_Dom$withSelector = F2(
+	function (selector, decoder) {
+		return A3(_gdotdesign$elm_ui$Ui_Native_Dom$decodeElementFunction, 'querySelector', selector, decoder);
+	});
+var _gdotdesign$elm_ui$Ui_Native_Dom$withNearest = F2(
+	function (selector, decoder) {
+		return _elm_lang$core$Json_Decode$oneOf(
+			_elm_lang$core$Native_List.fromArray(
+				[
+					A2(_gdotdesign$elm_ui$Ui_Native_Dom$withClosest, selector, decoder),
+					A2(
+					_elm_lang$core$Json_Decode$at,
+					_elm_lang$core$Native_List.fromArray(
+						['parentNode']),
+					A2(_gdotdesign$elm_ui$Ui_Native_Dom$withSelector, selector, decoder))
+				]));
+	});
