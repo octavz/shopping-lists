@@ -3,6 +3,7 @@ Clients/Mobile/App1/bin/
 server/target
 server/project/target
 server/.idea
+server/main.iws
 server/project/project
 Clients/Mobile/CommonBL/bin/
 Clients/Mobile/CommonBL/obj/
