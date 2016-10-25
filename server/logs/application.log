@@ -1,0 +1,4 @@
+2016-10-25 11:42:26,825 [INFO] from play.api.Play in ForkJoinPool-1-worker-1 - Application started (Dev)
+2016-10-25 11:43:57,888 [ERROR] from application in ForkJoinPool-3-worker-11 - Unauthorized
+2016-10-25 11:44:38,242 [ERROR] from application in ForkJoinPool-3-worker-7 - Unauthorized
+2016-10-25 11:45:23,932 [ERROR] from application in ForkJoinPool-3-worker-1 - Unauthorized

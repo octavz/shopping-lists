@@ -1,14 +1,23 @@
 module Models exposing (..)
 
 
+type Page
+    = PageAccessDenied
+    | PageLogin
+    | PageRegister
+    | PageMyAccount
+    | PageNotFound
+
+
 type alias Model =
     { userData : UserModel
     , lists : List ShopList
-    , loginView : LoginViewModel
+    , loginView : LoginModel
+    , activePage : Page
     }
 
 
-type alias LoginViewModel =
+type alias LoginModel =
     { login : String
     , password : String
     , signinAttempts : Int
@@ -19,7 +28,7 @@ type alias LoginViewModel =
 type alias UserModel =
     { login : String
     , name : String
-    , key : String
+    , key : Maybe String
     }
 
 
@@ -38,7 +47,7 @@ type alias ShopListItem =
     }
 
 
-emptyLoginModel : LoginViewModel
+emptyLoginModel : LoginModel
 emptyLoginModel =
     { login = "aaa@aaa.com"
     , password = "123456"

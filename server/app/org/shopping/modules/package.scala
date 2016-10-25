@@ -73,7 +73,7 @@ package object modules {
   implicit class ErrorExtractor[T](val ret: Either[ResultError, T]) {
 
     def errCode = ret match {
-      case Left(er) => er.errorCode
+      case Left(er) => er.errCode
       case _ => 0
     }
 
