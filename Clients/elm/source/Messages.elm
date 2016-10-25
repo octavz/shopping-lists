@@ -16,3 +16,4 @@ type LoginMsg
 
 type Msg
     = Login LoginMsg
+    | SetActivePage Page

@@ -31,13 +31,13 @@ class UserController @Inject()(userModule: UserService) extends BaseController(u
   //  )
 
   private def auth(login: String, password: String,
-                   grantType: Option[String] = Some("password"),
-                   clientId: Option[String] = Some("1"),
-                   clientSecret: Option[String] = Some("secret")) = AuthorizationRequest(headers = Map.empty
+                   grantType: Option[String] = None,
+                   clientId: Option[String] = None,
+                   clientSecret: Option[String] = None) = AuthorizationRequest(headers = Map.empty
     , params = Map(
-      "grant_type" -> Seq(grantType.get)
-      , "client_id" -> Seq(clientId.get)
-      , "client_secret" -> Seq(clientSecret.get)
+      "grant_type" -> Seq(grantType.getOrElse("password"))
+      , "client_id" -> Seq(clientId.getOrElse("1"))
+      , "client_secret" -> Seq(clientSecret.getOrElse("secret"))
       , "username" -> Seq(login)
       , "password" -> Seq(password)))
 
