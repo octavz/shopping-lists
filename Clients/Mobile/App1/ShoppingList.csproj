@@ -83,6 +83,7 @@
     <Compile Include="Code\Abstracts\AControl.cs" />
     <Compile Include="Code\Abstracts\AFragment.cs" />
     <Compile Include="Code\Abstracts\APrivateActivity.cs" />
+    <Compile Include="Code\AcListItems.cs" />
     <Compile Include="Code\AcNewAccount.cs" />
     <Compile Include="Code\AcShoppingLists.cs" />
     <Compile Include="Code\Controls\CtrlShoppingList.cs" />

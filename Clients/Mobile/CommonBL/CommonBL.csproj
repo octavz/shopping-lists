@@ -50,7 +50,6 @@
     <Compile Include="Data\Request\ReqLoginDTO.cs" />
     <Compile Include="Data\Request\ReqNewAccountDTO.cs" />
     <Compile Include="Data\Response\ResLoginDTO.cs" />
-    <Compile Include="Data\Response\ResNewAccountDTO.cs" />
     <Compile Include="Data\ShoppingListDTO.cs" />
     <Compile Include="Helpers\MockHttpHelper.cs" />
     <Compile Include="Helpers\ServerHttpHelper.cs" />

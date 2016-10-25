@@ -53,7 +53,7 @@ namespace ShList.Code.Abstracts
 
             if (menuItem.ItemId == Resource.Id.nav_logout)
             {
-                ShAppContext.ClearSettings();
+                ShAppContext.ClearSettingsForLogout();
                 StartActivity(typeof(AcMain));
                 Finish();
             }//endif

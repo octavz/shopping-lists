@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:minWidth="25px"
-    android:minHeight="25px">
+    android:minHeight="25px"
+    >
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -13,11 +14,17 @@
         <EditText
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="ddd"
+            android:text="Item"
             android:layout_weight="1"
-            android:id="@+id/editListName" />
+            android:id="@+id/txtItemName" />
+
+        <NumberPicker
+            android:layout_width="100dp"
+            android:layout_height="fill_parent"
+            android:id="@+id/numberPicker" />
+
         <Button
-            android:text="@string/ListsButtonCreate"
+            android:text="@string/AddItem"
             android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:id="@+id/btnCreateList" />
@@ -35,6 +42,6 @@
             android:minHeight="25px"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/listShopping" />
+            android:id="@+id/lstItems" />
     </ScrollView>
 </LinearLayout>

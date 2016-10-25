@@ -60,7 +60,11 @@ namespace ShList.Code
 
         }//OnCreate
 
-
+        /// <summary>
+        /// Btnlogin_Click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void Btnlogin_Click(object sender, EventArgs e)
         {
             string email = txtEmail.Text;
@@ -89,17 +93,23 @@ namespace ShList.Code
 
             ReqLoginDTO reqLogin = new ReqLoginDTO()
             {
-                Email = txtEmail.Text,
+                Login = txtEmail.Text,
                 Password = txtPassword.Text
             };
-            
-            /*
-            ResLoginDTO resLogin = await UserRepository.Instance.Login(reqLogin);
 
-            if (resLogin.Code != 0)
+            var progressDialog = ProgressDialog.Show(this, ShAppContext.GetString(Resource.String.PleaseWait), ShAppContext.GetString(Resource.String.LoggingIn), true);
+
+            ResLoginDTO resLogin = await UserRepository.Instance.Login(reqLogin);
+            progressDialog.Dismiss();
+
+            if (resLogin.ErrorCode == (int)ErrorCodes.UNAUTHORIZED_LOGIN)
             {
-            }
-            */
+                txtEmail.ShowError(ShAppContext.GetString(Resource.String.InvalidLoginData), ShAppContext);
+                return;
+            }//endif
+
+            ShAppContext.SetUserLoginSettings(resLogin);
+
             StartActivity(typeof(AcShoppingLists));
             Finish();
         }//Btn_login_Click
