@@ -7,9 +7,10 @@ import Navigation exposing (Location)
 import Models exposing (..)
 import Messages exposing (..)
 
+
 delta2url : Model -> Model -> Maybe UrlChange
 delta2url previous current =
-    case current.activePage of
+    case Debug.log "currentPage" current.activePage of
         PageAccessDenied ->
             Nothing
 
@@ -34,6 +35,9 @@ location2messages location =
 
         "#login" ->
             [ SetActivePage PageLogin ]
+
+        "#register" ->
+            [ SetActivePage PageRegister ]
 
         "#my-account" ->
             [ SetActivePage PageMyAccount ]

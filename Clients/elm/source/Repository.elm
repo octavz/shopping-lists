@@ -1,4 +1,4 @@
-module Repository exposing (login)
+module Repository exposing (login, register)
 
 import Http
 import Json.Encode as Encode exposing (encode)
@@ -16,6 +16,10 @@ loginUrl =
     baseUrl ++ "login"
 
 
+registerUrl =
+    baseUrl ++ "register"
+
+
 loginDto : LoginModel -> String
 loginDto model =
     Encode.encode 0
@@ -25,6 +29,16 @@ loginDto model =
             , ( "clientId", Encode.string "1" )
             , ( "grantType", Encode.string "password" )
             , ( "clientSecret", Encode.string "secret" )
+            ]
+        )
+
+
+registerDto : RegisterModel -> String
+registerDto model =
+    Encode.encode 0
+        (Encode.object
+            [ ( "login", Encode.string model.login )
+            , ( "password", Encode.string model.password )
             ]
         )
 
@@ -39,7 +53,18 @@ userDecoder =
 
 login : LoginModel -> Cmd LoginMsg
 login model =
-    Task.perform FetchError FetchSuccess (fetchLogin model)
+    Task.perform
+        (LoginView << FetchError)
+        (LoginView << FetchSuccess)
+        (fetchLogin model)
+
+
+register : RegisterModel -> Cmd RegisterMsg
+register model =
+    Task.perform
+        (RegisterView << FetchError)
+        (RegisterView << FetchSuccess)
+        (fetchRegister model)
 
 
 fetchLogin : LoginModel -> Task.Task Http.Error UserModel
@@ -54,6 +79,23 @@ fetchLogin model =
                     ]
                 , url = loginUrl
                 , body = Http.string (loginDto model)
+                }
+    in
+        (Http.fromJson userDecoder future)
+
+
+fetchRegister : RegisterModel -> Task.Task Http.Error UserModel
+fetchRegister model =
+    let
+        future =
+            Http.send Http.defaultSettings
+                { verb = "POST"
+                , headers =
+                    [ ( "Content-Type", "application/json" )
+                    , ( "Accept", "application/json" )
+                    ]
+                , url = registerUrl
+                , body = Http.string (registerDto model)
                 }
     in
         (Http.fromJson userDecoder future)

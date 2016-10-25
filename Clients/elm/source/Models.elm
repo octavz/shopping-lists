@@ -13,7 +13,16 @@ type alias Model =
     { userData : UserModel
     , lists : List ShopList
     , loginView : LoginModel
+    , registerView : RegisterModel
     , activePage : Page
+    }
+
+
+type alias RegisterModel =
+    { login : String
+    , password : String
+    , confirm : String
+    , message : Maybe String
     }
 
 
@@ -53,4 +62,18 @@ emptyLoginModel =
     , password = "123456"
     , signinAttempts = 0
     , message = Nothing
+    }
+
+
+initialModel : Model
+initialModel =
+    { userData =
+        { login = ""
+        , name = ""
+        , key = Nothing
+        }
+    , lists = []
+    , loginView = emptyLoginModel
+    , registerView = RegisterModel "a1@aaa.com" "123456" "123456" Nothing
+    , activePage = PageLogin
     }

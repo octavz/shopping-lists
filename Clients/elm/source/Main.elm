@@ -2,7 +2,7 @@ module Main exposing (..)
 
 import Html exposing (div, span, strong, text)
 import Html.App
-import Login as Login
+import Update exposing (..)
 import Models exposing (..)
 import Messages exposing (..)
 import RouteUrl
@@ -12,37 +12,54 @@ import Views as Views
 
 init : ( Model, Cmd msg )
 init =
-    ( { userData = { login = "", name = "", key = Just "" }
-      , lists = []
-      , loginView = emptyLoginModel
-      , activePage = PageLogin
-      }
-    , Cmd.none
-    )
+    ( initialModel, Cmd.none )
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
-        Login ((FetchSuccess user) as m) ->
+        Login ((LoginView (FetchSuccess user)) as m) ->
             let
-                ( loginModel, loginCmd ) =
-                    Login.update m model.loginView
+                ( subModel, subCmd ) =
+                    updateLogin m model.loginView
             in
                 ( { model
                     | userData = user
-                    , loginView = loginModel
+                    , loginView = subModel
                     , activePage = PageMyAccount
                   }
-                , Cmd.map Login loginCmd
+                , Cmd.map Login subCmd
                 )
 
-        Login loginMsg ->
+        Register ((RegisterView (FetchSuccess user)) as m) ->
             let
-                ( loginModel, loginCmd ) =
-                    Login.update loginMsg model.loginView
+                ( subModel, subCmd ) =
+                    updateRegister m model.registerView
             in
-                ( { model | loginView = loginModel }, Cmd.map Login loginCmd )
+                ( { model
+                    | userData = user
+                    , registerView = subModel
+                    , activePage = PageMyAccount
+                  }
+                , Cmd.map Register subCmd
+                )
+
+        Login RegisterCmd ->
+            ( { model | activePage = setActivePage model PageRegister }, Cmd.none )
+
+        Login subMsg ->
+            let
+                ( subModel, subCmd ) =
+                    updateLogin subMsg model.loginView
+            in
+                ( { model | loginView = subModel }, Cmd.map Login subCmd )
+
+        Register subMsg ->
+            let
+                ( subModel, subCmd ) =
+                    updateRegister subMsg model.registerView
+            in
+                ( { model | registerView = subModel }, Cmd.map Register subCmd )
 
         SetActivePage page ->
             ( { model | activePage = setActivePage model page }, Cmd.none )
@@ -50,20 +67,44 @@ update msg model =
 
 setActivePage : Model -> Page -> Page
 setActivePage model page =
-    case model.userData.key of
+    case Debug.log "authKey" model.userData.key of
         Just _ ->
             page
 
         _ ->
-            PageAccessDenied
+            PageLogin
 
 
 view : Model -> Html.Html Msg
 view model =
     div []
-        [ (Html.App.map Login (Views.viewLogin model.loginView))
+        [ (currentView model)
         , div [] [ text (toString model) ]
         ]
+
+
+currentView : Model -> Html.Html Msg
+currentView model =
+    case model.activePage of
+        PageAccessDenied ->
+            div [] [ text "Denied dude!" ]
+
+        PageNotFound ->
+            div [] [ text "404 Not found" ]
+
+        PageLogin ->
+            (Html.App.map Login (Views.viewLogin model.loginView))
+
+        PageRegister ->
+            (Html.App.map Register (Views.viewRegister model.registerView))
+
+        PageMyAccount ->
+            Views.viewAccount model.userData
+
+
+
+--_ ->
+--div [] [ text "not implemented yet" ]
 
 
 main =
