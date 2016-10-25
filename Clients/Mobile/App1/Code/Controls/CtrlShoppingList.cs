@@ -107,7 +107,7 @@ namespace ShList.Code.Controls
 
         private void ShoppingList_Click(object sender, EventArgs e)
         {
-            Toast.MakeText(ShAppContext, "Click on item", ToastLength.Short).Show();
+            m_ParentActivity.StartActivity(typeof(AcListItems));
         }
 
 

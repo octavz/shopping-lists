@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,8 +9,10 @@ namespace CommonBL.Abstracts
 {
     public abstract class AResponseDTO
     {
-        public int errCode { get; set; }
-        public string errMessage { get; set; }
+        [JsonProperty("errCode")]
+        public int ErrorCode { get; set; }
+        [JsonProperty("message")]
+        public string Message { get; set; }
     }
 }
 

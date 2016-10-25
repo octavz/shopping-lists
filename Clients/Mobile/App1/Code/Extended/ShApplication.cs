@@ -9,6 +9,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using CommonBL.Data.Response;
 
 namespace ShList.Extended.Code
 {
@@ -82,14 +83,23 @@ namespace ShList.Extended.Code
             }
         }//LoadSettings
 
-        public void ClearSettings()
+        //SetUserLoginSettings
+        public void SetUserLoginSettings(ResLoginDTO lg)
+        {
+            UserId = lg.Id;
+            UserToken = lg.AccessToken;
+            UserNick = lg.Nick;
+            UserLogin = lg.Login;
+        }//SetUserLoginSettings
+
+        public void ClearSettingsForLogout()
         {
             m_UserId = null;
             m_UserToken = null;
             m_UserNick = null;
             m_UserLogin = null;
             SaveSettings();
-        }//ClearSettings
+        }//ClearSettingsForLogout
 
         /// <summary>
         /// SaveSettings

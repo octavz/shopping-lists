@@ -10,11 +10,13 @@ namespace CommonBL.Utils
     {
         public const string SERVER = "http://shoplist.ml:9000/";
         public const string URL_CREATE_ACCOUNT = "api/register";
-        
+        public const string URL_LOGIN = "api/login";
+
     }
 
     public enum ErrorCodes
     {
-        CREATE_ACCOUNT_ALREADY_EXITS = 500
+        CREATE_ACCOUNT_ALREADY_EXITS = 500,
+        UNAUTHORIZED_LOGIN = 401   
     }
 }

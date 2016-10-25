@@ -27,4 +27,7 @@
   <string name="PleaseWait">Please wait...</string>
   <string name="CreatingAccount">Creating account...</string>
   <string name="LogOut">Log Out</string>
+  <string name="LoggingIn">Logging in...</string>
+  <string name="InvalidLoginData">Invalid login data</string>
+  <string name="AddItem">Add</string>
 </resources>
