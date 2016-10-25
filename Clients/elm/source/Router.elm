@@ -7,7 +7,6 @@ import Navigation exposing (Location)
 import Models exposing (..)
 import Messages exposing (..)
 
-
 delta2url : Model -> Model -> Maybe UrlChange
 delta2url previous current =
     case current.activePage of

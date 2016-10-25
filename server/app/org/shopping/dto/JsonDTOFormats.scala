@@ -28,7 +28,8 @@ trait JsonDTOFormats extends BaseFormats with ConstraintReads {
     (__ \ 'id).readNullable[String](maxLength[String](50)) ~
       (__ \ 'name).read[String](minLength[String](1) keepAnd maxLength[String](200)) ~
       (__ \ 'description).readNullable[String](maxLength[String](1500)) ~
-      (__ \ 'userId).readNullable[String]
+      (__ \ 'userId).readNullable[String] ~
+        (__ \ 'created).read[Long]
     ) (ListDTO)
 
   implicit val listWrite = Json.writes[ListDTO]

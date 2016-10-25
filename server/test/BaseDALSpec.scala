@@ -39,14 +39,14 @@ class BaseDALSpec extends PlaySpecification with Mockito {
     val app = guiceApp(dbRandom).build()
     running(app) {
       val inj = app.injector
-      val qualifier = Some(QualifierInstance(new play.db.NamedDatabaseImpl("test")))
+      val qualifier = Some(QualifierInstance(new play.db.NamedDatabaseImpl("default")))
       val bindingKey = BindingKey[DatabaseConfigProvider](classOf[DatabaseConfigProvider], qualifier)
       val dbConfigProvider = inj.instanceOf[DatabaseConfigProvider](bindingKey)
       val dbConfig = dbConfigProvider.get[JdbcProfile]
       val db = dbConfig.db
       val e = TestEnv(app, dbConfigProvider, dbConfig, db)
 
-      val database = inj.instanceOf[DBApi].database("test")
+      val database = inj.instanceOf[DBApi].database("default")
       Evolutions.applyEvolutions(database)
       try {
         AsResult(t(e))
@@ -81,11 +81,11 @@ class BaseDALSpec extends PlaySpecification with Mockito {
       .configure(
         Map(
           "evolutions" -> "disabled",
-          "slick.dbs.test.driver" -> "slick.driver.PostgresDriver$",
-          "slick.dbs.test.db.driver" -> "org.postgresql.Driver",
-          "slick.dbs.test.db.url" -> s"jdbc:postgresql://localhost:5432/mytest",
-          "slick.dbs.test.db.user" -> "postgres",
-          "slick.dbs.test.db.password" -> "root"
+          "slick.dbs.default.driver" -> "slick.driver.PostgresDriver$",
+          "slick.dbs.default.db.driver" -> "org.postgresql.Driver",
+          "slick.dbs.default.db.url" -> s"jdbc:postgresql://localhost:5432/mytest",
+          "slick.dbs.default.db.user" -> "postgres",
+          "slick.dbs.default.db.password" -> "root"
         ))
       .in(Mode.Test)
 

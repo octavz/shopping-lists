@@ -22,7 +22,7 @@ class BaseController(module: BaseService)
 
   def authorize[A](callback: AuthInfo[User] => Future[Result])(implicit request: play.api.mvc.Request[A]): Future[Result] = {
     val f = ProtectedResource.handleRequest(request, dalAuth) flatMap {
-      case Left(e) if e.statusCode == 400 => Future.successful(BadRequest(err(401, e.description)).withHeaders(responseOAuthErrorHeader(e)))
+      case Left(e) if e.statusCode == 400 => Future.successful(BadRequest(err(400, e.description)).withHeaders(responseOAuthErrorHeader(e)))
       case Left(e) if e.statusCode == 401 => Future.successful(Unauthorized(err(401, "UNAUTHORIZED")).withHeaders(responseOAuthErrorHeader(e)))
       case Right(authInfo) =>
         module.setAuth(authInfo)

@@ -1,4 +1,54 @@
-2016-10-25 11:42:26,825 [INFO] from play.api.Play in ForkJoinPool-1-worker-1 - Application started (Dev)
-2016-10-25 11:43:57,888 [ERROR] from application in ForkJoinPool-3-worker-11 - Unauthorized
-2016-10-25 11:44:38,242 [ERROR] from application in ForkJoinPool-3-worker-7 - Unauthorized
-2016-10-25 11:45:23,932 [ERROR] from application in ForkJoinPool-3-worker-1 - Unauthorized
+2016-10-25 16:54:29,505 [DEBUG] from play.api.db.slick.DefaultSlickApi in ForkJoinPool-1-worker-1 - Created Slick database config for key default.
+2016-10-25 16:54:30,458 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in ForkJoinPool-1-worker-1 - Starting application default Akka system: application
+2016-10-25 16:54:30,467 [INFO] from play.api.Play in ForkJoinPool-1-worker-1 - Application started (Dev)
+2016-10-25 16:54:42,425 [ERROR] from application in ForkJoinPool-3-worker-13 - Access token is not found
+2016-10-25 16:54:55,459 [ERROR] from application in ForkJoinPool-3-worker-11 - Access token is not found
+2016-10-25 16:56:19,923 [ERROR] from application in ForkJoinPool-3-worker-11 - Access token is not found
+2016-10-25 16:56:49,099 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in application-akka.actor.default-dispatcher-9 - Shutdown application default Akka system: application
+2016-10-25 16:56:49,186 [DEBUG] from play.api.db.slick.DefaultSlickApi in application-akka.actor.default-dispatcher-10 - Database default was successfully closed.
+2016-10-25 16:56:50,426 [DEBUG] from play.api.db.slick.DefaultSlickApi in application-akka.actor.default-dispatcher-9 - Created Slick database config for key default.
+2016-10-25 16:56:51,444 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in application-akka.actor.default-dispatcher-9 - Starting application default Akka system: application
+2016-10-25 16:56:51,446 [INFO] from play.api.Play in application-akka.actor.default-dispatcher-9 - Application started (Dev)
+2016-10-25 16:57:25,746 [ERROR] from application in ForkJoinPool-3-worker-11 - Access token is not found
+2016-10-25 16:57:33,874 [ERROR] from application in ForkJoinPool-3-worker-11 - Access token is not found
+2016-10-25 17:00:01,555 [ERROR] from application in ForkJoinPool-3-worker-11 - Access token is not found
+2016-10-25 17:00:15,678 [ERROR] from application in ForkJoinPool-3-worker-11 - scala.Tuple5 cannot be cast to scala.Tuple4
+2016-10-25 17:01:02,634 [ERROR] from application in netty-event-loop-3 - 
+
+! @71oe5b68k - Internal server error, for (GET) [/api/user/1/lists?offset=0&count=100] ->
+ 
+play.sbt.PlayExceptions$CompilationException: Compilation error[Overloaded method value [apply] cannot be applied to  (org.shopping.dto.ListDTO.type)]
+	at play.sbt.PlayExceptions$CompilationException$.apply(PlayExceptions.scala:27)
+	at play.sbt.PlayExceptions$CompilationException$.apply(PlayExceptions.scala:27)
+	at scala.Option.map(Option.scala:145)
+	at play.sbt.run.PlayReload$$anonfun$taskFailureHandler$1.apply(PlayReload.scala:49)
+	at play.sbt.run.PlayReload$$anonfun$taskFailureHandler$1.apply(PlayReload.scala:44)
+	at scala.Option.map(Option.scala:145)
+	at play.sbt.run.PlayReload$.taskFailureHandler(PlayReload.scala:44)
+	at play.sbt.run.PlayReload$.compileFailure(PlayReload.scala:40)
+	at play.sbt.run.PlayReload$$anonfun$compile$1.apply(PlayReload.scala:17)
+	at play.sbt.run.PlayReload$$anonfun$compile$1.apply(PlayReload.scala:17)
+	at scala.util.Either$LeftProjection.map(Either.scala:377)
+	at play.sbt.run.PlayReload$.compile(PlayReload.scala:17)
+	at play.sbt.run.PlayRun$$anonfun$playRunTask$1$$anonfun$apply$2$$anonfun$apply$3$$anonfun$2.apply(PlayRun.scala:61)
+	at play.sbt.run.PlayRun$$anonfun$playRunTask$1$$anonfun$apply$2$$anonfun$apply$3$$anonfun$2.apply(PlayRun.scala:61)
+	at play.runsupport.Reloader$$anonfun$reload$1.apply(Reloader.scala:339)
+	at play.runsupport.Reloader$$anon$3.run(Reloader.scala:44)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at play.runsupport.Reloader$.play$runsupport$Reloader$$withReloaderContextClassLoader(Reloader.scala:40)
+	at play.runsupport.Reloader.reload(Reloader.scala:337)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1.apply(DevServerStart.scala:123)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1.apply(DevServerStart.scala:121)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24)
+	at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:39)
+	at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(AbstractDispatcher.scala:409)
+	at scala.concurrent.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
+	at scala.concurrent.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
+	at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+	at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+2016-10-25 17:01:30,515 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in application-akka.actor.default-dispatcher-5 - Shutdown application default Akka system: application
+2016-10-25 17:01:30,740 [DEBUG] from play.api.db.slick.DefaultSlickApi in application-akka.actor.default-dispatcher-9 - Database default was successfully closed.
+2016-10-25 17:01:30,940 [DEBUG] from play.api.db.slick.DefaultSlickApi in application-akka.actor.default-dispatcher-5 - Created Slick database config for key default.
+2016-10-25 17:01:31,130 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in application-akka.actor.default-dispatcher-5 - Starting application default Akka system: application
+2016-10-25 17:01:31,132 [INFO] from play.api.Play in application-akka.actor.default-dispatcher-5 - Application started (Dev)

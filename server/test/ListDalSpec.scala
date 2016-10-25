@@ -6,11 +6,6 @@ import org.specs2.runner._
 import scala.concurrent._
 import scala.concurrent.duration._
 
-/**
-  * .
-  * main test class for DefaultAssetServiceComponent
-  * it mocks AssetRepoComponent
-  */
 @RunWith(classOf[JUnitRunner])
 class ListDalSpec extends BaseDALSpec {
 
@@ -43,7 +38,7 @@ class ListDalSpec extends BaseDALSpec {
         val schema = org.shopping.db.DB(env.dbConfig.driver)
         import env.dbConfig.driver.api._
         import schema._
-        val p = org.shopping.db.List(id = guid, userId = "1", name = guid, description = guido, created = now, updated = now)
+        val p = org.shopping.db.List(id = guid, userId = "1", name = guid, description = guido, created = now, updated = now, createdClient = now)
         val res = waitFor(dal.insertList(p))
         res must beAnInstanceOf[org.shopping.db.List]
         val lstProjects = waitFor(env.db.run(Lists.filter(_.id === p.id).result))

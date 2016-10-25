@@ -27,6 +27,12 @@
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://localhost:5432/lists</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="PostgreSQL - mytest@localhost" uuid="846b0a53-149e-45a5-82ed-c01362ae415e">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/mytest</jdbc-url>
+    </data-source>
   </component>
   <component name="Encoding">
     <file url="PROJECT" charset="UTF-8" />
@@ -272,8 +278,18 @@
       <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
       <secret-storage>master_key</secret-storage>
       <user-name>postgres</user-name>
-      <introspection-scope>lists:public,pg_catalog,postgres</introspection-scope>
-      <resolve-scope>lists:public,postgres</resolve-scope>
+      <introspection-scope>lists:pg_catalog,postgres,public</introspection-scope>
+      <resolve-scope>lists:postgres,public</resolve-scope>
+    </data-source>
+    <data-source name="PostgreSQL - mytest@localhost" uuid="846b0a53-149e-45a5-82ed-c01362ae415e">
+      <database-info product="PostgreSQL" version="9.5.4" jdbc-version="4.0" driver-name="PostgreSQL Native Driver" driver-version="PostgreSQL 9.4 JDBC4 (build 1201)">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>postgres</user-name>
+      <introspection-scope>mytest:public,pg_catalog,postgres</introspection-scope>
+      <resolve-scope>mytest:public,postgres</resolve-scope>
     </data-source>
   </component>
   <component name="libraryTable">

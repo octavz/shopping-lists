@@ -76,8 +76,7 @@ class SlickOauth2DAL @Inject()(protected val dbConfigProvider: DatabaseConfigPro
   override def findAccessToken(token: String): Future[Option[scalaoauth2.provider.AccessToken]] = {
     val action = AccessTokens.filter(_.accessToken === token).result.headOption
     db.run(action).map {
-      opt =>
-        opt.map(a =>
+      _.map(a =>
           scalaoauth2.provider.AccessToken(a.accessToken, a.refreshToken, a.scope, Some(a.expiresIn.toLong), a.created))
     }
   }

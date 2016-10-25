@@ -1,5 +1,7 @@
 package org.shopping.db
 
+import java.sql.Timestamp
+
 object DB {
 
   def apply(p: slick.driver.JdbcProfile): DB = new DB {
@@ -108,7 +110,7 @@ trait DB {
   lazy val Labels = new TableQuery(tag => new Labels(tag))
 
   class Lists(_tableTag: Tag) extends Table[List](_tableTag, "lists") {
-    def * = (id, userId, name, description, status, created, updated) <> (List.tupled, List.unapply)
+    def * = (id, userId, name, description, status, created, updated, createdClient) <> (List.tupled, List.unapply)
 
     val id = column[String]("id", O.PrimaryKey, O.Length(40, varying = true))
     val userId = column[String]("user_id", O.Length(40, varying = true))
@@ -117,6 +119,7 @@ trait DB {
     val status = column[Short]("status", O.Default(0))
     val created = column[java.sql.Timestamp]("created")
     val updated = column[java.sql.Timestamp]("updated")
+    val createdClient = column[java.sql.Timestamp]("created")
 
     val index1 = index("projects_user_id_name_key", (userId, name), unique = true)
   }
@@ -228,7 +231,7 @@ case class GrantType(id: Int, grantType: String)
 
 case class Label(id: String, lang: String, entityId: String, entityTypeId: String, label1: Option[String] = None, label2: Option[String] = None, label3: Option[String] = None)
 
-case class List(id: String, userId: String, name: String, description: Option[String] = None, status: Short = 0, created: java.sql.Timestamp, updated: java.sql.Timestamp)
+case class List(id: String, userId: String, name: String, description: Option[String] = None, status: Short = 0, created: java.sql.Timestamp, updated: java.sql.Timestamp, createdClient: Timestamp)
 
 case class Product(id: String, userId: String, subject: String, description: Option[String] = None, status: Short = 0, created: java.sql.Timestamp, updated: java.sql.Timestamp)
 

@@ -137,6 +137,11 @@ ALTER TABLE LIST_PRODUCTS ADD QUANTITY INT;
 ALTER TABLE public.users
   DROP CONSTRAINT users_nick_key;
 
+ALTER TABLE lists ADD createdClient TIMESTAMP;
+
+UPDATE lists set createdClient = created;
+
+ALTER TABLE lists ALTER COLUMN createdClient SET NOT NULL;
 # --- !Downs
 
 DROP TABLE IF EXISTS labels;
