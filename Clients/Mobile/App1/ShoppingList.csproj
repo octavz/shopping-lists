@@ -86,6 +86,7 @@
     <Compile Include="Code\AcListItems.cs" />
     <Compile Include="Code\AcNewAccount.cs" />
     <Compile Include="Code\AcShoppingLists.cs" />
+    <Compile Include="Code\Controls\CtrlItemList.cs" />
     <Compile Include="Code\Controls\CtrlShoppingList.cs" />
     <Compile Include="Code\Extended\ExtEditText.cs" />
     <Compile Include="Code\Extended\ShApplication.cs" />
@@ -122,6 +123,7 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\AcNewAccount.axml" />
+    <AndroidResource Include="Resources\layout\CtrlItemList.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\AcMain.axml">

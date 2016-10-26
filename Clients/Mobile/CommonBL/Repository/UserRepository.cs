@@ -24,10 +24,25 @@ namespace CommonBL.Repository
         {
         }
 
+        public async Task<ResLoginDTO> GetUser(string token)
+        {
+
+            string sResJson = await m_httpHelper.HttpGet(Constants.URL_GET_USER, token);
+            try
+            {
+                ResLoginDTO obj = JsonConvert.DeserializeObject<ResLoginDTO>(sResJson);
+                return obj;
+            }
+            catch (Exception e)
+            {
+                return new ResLoginDTO();
+            }
+        }
+
         public async Task<ResLoginDTO> Login(ReqLoginDTO req)
         {
 
-            string sResJson = await m_httpHelper.HttpPut(req, Constants.URL_LOGIN);
+            string sResJson = await m_httpHelper.HttpPut(req, Constants.URL_LOGIN, req.AuthorizationToken);
             try
             {
                 ResLoginDTO obj = JsonConvert.DeserializeObject<ResLoginDTO>(sResJson);
@@ -42,7 +57,7 @@ namespace CommonBL.Repository
 
         public async Task<ResLoginDTO> CreateAccount(ReqNewAccountDTO req)
         {
-            string sResJson = await m_httpHelper.HttpPut(req, Constants.URL_CREATE_ACCOUNT);
+            string sResJson = await m_httpHelper.HttpPut(req, Constants.URL_CREATE_ACCOUNT, req.AuthorizationToken);
             try
             {
                 ResLoginDTO obj = JsonConvert.DeserializeObject<ResLoginDTO>(sResJson);

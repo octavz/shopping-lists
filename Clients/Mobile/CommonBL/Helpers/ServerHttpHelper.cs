@@ -16,33 +16,40 @@ namespace CommonBL.Helpers
 {
     public class ServerHttpHelper : IHttpHelper
     {
+        private const string AUTHORIZATION_HEADER = "Bearer";
+        private const string MEDIA_TYPE = "application/json";
 
-        public Task<string> HttpGet<T>(T req, string path) where T : class
+        public async Task<string> HttpGet(string path, string authToken)
         {
-            throw new NotImplementedException();
+            HttpClient client = SetCustomHttpClient(authToken);
+
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, path);            
+            HttpResponseMessage msgRes = null;
+
+            using (msgRes = await client.SendAsync(request))
+            {
+                string cntRes = await msgRes.Content.ReadAsStringAsync();
+                return cntRes;
+            }
         }//HttpGet
 
-        public Task<string> HttpDelete<T>(T req, string path) where T : class
+        public Task<string> HttpDelete<T>(T req, string path, string authToken) where T : class
         {
             throw new NotImplementedException();
         }
 
 
-        public Task<string> HttpPatch<T>(T req, string path) where T : class
+        public Task<string> HttpPatch<T>(T req, string path, string authToken) where T : class
         {
             throw new NotImplementedException();
         }
 
-        public async Task<string> HttpPut<T>(T req, string path) where T : class
+        public async Task<string> HttpPut<T>(T req, string path, string authToken) where T : class
         {
             var json = JsonConvert.SerializeObject(req);
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var content = new StringContent(json, Encoding.UTF8, MEDIA_TYPE);
 
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri(Constants.SERVER);
-            client.DefaultRequestHeaders
-                  .Accept
-                  .Add(new MediaTypeWithQualityHeaderValue("application/json"));//ACCEPT header
+            HttpClient client = SetCustomHttpClient(authToken);
 
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, path);
             request.Content = content;
@@ -56,5 +63,15 @@ namespace CommonBL.Helpers
             }
         }//HttpPut
 
+        private static HttpClient SetCustomHttpClient(string authToken)
+        {
+            HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(AUTHORIZATION_HEADER, authToken ?? string.Empty);
+            client.BaseAddress = new Uri(Constants.SERVER);
+            client.DefaultRequestHeaders
+                  .Accept
+                  .Add(new MediaTypeWithQualityHeaderValue(MEDIA_TYPE));//ACCEPT header
+            return client;
+        }//SetCustomHttpClient
     }
 }

@@ -14,20 +14,22 @@
         <EditText
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Item"
+            android:hint="@string/ShoppingItem"
             android:layout_weight="1"
             android:id="@+id/txtItemName" />
-
-        <NumberPicker
-            android:layout_width="100dp"
-            android:layout_height="fill_parent"
-            android:id="@+id/numberPicker" />
-
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="11"
+            android:id="@+id/txtQuantity"
+            android:hint="@string/Quantity"
+            android:layout_weight="1" />
         <Button
             android:text="@string/AddItem"
             android:layout_width="70dp"
             android:layout_height="wrap_content"
-            android:id="@+id/btnCreateList" />
+            android:id="@+id/btnAddItem" />
     </LinearLayout>
     <ScrollView
         android:minWidth="25px"

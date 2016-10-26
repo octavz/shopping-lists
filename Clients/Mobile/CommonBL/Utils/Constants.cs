@@ -11,6 +11,7 @@ namespace CommonBL.Utils
         public const string SERVER = "http://shoplist.ml:9000/";
         public const string URL_CREATE_ACCOUNT = "api/register";
         public const string URL_LOGIN = "api/login";
+        public const string URL_GET_USER = "api/user";
 
     }
 

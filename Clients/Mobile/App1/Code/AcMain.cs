@@ -29,17 +29,9 @@ namespace ShList.Code
         EditText txtEmail = null;
         LinearLayout llLinkSignUp = null;
 
-        protected override void OnCreate(Bundle bundle)
+        protected async override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-
-            if (!string.IsNullOrEmpty(ShAppContext.UserToken))
-            {
-                StartActivity(typeof(AcShoppingLists));
-                Finish();
-                return;
-            }//we have a token
-
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.AcMain);         
 
@@ -58,6 +50,24 @@ namespace ShList.Code
             btnLogin = FindViewById<Button>(Resource.Id.btnLogin);
             btnLogin.Click += Btnlogin_Click;
 
+
+            if (!string.IsNullOrEmpty(ShAppContext.UserToken))
+            {
+                var progressDialog = ProgressDialog.Show(this, ShAppContext.GetString(Resource.String.PleaseWait), ShAppContext.GetString(Resource.String.LoggingIn), true);
+                ResLoginDTO resLogin = await UserRepository.Instance.GetUser(ShAppContext.UserToken);
+                progressDialog.Dismiss();
+                if (resLogin.ErrorCode == (int)ErrorCodes.UNAUTHORIZED_LOGIN)
+                {
+                    ShAppContext.ClearSettingsForLogout();
+                }
+                else
+                {
+                    ShAppContext.SetUserLoginSettings(resLogin);
+                    StartActivity(typeof(AcShoppingLists));
+                    Finish();
+                }//else
+                return;
+            }//we have a token
         }//OnCreate
 
         /// <summary>
@@ -91,7 +101,7 @@ namespace ShList.Code
             if (!bIsValid)
                 return;
 
-            ReqLoginDTO reqLogin = new ReqLoginDTO()
+            ReqLoginDTO reqLogin = new ReqLoginDTO(null)
             {
                 Login = txtEmail.Text,
                 Password = txtPassword.Text
