@@ -8,24 +8,22 @@ import org.shopping.util.Time
 
 case class ListDTO(id: Option[String], name: String, description: Option[String], userId: Option[String], created: Long) {
 
-  def this(model: List) = this(
+  def this(model: ListDef) = this(
     id = Some(model.id),
     name = model.name,
     description = model.description,
-    userId = Some(model.userId),
-    created = model.createdClient.getTime / 1000
+    userId = Some(model.userId)
   )
 
   def toModel = {
     val n = Time.now
-    List(
+    ListDef(
       id = id.getOrGuid,
       userId = userId.getOrElse(throw new Exception("No user attached to this dto!")),
       name = name,
       description = description,
       created = n,
-      updated = n,
-      createdClient = new Timestamp(created * 1000)
+      updated = n
     )
   }
 }

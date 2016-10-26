@@ -18,9 +18,10 @@ class SlickListDAL @Inject()(protected val dbConfigProvider: DatabaseConfigProvi
 
   import dbConfig.driver.api._
 
-  override def insertList(model: List): DAL[List] = {
+  override def insertList(model: ListDef, list: List): DAL[ListDef] = {
     val action = (for {
-      _ <- Lists += model
+      _ <- ListDefs += model
+      _ <- Lists += list
       _ <- ListsUsers += ListUser(model.id, model.userId)
     } yield ()).transactionally
 

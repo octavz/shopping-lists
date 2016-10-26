@@ -1,11 +1,11 @@
-module Router exposing (delta2url, location2messages)
+module Main.Router exposing (delta2url, location2messages)
 
 import RouteHash exposing (HashUpdate)
 import RouteUrl exposing (HistoryEntry(..), UrlChange)
 import RouteUrl.Builder as Builder exposing (Builder)
 import Navigation exposing (Location)
-import Models exposing (..)
-import Messages exposing (..)
+import Main.Models exposing (..)
+import Main.Messages exposing (..)
 
 
 delta2url : Model -> Model -> Maybe UrlChange

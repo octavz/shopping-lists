@@ -2,10 +2,13 @@ module Repository exposing (login, register)
 
 import Http
 import Json.Encode as Encode exposing (encode)
-import Json.Decode as Json exposing ((:=))
+import Json.Decode as Decode exposing ((:=))
 import Task
-import Models exposing (..)
-import Messages exposing (..)
+import Login.Messages as Login
+import Login.Model exposing (..)
+import Register.Messages as Register
+import Register.Model exposing (..)
+import Account.Model exposing (..)
 
 
 baseUrl =
@@ -43,28 +46,22 @@ registerDto model =
         )
 
 
-userDecoder : Json.Decoder UserModel
+userDecoder : Decode.Decoder UserModel
 userDecoder =
-    Json.object3 UserModel
-        ("login" := Json.string)
-        ("nick" := Json.string)
-        ("accessToken" := Json.maybe Json.string)
+    Decode.object3 UserModel
+        ("login" := Decode.string)
+        ("nick" := Decode.string)
+        ("accessToken" := Decode.maybe Decode.string)
 
 
-login : LoginModel -> Cmd LoginMsg
+login : LoginModel -> Cmd Login.LoginMsg
 login model =
-    Task.perform
-        (LoginView << FetchError)
-        (LoginView << FetchSuccess)
-        (fetchLogin model)
+    Task.perform Login.FetchError Login.FetchSuccess (fetchLogin model)
 
 
-register : RegisterModel -> Cmd RegisterMsg
+register : RegisterModel -> Cmd Register.RegisterMsg
 register model =
-    Task.perform
-        (RegisterView << FetchError)
-        (RegisterView << FetchSuccess)
-        (fetchRegister model)
+    Task.perform Register.FetchError Register.FetchSuccess (fetchRegister model)
 
 
 fetchLogin : LoginModel -> Task.Task Http.Error UserModel

@@ -27,7 +27,7 @@ class DefaultListService @Inject()(dalUser: UserDAL, dalList: ListDAL) extends L
     val f = dalList.getListItemsByList(listId) flatMap { existing =>
       if (existing.size > MAX_ALLOWED) resultError(ErrorMessage.TOO_MANY_ITEMS)
       else dalList.addListItems(model).map { r =>
-        resultSync(ListItemsDTO(items = r.map(s => new ListItemDTO(s))))
+        resultSync(ListItemsDTO(items = r.map(s => new ListItemDTO(s)),meta = ListMetadata(List())))
       }
     }
 
@@ -70,7 +70,7 @@ class DefaultListService @Inject()(dalUser: UserDAL, dalList: ListDAL) extends L
         if (!isValid) throw new Exception("User is not valid in context")
         dalList.getListItemsByList(listId) map {
           res =>
-            resultSync(ListItemsDTO(items = res.map(t => new ListItemDTO(t))))
+            resultSync(ListItemsDTO(items = res.map(t => new ListItemDTO(t)), meta = ListMetadata(List())))
         }
     }
 

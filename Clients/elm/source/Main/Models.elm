@@ -1,4 +1,8 @@
-module Models exposing (..)
+module Main.Models exposing (..)
+
+import Login.Model exposing (..)
+import Register.Model exposing (..)
+import Account.Model exposing(..)
 
 
 type Page
@@ -17,30 +21,6 @@ type alias Model =
     , activePage : Page
     }
 
-
-type alias RegisterModel =
-    { login : String
-    , password : String
-    , confirm : String
-    , message : Maybe String
-    }
-
-
-type alias LoginModel =
-    { login : String
-    , password : String
-    , signinAttempts : Int
-    , message : Maybe String
-    }
-
-
-type alias UserModel =
-    { login : String
-    , name : String
-    , key : Maybe String
-    }
-
-
 type alias ShopList =
     { id : String
     , name : String
@@ -53,15 +33,6 @@ type alias ShopListItem =
     { id : String
     , name : String
     , quantity : Int
-    }
-
-
-emptyLoginModel : LoginModel
-emptyLoginModel =
-    { login = "aaa@aaa.com"
-    , password = "123456"
-    , signinAttempts = 0
-    , message = Nothing
     }
 
 
