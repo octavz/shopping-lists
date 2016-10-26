@@ -30,4 +30,6 @@
   <string name="LoggingIn">Logging in...</string>
   <string name="InvalidLoginData">Invalid login data</string>
   <string name="AddItem">Add</string>
+  <string name="Quantity">Quantity</string>
+  <string name="ShoppingItem">Shopping Item</string>
 </resources>

@@ -86,7 +86,7 @@ namespace ShList.Code
 
             var progressDialog = ProgressDialog.Show(this, ShAppContext.GetString(Resource.String.PleaseWait), ShAppContext.GetString(Resource.String.CreatingAccount), true);
 
-            ReqNewAccountDTO reqDTO = new ReqNewAccountDTO() { Login = email, Password = password1 };
+            ReqNewAccountDTO reqDTO = new ReqNewAccountDTO(null) { Login = email, Password = password1 };
             ResLoginDTO resAccount = await UserRepository.Instance.CreateAccount(reqDTO);
             progressDialog.Dismiss();
 

@@ -8,12 +8,13 @@ namespace CommonBL.Abstracts
 {
     public interface IHttpHelper
     {
-        Task<string> HttpGet<T>(T req,string path) where T : class;
 
-        Task<string> HttpPut<T>(T req, string path) where T : class;
+        Task<string> HttpGet(string path, string authToken);
 
-        Task<string> HttpPatch<T>(T req, string path) where T : class;
+        Task<string> HttpPut<T>(T req, string path, string authToken) where T : class;
 
-        Task<string> HttpDelete<T>(T req, string path) where T : class;
+        Task<string> HttpPatch<T>(T req, string path, string authToken) where T : class;
+
+        Task<string> HttpDelete<T>(T req, string path, string authToken) where T : class;
     }
 }

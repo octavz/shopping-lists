@@ -44,9 +44,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstracts\ARequestDTO.cs" />
     <Compile Include="Abstracts\AResponseDTO.cs" />
     <Compile Include="Abstracts\HelperFactory.cs" />
     <Compile Include="Abstracts\IHttpHelper.cs" />
+    <Compile Include="Data\ItemListDTO.cs" />
     <Compile Include="Data\Request\ReqLoginDTO.cs" />
     <Compile Include="Data\Request\ReqNewAccountDTO.cs" />
     <Compile Include="Data\Response\ResLoginDTO.cs" />
