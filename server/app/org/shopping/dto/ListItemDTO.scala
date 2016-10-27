@@ -5,16 +5,16 @@ import org.shopping.util.Time
 
 case class ListItemDTO(productId: Option[String], quantity: Int, description: Option[String]) {
 
-  def this(model: ListItem) = this(
+  def this(model: ListDefProduct) = this(
     productId = Some(model.productId),
     quantity = model.quantity,
     description = model.description
   )
 
   def toModel(listId: String, userId: String) = {
-    val n = Time.now
-    ListItem(
-      listId = listId,
+    val n = Time.now()
+    ListDefProduct(
+      listDefId = listId,
       productId = productId.getOrElse(""),
       userId = userId,
       description = description,

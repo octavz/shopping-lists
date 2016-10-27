@@ -12,7 +12,6 @@ class RunModule extends AbstractModule {
     bind(classOf[Oauth2DAL]).to(classOf[SlickOauth2DAL])
     bind(classOf[ListDAL]).to(classOf[SlickListDAL])
     bind(classOf[UserDAL]).to(classOf[SlickUserDAL])
-    bind(classOf[Caching]).to(classOf[RedisCaching])
     bind(classOf[ListService]).to(classOf[DefaultListService])
     bind(classOf[UserService]).to(classOf[DefaultUserService])
   }

@@ -30,7 +30,7 @@ class ListAppSpec extends PlaySpecification with Mockito {
 
   def waitFor[T](f: Future[T], duration: FiniteDuration = 1000.milli)(implicit ec: ExecutionContext): T = Await.result(f, duration)
 
-  def anUser = User(id = guid, login = guid, providerToken = None, created = now, updated = now, lastLogin = None, password = guid, nick = guid)
+  def anUser = User(id = guid, login = guid, providerToken = None, created = now(), updated = now(), lastLogin = None, password = guid, nick = guid)
 
   case class MockContext(app: Application, listModule: ListService, dalAuth: Oauth2DAL, user: User)
 
@@ -41,9 +41,15 @@ class ListAppSpec extends PlaySpecification with Mockito {
 
     val ret = new GuiceApplicationBuilder()
         .disable(classOf[RunModule])
-      .configure(Map(
-        "evolutionplugin" -> "disabled"
-      ))
+      .configure(
+        Map(
+          "evolutions" -> "disabled",
+          "slick.dbs.default.driver" -> "slick.driver.PostgresDriver$",
+          "slick.dbs.default.db.driver" -> "org.postgresql.Driver",
+          "slick.dbs.default.db.url" -> s"jdbc:postgresql://localhost:5432/mytest",
+          "slick.dbs.default.db.user" -> "postgres",
+          "slick.dbs.default.db.password" -> "root"
+        ))
       .overrides(bind[ListService].toInstance(mp))
       .overrides(bind[UserService].toInstance(mock[UserService]))
       .overrides(bind[Oauth2DAL].toInstance(dalAuth))
@@ -57,7 +63,6 @@ class ListAppSpec extends PlaySpecification with Mockito {
 
     "have create list route and authorize" in {
       val module = app()
-      println("spec:" + module.listModule)
       module.listModule.insertList(any[ListDTO]) answers (p => result(p.asInstanceOf[ListDTO]))
       running(module.app) {
         val page = route(module.app, FakeRequest(POST, "/api/list")
@@ -66,7 +71,8 @@ class ListAppSpec extends PlaySpecification with Mockito {
             """
             {
             "name":"list",
-            "description":"123456"
+            "description":"123456",
+            "created" : 10000
             }
             """)))
         page must beSome
@@ -82,7 +88,7 @@ class ListAppSpec extends PlaySpecification with Mockito {
 
     "get all lists" in {
       val module = app()
-      val p = ListDTO(id = guido, name = guid, description = guido, userId = Some("userId"))
+      val p = ListDTO(id = guido, name = guid, description = guido, userId = Some("userId"), created = 1000)
       module.listModule.getUserLists("id", 0, 10) returns result(ListsDTO(items = List(p), total = 1))
       running(module.app) {
         val page = route(module.app, FakeRequest(GET, "/api/user/id/lists?offset=0&count=10").withHeaders("Authorization" -> "OAuth token"))
@@ -103,14 +109,15 @@ class ListAppSpec extends PlaySpecification with Mockito {
 
     "update lists" in {
       val module = app()
-      val p = ListDTO(id = guido, name = guid, description = guido, userId = Some("userId"))
+      val p = ListDTO(id = guido, name = guid, description = guido, userId = Some("userId"), created = 1000)
       module.listModule.updateList(any) returns result(p)
       running(module.app) {
         val page = route(module.app, FakeRequest(PUT, "/api/list/id").withHeaders("Authorization" -> "OAuth token").withJsonBody(Json.parse(
           s"""
                 {
                 "name":"${p.name}",
-                "description":"${p.description}"
+                "description":"${p.description}",
+                "created":${p.created}
                 }
               """)))
         Await.ready(page.get, Duration.Inf)

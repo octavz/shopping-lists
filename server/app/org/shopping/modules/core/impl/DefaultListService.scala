@@ -2,10 +2,11 @@ package org.shopping.modules.core.impl
 
 import com.google.inject.Inject
 import org.shopping.dal._
+import org.shopping.db.FullList
 import org.shopping.dto._
 import org.shopping.modules._
 import org.shopping.modules.core.ListService
-import org.shopping.util.{Constants, ErrorMessage}
+import org.shopping.util.{Constants, ErrorMessage, Gen}
 import play.api.http.Status
 
 import scala.concurrent.ExecutionContext.Implicits._
@@ -15,7 +16,18 @@ import scala.language.postfixOps
 class DefaultListService @Inject()(dalUser: UserDAL, dalList: ListDAL) extends ListService {
 
   override def insertList(dto: ListDTO): Result[ListDTO] = {
-    val list = dto.toModel
+    val listDef = dto.toModel
+    val list = FullList(
+      listDef,
+      org.shopping.db.ListInst(id = Gen.guid,
+        listDefId = listDef.id,
+        userId = authData.user.id,
+        created = listDef.created,
+        updated = listDef.updated,
+        createdClient = dto.created
+      )
+    )
+
     val f = dalList.insertList(list) map (p => resultSync(new ListDTO(p)))
     f recover { case e: Throwable => resultExSync(e, "insertList") }
   }
@@ -24,10 +36,10 @@ class DefaultListService @Inject()(dalUser: UserDAL, dalList: ListDAL) extends L
 
   override def addListItems(listId: String, listItems: ListItemsDTO): Result[ListItemsDTO] = {
     val model = listItems.items.map(_.toModel(authData.user.id, listId))
-    val f = dalList.getListItemsByList(listId) flatMap { existing =>
+    val f = dalList.getListProductsByListId(listId) flatMap { existing =>
       if (existing.size > MAX_ALLOWED) resultError(ErrorMessage.TOO_MANY_ITEMS)
-      else dalList.addListItems(model).map { r =>
-        resultSync(ListItemsDTO(items = r.map(s => new ListItemDTO(s)),meta = ListMetadata(List())))
+      else dalList.addListDefProducts(model).map { r =>
+        resultSync(ListItemsDTO(items = r.map(s => new ListItemDTO(s)), meta = ListMetadata(listId)))
       }
     }
 
@@ -49,9 +61,9 @@ class DefaultListService @Inject()(dalUser: UserDAL, dalList: ListDAL) extends L
       checkUser(dto.userId.getOrElse(throw new Exception("User not found!")), dto.id.get) flatMap {
         res =>
           if (!res) throw new Exception("Not valid")
-          dalList.getListById(dto.id.get) flatMap {
+          dalList.getListDefById(dto.id.get) flatMap {
             case None => resultError(Status.NOT_FOUND, "List not found")
-            case Some(list) => dalList.updateLists(dto.toModel) map { p =>
+            case Some(list) => dalList.updateList(dto.toModel) map { p =>
               resultSync(new ListDTO(p))
             }
           }
@@ -68,9 +80,9 @@ class DefaultListService @Inject()(dalUser: UserDAL, dalList: ListDAL) extends L
     val f = checkUser(userId, listId) flatMap {
       isValid =>
         if (!isValid) throw new Exception("User is not valid in context")
-        dalList.getListItemsByList(listId) map {
+        dalList.getListDefProductsByListId(listId) map {
           res =>
-            resultSync(ListItemsDTO(items = res.map(t => new ListItemDTO(t)), meta = ListMetadata(List())))
+            resultSync(ListItemsDTO(items = res.map(new ListItemDTO(_)), meta = ListMetadata(listId)))
         }
     }
 
@@ -83,10 +95,10 @@ class DefaultListService @Inject()(dalUser: UserDAL, dalList: ListDAL) extends L
     val f = checkUser(userId, listId) flatMap {
       isValid =>
         if (!isValid) throw new Exception("User is not valid in context")
-        dalList.getListById(listId) flatMap {
+        dalList.getListDefById(listId) flatMap {
           case Some(list) =>
             val newList = list.copy(status = Constants.STATUS_DELETE)
-            dalList.updateLists(newList) map {
+            dalList.updateList(newList) map {
               x =>
                 resultSync(BooleanDTO(true))
             }

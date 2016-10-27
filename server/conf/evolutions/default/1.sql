@@ -12,11 +12,11 @@ CREATE TABLE users (
   nick           CHARACTER VARYING(255)            NOT NULL,
   provider       INTEGER DEFAULT 0                 NOT NULL,
   provider_token CHARACTER VARYING(255),
-  last_login     TIMESTAMP,
+  last_login     INTEGER,
   status         INTEGER DEFAULT 0                 NOT NULL,
   password       CHARACTER VARYING(100) DEFAULT '' NOT NULL,
-  created        TIMESTAMP DEFAULT now()           NOT NULL,
-  updated        TIMESTAMP DEFAULT now()           NOT NULL
+  created        INTEGER DEFAULT 0                 NOT NULL,
+  updated        INTEGER DEFAULT 0                 NOT NULL
 );
 
 CREATE TABLE user_sessions (
@@ -32,20 +32,20 @@ CREATE TABLE clients (
 );
 
 CREATE TABLE access_tokens (
-  access_token  CHARACTER VARYING(254)  NOT NULL PRIMARY KEY,
+  access_token  CHARACTER VARYING(254) NOT NULL PRIMARY KEY,
   refresh_token CHARACTER VARYING(254),
-  user_id       CHARACTER VARYING       NOT NULL REFERENCES users,
+  user_id       CHARACTER VARYING      NOT NULL REFERENCES users,
   scope         CHARACTER VARYING(254),
-  expires_in    INTEGER                 NOT NULL,
-  created       TIMESTAMP DEFAULT now() NOT NULL,
-  client_id     CHARACTER VARYING       NOT NULL REFERENCES clients
+  expires_in    INTEGER                NOT NULL,
+  created       INTEGER DEFAULT 0      NOT NULL,
+  client_id     CHARACTER VARYING      NOT NULL REFERENCES clients
 );
 
 CREATE TABLE auth_codes (
   authorization_code CHARACTER VARYING(254) PRIMARY KEY,
   user_id            CHARACTER VARYING      NOT NULL REFERENCES users,
   redirect_uri       CHARACTER VARYING(254),
-  created_at         TIMESTAMP              NOT NULL,
+  created_at         INTEGER                NOT NULL,
   scope              CHARACTER VARYING(254),
   client_id          CHARACTER VARYING(254) NOT NULL REFERENCES clients,
   expires_in         INTEGER                NOT NULL
@@ -73,19 +73,19 @@ CREATE TABLE list_defs (
   name           CHARACTER VARYING(255)  NOT NULL,
   description    TEXT,
   status         SMALLINT DEFAULT 0      NOT NULL,
-  created_client TIMESTAMP DEFAULT now() NOT NULL,
-  created        TIMESTAMP DEFAULT now() NOT NULL,
-  updated        TIMESTAMP DEFAULT now() NOT NULL
+  created_client INTEGER DEFAULT 0       NOT NULL,
+  created        INTEGER DEFAULT 0       NOT NULL,
+  updated        INTEGER DEFAULT 0       NOT NULL
 );
 
 CREATE TABLE lists (
   id             CHARACTER VARYING(40)   NOT NULL PRIMARY KEY,
-  list_def_id    CHARACTER VARYING(40)   NOT NULL REFERENCES lists,
+  list_def_id    CHARACTER VARYING(40)   NOT NULL REFERENCES list_defs,
   user_id        CHARACTER VARYING(40)   NOT NULL REFERENCES users,
-  created_client TIMESTAMP DEFAULT now() NOT NULL,
+  created_client INTEGER DEFAULT 0       NOT NULL,
   status         INTEGER DEFAULT 0       NOT NULL,
-  created        TIMESTAMP DEFAULT now() NOT NULL,
-  updated        TIMESTAMP DEFAULT now() NOT NULL
+  created        INTEGER DEFAULT 0       NOT NULL,
+  updated        INTEGER DEFAULT 0       NOT NULL
 );
 
 CREATE TABLE lists_users (
@@ -110,20 +110,28 @@ CREATE TABLE products (
   name        CHARACTER VARYING(255)  NOT NULL,
   description TEXT,
   status      SMALLINT DEFAULT 0      NOT NULL,
-  created     TIMESTAMP DEFAULT now() NOT NULL,
-  updated     TIMESTAMP DEFAULT now() NOT NULL
+  created     INTEGER DEFAULT 0       NOT NULL,
+  updated     INTEGER DEFAULT 0       NOT NULL
 );
 
-CREATE TABLE list_products (
+CREATE TABLE list_def_products (
   product_id  CHARACTER VARYING(40) PRIMARY KEY,
-  list_id     CHARACTER VARYING(40)   NOT NULL REFERENCES lists,
+  list_def_id CHARACTER VARYING(40)   NOT NULL REFERENCES list_defs,
   user_id     CHARACTER VARYING(40)   NOT NULL REFERENCES users,
   description TEXT,
   quantity    INT,
-  bought      SMALLINT DEFAULT 0      NOT NULL,
-  status      SMALLINT DEFAULT 0      NOT NULL,
-  created     TIMESTAMP DEFAULT now() NOT NULL,
-  updated     TIMESTAMP DEFAULT now() NOT NULL
+  created     INTEGER DEFAULT 0       NOT NULL,
+  updated     INTEGER DEFAULT 0       NOT NULL
+);
+
+CREATE TABLE list_products (
+  product_id CHARACTER VARYING(40) PRIMARY KEY,
+  list_id    CHARACTER VARYING(40)   NOT NULL REFERENCES list_defs,
+  user_id    CHARACTER VARYING(40)   NOT NULL REFERENCES users,
+  quantity   INT,
+  bought     SMALLINT DEFAULT 0      NOT NULL,
+  created    INTEGER DEFAULT 0       NOT NULL,
+  updated    INTEGER DEFAULT 0       NOT NULL
 );
 
 
@@ -132,17 +140,22 @@ INSERT INTO user_statuses (id, description) VALUES (1, 'active');
 INSERT INTO user_statuses (id, description) VALUES (2, 'pending');
 
 INSERT INTO users (id, login, nick, provider, provider_token, last_login, PASSWORD)
-VALUES ('1', 'aaa@aaa.com', 'aaa', 0, 'a', '2014-06-05 11:52:16.904', '123456');
+VALUES ('1', 'aaa@aaa.com', 'aaa', 0, 'a', 1477550565, '123456');
 INSERT INTO users (id, login, nick, provider, provider_token, last_login, PASSWORD)
-VALUES ('2', 'test@test.com', 'bbb', 0, 'b', '2014-06-05 11:52:16.904', '123456');
+VALUES ('2', 'test@test.com', 'bbb', 0, 'b', 1477550565, '123456');
 
 
-INSERT INTO lists (id, user_id, NAME, description, status, created, updated)
-VALUES ('1', '1', 'list name1', 'description', 0, '2014-06-05 11:52:16.904', '2014-06-05 11:52:16.904');
-INSERT INTO lists (id, user_id, NAME, description, status, created, updated)
-VALUES ('2', '1', 'list name2', 'description', 0, '2014-06-05 11:52:16.904', '2014-06-05 11:52:16.904');
-INSERT INTO lists (id, user_id, NAME, description, status, created, updated)
-VALUES ('3', '2', 'list name3', 'description', 0, '2014-06-05 11:52:16.904', '2014-06-05 11:52:16.904');
+INSERT INTO list_defs (id, user_id, name, description, status, created, updated)
+VALUES ('1', '1', 'list name1', 'description', 0, 1477550565, 1477550565);
+INSERT INTO list_defs (id, user_id, name, description, status, created, updated)
+VALUES ('2', '1', 'list name2', 'description', 0, 1477550565, 1477550565);
+INSERT INTO list_defs (id, user_id, name, description, status, created, updated)
+VALUES ('3', '2', 'list name3', 'description', 0, 1477550565, 1477550565);
+
+INSERT INTO lists (id, list_def_id, user_id, status, created, updated, created_client)
+VALUES ('1', '1', '1', 0, 1477550565, 1477550565, 1477550565);
+INSERT INTO lists (id, list_def_id, user_id, status, created, updated, created_client)
+VALUES ('2', '1', '1', 0, 1477550565, 1477550565, 1477550565);
 
 INSERT INTO entity_types (id, description) VALUES ('1', 'user');
 INSERT INTO entity_types (id, description) VALUES ('2', 'list');
@@ -154,18 +167,18 @@ INSERT INTO client_grant_types VALUES (1, 1);
 # --- !Downs
 
 DROP TABLE IF EXISTS labels;
-DROP TABLE IF EXISTS list_instance_bought_products;
-DROP TABLE IF EXISTS lists_instance;
 DROP TABLE IF EXISTS entity_types;
 DROP TABLE IF EXISTS client_grant_types;
 DROP TABLE IF EXISTS grant_types;
 DROP TABLE IF EXISTS list_products;
+DROP TABLE IF EXISTS list_def_products;
 DROP TABLE IF EXISTS auth_codes;
 DROP TABLE IF EXISTS access_tokens;
 DROP TABLE IF EXISTS lists_users;
 DROP TABLE IF EXISTS clients;
 DROP TABLE IF EXISTS products;
 DROP TABLE IF EXISTS lists;
+DROP TABLE IF EXISTS list_defs;
 DROP TABLE IF EXISTS user_sessions;
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS user_statuses;

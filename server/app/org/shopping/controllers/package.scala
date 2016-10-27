@@ -9,6 +9,8 @@ import scala.concurrent._
 
 package object controllers {
 
+  import org.shopping.dto.JsonDTOFormats._
+
   def err(code: Int, message: String)(implicit tjs: Writes[ErrorDTO]): JsValue = {
     Logger.error(message)
     Json.toJson(ErrorDTO(code, message))
@@ -27,6 +29,11 @@ package object controllers {
   }
 
 
-  def responseOk[T <: AnyRef](a: T)(implicit m: Writes[T]) = Ok(Json.toJson(a))
+  def response[T <: AnyRef](a: Either[ErrorDTO, T])(implicit tjs: Writes[T]) = {
+    a match {
+      case Left(err) => InternalServerError(Json.toJson(err))
+      case Right(o) => Ok(Json.toJson(o)(tjs))
+    }
+  }
 
 }

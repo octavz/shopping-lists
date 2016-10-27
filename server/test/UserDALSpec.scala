@@ -19,7 +19,7 @@ class UserDALSpec extends BaseDALSpec {
 
     "insertSession, findSessionById, deleteSessionByUser" in {
       test { env =>
-        val dao = new SlickUserDAL(env.dbConfigProvider, new TestCaching)
+        val dao = new SlickUserDAL(env.dbConfigProvider/*, new TestCaching*/)
         val schema = DB(env.dbConfig.driver)
         import schema._
         import env.dbConfig.driver.api._
@@ -36,7 +36,7 @@ class UserDALSpec extends BaseDALSpec {
 
     "insertUser,getUserById, getUserByEmail" in {
       test { env =>
-        val dao = new SlickUserDAL(env.dbConfigProvider, new TestCaching)
+        val dao = new SlickUserDAL(env.dbConfigProvider/*, new TestCaching*/)
         val schema = DB(env.dbConfig.driver)
         import schema._
         import env.dbConfig.driver.api._

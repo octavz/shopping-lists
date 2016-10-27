@@ -47,8 +47,8 @@ class BaseDALSpec extends PlaySpecification with Mockito {
       val e = TestEnv(app, dbConfigProvider, dbConfig, db)
 
       val database = inj.instanceOf[DBApi].database("default")
-      Evolutions.applyEvolutions(database)
       try {
+        Evolutions.applyEvolutions(database)
         AsResult(t(e))
       } catch {
         case e: Throwable =>
@@ -94,8 +94,6 @@ class BaseDALSpec extends PlaySpecification with Mockito {
   }
 
   def newUser = User(id = guid, login = guid, providerToken = None, created = now, updated = now, lastLogin = None, password = guid, nick = guid)
-
-  def randProject(uid: String) = List(id = guid, userId = uid, name = guid, description = guido, created = now, updated = now)
 
   def genString(size: Int): String = (for (i <- 1 to size) yield "a").mkString
 

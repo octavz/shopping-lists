@@ -10,7 +10,7 @@ import slick.driver.JdbcProfile
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent._
 
-class SlickUserDAL @Inject()(protected val dbConfigProvider: DatabaseConfigProvider, cache: Caching)
+class SlickUserDAL @Inject()(protected val dbConfigProvider: DatabaseConfigProvider)
   extends UserDAL
     with HasDatabaseConfigProvider[JdbcProfile]
     with DB {
@@ -23,9 +23,9 @@ class SlickUserDAL @Inject()(protected val dbConfigProvider: DatabaseConfigProvi
   }
 
   override def findSessionById(id: String): DAL[Option[UserSession]] =
-    cache.getOrElseOpt(CacheKeys.session(id)) {
+//    cache.getOrElseOpt(CacheKeys.session(id)) {
       db.run(UserSessions.filter(_.id === id).result.headOption)
-    }
+//    }
 
   override def deleteSessionByUser(uid: String): DAL[Int] = {
     val action = sqlu"delete from user_sessions where user_id = $uid"
@@ -34,9 +34,9 @@ class SlickUserDAL @Inject()(protected val dbConfigProvider: DatabaseConfigProvi
   }
 
   override def getUserById(uid: String): DAL[User] = {
-    cache.getOrElse(CacheKeys.user(uid)) {
+//    cache.getOrElse(CacheKeys.user(uid)) {
       db.run(Users.filter(_.id === uid).result.head)
-    }
+//    }
   }
 
   override def insertUser(user: User): DAL[User] = {
@@ -44,9 +44,9 @@ class SlickUserDAL @Inject()(protected val dbConfigProvider: DatabaseConfigProvi
   }
 
   override def getUserByEmail(email: String): DAL[Option[User]] = {
-    cache.getOrElseOpt(CacheKeys.byEmail(email)) {
+//    cache.getOrElseOpt(CacheKeys.byEmail(email)) {
       db.run(Users.filter(_.login === email).result.headOption)
-    }
+//    }
   }
 
   override def searchUsers(email: Option[String], nick: Option[String]): DAL[Seq[User]] = {

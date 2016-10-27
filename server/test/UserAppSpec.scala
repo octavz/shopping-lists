@@ -33,9 +33,15 @@ class UserAppSpec extends PlaySpecification with Mockito {
   def app(m: UserService = mock[UserService]) = {
     new GuiceApplicationBuilder()
       .disable[RunModule]
-      .configure(Map(
-        "evolutionplugin" -> "disabled"
-      ))
+      .configure(
+        Map(
+          "evolutions" -> "disabled",
+          "slick.dbs.default.driver" -> "slick.driver.PostgresDriver$",
+          "slick.dbs.default.db.driver" -> "org.postgresql.Driver",
+          "slick.dbs.default.db.url" -> s"jdbc:postgresql://localhost:5432/mytest",
+          "slick.dbs.default.db.user" -> "postgres",
+          "slick.dbs.default.db.password" -> "root"
+        ))
       .bindings(new TestModule(m))
       .build()
   }

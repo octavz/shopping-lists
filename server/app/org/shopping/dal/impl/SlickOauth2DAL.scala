@@ -6,7 +6,7 @@ import javax.inject.Inject
 
 import org.shopping.dal.Oauth2DAL
 import org.shopping.db._
-import org.shopping.util.Crypto
+import org.shopping.util.{Crypto, Time}
 import play.api.db.slick.{DatabaseConfigProvider, HasDatabaseConfigProvider}
 import slick.driver.JdbcProfile
 
@@ -39,7 +39,7 @@ class SlickOauth2DAL @Inject()(protected val dbConfigProvider: DatabaseConfigPro
   override def createAccessToken(authInfo: AuthInfo[User]): Future[scalaoauth2.provider.AccessToken] = {
     val accessTokenExpiresIn = 60 * 60 // 1 hour
     val now = new Date()
-    val createdAt = new Timestamp(now.getTime)
+    val createdAt = Time.dateToTs(now)
     val refreshToken = Some(Crypto.generateToken())
     val accessToken = Crypto.generateToken()
 
@@ -65,7 +65,7 @@ class SlickOauth2DAL @Inject()(protected val dbConfigProvider: DatabaseConfigPro
     db.run(action).map {
       opt =>
         opt.map(a =>
-          scalaoauth2.provider.AccessToken(a.accessToken, a.refreshToken, a.scope, Some(a.expiresIn.toLong), a.created))
+          scalaoauth2.provider.AccessToken(a.accessToken, a.refreshToken, a.scope, Some(a.expiresIn.toLong), Time.tsToDate(a.created)))
     }
   }
 
@@ -77,7 +77,7 @@ class SlickOauth2DAL @Inject()(protected val dbConfigProvider: DatabaseConfigPro
     val action = AccessTokens.filter(_.accessToken === token).result.headOption
     db.run(action).map {
       _.map(a =>
-          scalaoauth2.provider.AccessToken(a.accessToken, a.refreshToken, a.scope, Some(a.expiresIn.toLong), a.created))
+        scalaoauth2.provider.AccessToken(a.accessToken, a.refreshToken, a.scope, Some(a.expiresIn.toLong), Time.tsToDate(a.created)))
     }
   }
 
@@ -112,7 +112,7 @@ class SlickOauth2DAL @Inject()(protected val dbConfigProvider: DatabaseConfigPro
   override def findAuthCode(code: String): Future[Option[AuthCode]] = {
     db.run(AuthCodes.filter(a => a.authorizationCode === code).result.headOption).map {
       authCode =>
-        authCode.filter(p => p.createdAt.getTime + (p.expiresIn * 1000) > new Date().getTime)
+        authCode.filter(p => p.created + (p.expiresIn * 1000) > Time.dateToTs(new Date()))
     }
   }
 

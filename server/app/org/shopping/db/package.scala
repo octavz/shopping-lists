@@ -5,5 +5,5 @@ package org.shopping
   */
 package object db {
 
-  type SList = org.shopping.db.List
+  type SList = org.shopping.db.ListDef
 }
