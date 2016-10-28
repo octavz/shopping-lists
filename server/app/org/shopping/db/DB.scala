@@ -9,7 +9,6 @@ object DB {
 
 trait DB {
 
-  import slick.jdbc.{GetResult => GR}
   import slick.model.ForeignKeyAction
 
   val profile: slick.driver.JdbcProfile
@@ -33,8 +32,6 @@ trait DB {
       r => r.id, onUpdate = ForeignKeyAction.NoAction, onDelete = ForeignKeyAction.NoAction)
   }
 
-  lazy val AccessTokens = new TableQuery(tag => new AccessTokens(tag))
-
   class AuthCodes(_tableTag: Tag) extends Table[AuthCode](_tableTag, "auth_codes") {
     def * = (authorizationCode, userId, redirectUri, createdAt, scope, clientId, expiresIn) <> (AuthCode.tupled, AuthCode.unapply)
 
@@ -52,8 +49,6 @@ trait DB {
       r => r.id, onUpdate = ForeignKeyAction.NoAction, onDelete = ForeignKeyAction.NoAction)
   }
 
-  lazy val AuthCodes = new TableQuery(tag => new AuthCodes(tag))
-
   class ClientGrantTypes(
     _tableTag: Tag) extends Table[ClientGrantType](_tableTag, "client_grant_types") {
     def * = (clientId, grantTypeId) <> (ClientGrantType.tupled, ClientGrantType.unapply)
@@ -69,8 +64,6 @@ trait DB {
       r => r.id, onUpdate = ForeignKeyAction.NoAction, onDelete = ForeignKeyAction.NoAction)
   }
 
-  lazy val ClientGrantTypes = new TableQuery(tag => new ClientGrantTypes(tag))
-
   class Clients(_tableTag: Tag) extends Table[Client](_tableTag, "clients") {
     def * = (id, secret, redirectUri, scope) <> (Client.tupled, Client.unapply)
 
@@ -80,17 +73,6 @@ trait DB {
     val scope = column[Option[String]]("scope", O.Length(254, varying = true), O.Default(None))
   }
 
-  lazy val Clients = new TableQuery(tag => new Clients(tag))
-
-  class EntityTypes(_tableTag: Tag) extends Table[EntityType](_tableTag, "entity_types") {
-    def * = (id, description) <> (EntityType.tupled, EntityType.unapply)
-
-    val id = column[String]("id", O.PrimaryKey, O.Length(40, varying = true))
-    val description = column[Option[String]]("description", O.Length(100, varying = true), O.Default(None))
-  }
-
-  lazy val EntityTypes = new TableQuery(tag => new EntityTypes(tag))
-
   class GrantTypes(_tableTag: Tag) extends Table[GrantType](_tableTag, "grant_types") {
     def * = (id, grantType) <> (GrantType.tupled, GrantType.unapply)
 
@@ -98,49 +80,18 @@ trait DB {
     val grantType = column[String]("grant_type", O.Length(254, varying = true))
   }
 
-  lazy val GrantTypes = new TableQuery(tag => new GrantTypes(tag))
-
-  class Labels(_tableTag: Tag) extends Table[Label](_tableTag, "labels") {
-    def * = (id, lang, entityId, entityTypeId, label1, label2, label3) <> (Label.tupled, Label.unapply)
-
-    val id = column[String]("id", O.PrimaryKey, O.Length(40, varying = true))
-    val lang = column[String]("lang", O.Length(10, varying = true))
-    val entityId = column[String]("entity_id", O.Length(40, varying = true))
-    val entityTypeId = column[String]("entity_type_id", O.Length(40, varying = true))
-    val label1 = column[Option[String]]("label1", O.Length(1000, varying = true), O.Default(None))
-    val label2 = column[Option[String]]("label2", O.Length(1000, varying = true), O.Default(None))
-    val label3 = column[Option[String]]("label3", O.Length(1000, varying = true), O.Default(None))
-  }
-
-  lazy val Labels = new TableQuery(tag => new Labels(tag))
-
   class ListDefs(_tableTag: Tag) extends Table[ListDef](_tableTag, "list_defs") {
-    def * = (id, userId, name, description, status, created, updated) <> (ListDef.tupled, ListDef.unapply)
+    def * = (id, userId, name, description, status, createdClient, created, updated) <> (ListDef.tupled, ListDef.unapply)
 
     val id = column[String]("id", O.PrimaryKey, O.Length(40, varying = true))
     val userId = column[String]("user_id", O.Length(40, varying = true))
     val name = column[String]("name", O.Length(255, varying = true))
     val description = column[Option[String]]("description", O.Default(None))
     val status = column[Short]("status", O.Default(0))
-    val created = column[Long]("created")
-    val updated = column[Long]("updated")
-  }
-
-  lazy val ListDefs = new TableQuery(tag => new ListDefs(tag))
-
-  class Lists(_tableTag: Tag) extends Table[ListInst](_tableTag, "lists") {
-    def * = (id, listDefId, userId, createdClient, status, created, updated) <> (ListInst.tupled, ListInst.unapply)
-
-    val id = column[String]("id", O.PrimaryKey, O.Length(40, varying = true))
-    val listDefId = column[String]("list_def_id", O.Length(40, varying = true))
-    val userId = column[String]("user_id", O.Length(40, varying = true))
-    val status = column[Short]("status", O.Default(0))
     val createdClient = column[Long]("created_client")
     val created = column[Long]("created")
     val updated = column[Long]("updated")
   }
-
-  lazy val Lists = new TableQuery(tag => new Lists(tag))
 
   class Products(_tableTag: Tag) extends Table[Product](_tableTag, "products") {
     def * = (id, userId, subject, description, status, created, updated) <> (Product.tupled, Product.unapply)
@@ -156,8 +107,6 @@ trait DB {
     lazy val usersFk = foreignKey("tasks_user_id_fkey", userId, Users)(
       r => r.id, onUpdate = ForeignKeyAction.NoAction, onDelete = ForeignKeyAction.NoAction)
   }
-
-  lazy val Products = new TableQuery(tag => new Products(tag))
 
   class Users(_tableTag: Tag) extends Table[User](_tableTag, "users") {
     def * = (id, login, nick, provider, providerToken, lastLogin, status, password, created, updated) <> (User.tupled, User.unapply)
@@ -177,8 +126,6 @@ trait DB {
     val index2 = index("users_nick_key", nick, unique = true)
   }
 
-  lazy val Users = new TableQuery(tag => new Users(tag))
-
   class UserSessions(_tableTag: Tag) extends Table[UserSession](_tableTag, "user_sessions") {
     def * = (id, userId) <> (UserSession.tupled, UserSession.unapply)
 
@@ -189,8 +136,6 @@ trait DB {
       r => r.id, onUpdate = ForeignKeyAction.NoAction, onDelete = ForeignKeyAction.NoAction)
   }
 
-  lazy val UserSessions = new TableQuery(tag => new UserSessions(tag))
-
   class UserStatuses(_tableTag: Tag) extends Table[UserStatus](_tableTag, "user_statuses") {
     def * = (id, description) <> (UserStatus.tupled, UserStatus.unapply)
 
@@ -198,52 +143,24 @@ trait DB {
     val description = column[Option[String]]("description", O.Length(100, varying = true), O.Default(None))
   }
 
-  lazy val UserStatuses = new TableQuery(tag => new UserStatuses(tag))
-
-  class ListProducts(_tableTag: Tag) extends Table[ListProduct](_tableTag, "list_products") {
-    def * = (listId, productId, userId, quantity, bought, created, updated) <> (ListProduct.tupled, ListProduct.unapply)
-
-    val listId = column[String]("list_id", O.PrimaryKey, O.Length(40, varying = true))
-    val productId = column[String]("product_id", O.PrimaryKey, O.Length(40, varying = true))
-
-    val userId = column[String]("user_id", O.Length(40, varying = true))
-    val bought = column[Short]("bought", O.Default(0))
-    val quantity = column[Int]("quantity", O.Default(0))
-    val created = column[Long]("created")
-    val updated = column[Long]("updated")
-
-    lazy val usersFk = foreignKey("list_products_user_id_fkey", userId, Users)(
-      r => r.id, onUpdate = ForeignKeyAction.NoAction, onDelete = ForeignKeyAction.NoAction)
-    lazy val listsFk = foreignKey("list_products_list_id_fkey", listId, Lists)(
-      r => r.id, onUpdate = ForeignKeyAction.NoAction, onDelete = ForeignKeyAction.NoAction)
-    lazy val productsFk = foreignKey("list_products_product_id_fkey", productId, Products)(
-      r => r.id, onUpdate = ForeignKeyAction.NoAction, onDelete = ForeignKeyAction.NoAction)
-  }
-
-  lazy val ListProducts = new TableQuery(tag => new ListProducts(tag))
-
   class ListDefProducts(
     _tableTag: Tag) extends Table[ListDefProduct](_tableTag, "list_def_products") {
-    def * = (listDefId, productId, userId, description, quantity, created, updated) <> (ListDefProduct.tupled, ListDefProduct.unapply)
+    def * = (listDefId, productId, description, bought, quantity, created, updated) <> (ListDefProduct.tupled, ListDefProduct.unapply)
 
     val listDefId = column[String]("list_def_id", O.PrimaryKey, O.Length(40, varying = true))
     val productId = column[String]("product_id", O.PrimaryKey, O.Length(40, varying = true))
 
-    val userId = column[String]("user_id", O.Length(40, varying = true))
     val quantity = column[Int]("quantity", O.Default(0))
     val created = column[Long]("created")
     val updated = column[Long]("updated")
     val description = column[Option[String]]("description", O.Length(100, varying = true), O.Default(None))
+    val bought = column[Short]("status", O.Default(0))
 
-    lazy val usersFk = foreignKey("list_products_user_id_fkey", userId, Users)(
-      r => r.id, onUpdate = ForeignKeyAction.NoAction, onDelete = ForeignKeyAction.NoAction)
     lazy val listsFk = foreignKey("list_products_list_def_id_fkey", listDefId, ListDefs)(
       r => r.id, onUpdate = ForeignKeyAction.NoAction, onDelete = ForeignKeyAction.NoAction)
     lazy val productsFk = foreignKey("list_products_product_id_fkey", productId, Products)(
       r => r.id, onUpdate = ForeignKeyAction.NoAction, onDelete = ForeignKeyAction.NoAction)
   }
-
-  lazy val ListDefProducts = new TableQuery(tag => new ListDefProducts(tag))
 
   class ListsUsers(_tableTag: Tag) extends Table[ListUser](_tableTag, "lists_users") {
     def * = (listDefId, userId) <> (ListUser.tupled, ListUser.unapply)
@@ -257,6 +174,18 @@ trait DB {
       r => r.id, onUpdate = ForeignKeyAction.NoAction, onDelete = ForeignKeyAction.NoAction)
   }
 
+
+  lazy val ClientGrantTypes = new TableQuery(tag => new ClientGrantTypes(tag))
+  lazy val AccessTokens = new TableQuery(tag => new AccessTokens(tag))
+  lazy val AuthCodes = new TableQuery(tag => new AuthCodes(tag))
+  lazy val Clients = new TableQuery(tag => new Clients(tag))
+  lazy val GrantTypes = new TableQuery(tag => new GrantTypes(tag))
+  lazy val ListDefs = new TableQuery(tag => new ListDefs(tag))
+  lazy val Products = new TableQuery(tag => new Products(tag))
+  lazy val Users = new TableQuery(tag => new Users(tag))
+  lazy val UserSessions = new TableQuery(tag => new UserSessions(tag))
+  lazy val UserStatuses = new TableQuery(tag => new UserStatuses(tag))
+  lazy val ListDefProducts = new TableQuery(tag => new ListDefProducts(tag))
   lazy val ListsUsers = new TableQuery(tag => new ListsUsers(tag))
 }
 
@@ -264,56 +193,34 @@ case class AccessToken(accessToken: String, refreshToken: Option[String] = None,
   scope: Option[String] = None, expiresIn: Int, created: Long, clientId: String)
 
 case class Action(id: String, description: Option[String] = None, url: String, verbId: Int,
-  secured: Short,
-  userId: String, groupId: String, perm: Int = 448, created: Long, updated: Long)
+  secured: Short, userId: String, groupId: String, perm: Int = 448, created: Long, updated: Long)
 
 case class AuthCode(authorizationCode: String, userId: String, redirectUri: Option[String] = None,
-  created: Long,
-  scope: Option[String] = None, clientId: String, expiresIn: Int)
+  created: Long, scope: Option[String] = None, clientId: String, expiresIn: Int)
 
 case class ClientGrantType(clientId: String, grantTypeId: Int)
 
 case class Client(id: String, secret: Option[String] = None, redirectUri: Option[String] = None,
   scope: Option[String] = None)
 
-case class EntityType(id: String, description: Option[String] = None)
-
 case class GrantType(id: Int, grantType: String)
 
-case class Label(id: String, lang: String, entityId: String, entityTypeId: String,
-  label1: Option[String] = None,
-  label2: Option[String] = None, label3: Option[String] = None)
-
 case class ListDef(id: String, userId: String, name: String, description: Option[String] = None,
-  status: Short = 0,
-  created: Long, updated: Long)
+  status: Short = 0, createdClient: Long, created: Long, updated: Long)
 
 case class Product(id: String, userId: String, subject: String, description: Option[String] = None,
-  status: Short = 0,
-  created: Long, updated: Long)
+  status: Short = 0, created: Long, updated: Long)
 
-case class ListDefProduct(listDefId: String, productId: String, userId: String,
-  description: Option[String],
-  quantity: Int, created: Long, updated: Long)
-
-case class ListProduct(listId: String, productId: String, userId: String, quantity: Int,
-  bought: Short = 0,
-  created: Long, updated: Long)
+case class ListDefProduct(listDefId: String, productId: String,
+  description: Option[String], bought: Short = 0, quantity: Int = 0, created: Long, updated: Long)
 
 case class User(id: String, login: String, nick: String, provider: Int = 0,
-  providerToken: Option[String] = None,
-  lastLogin: Option[Long] = None, status: Int = 0, password: String = "", created: Long,
-  updated: Long)
+  providerToken: Option[String] = None, lastLogin: Option[Long] = None,
+  status: Int = 0, password: String = "", created: Long, updated: Long)
 
 case class UserSession(id: String, userId: String)
 
 case class UserStatus(id: Int, description: Option[String] = None)
 
 case class ListUser(listDefId: String, userId: String)
-
-case class ListInst(id: String, listDefId: String, userId: String, createdClient: Long,
-  status: Short = 0,
-  created: Long, updated: Long)
-
-case class FullList(listDef: ListDef, inst: ListInst)
 

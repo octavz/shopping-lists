@@ -18,74 +18,80 @@ class SlickListDAL @Inject()(protected val dbConfigProvider: DatabaseConfigProvi
 
   import dbConfig.driver.api._
 
-  override def insertList(model: FullList): DAL[FullList] = {
-    val action = (for {
-      _ <- ListDefs += model.listDef
-      _ <- Lists += model.inst
-      _ <- ListsUsers += ListUser(model.listDef.id, model.listDef.userId)
-    } yield ()).transactionally
+  override def insertList(model: ListDef): DAL[ListDef] = {
+    val action = for {
+      _ <- ListDefs += model
+      _ <- ListsUsers += ListUser(model.id, model.userId)
+    } yield ()
 
-    db run action map (_ => model)
+    db run action.transactionally map (_ => model)
   }
 
   override def updateList(model: ListDef): DAL[ListDef] = {
-    val newModel = model.copy(updated = now)
+    val newModel = model.copy(updated = now())
     db.run(ListDefs.filter(_.id === model.id).update(newModel)) map (_ => model)
   }
 
-  override def getUserLists(uid: String, offset: Int, count: Int): DAL[(Seq[FullList], Int)] = {
-    val query = for {
-      (defs, insts) <- ListDefs join Lists on ((d, i) => d.id === i.listDefId && d.userId === uid && d.status =!= Constants.STATUS_DELETE && i.status =!= Constants.STATUS_DELETE)
-    } yield (defs, insts)
+  override def getUserLists(uid: String, offset: Int, count: Int): DAL[(Seq[ListDef], Int)] = {
+    val query = ListDefs.filter(d => d.userId === uid && d.status =!= Constants.STATUS_DELETE)
 
-
-    val action = (for {
+    val action = for {
       l <- query.drop(offset).take(count).result
       c <- query.length.result
-    } yield (l, c)).transactionally
+    } yield (l, c)
 
-    db.run(action).map {
-      case (l, c) => (l map FullList.tupled, c)
+    db.run(action.transactionally).map {
+      case (l, c) => (l, c)
     }
   }
 
   override def getListDefById(id: String) = {
-    val action = ListDefs.filter(p => p.id === id && p.status =!= Constants.STATUS_DELETE).take(1).result.headOption
-    db run action
+    db run ListDefs.filter(p => p.id === id && p.status =!= Constants.STATUS_DELETE)
+      .take(1)
+      .result
+      .headOption
   }
 
-  override def getListById(id: String) = {
-    val action = Lists.filter(p => p.id === id && p.status =!= Constants.STATUS_DELETE).take(1).result.headOption
-    db run action
+  override def addListDefProducts(listId: String,
+    model: Seq[ListDefProduct]): DAL[Seq[ListDefProduct]] = {
+    if (model.nonEmpty) {
+      val query = for {
+        _ <- ListDefProducts ++= model
+        ret <- ListDefProducts.filter(_.listDefId === listId).result
+      } yield ret
+      db.run(query.transactionally)
+    } else {
+      db.run(ListDefProducts.filter(_.listDefId === listId).result)
+    }
   }
 
-  override def addListProduct(model: ListProduct): DAL[ListProduct] = {
-    val action = ListProducts += model
-    db.run(action) map (_ => model)
-  }
-
-  override def addListProducts(model: Seq[ListProduct]): DAL[Seq[ListProduct]] = {
-    val action = ListProducts ++= model
-    db.run(action) map (_ => model)
-  }
-
-  override def getListProductsByListId(listId: String): DAL[Seq[ListProduct]] = {
-    val action = ListProducts.filter(_.listId === listId).result
-    db run action
-  }
-
-  override def addListDefProducts(model: Seq[ListDefProduct]): DAL[Seq[ListDefProduct]] = {
-    val action = ListDefProducts ++= model
-    db.run(action) map (_ => model)
-  }
-
-  override def getListDefProductsByListId(listDefId: String): DAL[Seq[ListDefProduct]] = {
-    val action = ListDefProducts.filter(_.listDefId === listDefId).result
-    db run action
+  override def getListProductsByList(listDefId: String): DAL[Seq[ListDefProduct]] = {
+    db run ListDefProducts.filter(_.listDefId === listDefId).result
   }
 
   override def getListUsers(listId: String): DAL[Seq[String]] = {
-    val action = ListsUsers.filter(_.listDefId === listId).map(_.userId).result
-    db run action
+    db run ListsUsers.filter(_.listDefId === listId).map(_.userId).result
+  }
+
+  override def updateListProduct(listProduct: ListDefProduct): DAL[ListDefProduct] =
+    db.run {
+      ListDefProducts
+        .filter(p => p.productId === listProduct.productId && p.listDefId === listProduct.listDefId)
+        .map(_.bought)
+        .update(listProduct.bought)
+    } map (_ => listProduct)
+
+  override def updateBatchedBought(listId: String, ids: Map[String, Boolean]): DAL[Int] = {
+    val bought = ids.filter { case (_, v) => v }.keySet
+    val notbought = ids.filter { case (_, v) => !v }.keySet
+    val q = for {
+      q1 <- ListDefProducts.filter(p => p.productId.inSetBind(bought) && p.listDefId === listId)
+        .map(_.bought)
+        .update(1)
+      q2 <- ListDefProducts.filter(p => p.productId.inSetBind(notbought) && p.listDefId === listId)
+        .map(_.bought)
+        .update(0)
+    } yield q1 + q2
+    db run q.transactionally
   }
 }

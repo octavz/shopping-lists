@@ -38,7 +38,9 @@ package object modules {
 
   def resultEx(ex: Throwable, data: String = "", errCode: Int = 500) = Future.successful(Left(ErrorDTO(errCode, ex.getMessage)))
 
-  def resultExSync(ex: Throwable, data: String = "", errCode: Int = 500) = Left(ErrorDTO(errCode, ex.getMessage))
+  def resultExSync(ex: Throwable, data: String = "", errCode: Int = 500) = {
+    Left(ErrorDTO(errCode, ex.getMessage))
+  }
 
   object PermProject {
     val OwnerRead = 1

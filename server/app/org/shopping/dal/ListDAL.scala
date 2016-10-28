@@ -4,26 +4,21 @@ import org.shopping.db._
 
 trait ListDAL {
 
-  def insertList(model: FullList): DAL[FullList]
+  def insertList(model: ListDef): DAL[ListDef]
 
-  def getUserLists(uid: String, offset: Int, count: Int): DAL[(Seq[FullList], Int)]
+  def getUserLists(uid: String, offset: Int, count: Int): DAL[(Seq[ListDef], Int)]
 
   def updateList(list: ListDef): DAL[ListDef]
 
-  def getListById(id: String): DAL[Option[ListInst]]
-
   def getListDefById(id: String): DAL[Option[ListDef]]
 
-  def addListProduct(model: ListProduct): DAL[ListProduct]
+  def addListDefProducts(listId: String, model: Seq[ListDefProduct]): DAL[Seq[ListDefProduct]]
 
-  def addListProducts(model: Seq[ListProduct]): DAL[Seq[ListProduct]]
+  def getListProductsByList(listDefId: String): DAL[Seq[ListDefProduct]]
 
-  def getListProductsByListId(listId: String): DAL[Seq[ListProduct]]
+  def getListUsers(listId: String): DAL[Seq[String]]
 
-  def addListDefProducts(model: Seq[ListDefProduct]): DAL[Seq[ListDefProduct]]
+  def updateListProduct(listProduct: ListDefProduct): DAL[ListDefProduct]
 
-  def getListDefProductsByListId(listDefId: String): DAL[Seq[ListDefProduct]]
-
-  def getListUsers(listId: String):DAL[Seq[String]]
-
+  def updateBatchedBought(listId: String, ids: Map[String, Boolean]): DAL[Int]
 }
