@@ -63,7 +63,7 @@ namespace CommonBL.Helpers
             }
         }//HttpPut
 
-        private static HttpClient SetCustomHttpClient(string authToken)
+        private  HttpClient SetCustomHttpClient(string authToken)
         {
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(AUTHORIZATION_HEADER, authToken ?? string.Empty);

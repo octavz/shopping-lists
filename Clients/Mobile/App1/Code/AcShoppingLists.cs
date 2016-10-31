@@ -13,6 +13,10 @@ using ShList.Code.Abstracts;
 using ShList.Code.Controls;
 using CommonBL.Data;
 using CommonBL.Managers;
+using CommonBL.Data.Request;
+using CommonBL.Repository;
+using CommonBL.Data.Response;
+using System.Threading.Tasks;
 
 namespace ShList.Code
 {
@@ -23,7 +27,7 @@ namespace ShList.Code
         LinearLayout llShoppingLst = null;
         Button btnCreateList = null;
 
-        protected override void OnCreate(Bundle bundle)
+        protected async override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
 
@@ -35,13 +39,50 @@ namespace ShList.Code
 
             btnCreateList.Click += AddNewList;
 
+            await LoadLists();
+            GenerateUILists();
         }//OnCreate
 
-        private void AddNewList(object sender, EventArgs e)
+        /// <summary>
+        /// GenerateUILists
+        /// </summary>
+        private void GenerateUILists()
+        {
+            ListsManager lstMgr = ListsManager.Instance;
+            lstMgr.Lists.ForEach(x => {
+                CreateUIList(x);
+            });
+        }//GenerateUILists
+
+        private async Task LoadLists()
+        {
+            var progressDialog = ProgressDialog.Show(this, ShAppContext.GetString(Resource.String.PleaseWait), ShAppContext.GetString(Resource.String.LoadingLists), true);
+            ResUserLists resLists = await UserRepository.Instance.GetUserLists(ShAppContext.UserId, ShAppContext.UserToken);
+            ListsManager lstMgr = ListsManager.Instance;
+            resLists.LstItems.ForEach(x => lstMgr.AddListFromResponse(x));
+            progressDialog.Dismiss();
+            return;
+        }//LoadLists
+
+        private async void AddNewList(object sender, EventArgs e)
         {
             ShoppingListDTO newList = ListsManager.Instance.CreateNewList();
+            ReqListDTO lst = newList.GenerateRequestFormat(ShAppContext.UserId, ShAppContext.UserToken);
 
-            CtrlShoppingList item = new CtrlShoppingList(this, ShAppContext, newList);
+            var progressDialog = ProgressDialog.Show(this, ShAppContext.GetString(Resource.String.PleaseWait), ShAppContext.GetString(Resource.String.CreatingList), true);
+            ResListDTO resList = await ListRepository.Instance.CreateList(lst);
+            CreateUIList(newList);
+            progressDialog.Dismiss();
+        }//AddNewList
+
+        /// <summary>
+        /// CreateUIList
+        /// </summary>
+        /// <param name="newList"></param>
+        /// <param name="progressDialog"></param>
+        private void CreateUIList(ShoppingListDTO newList)
+        {
+            CtrlShoppingList item = new CtrlShoppingList(this, ShAppContext, newList);            
             item.Event_DeleteItem += (int id) =>
             {
                 var view = FindViewById<CtrlShoppingList>(id);
@@ -49,8 +90,6 @@ namespace ShList.Code
                 ListsManager.Instance.DeleteList(view.Data);
             };
             llShoppingLst.AddView(item, 0);
-        }//AddNewList
-
-
+        }//CreateUIList
     }
 }

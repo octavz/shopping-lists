@@ -32,4 +32,7 @@
   <string name="AddItem">Add</string>
   <string name="Quantity">Quantity</string>
   <string name="ShoppingItem">Shopping Item</string>
+  <string name="NewList">New list</string>
+  <string name="CreatingList">Creating list...</string>
+  <string name="LoadingLists">Loading lists...</string>
 </resources>
