@@ -1,4 +1,5 @@
 ﻿using CommonBL.Data;
+using CommonBL.Data.Response;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,12 +32,23 @@ namespace CommonBL.Managers
             return newList;
         }//AddNewList
 
+        public void AddListFromResponse(ResListDTO aRes)
+        {
+            ShoppingListDTO lstFound = m_Lists.Where(x => x.Id == aRes.Id).FirstOrDefault();
+            if (!string.IsNullOrEmpty(aRes.Id) && lstFound != null)
+                return;
+
+            m_Lists.Add(new ShoppingListDTO(aRes));
+        }//AddListFromResponse
+
         public void DeleteList(ShoppingListDTO aList)
         {
             if (aList == null)
                 return;
             m_Lists.Remove(aList);
         }//DeleteList
+
+        public List<ShoppingListDTO> Lists { get { return m_Lists.OrderBy(x => x.ListDate).ToList(); } }
 
         public static ListsManager Instance { get { return m_Manager.Value; } }
     }

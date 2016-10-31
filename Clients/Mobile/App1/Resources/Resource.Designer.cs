@@ -2606,6 +2606,9 @@ namespace ShList
 			// aapt resource value: 0x7f070030
 			public const int CreatingAccount = 2131165232;
 			
+			// aapt resource value: 0x7f070038
+			public const int CreatingList = 2131165240;
+			
 			// aapt resource value: 0x7f070027
 			public const int DeleteList = 2131165223;
 			
@@ -2636,6 +2639,9 @@ namespace ShList
 			// aapt resource value: 0x7f07001c
 			public const int ListsButtonCreate = 2131165212;
 			
+			// aapt resource value: 0x7f070039
+			public const int LoadingLists = 2131165241;
+			
 			// aapt resource value: 0x7f070031
 			public const int LogOut = 2131165233;
 			
@@ -2644,6 +2650,9 @@ namespace ShList
 			
 			// aapt resource value: 0x7f070021
 			public const int LoginButton = 2131165217;
+			
+			// aapt resource value: 0x7f070037
+			public const int NewList = 2131165239;
 			
 			// aapt resource value: 0x7f070029
 			public const int No = 2131165225;

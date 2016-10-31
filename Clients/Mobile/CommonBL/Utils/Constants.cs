@@ -12,7 +12,12 @@ namespace CommonBL.Utils
         public const string URL_CREATE_ACCOUNT = "api/register";
         public const string URL_LOGIN = "api/login";
         public const string URL_GET_USER = "api/user";
+        public const string URL_GET_USER_LISTS = "api/user/{0}/lists";
 
+
+        public const string URL_CREATE_LIST = "/api/list";
+
+        public const string DEFAULT_LIST_NAME = "_deflistname2016";
     }
 
     public enum ErrorCodes

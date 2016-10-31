@@ -62,7 +62,8 @@ namespace ShList.Code
                 }
                 else
                 {
-                    ShAppContext.SetUserLoginSettings(resLogin);
+                    //resLogin.AccessToken = ShAppContext.UserToken;//save token
+                    //ShAppContext.SetUserLoginSettings(resLogin);
                     StartActivity(typeof(AcShoppingLists));
                     Finish();
                 }//else

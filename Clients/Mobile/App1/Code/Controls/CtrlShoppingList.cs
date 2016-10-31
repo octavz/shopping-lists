@@ -48,7 +48,7 @@ namespace ShList.Code.Controls
             LinearLayout llShopingListMain = FindViewById<LinearLayout>(Resource.Id.llShopingListMain);
             ImageButton btnDelete = FindViewById<ImageButton>(Resource.Id.btnDelete);
             ImageButton btnEdit = FindViewById<ImageButton>(Resource.Id.btnEdit);
-            lstNm.Text = string.IsNullOrEmpty(m_Data.ListName) ? "New List" : m_Data.ListName;            
+            lstNm.Text = string.IsNullOrEmpty(m_Data.ListName) ? ShAppContext.GetString(Resource.String.NewList) : m_Data.ListName;            
             lstDate.Text = m_Data.ListDate.ToString("MMM/dd/yyy hh:mm:ss");
             llShopingListMain.Click += ShoppingList_Click;
             btnDelete.Click += BtnDelete_Click;
