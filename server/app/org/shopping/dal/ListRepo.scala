@@ -1,8 +1,9 @@
 package org.shopping.dal
 
 import org.shopping.db._
+import org.shopping.models.{ListDef, ListDefProduct}
 
-trait ListDAL {
+trait ListRepo {
 
   def insertList(model: ListDef): DAL[ListDef]
 

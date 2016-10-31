@@ -1,19 +1,18 @@
-package org.shopping.modules.core.impl
+package org.shopping.services.impl
 
 import com.google.inject.Inject
 import org.shopping.dal._
-import org.shopping.db.{ListDef, ListDefProduct}
 import org.shopping.dto._
-import org.shopping.modules._
-import org.shopping.modules.core.ListService
-import org.shopping.util.{Constants, ErrorMessage, Gen, Time}
+import org.shopping.models.{ListDef, ListDefProduct}
+import org.shopping.services.{ListService, _}
+import org.shopping.util.{Constants, ErrorMessages, Gen, Time}
 import play.api.http.Status
 
 import scala.concurrent.ExecutionContext.Implicits._
 import scala.concurrent._
 import scala.language.postfixOps
 
-class DefaultListService @Inject()(dalUser: UserDAL, dalList: ListDAL) extends ListService {
+class DefaultListService @Inject()(dalUser: UserRepo, dalList: ListRepo) extends ListService {
 
   override def insertList(dto: ListDTO): Result[ListDTO] = {
     val listDef = dto.toModel
@@ -44,7 +43,7 @@ class DefaultListService @Inject()(dalUser: UserDAL, dalList: ListDAL) extends L
     cloneIfNotOwned(listId).flatMap { lst =>
       dalList.getListProductsByList(listId) flatMap { existing =>
         val f = if (existing.size > MAX_ALLOWED) {
-          throw new RuntimeException(ErrorMessage.TOO_MANY_ITEMS)
+          throw new RuntimeException(ErrorMessages.TOO_MANY_ITEMS)
         } else {
           dalList.addListDefProducts(lst.id, model).map { listItems =>
             resultSync(ListItemsDTO(items = listItems.map(new ListItemDTO(_)),
@@ -75,55 +74,49 @@ class DefaultListService @Inject()(dalUser: UserDAL, dalList: ListDAL) extends L
   }
 
   override def updateList(dto: ListDTO): Result[ListDTO] = {
-    val f = if (dto.id.isEmpty) Future.failed(new Exception("List has empty id"))
-    else {
-      checkUser(dto.userId.getOrElse(throw new Exception("User not found!")), dto.id.get) flatMap {
-        res =>
-          if (!res) throw new Exception("Not valid")
-          dalList.getListDefById(dto.id.get) flatMap {
-            case None => resultError(Status.NOT_FOUND, "List not found")
-            case Some(list) => dalList.updateList(dto.toModel) map { p =>
-              resultSync(new ListDTO(p))
-            }
+    val f = if (dto.id.isEmpty) {
+      Future.failed(new Exception("List has empty id"))
+    } else {
+      checkUser(valid(dto.id.get)) {
+        dalList.getListDefById(dto.id.get) flatMap {
+          case None => resultError(Status.NOT_FOUND, "List not found")
+          case Some(list) => dalList.updateList(dto.toModel) map { p =>
+            resultSync(new ListDTO(p))
           }
+        }
       }
     }
 
     f recover { case e: Throwable => resultExSync(e, "updateList") }
   }
 
-  private def checkUser(userId: String, listId: String): Future[Boolean] =
+  private def valid(listId: String): Future[Boolean] =
     dalList.getListUsers(listId) map (_.contains(userId))
 
   override def getListItems(listId: String): Result[ListItemsDTO] =
-    checkUser(userId, listId).flatMap {
-      isValid =>
-        if (!isValid) throw new Exception("User is not valid in context")
-        dalList.getListProductsByList(listId) map {
-          items =>
-            resultSync(ListItemsDTO(
-              items = items.map(new ListItemDTO(_)),
-              meta = Some(ListMetadata(listId, bought(items)))
-            ))
-        }
+    checkUser(valid(listId)) {
+      dalList.getListProductsByList(listId) map {
+        items =>
+          resultSync(ListItemsDTO(
+            items = items.map(new ListItemDTO(_)),
+            meta = Some(ListMetadata(listId, bought(items)))))
+      }
     } recover {
       case e: Throwable => resultExSync(e, "getListItems")
     }
 
   override def deleteList(listId: String): Result[BooleanDTO] =
-    checkUser(userId, listId).flatMap {
-      isValid =>
-        if (!isValid) throw new Exception("User is not valid in context")
-        dalList.getListDefById(listId) flatMap {
-          case Some(list) =>
-            val newList = list.copy(status = Constants.STATUS_DELETE)
-            dalList.updateList(newList) map {
-              x =>
-                resultSync(BooleanDTO(true))
-            }
-          case None =>
-            resultError(Status.NOT_FOUND, "List not found")
-        }
+    checkUser(valid(listId)) {
+      dalList.getListDefById(listId) flatMap {
+        case Some(list) =>
+          val newList = list.copy(status = Constants.STATUS_DELETE)
+          dalList.updateList(newList) map {
+            x =>
+              resultSync(BooleanDTO(true))
+          }
+        case None =>
+          resultError(Status.NOT_FOUND, "List not found")
+      }
     } recover {
       case e: Throwable => resultExSync(e, "deleteList")
     }

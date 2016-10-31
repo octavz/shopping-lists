@@ -1,6 +1,8 @@
+package org.shopping.dal
+
 import org.junit.runner._
-import org.shopping.dal.impl.SlickListDAL
-import org.shopping.db.ListDef
+import org.shopping.dal.impl.SlickListRepo
+import org.shopping.models.ListDef
 import org.shopping.util.Gen._
 import org.specs2.runner._
 
@@ -14,7 +16,7 @@ class ListDALSpec extends BaseDALSpec {
   import org.shopping.util.Time._
 
   "Lists DAL" should {
-    def newDal(te: TestEnv) = new SlickListDAL(te.dbConfigProvider /*, new TestCaching*/)
+    def newDal(te: TestEnv) = new SlickListRepo(te.dbConfigProvider /*, new TestCaching*/)
 
     "insert list" in {
       test { env =>

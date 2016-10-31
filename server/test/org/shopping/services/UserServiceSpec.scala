@@ -1,9 +1,11 @@
+package org.shopping.services
+
 import org.junit.runner._
 import org.shopping.dal._
 import org.shopping.db._
 import org.shopping.dto.RegisterRequestDTO
-import org.shopping.modules._
-import org.shopping.modules.core.impl._
+import org.shopping.models.{User, UserSession}
+import org.shopping.services.impl._
 import org.shopping.util.Gen._
 import org.shopping.util.Time._
 import org.specs2.mock._
@@ -15,13 +17,13 @@ import scala.concurrent.duration._
 import scalaoauth2.provider.AuthInfo
 
 @RunWith(classOf[JUnitRunner])
-class UserModuleSpec extends Specification with Mockito {
+class UserServiceSpec extends Specification with Mockito {
 
   val duration = Duration.Inf
 
-  case class MockContext(userModule: DefaultUserService, dalUser: UserDAL, dalAuth: Oauth2DAL)
+  case class MockContext(userModule: DefaultUserService, dalUser: UserRepo, dalAuth: Oauth2Repo)
 
-  def userModule(dalUser: UserDAL = mock[UserDAL], dalAuth: Oauth2DAL = mock[Oauth2DAL]): MockContext = {
+  def userModule(dalUser: UserRepo = mock[UserRepo], dalAuth: Oauth2Repo = mock[Oauth2Repo]): MockContext = {
     val ret = new DefaultUserService(dalUser, dalAuth)
     ret.setAuth(AuthInfo[User](user =
       User(id = guid, login = guid, password = guid, created = now, updated = now,

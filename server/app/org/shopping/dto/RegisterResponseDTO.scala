@@ -1,6 +1,7 @@
 package org.shopping.dto
 
 import org.shopping.db._
+import org.shopping.models.User
 import org.shopping.util.{Gen, Time}
 
 case class RegisterResponseDTO(login: String, password: String) {

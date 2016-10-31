@@ -1,7 +1,7 @@
 package org
 
 import org.shopping.dto.ErrorDTO
-import org.shopping.modules.Result
+import org.shopping.services.Result
 import play.api.libs.json.{Json, Writes}
 import play.api.mvc.Results
 

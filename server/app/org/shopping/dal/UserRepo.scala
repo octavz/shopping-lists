@@ -1,8 +1,9 @@
 package org.shopping.dal
 
 import org.shopping.db._
+import org.shopping.models.{User, UserSession}
 
-trait UserDAL {
+trait UserRepo {
 
   def insertSession(us: UserSession): DAL[UserSession]
 

@@ -1,9 +1,10 @@
+package org.shopping.dal
+
 import com.google.inject.AbstractModule
 import org.shopping.config.RunModule
-import org.shopping.dal.Oauth2DAL
 import org.shopping.db._
-import org.shopping.modules.core.{ListService, UserService}
-import org.shopping.util.Gen
+import org.shopping.models.User
+import org.shopping.services.{ListService, UserService}
 import org.shopping.util.Gen._
 import org.shopping.util.Time._
 import org.specs2.execute.AsResult
@@ -70,7 +71,7 @@ class BaseDALSpec extends PlaySpecification with Mockito {
     override def configure() = {
       bind(classOf[ListService]).toInstance(mock[ListService])
       bind(classOf[UserService]).toInstance(mock[UserService])
-      bind(classOf[Oauth2DAL]).toInstance(mock[Oauth2DAL])
+      bind(classOf[Oauth2Repo]).toInstance(mock[Oauth2Repo])
     }
   }
 

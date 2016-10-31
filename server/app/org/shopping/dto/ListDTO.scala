@@ -1,7 +1,8 @@
 package org.shopping.dto
 
 import org.shopping.db._
-import org.shopping.modules._
+import org.shopping.models.ListDef
+import org.shopping.services._
 import org.shopping.util.Time
 
 case class ListDTO(id: Option[String], name: String, description: Option[String], userId: Option[String], created: Long) {

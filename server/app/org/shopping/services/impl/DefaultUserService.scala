@@ -1,20 +1,21 @@
-package org.shopping.modules.core.impl
+package org.shopping.services.impl
 
 import com.google.inject.Inject
-import org.shopping.modules.core.UserService
 import org.shopping.dto.{BooleanDTO, RegisterRequestDTO, UserDTO, UsersDTO}
 import play.api.http.Status
 
 import scala.concurrent._
 import ExecutionContext.Implicits._
-import org.shopping.modules._
+import org.shopping.services.{UserService, _}
 import org.shopping.dal._
 import org.shopping.db._
 import java.util.Date
 
+import org.shopping.models.UserSession
+
 import scalaoauth2.provider._
 
-class DefaultUserService @Inject()(dalUser: UserDAL, dalAuth: Oauth2DAL) extends UserService {
+class DefaultUserService @Inject()(dalUser: UserRepo, dalAuth: Oauth2Repo) extends UserService {
 
   override def createSession(accessToken: String): Result[String] = {
     dalAuth.findAuthInfoByAccessToken(scalaoauth2.provider.AccessToken(accessToken, None, None, None, new Date())) flatMap {

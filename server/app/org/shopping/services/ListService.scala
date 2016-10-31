@@ -1,7 +1,6 @@
-package org.shopping.modules.core
+package org.shopping.services
 
-import org.shopping.modules.Result
-import org.shopping.dto._
+import org.shopping.dto.{BooleanDTO, ListDTO, ListItemsDTO, ListsDTO}
 
 trait ListService extends BaseService {
 

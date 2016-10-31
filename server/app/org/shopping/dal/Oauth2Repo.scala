@@ -1,11 +1,12 @@
 package org.shopping.dal
 
 import org.shopping.db._
+import org.shopping.models.{AccessToken, AuthCode, User}
 
 import scala.concurrent._
-import scalaoauth2.provider.{ClientCredential, AuthInfo, DataHandler}
+import scalaoauth2.provider.{AuthInfo, ClientCredential, DataHandler}
 
-trait Oauth2DAL extends DataHandler[User] {
+trait Oauth2Repo extends DataHandler[User] {
 
   def deleteExistingAndCreate(accessToken: AccessToken, userId: String, clientId: String): Future[Int]
 

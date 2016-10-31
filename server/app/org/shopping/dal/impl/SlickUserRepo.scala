@@ -4,14 +4,15 @@ import com.google.inject.Inject
 import org.shopping.dal.JsonFormats._
 import org.shopping.dal.{DAL, _}
 import org.shopping.db._
+import org.shopping.models.{User, UserSession}
 import play.api.db.slick.{DatabaseConfigProvider, HasDatabaseConfigProvider}
 import slick.driver.JdbcProfile
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent._
 
-class SlickUserDAL @Inject()(protected val dbConfigProvider: DatabaseConfigProvider)
-  extends UserDAL
+class SlickUserRepo @Inject()(protected val dbConfigProvider: DatabaseConfigProvider)
+  extends UserRepo
     with HasDatabaseConfigProvider[JdbcProfile]
     with DB {
   val profile = dbConfig.driver

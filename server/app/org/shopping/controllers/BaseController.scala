@@ -1,10 +1,10 @@
 package org.shopping.controllers
 
 import com.google.inject.Inject
-import org.shopping.dal.Oauth2DAL
-import org.shopping.db.User
+import org.shopping.dal.Oauth2Repo
 import org.shopping.dto.{ErrorDTO, JsonDTOFormats}
-import org.shopping.modules.core.BaseService
+import org.shopping.models.User
+import org.shopping.services.BaseService
 import play.api.libs.json.Json
 import play.api.mvc._
 
@@ -16,7 +16,7 @@ class BaseController(module: BaseService)
   extends Controller
     with JsonDTOFormats
     with OAuth2Provider {
-  @Inject var dalAuth: Oauth2DAL = _
+  @Inject var dalAuth: Oauth2Repo = _
 
   //val authHandler = inject[Oauth2DAL]
 

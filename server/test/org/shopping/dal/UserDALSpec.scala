@@ -1,9 +1,12 @@
+package org.shopping.dal
+
 import org.junit.runner._
-import org.shopping.dal.impl.{SlickUserDAL, TestCaching}
+import org.shopping.dal.impl.SlickUserRepo
 import org.shopping.db._
+import org.shopping.models.{User, UserSession}
 import org.shopping.util.Gen._
-import org.shopping.util.Time._
 import org.specs2.runner._
+
 import scala.concurrent._
 import scala.concurrent.duration._
 
@@ -19,10 +22,7 @@ class UserDALSpec extends BaseDALSpec {
 
     "insertSession, findSessionById, deleteSessionByUser" in {
       test { env =>
-        val dao = new SlickUserDAL(env.dbConfigProvider/*, new TestCaching*/)
-        val schema = DB(env.dbConfig.driver)
-        import schema._
-        import env.dbConfig.driver.api._
+        val dao = new SlickUserRepo(env.dbConfigProvider/*, new TestCaching*/)
         val us = UserSession(id = guid, userId = "1")
         val res = Await.result(dao.insertSession(us), Duration.Inf)
         val ret = Await.result(dao.findSessionById(us.id), Duration.Inf)
@@ -36,10 +36,7 @@ class UserDALSpec extends BaseDALSpec {
 
     "insertUser,getUserById, getUserByEmail" in {
       test { env =>
-        val dao = new SlickUserDAL(env.dbConfigProvider/*, new TestCaching*/)
-        val schema = DB(env.dbConfig.driver)
-        import schema._
-        import env.dbConfig.driver.api._
+        val dao = new SlickUserRepo(env.dbConfigProvider/*, new TestCaching*/)
         val usr = newUser
         val res = Await.result(dao.insertUser(usr), Duration.Inf)
         val ret = Await.result(dao.getUserById(usr.id), Duration.Inf)

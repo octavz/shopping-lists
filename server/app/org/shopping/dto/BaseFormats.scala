@@ -1,7 +1,7 @@
 package org.shopping.dto
 
 import play.api.libs.json._
-import org.shopping.modules.{ResultError}
+import org.shopping.services.{ResultError}
 
 trait BaseFormats {
   implicit def genericReqWrite[T](implicit fmt: Writes[T]): Writes[Either[ResultError, T]] =

@@ -3,6 +3,7 @@ package org.shopping.dal.impl
 import com.google.inject.Inject
 import org.shopping.dal._
 import org.shopping.db._
+import org.shopping.models.{ListDef, ListDefProduct, ListUser}
 import org.shopping.util.Constants
 import org.shopping.util.Time._
 import play.api.db.slick.{DatabaseConfigProvider, HasDatabaseConfigProvider}
@@ -10,8 +11,8 @@ import slick.driver.JdbcProfile
 
 import scala.concurrent.ExecutionContext.Implicits.global
 
-class SlickListDAL @Inject()(protected val dbConfigProvider: DatabaseConfigProvider)
-  extends ListDAL
+class SlickListRepo @Inject()(protected val dbConfigProvider: DatabaseConfigProvider)
+  extends ListRepo
     with DB
     with HasDatabaseConfigProvider[JdbcProfile] {
   val profile = dbConfig.driver

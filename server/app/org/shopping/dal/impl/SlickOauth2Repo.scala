@@ -4,8 +4,9 @@ import java.sql.Timestamp
 import java.util.Date
 import javax.inject.Inject
 
-import org.shopping.dal.Oauth2DAL
+import org.shopping.dal.Oauth2Repo
 import org.shopping.db._
+import org.shopping.models.{AccessToken, AuthCode, User}
 import org.shopping.util.{Crypto, Time}
 import play.api.db.slick.{DatabaseConfigProvider, HasDatabaseConfigProvider}
 import slick.driver.JdbcProfile
@@ -14,8 +15,8 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent._
 import scalaoauth2.provider.{AuthInfo, ClientCredential}
 
-class SlickOauth2DAL @Inject()(protected val dbConfigProvider: DatabaseConfigProvider)
-  extends Oauth2DAL
+class SlickOauth2Repo @Inject()(protected val dbConfigProvider: DatabaseConfigProvider)
+  extends Oauth2Repo
     with HasDatabaseConfigProvider[JdbcProfile]
     with DB {
   val profile = dbConfig.driver

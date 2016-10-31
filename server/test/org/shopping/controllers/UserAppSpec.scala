@@ -1,10 +1,11 @@
+package org.shopping.controllers
+
 import com.google.inject.AbstractModule
 import org.junit.runner._
 import org.shopping.config.RunModule
-import org.shopping.dal.Oauth2DAL
+import org.shopping.dal.Oauth2Repo
 import org.shopping.dto._
-import org.shopping.modules._
-import org.shopping.modules.core.{ListService, UserService}
+import org.shopping.services._
 import org.specs2.mock.Mockito
 import org.specs2.runner._
 import play.api.inject.guice.GuiceApplicationBuilder
@@ -25,7 +26,7 @@ class UserAppSpec extends PlaySpecification with Mockito {
   class TestModule(m: UserService) extends AbstractModule {
     override def configure() = {
       bind(classOf[UserService]).toInstance(m)
-      bind(classOf[Oauth2DAL]).toInstance(mock[Oauth2DAL])
+      bind(classOf[Oauth2Repo]).toInstance(mock[Oauth2Repo])
       bind(classOf[ListService]).toInstance(mock[ListService])
     }
   }
@@ -54,29 +55,6 @@ class UserAppSpec extends PlaySpecification with Mockito {
       val a = app()
       running(a) {
         route(a, FakeRequest(GET, "/docs/index.html")) must beSome
-      }
-    }
-
-    "render login page" in {
-      val a = app()
-      running(a) {
-        val page = route(a, FakeRequest(GET, "/login")).get
-        status(page) must equalTo(OK)
-        contentType(page) must beSome.which(_ == "text/html")
-        contentAsString(page) must contain("login")
-      }
-    }
-
-    "have login route" in {
-      val service = newComp
-      val a = app(service)
-      running(a) {
-        service.login(any) returns Future.successful(Right(GrantHandlerResult(tokenType = "1", accessToken = "at", expiresIn = None, refreshToken = None, scope = None)))
-        val page = route(a, FakeRequest(POST, "/login")
-          .withFormUrlEncodedBody("email" -> "test@test.com", "password" -> "12345"))
-        page must beSome
-        waitFor(page.get)
-        status(page.get) must equalTo(SEE_OTHER)
       }
     }
 

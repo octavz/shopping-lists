@@ -1,44 +1,157 @@
-2016-10-28 15:10:04,006 [DEBUG] from play.api.db.slick.DefaultSlickApi in pool-1-thread-1 - Created Slick database config for key default.
-2016-10-28 15:10:05,924 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Starting application default Akka system: application
-2016-10-28 15:10:06,425 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Shutdown application default Akka system: application
-2016-10-28 15:10:06,609 [DEBUG] from play.api.db.slick.DefaultSlickApi in application-akka.actor.default-dispatcher-9 - Database default was successfully closed.
-2016-10-28 15:10:06,827 [DEBUG] from play.api.db.slick.DefaultSlickApi in pool-1-thread-1 - Created Slick database config for key default.
-2016-10-28 15:10:06,871 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Starting application default Akka system: application
-2016-10-28 15:10:06,923 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Shutdown application default Akka system: application
-2016-10-28 15:10:07,150 [DEBUG] from play.api.db.slick.DefaultSlickApi in application-akka.actor.default-dispatcher-9 - Database default was successfully closed.
-2016-10-28 15:10:07,391 [DEBUG] from play.api.db.slick.DefaultSlickApi in pool-1-thread-1 - Created Slick database config for key default.
-2016-10-28 15:10:07,482 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Starting application default Akka system: application
-2016-10-28 15:10:07,647 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Shutdown application default Akka system: application
-2016-10-28 15:10:07,873 [DEBUG] from play.api.db.slick.DefaultSlickApi in application-akka.actor.default-dispatcher-10 - Database default was successfully closed.
-2016-10-28 15:10:08,812 [DEBUG] from play.api.db.slick.DefaultSlickApi in pool-1-thread-1 - Created Slick database config for key default.
-2016-10-28 15:10:08,901 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Starting application default Akka system: application
-2016-10-28 15:10:08,908 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Shutdown application default Akka system: application
-2016-10-28 15:10:09,151 [DEBUG] from play.api.db.slick.DefaultSlickApi in application-akka.actor.default-dispatcher-10 - Database default was successfully closed.
-2016-10-28 15:10:09,280 [DEBUG] from play.api.db.slick.DefaultSlickApi in pool-1-thread-1 - Created Slick database config for key default.
-2016-10-28 15:10:09,344 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Starting application default Akka system: application
-2016-10-28 15:10:09,392 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Shutdown application default Akka system: application
-2016-10-28 15:10:09,609 [DEBUG] from play.api.db.slick.DefaultSlickApi in application-akka.actor.default-dispatcher-7 - Database default was successfully closed.
-2016-10-28 15:10:09,694 [DEBUG] from play.api.db.slick.DefaultSlickApi in pool-1-thread-1 - Created Slick database config for key default.
-2016-10-28 15:10:09,728 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Starting application default Akka system: application
-2016-10-28 15:10:09,760 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Shutdown application default Akka system: application
-2016-10-28 15:10:09,982 [DEBUG] from play.api.db.slick.DefaultSlickApi in application-akka.actor.default-dispatcher-3 - Database default was successfully closed.
-2016-10-28 15:10:10,095 [DEBUG] from play.api.db.slick.DefaultSlickApi in pool-1-thread-1 - Created Slick database config for key default.
-2016-10-28 15:10:10,168 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Starting application default Akka system: application
-2016-10-28 15:10:10,195 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Shutdown application default Akka system: application
-2016-10-28 15:10:10,408 [DEBUG] from play.api.db.slick.DefaultSlickApi in application-akka.actor.default-dispatcher-5 - Database default was successfully closed.
-2016-10-28 15:10:10,958 [DEBUG] from play.api.db.slick.DefaultSlickApi in pool-1-thread-1 - Created Slick database config for key default.
-2016-10-28 15:10:11,048 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Starting application default Akka system: application
-2016-10-28 15:10:11,792 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Shutdown application default Akka system: application
-2016-10-28 15:10:11,805 [DEBUG] from play.api.db.slick.DefaultSlickApi in application-akka.actor.default-dispatcher-10 - Database default was successfully closed.
-2016-10-28 15:10:11,894 [DEBUG] from play.api.db.slick.DefaultSlickApi in pool-1-thread-1 - Created Slick database config for key default.
-2016-10-28 15:10:12,323 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Starting application default Akka system: application
-2016-10-28 15:10:12,470 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Shutdown application default Akka system: application
-2016-10-28 15:10:12,485 [DEBUG] from play.api.db.slick.DefaultSlickApi in application-akka.actor.default-dispatcher-10 - Database default was successfully closed.
-2016-10-28 15:10:12,631 [DEBUG] from play.api.db.slick.DefaultSlickApi in pool-1-thread-1 - Created Slick database config for key default.
-2016-10-28 15:10:13,058 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Starting application default Akka system: application
-2016-10-28 15:10:13,174 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Shutdown application default Akka system: application
-2016-10-28 15:10:13,192 [DEBUG] from play.api.db.slick.DefaultSlickApi in application-akka.actor.default-dispatcher-7 - Database default was successfully closed.
-2016-10-28 15:10:13,259 [DEBUG] from play.api.db.slick.DefaultSlickApi in pool-1-thread-1 - Created Slick database config for key default.
-2016-10-28 15:10:13,700 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Starting application default Akka system: application
-2016-10-28 15:10:13,883 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Shutdown application default Akka system: application
-2016-10-28 15:10:13,906 [DEBUG] from play.api.db.slick.DefaultSlickApi in application-akka.actor.default-dispatcher-9 - Database default was successfully closed.
+2016-10-31 12:02:26,577 [DEBUG] from play.api.db.slick.DefaultSlickApi in ForkJoinPool-1-worker-1 - Created Slick database config for key default.
+2016-10-31 12:02:27,106 [ERROR] from application in netty-event-loop-3 - 
+
+! @7204gdd9m - Internal server error, for (GET) [/docs] ->
+ 
+play.api.db.evolutions.InvalidDatabaseRevision: Database 'default' needs evolution![An SQL script need to be run on your database.]
+	at play.api.db.evolutions.ApplicationEvolutions$$anonfun$play$api$db$evolutions$ApplicationEvolutions$$runEvolutions$1.apply$mcV$sp(ApplicationEvolutions.scala:77)
+	at play.api.db.evolutions.ApplicationEvolutions.withLock(ApplicationEvolutions.scala:99)
+	at play.api.db.evolutions.ApplicationEvolutions.play$api$db$evolutions$ApplicationEvolutions$$runEvolutions(ApplicationEvolutions.scala:49)
+	at play.api.db.evolutions.ApplicationEvolutions$$anonfun$start$1.apply(ApplicationEvolutions.scala:42)
+	at play.api.db.evolutions.ApplicationEvolutions$$anonfun$start$1.apply(ApplicationEvolutions.scala:42)
+	at scala.collection.immutable.Stream.foreach(Stream.scala:594)
+	at play.api.db.evolutions.ApplicationEvolutions.start(ApplicationEvolutions.scala:42)
+	at play.api.db.evolutions.ApplicationEvolutions.<init>(ApplicationEvolutions.scala:150)
+	at play.api.db.evolutions.ApplicationEvolutionsProvider.get$lzycompute(EvolutionsModule.scala:53)
+	at play.api.db.evolutions.ApplicationEvolutionsProvider.get(EvolutionsModule.scala:53)
+	at play.api.db.evolutions.ApplicationEvolutionsProvider.get(EvolutionsModule.scala:44)
+	at com.google.inject.internal.ProviderInternalFactory.provision(ProviderInternalFactory.java:81)
+	at com.google.inject.internal.BoundProviderFactory.provision(BoundProviderFactory.java:72)
+	at com.google.inject.internal.ProviderInternalFactory.circularGet(ProviderInternalFactory.java:61)
+	at com.google.inject.internal.BoundProviderFactory.get(BoundProviderFactory.java:62)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter$1.call(ProviderToInternalFactoryAdapter.java:46)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1103)
+	at com.google.inject.internal.ProviderToInternalFactoryAdapter.get(ProviderToInternalFactoryAdapter.java:40)
+	at com.google.inject.internal.SingletonScope$1.get(SingletonScope.java:145)
+	at com.google.inject.internal.InternalFactoryToProviderAdapter.get(InternalFactoryToProviderAdapter.java:41)
+	at com.google.inject.internal.InternalInjectorCreator$1.call(InternalInjectorCreator.java:205)
+	at com.google.inject.internal.InternalInjectorCreator$1.call(InternalInjectorCreator.java:199)
+	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+	at com.google.inject.internal.InternalInjectorCreator.loadEagerSingletons(InternalInjectorCreator.java:199)
+	at com.google.inject.internal.InternalInjectorCreator.injectDynamically(InternalInjectorCreator.java:180)
+	at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:110)
+	at com.google.inject.Guice.createInjector(Guice.java:96)
+	at com.google.inject.Guice.createInjector(Guice.java:84)
+	at play.api.inject.guice.GuiceBuilder.injector(GuiceInjectorBuilder.scala:181)
+	at play.api.inject.guice.GuiceApplicationBuilder.build(GuiceApplicationBuilder.scala:123)
+	at play.api.inject.guice.GuiceApplicationLoader.load(GuiceApplicationLoader.scala:21)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1$$anonfun$2.apply(DevServerStart.scala:168)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1$$anonfun$2.apply(DevServerStart.scala:164)
+	at play.utils.Threads$.withContextClassLoader(Threads.scala:21)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1.apply(DevServerStart.scala:164)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1$$anonfun$1.apply(DevServerStart.scala:131)
+	at scala.Option.map(Option.scala:146)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1.apply(DevServerStart.scala:131)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1$$anonfun$apply$1.apply(DevServerStart.scala:129)
+	at scala.util.Success.flatMap(Try.scala:231)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1.apply(DevServerStart.scala:129)
+	at play.core.server.DevServerStart$$anonfun$mainDev$1$$anon$1$$anonfun$get$1.apply(DevServerStart.scala:121)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24)
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24)
+	at java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(ForkJoinTask.java:1402)
+	at java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:289)
+	at java.util.concurrent.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1056)
+	at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1692)
+	at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:157)
+2016-10-31 12:02:34,798 [DEBUG] from play.api.db.slick.DefaultSlickApi in ForkJoinPool-1-worker-2 - Database default was successfully closed.
+2016-10-31 12:02:34,912 [DEBUG] from play.api.db.slick.DefaultSlickApi in ForkJoinPool-1-worker-1 - Created Slick database config for key default.
+2016-10-31 12:02:35,139 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in ForkJoinPool-1-worker-1 - Starting application default Akka system: application
+2016-10-31 12:02:35,149 [INFO] from play.api.Play in ForkJoinPool-1-worker-1 - Application started (Dev)
+2016-10-31 12:03:45,453 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-47-thread-9 - Shutdown application default Akka system: application
+2016-10-31 12:03:45,496 [DEBUG] from play.api.db.slick.DefaultSlickApi in application-akka.actor.default-dispatcher-5 - Database default was successfully closed.
+2016-10-31 12:03:52,749 [DEBUG] from play.api.db.slick.DefaultSlickApi in pool-1-thread-1 - Created Slick database config for key default.
+2016-10-31 12:03:53,195 [ERROR] from play.api.db.evolutions.DefaultEvolutionsApi in pool-1-thread-1 - ERROR: cannot drop table products because other objects depend on it
+  Detail: constraint product_prices_product_id_fkey on table product_prices depends on table products
+  Hint: Use DROP ... CASCADE to drop the dependent objects too. [ERROR:0, SQLSTATE:2BP01]
+2016-10-31 12:03:53,530 [DEBUG] from play.api.db.slick.DefaultSlickApi in pool-1-thread-1 - Created Slick database config for key default.
+2016-10-31 12:03:53,547 [ERROR] from play.api.db.evolutions.DefaultEvolutionsApi in pool-1-thread-1 - ERROR: cannot drop table products because other objects depend on it
+  Detail: constraint product_prices_product_id_fkey on table product_prices depends on table products
+  Hint: Use DROP ... CASCADE to drop the dependent objects too. [ERROR:0, SQLSTATE:2BP01]
+2016-10-31 12:03:54,325 [DEBUG] from play.api.db.slick.DefaultSlickApi in pool-1-thread-1 - Created Slick database config for key default.
+2016-10-31 12:03:54,335 [ERROR] from play.api.db.evolutions.DefaultEvolutionsApi in pool-1-thread-1 - ERROR: cannot drop table products because other objects depend on it
+  Detail: constraint product_prices_product_id_fkey on table product_prices depends on table products
+  Hint: Use DROP ... CASCADE to drop the dependent objects too. [ERROR:0, SQLSTATE:2BP01]
+2016-10-31 12:03:54,445 [DEBUG] from play.api.db.slick.DefaultSlickApi in pool-1-thread-1 - Created Slick database config for key default.
+2016-10-31 12:03:54,456 [ERROR] from play.api.db.evolutions.DefaultEvolutionsApi in pool-1-thread-1 - ERROR: cannot drop table products because other objects depend on it
+  Detail: constraint product_prices_product_id_fkey on table product_prices depends on table products
+  Hint: Use DROP ... CASCADE to drop the dependent objects too. [ERROR:0, SQLSTATE:2BP01]
+2016-10-31 12:03:54,845 [DEBUG] from play.api.db.slick.DefaultSlickApi in pool-1-thread-1 - Created Slick database config for key default.
+2016-10-31 12:03:54,854 [ERROR] from play.api.db.evolutions.DefaultEvolutionsApi in pool-1-thread-1 - ERROR: cannot drop table products because other objects depend on it
+  Detail: constraint product_prices_product_id_fkey on table product_prices depends on table products
+  Hint: Use DROP ... CASCADE to drop the dependent objects too. [ERROR:0, SQLSTATE:2BP01]
+2016-10-31 12:03:54,938 [DEBUG] from play.api.db.slick.DefaultSlickApi in pool-1-thread-1 - Created Slick database config for key default.
+2016-10-31 12:03:56,139 [DEBUG] from play.api.db.slick.DefaultSlickApi in pool-1-thread-1 - Created Slick database config for key default.
+2016-10-31 12:03:57,217 [DEBUG] from play.api.db.slick.DefaultSlickApi in pool-1-thread-1 - Created Slick database config for key default.
+2016-10-31 12:03:58,288 [DEBUG] from play.api.db.slick.DefaultSlickApi in pool-1-thread-1 - Created Slick database config for key default.
+2016-10-31 12:04:11,506 [DEBUG] from play.api.db.slick.DefaultSlickApi in pool-1-thread-1 - Created Slick database config for key default.
+2016-10-31 12:04:12,883 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Starting application default Akka system: application
+2016-10-31 12:04:13,280 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Shutdown application default Akka system: application
+2016-10-31 12:04:13,422 [DEBUG] from play.api.db.slick.DefaultSlickApi in application-akka.actor.default-dispatcher-7 - Database default was successfully closed.
+2016-10-31 12:04:13,534 [DEBUG] from play.api.db.slick.DefaultSlickApi in pool-1-thread-1 - Created Slick database config for key default.
+2016-10-31 12:04:13,998 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Starting application default Akka system: application
+2016-10-31 12:04:14,166 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Shutdown application default Akka system: application
+2016-10-31 12:04:14,191 [DEBUG] from play.api.db.slick.DefaultSlickApi in application-akka.actor.default-dispatcher-7 - Database default was successfully closed.
+2016-10-31 12:04:14,718 [DEBUG] from play.api.db.slick.DefaultSlickApi in pool-1-thread-1 - Created Slick database config for key default.
+2016-10-31 12:04:15,166 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Starting application default Akka system: application
+2016-10-31 12:04:15,340 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Shutdown application default Akka system: application
+2016-10-31 12:04:15,391 [DEBUG] from play.api.db.slick.DefaultSlickApi in application-akka.actor.default-dispatcher-5 - Database default was successfully closed.
+2016-10-31 12:04:15,483 [DEBUG] from play.api.db.slick.DefaultSlickApi in pool-1-thread-1 - Created Slick database config for key default.
+2016-10-31 12:04:15,903 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Starting application default Akka system: application
+2016-10-31 12:04:16,022 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Shutdown application default Akka system: application
+2016-10-31 12:04:16,036 [DEBUG] from play.api.db.slick.DefaultSlickApi in application-akka.actor.default-dispatcher-6 - Database default was successfully closed.
+2016-10-31 12:04:16,333 [DEBUG] from play.api.db.slick.DefaultSlickApi in pool-1-thread-1 - Created Slick database config for key default.
+2016-10-31 12:04:16,794 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Starting application default Akka system: application
+2016-10-31 12:04:16,895 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Shutdown application default Akka system: application
+2016-10-31 12:04:16,911 [DEBUG] from play.api.db.slick.DefaultSlickApi in application-akka.actor.default-dispatcher-3 - Database default was successfully closed.
+2016-10-31 12:04:16,969 [DEBUG] from play.api.db.slick.DefaultSlickApi in pool-1-thread-1 - Created Slick database config for key default.
+2016-10-31 12:04:16,988 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Starting application default Akka system: application
+2016-10-31 12:04:17,199 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Shutdown application default Akka system: application
+2016-10-31 12:04:17,212 [DEBUG] from play.api.db.slick.DefaultSlickApi in application-akka.actor.default-dispatcher-7 - Database default was successfully closed.
+2016-10-31 12:04:17,319 [DEBUG] from play.api.db.slick.DefaultSlickApi in pool-1-thread-1 - Created Slick database config for key default.
+2016-10-31 12:04:17,340 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Starting application default Akka system: application
+2016-10-31 12:04:17,374 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Shutdown application default Akka system: application
+2016-10-31 12:04:17,593 [DEBUG] from play.api.db.slick.DefaultSlickApi in application-akka.actor.default-dispatcher-6 - Database default was successfully closed.
+2016-10-31 12:04:17,681 [DEBUG] from play.api.db.slick.DefaultSlickApi in pool-1-thread-1 - Created Slick database config for key default.
+2016-10-31 12:04:17,698 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Starting application default Akka system: application
+2016-10-31 12:04:17,726 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Shutdown application default Akka system: application
+2016-10-31 12:04:17,939 [DEBUG] from play.api.db.slick.DefaultSlickApi in application-akka.actor.default-dispatcher-2 - Database default was successfully closed.
+2016-10-31 12:04:18,046 [DEBUG] from play.api.db.slick.DefaultSlickApi in pool-1-thread-1 - Created Slick database config for key default.
+2016-10-31 12:04:18,069 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Starting application default Akka system: application
+2016-10-31 12:04:18,087 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Shutdown application default Akka system: application
+2016-10-31 12:04:18,300 [DEBUG] from play.api.db.slick.DefaultSlickApi in application-akka.actor.default-dispatcher-8 - Database default was successfully closed.
+2016-10-31 14:17:26,693 [DEBUG] from play.api.db.slick.DefaultSlickApi in pool-1-thread-1 - Created Slick database config for key default.
+2016-10-31 14:17:27,875 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Starting application default Akka system: application
+2016-10-31 14:17:28,526 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Shutdown application default Akka system: application
+2016-10-31 14:17:28,671 [DEBUG] from play.api.db.slick.DefaultSlickApi in application-akka.actor.default-dispatcher-8 - Database default was successfully closed.
+2016-10-31 14:17:28,812 [DEBUG] from play.api.db.slick.DefaultSlickApi in pool-1-thread-1 - Created Slick database config for key default.
+2016-10-31 14:17:29,273 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Starting application default Akka system: application
+2016-10-31 14:17:29,397 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Shutdown application default Akka system: application
+2016-10-31 14:17:29,429 [DEBUG] from play.api.db.slick.DefaultSlickApi in application-akka.actor.default-dispatcher-7 - Database default was successfully closed.
+2016-10-31 14:17:29,886 [DEBUG] from play.api.db.slick.DefaultSlickApi in pool-1-thread-1 - Created Slick database config for key default.
+2016-10-31 14:17:30,326 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Starting application default Akka system: application
+2016-10-31 14:17:30,445 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Shutdown application default Akka system: application
+2016-10-31 14:17:30,487 [DEBUG] from play.api.db.slick.DefaultSlickApi in application-akka.actor.default-dispatcher-6 - Database default was successfully closed.
+2016-10-31 14:17:30,547 [DEBUG] from play.api.db.slick.DefaultSlickApi in pool-1-thread-1 - Created Slick database config for key default.
+2016-10-31 14:17:30,999 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Starting application default Akka system: application
+2016-10-31 14:17:31,147 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Shutdown application default Akka system: application
+2016-10-31 14:17:31,173 [DEBUG] from play.api.db.slick.DefaultSlickApi in application-akka.actor.default-dispatcher-6 - Database default was successfully closed.
+2016-10-31 14:17:31,482 [DEBUG] from play.api.db.slick.DefaultSlickApi in pool-1-thread-1 - Created Slick database config for key default.
+2016-10-31 14:17:31,926 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Starting application default Akka system: application
+2016-10-31 14:17:32,028 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Shutdown application default Akka system: application
+2016-10-31 14:17:32,041 [DEBUG] from play.api.db.slick.DefaultSlickApi in application-akka.actor.default-dispatcher-8 - Database default was successfully closed.
+2016-10-31 14:17:32,104 [DEBUG] from play.api.db.slick.DefaultSlickApi in pool-1-thread-1 - Created Slick database config for key default.
+2016-10-31 14:17:32,124 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Starting application default Akka system: application
+2016-10-31 14:17:32,344 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Shutdown application default Akka system: application
+2016-10-31 14:17:32,357 [DEBUG] from play.api.db.slick.DefaultSlickApi in application-akka.actor.default-dispatcher-6 - Database default was successfully closed.
+2016-10-31 14:17:32,464 [DEBUG] from play.api.db.slick.DefaultSlickApi in pool-1-thread-1 - Created Slick database config for key default.
+2016-10-31 14:17:32,487 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Starting application default Akka system: application
+2016-10-31 14:17:32,523 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Shutdown application default Akka system: application
+2016-10-31 14:17:32,738 [DEBUG] from play.api.db.slick.DefaultSlickApi in application-akka.actor.default-dispatcher-2 - Database default was successfully closed.
+2016-10-31 14:17:32,889 [DEBUG] from play.api.db.slick.DefaultSlickApi in pool-1-thread-1 - Created Slick database config for key default.
+2016-10-31 14:17:32,909 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Starting application default Akka system: application
+2016-10-31 14:17:32,954 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Shutdown application default Akka system: application
+2016-10-31 14:17:32,969 [DEBUG] from play.api.db.slick.DefaultSlickApi in application-akka.actor.default-dispatcher-8 - Database default was successfully closed.
+2016-10-31 14:17:33,025 [DEBUG] from play.api.db.slick.DefaultSlickApi in pool-1-thread-1 - Created Slick database config for key default.
+2016-10-31 14:17:33,047 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Starting application default Akka system: application
+2016-10-31 14:17:33,067 [DEBUG] from play.api.libs.concurrent.ActorSystemProvider in pool-1-thread-1 - Shutdown application default Akka system: application
+2016-10-31 14:17:33,291 [DEBUG] from play.api.db.slick.DefaultSlickApi in application-akka.actor.default-dispatcher-7 - Database default was successfully closed.

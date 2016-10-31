@@ -1,9 +1,11 @@
+package org.shopping.services
+
 import org.junit.runner._
 import org.shopping.dal._
 import org.shopping.db._
 import org.shopping.dto._
-import org.shopping.modules._
-import org.shopping.modules.core.impl._
+import org.shopping.models.{ListDef, ListDefProduct, User}
+import org.shopping.services.impl._
 import org.shopping.util.Gen._
 import org.shopping.util.Time._
 import org.specs2.mock._
@@ -22,9 +24,9 @@ class ListServiceSpec extends Specification with Mockito {
     User(id = guid, login = guid, password = guid, created = now(), updated = now(),
       lastLogin = nowo, providerToken = guido, nick = guid), Some("1"), None, None)
 
-  case class MockedContext(listService: DefaultListService, dalUser: UserDAL, dalList: ListDAL)
+  case class MockedContext(listService: DefaultListService, dalUser: UserRepo, dalList: ListRepo)
 
-  def module(dalUser: UserDAL = mock[UserDAL], dalList: ListDAL = mock[ListDAL]) = {
+  def module(dalUser: UserRepo = mock[UserRepo], dalList: ListRepo = mock[ListRepo]) = {
     val ret = new DefaultListService(dalUser, dalList)
     ret.setAuth(authInfo)
     MockedContext(ret, dalUser, dalList)
@@ -54,7 +56,7 @@ class ListServiceSpec extends Specification with Mockito {
 
       m.dalList.updateList(any[ListDef]) answers (a => dal(a.asInstanceOf[ListDef]))
       m.dalList.getListDefById(any) returns dal(Some(genListDef(authInfo.user.id)))
-      m.dalList.getListUsers(any) returns dal(Seq(dto.userId.get))
+      m.dalList.getListUsers(any) returns dal(Seq(authInfo.user.id))
       val s = Await.result(m.listService.updateList(dto), Duration.Inf)
       there was one(m.dalList).updateList(any[ListDef])
       there was one(m.dalList).getListDefById(dto.id.get)

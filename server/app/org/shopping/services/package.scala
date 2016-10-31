@@ -1,14 +1,14 @@
 package org.shopping
 
-import org.shopping.db.User
 import org.shopping.dto.ErrorDTO
+import org.shopping.models.User
 import org.shopping.util.Gen
 
 import scala.concurrent._
 import scalaoauth2.provider.AuthInfo
 import ExecutionContext.Implicits.global
 
-package object modules {
+package object services {
 
   implicit class CustomStringOption(str: Option[String]) {
 

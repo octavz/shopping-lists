@@ -1,6 +1,6 @@
 package org.shopping.dto
 
-import org.shopping.db.User
+import org.shopping.models.User
 import org.shopping.util.Time
 
 case class UserDTO(login: String, password: String, id: String, nick: String) {

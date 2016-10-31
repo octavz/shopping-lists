@@ -2,8 +2,8 @@ package org.shopping.controllers
 
 
 import com.google.inject.Inject
-import org.shopping.modules.core.ListService
 import org.shopping.dto._
+import org.shopping.services.ListService
 import play.api.libs.json.JsResultException
 import play.api.mvc._
 
