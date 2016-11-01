@@ -24,12 +24,12 @@ class SlickProductRepo @Inject()(protected val dbConfigProvider: DatabaseConfigP
 
   override def updateProduct(model: Product): DAL[Product] = {
     val newModel = model.copy(updated = now())
-    db.run(Products.filter(_.id === model.id).update(newModel)) map (_ => model)
+    db.run(Products.filter(_.id === model.id).update(newModel)) map (_ => newModel)
   }
 
   override def getProductById(id: String): DAL[Option[Product]] =
     db.run {
-      Products.filter(_.id === id).take(1).result.headOption
+      Products.filter(_.id === id).result.headOption
     }
 
   override def insertSupplier(model: Supplier): DAL[Supplier] = {
@@ -38,6 +38,26 @@ class SlickProductRepo @Inject()(protected val dbConfigProvider: DatabaseConfigP
 
   override def insertProductPrice(model: ProductPrice): DAL[ProductPrice] = {
     db.run(ProductPrices += model).map(_ => model)
-
   }
+
+  override def searchProduct(name: String): DAL[Seq[Product]] = {
+    db.run(Products.filter(_.name like "%name%").result)
+  }
+
+  override def getProductPrice(productId: String, supplierId: String): DAL[Option[ProductPrice]] = {
+    db.run {
+      ProductPrices.filter(p => p.supplierId === supplierId && p.productId === productId).result.headOption
+    }
+  }
+
+  override def updateProductPrice(model: ProductPrice): DAL[ProductPrice] = {
+    db.run {
+      ProductPrices
+        .filter(p => p.productId === model.productId && p.supplierId === model.supplierId)
+        .update(model)
+        .map(_ => model)
+    }
+  }
+
+  override def getAllSuppliers: DAL[Seq[Supplier]] = db.run(Suppliers.result)
 }

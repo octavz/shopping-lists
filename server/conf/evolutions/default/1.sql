@@ -103,7 +103,9 @@ CREATE TABLE list_def_products (
 CREATE TABLE suppliers (
   id          CHARACTER VARYING(40) PRIMARY KEY,
   name        CHARACTER VARYING(255) NOT NULL,
-  description TEXT
+  description TEXT,
+  created     INTEGER DEFAULT 0       NOT NULL,
+  updated     INTEGER DEFAULT 0       NOT NULL
 );
 
 CREATE TABLE product_prices (
@@ -111,6 +113,8 @@ CREATE TABLE product_prices (
   product_id  CHARACTER VARYING(40)    NOT NULL REFERENCES products,
   supplier_id CHARACTER VARYING(40)    NOT NULL REFERENCES suppliers,
   price       NUMERIC(10, 2) DEFAULT 0 NOT NULL,
+  created     INTEGER DEFAULT 0       NOT NULL,
+  updated     INTEGER DEFAULT 0       NOT NULL,
   PRIMARY KEY (product_id, supplier_id)
 );
 

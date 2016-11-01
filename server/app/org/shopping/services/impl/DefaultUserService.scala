@@ -1,18 +1,17 @@
 package org.shopping.services.impl
 
-import com.google.inject.Inject
-import org.shopping.dto.{BooleanDTO, RegisterRequestDTO, UserDTO, UsersDTO}
-import play.api.http.Status
-
-import scala.concurrent._
-import ExecutionContext.Implicits._
-import org.shopping.services.{UserService, _}
-import org.shopping.dal._
-import org.shopping.db._
 import java.util.Date
 
+import com.google.inject.Inject
+import org.shopping.dal._
+import org.shopping.dto.{RegisterRequestDTO, UserDTO, UsersDTO}
 import org.shopping.models.UserSession
+import org.shopping.services.{UserService, _}
+import org.shopping.util.Gen
+import play.api.http.Status
 
+import scala.concurrent.ExecutionContext.Implicits._
+import scala.concurrent._
 import scalaoauth2.provider._
 
 class DefaultUserService @Inject()(dalUser: UserRepo, dalAuth: Oauth2Repo) extends UserService {
@@ -62,7 +61,7 @@ class DefaultUserService @Inject()(dalUser: UserRepo, dalAuth: Oauth2Repo) exten
 
   def registerUser(u: RegisterRequestDTO): Result[RegisterRequestDTO] = {
     try {
-      val model = u.toModel
+      val model = u.toModel(Gen.guid)
       val f = dalUser.getUserByEmail(u.login) flatMap {
         case Some(_) => resultError(Status.INTERNAL_SERVER_ERROR, "Email already exists")
         case _ => dalUser.insertUser(model) map (a => resultSync(new RegisterRequestDTO(a)))

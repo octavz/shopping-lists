@@ -8,6 +8,199 @@ POST         /api/oauth2/access_token    @org.shopping.controllers.UserControlle
 
 ###
 # tags:
+#   - Product operations
+# summary: Create Product
+# consumes:
+#   - application/json
+# produces:
+#   - application/json
+# parameters:
+#   - name: body
+#     in: body
+#     description: product data
+#     required: true
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.ProductDTO'
+#   - name: "Authorization"
+#     in: "header"
+#     description: "Authorization code"
+#     required: true
+#     type: "string"
+# responses:
+#   201:
+#     description: Item created
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.ProductDTO'
+#   401:
+#     description: Unauthorized
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
+###
+POST         /api/product                   @org.shopping.controllers.ProductController.insertProduct
+
+###
+# tags:
+#   - Product operations
+# summary: Create Supplier
+# consumes:
+#   - application/json
+# produces:
+#   - application/json
+# parameters:
+#   - name: body
+#     in: body
+#     description: supplier data
+#     required: true
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.SupplierDTO'
+#   - name: "Authorization"
+#     in: "header"
+#     description: "Authorization code"
+#     required: true
+#     type: "string"
+# responses:
+#   201:
+#     description: Item created
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.SupplierDTO'
+#   401:
+#     description: Unauthorized
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
+###
+POST         /api/supplier                   @org.shopping.controllers.ProductController.insertSupplier
+
+###
+# tags:
+#   - Product operations
+# summary: Create Product price
+# consumes:
+#   - application/json
+# produces:
+#   - application/json
+# parameters:
+#   - name: body
+#     in: body
+#     description: product price data
+#     required: true
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.ProductPriceDTO'
+#   - name: "Authorization"
+#     in: "header"
+#     description: "Authorization code"
+#     required: true
+#     type: "string"
+# responses:
+#   201:
+#     description: Item created
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.ProductPriceDTO'
+#   401:
+#     description: Unauthorized
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
+###
+POST         /api/productPrice                   @org.shopping.controllers.ProductController.insertProductPrice
+
+###
+# tags:
+#   - Product operations
+# summary: Update Product
+# consumes:
+#   - application/json
+# produces:
+#   - application/json
+# parameters:
+#   - name: body
+#     in: body
+#     description: product data
+#     required: true
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.ProductDTO'
+#   - name: "Authorization"
+#     in: "header"
+#     description: "Authorization code"
+#     required: true
+#     type: "string"
+# responses:
+#   201:
+#     description: Item created
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.ProductDTO'
+#   401:
+#     description: Unauthorized
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
+#   404:
+#     description: Entity not found
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
+###
+PUT          /api/product/:productId           @org.shopping.controllers.ProductController.updateProduct(productId: String)
+
+###
+# tags:
+#   - Product operations
+# summary: Update Product Price
+# consumes:
+#   - application/json
+# produces:
+#   - application/json
+# parameters:
+#   - name: body
+#     in: body
+#     description: product price data
+#     required: true
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.ProductPriceDTO'
+#   - name: "Authorization"
+#     in: "header"
+#     description: "Authorization code"
+#     required: true
+#     type: "string"
+# responses:
+#   201:
+#     description: Item created
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.ProductPriceDTO'
+#   401:
+#     description: Unauthorized
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
+#   404:
+#     description: Entity not found
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
+###
+PUT          /api/productPrice           @org.shopping.controllers.ProductController.updateProductPrice()
+
+###
+# tags:
+#   - Product operations
+# summary: Delete Product
+# parameters:
+#   - name: "Authorization"
+#     in: "header"
+#     description: "Authorization code"
+#     required: true
+#     type: "string"
+# responses:
+#   204:
+#       description: Operation successful
+#   404:
+#     description: Entity not found
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
+#   401:
+#     description: Unauthorized
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
+###
+DELETE       /api/product/:productId           @org.shopping.controllers.ProductController.deleteProduct(productId: String)
+
+
+###
+# tags:
 #   - List operations
 # summary: Create List
 # consumes:
@@ -134,6 +327,35 @@ DELETE       /api/list/:listId           @org.shopping.controllers.ListControlle
 ###
 POST         /api/list/:listId/items      @org.shopping.controllers.ListController.addListItems(listId: String)
 
+
+###
+# tags:
+#   - Product operations
+# summary: Get all suppliers
+# produces:
+#   - application/json
+# parameters:
+#   - name: "Authorization"
+#     in: "header"
+#     description: "Authorization code"
+#     required: true
+#     type: "string"
+# responses:
+#   200:
+#     description: get all suppliers
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.SuppliersDTO'
+#   404:
+#     description: Entity not found
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
+#   401:
+#     description: Unauthorized
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
+###
+GET         /api/suppliers      @org.shopping.controllers.ProductController.getAllSuppliers
+
 ###
 # tags:
 #   - List operations
@@ -256,7 +478,7 @@ POST         /api/register               @org.shopping.controllers.UserControlle
 
 ###
 # tags:
-#   - User operations
+#   - List operations
 # summary: Get public lists by userId
 # produces:
 #   - application/json

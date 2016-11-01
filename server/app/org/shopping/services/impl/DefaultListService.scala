@@ -15,7 +15,7 @@ import scala.language.postfixOps
 class DefaultListService @Inject()(dalUser: UserRepo, dalList: ListRepo) extends ListService {
 
   override def insertList(dto: ListDTO): Result[ListDTO] = {
-    val listDef = dto.toModel
+    val listDef = dto.toModel(Gen.guid)
 
     dalList
       .insertList(listDef)
@@ -73,21 +73,18 @@ class DefaultListService @Inject()(dalUser: UserRepo, dalList: ListRepo) extends
     f recover { case e: Throwable => resultExSync(e, "getUserLists") }
   }
 
-  override def updateList(dto: ListDTO): Result[ListDTO] = {
-    val f = if (dto.id.isEmpty) {
+  override def updateList(dto: ListDTO): Result[ListDTO] = dto.id match {
+    case None =>
       Future.failed(new Exception("List has empty id"))
-    } else {
-      checkUser(valid(dto.id.get)) {
-        dalList.getListDefById(dto.id.get) flatMap {
+    case Some(id) =>
+      checkUser(valid(id)) {
+        dalList.getListDefById(id) flatMap {
           case None => resultError(Status.NOT_FOUND, "List not found")
-          case Some(list) => dalList.updateList(dto.toModel) map { p =>
+          case Some(list) => dalList.updateList(dto.toModel(dto.id.get)) map { p =>
             resultSync(new ListDTO(p))
           }
         }
-      }
-    }
-
-    f recover { case e: Throwable => resultExSync(e, "updateList") }
+      } recover { case e: Throwable => resultExSync(e, "updateList") }
   }
 
   private def valid(listId: String): Future[Boolean] =

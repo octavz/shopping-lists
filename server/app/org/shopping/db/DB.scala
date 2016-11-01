@@ -177,23 +177,25 @@ trait DB {
   }
 
   class Suppliers(_tableTag: Tag) extends Table[Supplier](_tableTag, "suppliers") {
-    def * = (id, name, description) <> (Supplier.tupled, Supplier.unapply)
+    def * = (id, name, description, created, updated) <> (Supplier.tupled, Supplier.unapply)
 
     val id = column[String]("id", O.PrimaryKey)
     val name = column[String]("name", O.Length(255, varying = true))
     val description = column[Option[String]]("description", O.Length(1000, varying = true), O.Default(None))
+    val created = column[Long]("created")
+    val updated = column[Long]("updated")
   }
 
   class ProductPrices(_tableTag: Tag) extends Table[ProductPrice](_tableTag, "product_price") {
-    def * = (userId, productId, supplierId, price) <> (ProductPrice.tupled, ProductPrice.unapply)
+    def * = (userId, productId, supplierId, price, created, updated) <> (ProductPrice.tupled, ProductPrice.unapply)
 
     val userId = column[String]("user_id")
     val productId = column[String]("product_id", O.PrimaryKey, O.Length(40, varying = true))
     val supplierId = column[String]("id", O.PrimaryKey, O.Length(40, varying = true))
     val price = column[BigDecimal]("price", O.Default(0))
-
+    val created = column[Long]("created")
+    val updated = column[Long]("updated")
   }
-
 
   lazy val ClientGrantTypes = new TableQuery(tag => new ClientGrantTypes(tag))
   lazy val AccessTokens = new TableQuery(tag => new AccessTokens(tag))
@@ -210,30 +212,5 @@ trait DB {
   lazy val ProductPrices = new TableQuery(tag => new ProductPrices(tag))
   lazy val Suppliers = new TableQuery(tag => new Suppliers(tag))
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

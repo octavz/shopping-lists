@@ -21,11 +21,6 @@ import scala.concurrent.duration._
 import scala.language.postfixOps
 import scalaoauth2.provider.AccessToken
 
-/**
-  * Add your spec here.
-  * You can mock out a whole application including requests, plugins etc.
-  * For more information, consult the wiki.
-  */
 @RunWith(classOf[JUnitRunner])
 class ListAppSpec extends PlaySpecification with Mockito {
 
@@ -53,6 +48,7 @@ class ListAppSpec extends PlaySpecification with Mockito {
         ))
       .overrides(bind[ListService].toInstance(mp))
       .overrides(bind[UserService].toInstance(mock[UserService]))
+      .overrides(bind[ProductService].toInstance(mock[ProductService]))
       .overrides(bind[Oauth2Repo].toInstance(dalAuth))
       .build()
     MockContext(ret, mp, dalAuth, u)

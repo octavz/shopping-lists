@@ -28,6 +28,7 @@ class UserAppSpec extends PlaySpecification with Mockito {
       bind(classOf[UserService]).toInstance(m)
       bind(classOf[Oauth2Repo]).toInstance(mock[Oauth2Repo])
       bind(classOf[ListService]).toInstance(mock[ListService])
+      bind(classOf[ProductService]).toInstance(mock[ProductService])
     }
   }
 

@@ -37,8 +37,10 @@ package object models {
 
   case class UserStatus(id: Int, description: Option[String] = None)
 
-  case class Supplier(id: String, name: String, description: Option[String] = None)
+  case class Supplier(id: String, name: String, description: Option[String] = None,
+    created: Long = 0, updated: Long = 0)
 
-  case class ProductPrice(userId: String, productId: String, supplierId: String, price: BigDecimal)
+  case class ProductPrice(userId: String, productId: String, supplierId: String, price: BigDecimal,
+    created: Long = 0, updated: Long = 0)
 
 }
