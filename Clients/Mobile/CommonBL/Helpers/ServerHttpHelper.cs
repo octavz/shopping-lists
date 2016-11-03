@@ -33,9 +33,18 @@ namespace CommonBL.Helpers
             }
         }//HttpGet
 
-        public Task<string> HttpDelete<T>(T req, string path, string authToken) where T : class
+        public async Task<string> HttpDelete(string path, string authToken)
         {
-            throw new NotImplementedException();
+            HttpClient client = SetCustomHttpClient(authToken);
+
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Delete, path);
+            HttpResponseMessage msgRes = null;
+
+            using (msgRes = await client.SendAsync(request))
+            {
+                string cntRes = await msgRes.Content.ReadAsStringAsync();
+                return cntRes;
+            }
         }
 
 

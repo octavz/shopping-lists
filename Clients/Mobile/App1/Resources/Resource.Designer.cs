@@ -2612,6 +2612,9 @@ namespace ShList
 			// aapt resource value: 0x7f070027
 			public const int DeleteList = 2131165223;
 			
+			// aapt resource value: 0x7f07003a
+			public const int DeletingList = 2131165242;
+			
 			// aapt resource value: 0x7f07001d
 			public const int Email = 2131165213;
 			

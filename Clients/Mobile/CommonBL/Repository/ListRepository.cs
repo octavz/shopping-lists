@@ -36,6 +36,22 @@ namespace CommonBL.Repository
             }
         }//CreateList
 
+
+        public async Task<ResDeleteListDTO> DeleteList(string listId, string sToken)
+        {
+            string sUrl = string.Format(Constants.URL_DELETE_LIST, listId);
+            string sResJson = await m_httpHelper.HttpDelete(sUrl, sToken);
+            try
+            {
+                ResDeleteListDTO obj = JsonConvert.DeserializeObject<ResDeleteListDTO>(sResJson);
+                return obj;
+            }
+            catch (Exception e)
+            {
+                return new ResDeleteListDTO();
+            }
+        }//CreateList
+
         public static ListRepository Instance { get { return m_Repository.Value; } }
     }
 }

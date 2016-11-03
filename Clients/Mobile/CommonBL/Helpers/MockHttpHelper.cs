@@ -41,9 +41,9 @@ namespace CommonBL.Helpers
             return await Task.Run(() => m_dicTypesPatch[typeof(T)]);
         }
 
-        async Task<string> IHttpHelper.HttpDelete<T>(T req, string path, string authToken)
+        async Task<string> IHttpHelper.HttpDelete(string path, string authToken)
         {
-            return await Task.Run(() => m_dicTypesDelete[typeof(T)]);
+            return await Task.Run(() => path == Constants.URL_DELETE_LIST ? "" : string.Empty);
         }
     }
 }

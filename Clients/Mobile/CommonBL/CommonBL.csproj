@@ -52,6 +52,7 @@
     <Compile Include="Data\Request\ReqListDTO.cs" />
     <Compile Include="Data\Request\ReqLoginDTO.cs" />
     <Compile Include="Data\Request\ReqNewAccountDTO.cs" />
+    <Compile Include="Data\Response\ResDeleteListDTO.cs" />
     <Compile Include="Data\Response\ResListDTO.cs" />
     <Compile Include="Data\Response\ResLoginDTO.cs" />
     <Compile Include="Data\Response\ResUserLists.cs" />

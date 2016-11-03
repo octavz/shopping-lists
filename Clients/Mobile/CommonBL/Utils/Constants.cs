@@ -14,8 +14,8 @@ namespace CommonBL.Utils
         public const string URL_GET_USER = "api/user";
         public const string URL_GET_USER_LISTS = "api/user/{0}/lists";
 
-
         public const string URL_CREATE_LIST = "/api/list";
+        public const string URL_DELETE_LIST = "/api/list/{0}";
 
         public const string DEFAULT_LIST_NAME = "_deflistname2016";
     }
@@ -25,4 +25,6 @@ namespace CommonBL.Utils
         CREATE_ACCOUNT_ALREADY_EXITS = 500,
         UNAUTHORIZED_LOGIN = 401   
     }
+
+
 }
