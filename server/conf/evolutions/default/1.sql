@@ -90,14 +90,34 @@ CREATE TABLE products (
 );
 
 CREATE TABLE list_def_products (
-  product_id  CHARACTER VARYING(40) PRIMARY KEY,
-  list_def_id CHARACTER VARYING(40)   NOT NULL REFERENCES list_defs,
+  product_id  CHARACTER VARYING(40)   NOT NULL  REFERENCES products,
+  list_def_id CHARACTER VARYING(40)   NOT NULL  NOT NULL REFERENCES list_defs,
   description TEXT,
   quantity    INT,
   bought      SMALLINT DEFAULT 0      NOT NULL,
   created     INTEGER DEFAULT 0       NOT NULL,
+  updated     INTEGER DEFAULT 0       NOT NULL,
+  PRIMARY KEY (product_id, list_def_id)
+);
+
+CREATE TABLE suppliers (
+  id          CHARACTER VARYING(40) PRIMARY KEY,
+  name        CHARACTER VARYING(255) NOT NULL,
+  description TEXT,
+  created     INTEGER DEFAULT 0       NOT NULL,
   updated     INTEGER DEFAULT 0       NOT NULL
 );
+
+CREATE TABLE product_prices (
+  user_id     CHARACTER VARYING(40)    NOT NULL REFERENCES users,
+  product_id  CHARACTER VARYING(40)    NOT NULL REFERENCES products,
+  supplier_id CHARACTER VARYING(40)    NOT NULL REFERENCES suppliers,
+  price       NUMERIC(10, 2) DEFAULT 0 NOT NULL,
+  created     INTEGER DEFAULT 0       NOT NULL,
+  updated     INTEGER DEFAULT 0       NOT NULL,
+  PRIMARY KEY (product_id, supplier_id)
+);
+
 
 INSERT INTO user_statuses (id, description) VALUES (0, 'inactive');
 INSERT INTO user_statuses (id, description) VALUES (1, 'active');
@@ -129,9 +149,13 @@ DROP TABLE IF EXISTS auth_codes;
 DROP TABLE IF EXISTS access_tokens;
 DROP TABLE IF EXISTS lists_users;
 DROP TABLE IF EXISTS clients;
+DROP TABLE IF EXISTS product_prices;
 DROP TABLE IF EXISTS products;
 DROP TABLE IF EXISTS list_defs;
 DROP TABLE IF EXISTS user_sessions;
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS user_statuses;
+DROP TABLE IF EXISTS suppliers;
+
+
 

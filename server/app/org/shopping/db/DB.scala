@@ -1,5 +1,7 @@
 package org.shopping.db
 
+import org.shopping.models._
+
 object DB {
 
   def apply(p: slick.driver.JdbcProfile): DB = new DB {
@@ -94,11 +96,11 @@ trait DB {
   }
 
   class Products(_tableTag: Tag) extends Table[Product](_tableTag, "products") {
-    def * = (id, userId, subject, description, status, created, updated) <> (Product.tupled, Product.unapply)
+    def * = (id, userId, name, description, status, created, updated) <> (Product.tupled, Product.unapply)
 
     val id = column[String]("id", O.PrimaryKey, O.Length(40, varying = true))
     val userId = column[String]("user_id", O.Length(40, varying = true))
-    val subject = column[String]("subject", O.Length(255, varying = true))
+    val name = column[String]("name", O.Length(255, varying = true))
     val description = column[Option[String]]("description", O.Default(None))
     val status = column[Short]("status", O.Default(0))
     val created = column[Long]("created")
@@ -174,6 +176,26 @@ trait DB {
       r => r.id, onUpdate = ForeignKeyAction.NoAction, onDelete = ForeignKeyAction.NoAction)
   }
 
+  class Suppliers(_tableTag: Tag) extends Table[Supplier](_tableTag, "suppliers") {
+    def * = (id, name, description, created, updated) <> (Supplier.tupled, Supplier.unapply)
+
+    val id = column[String]("id", O.PrimaryKey)
+    val name = column[String]("name", O.Length(255, varying = true))
+    val description = column[Option[String]]("description", O.Length(1000, varying = true), O.Default(None))
+    val created = column[Long]("created")
+    val updated = column[Long]("updated")
+  }
+
+  class ProductPrices(_tableTag: Tag) extends Table[ProductPrice](_tableTag, "product_price") {
+    def * = (userId, productId, supplierId, price, created, updated) <> (ProductPrice.tupled, ProductPrice.unapply)
+
+    val userId = column[String]("user_id")
+    val productId = column[String]("product_id", O.PrimaryKey, O.Length(40, varying = true))
+    val supplierId = column[String]("id", O.PrimaryKey, O.Length(40, varying = true))
+    val price = column[BigDecimal]("price", O.Default(0))
+    val created = column[Long]("created")
+    val updated = column[Long]("updated")
+  }
 
   lazy val ClientGrantTypes = new TableQuery(tag => new ClientGrantTypes(tag))
   lazy val AccessTokens = new TableQuery(tag => new AccessTokens(tag))
@@ -187,40 +209,8 @@ trait DB {
   lazy val UserStatuses = new TableQuery(tag => new UserStatuses(tag))
   lazy val ListDefProducts = new TableQuery(tag => new ListDefProducts(tag))
   lazy val ListsUsers = new TableQuery(tag => new ListsUsers(tag))
+  lazy val ProductPrices = new TableQuery(tag => new ProductPrices(tag))
+  lazy val Suppliers = new TableQuery(tag => new Suppliers(tag))
 }
 
-case class AccessToken(accessToken: String, refreshToken: Option[String] = None, userId: String,
-  scope: Option[String] = None, expiresIn: Int, created: Long, clientId: String)
-
-case class Action(id: String, description: Option[String] = None, url: String, verbId: Int,
-  secured: Short, userId: String, groupId: String, perm: Int = 448, created: Long, updated: Long)
-
-case class AuthCode(authorizationCode: String, userId: String, redirectUri: Option[String] = None,
-  created: Long, scope: Option[String] = None, clientId: String, expiresIn: Int)
-
-case class ClientGrantType(clientId: String, grantTypeId: Int)
-
-case class Client(id: String, secret: Option[String] = None, redirectUri: Option[String] = None,
-  scope: Option[String] = None)
-
-case class GrantType(id: Int, grantType: String)
-
-case class ListDef(id: String, userId: String, name: String, description: Option[String] = None,
-  status: Short = 0, createdClient: Long, created: Long, updated: Long)
-
-case class Product(id: String, userId: String, subject: String, description: Option[String] = None,
-  status: Short = 0, created: Long, updated: Long)
-
-case class ListDefProduct(listDefId: String, productId: String,
-  description: Option[String], bought: Short = 0, quantity: Int = 0, created: Long, updated: Long)
-
-case class User(id: String, login: String, nick: String, provider: Int = 0,
-  providerToken: Option[String] = None, lastLogin: Option[Long] = None,
-  status: Int = 0, password: String = "", created: Long, updated: Long)
-
-case class UserSession(id: String, userId: String)
-
-case class UserStatus(id: Int, description: Option[String] = None)
-
-case class ListUser(listDefId: String, userId: String)
 

@@ -3,8 +3,8 @@ package org.shopping.controllers
 
 import com.google.inject.Inject
 import org.shopping._
-import org.shopping.modules.core.UserService
 import org.shopping.dto._
+import org.shopping.services.UserService
 import play.api.libs.json.{JsObject, Json}
 import play.api.mvc._
 
@@ -12,15 +12,11 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent._
 import scalaoauth2.provider.AuthorizationRequest
 
-class UserController @Inject()(userModule: UserService) extends BaseController(userModule) {
+class UserController @Inject()(userService: UserService) extends BaseController(userService) {
 
   def accessToken = Action.async {
     implicit request =>
       issueAccessToken(dalAuth)
-  }
-
-  def loginGet = Action {
-    Ok(views.html.users.login.render())
   }
 
   //  val loginForm = Form(
@@ -46,45 +42,37 @@ class UserController @Inject()(userModule: UserService) extends BaseController(u
       request.body.asJson.map { json =>
         val dto = json.as[LoginRequestDTO]
 
-        userModule.login(auth(login = dto.login, password = dto.password, grantType = dto.grantType, clientId = dto.clientId, clientSecret = dto.clientSecret)) flatMap {
+        userService.login(auth(login = dto.login, password = dto.password, grantType = dto.grantType, clientId = dto.clientId, clientSecret = dto.clientSecret)) flatMap {
           case Right(r) =>
             if (request.accepts("text/html")) {
               Future.successful(Redirect("/public.html").withCookies(Cookie("access_token", r.accessToken)))
             } else {
-              userModule.getUserByToken(r.accessToken) map {
+              userService.getUserByToken(r.accessToken) map {
                 case Right(u) =>
                   Ok(Json.obj("accessToken" -> r.accessToken) ++ Json.toJson(u.copy(password = "")).as[JsObject])
                 case Left(errDto) => BadRequest(err(errDto.message))
               }
             }
           case _ =>
-            if (request.accepts("text/html")) {
-              Future.successful(Ok(views.html.users.login.render()))
-            } else {
               Future.successful(Unauthorized(err(401, "Unauthorized")))
-            }
         }
       }.getOrElse(Future.successful(BadRequest(err(400, "Wrong json"))))
   }
 
   def loginPostForm = Action.async {
     implicit request =>
-      userModule.login(request) flatMap {
+      userService.login(request) flatMap {
         case Right(r) =>
           if (request.accepts("text/html")) {
             Future.successful(Redirect("/public.html").withCookies(Cookie("access_token", r.accessToken)))
           } else {
-            userModule.getUserByToken(r.accessToken) map {
+            userService.getUserByToken(r.accessToken) map {
               u =>
                 Ok(Json.obj("accessToken" -> r.accessToken) ++ Json.toJson(u).as[JsObject])
             }
           }
         case _ =>
-          if (request.accepts("text/html")) {
-            Future.successful(Ok(views.html.users.login.render()))
-          } else {
             Future.successful(Unauthorized(err(401, "Unauthorized")))
-          }
       }
   }
 
@@ -93,7 +81,7 @@ class UserController @Inject()(userModule: UserService) extends BaseController(u
       request.body.asJson.map {
         json => try {
           val dto = json.as[RegisterRequestDTO]
-          userModule.registerUser(dto).toResponse
+          userService.registerUser(dto).toResponse
         } catch {
           case e: Throwable =>
             Future.successful(BadRequest(err(400, s"Wrong json: ${e.getMessage}")))
@@ -102,9 +90,9 @@ class UserController @Inject()(userModule: UserService) extends BaseController(u
   }
 
   private def internalLogin(login: String, password: String) =
-    userModule.login(auth(login, password)) flatMap {
+    userService.login(auth(login, password)) flatMap {
       case Right(r) =>
-        userModule.getUserByToken(r.accessToken) map {
+        userService.getUserByToken(r.accessToken) map {
           case Right(u) =>
             Ok(Json.obj("accessToken" -> r.accessToken) ++ Json.toJson(u.copy(password = "")).as[JsObject])
           case Left(err) => InternalServerError(Json.toJson(err))
@@ -118,7 +106,7 @@ class UserController @Inject()(userModule: UserService) extends BaseController(u
       request.body.asJson.map {
         json => try {
           val dto = json.as[RegisterRequestDTO]
-          val registerResult = userModule.registerUser(dto)
+          val registerResult = userService.registerUser(dto)
           registerResult flatMap {
             case Left(_) => registerResult.toResponse
             case _ => internalLogin(dto.login, dto.password)
@@ -133,7 +121,7 @@ class UserController @Inject()(userModule: UserService) extends BaseController(u
   def getUserById(userId: String) = Action.async {
     implicit request =>
       try {
-        userModule.getUserById(userId).toResponse
+        userService.getUserById(userId).toResponse
       } catch {
         case e: Throwable => Future.successful(BadRequest(err(400, s"Wrong json: ${e.getMessage}")))
       }
@@ -144,7 +132,7 @@ class UserController @Inject()(userModule: UserService) extends BaseController(u
       try {
         authorize {
           implicit authInfo =>
-            userModule.getUserById(authInfo.user.id).toResponse
+            userService.getUserById(authInfo.user.id).toResponse
         }
       } catch {
         case e: Throwable =>
@@ -157,7 +145,7 @@ class UserController @Inject()(userModule: UserService) extends BaseController(u
       try {
         authorize {
           implicit authInfo =>
-            userModule.searchUsers(email, nick).toResponse
+            userService.searchUsers(email, nick).toResponse
         }
       } catch {
         case e: Throwable =>

@@ -299,8 +299,8 @@
       <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
       <secret-storage>master_key</secret-storage>
       <user-name>postgres</user-name>
-      <introspection-scope>mytest:public,pg_catalog,postgres</introspection-scope>
-      <resolve-scope>mytest:public,postgres</resolve-scope>
+      <introspection-scope>mytest:pg_catalog,postgres,public</introspection-scope>
+      <resolve-scope>mytest:postgres,public</resolve-scope>
     </data-source>
   </component>
   <component name="libraryTable">

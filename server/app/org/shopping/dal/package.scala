@@ -2,8 +2,7 @@ package org.shopping
 
 import java.sql.Timestamp
 import java.text.SimpleDateFormat
-
-import org.shopping.db.{User, UserSession}
+import org.shopping.models.{User, UserSession}
 import play.api.libs.json._
 
 import scala.concurrent.Future

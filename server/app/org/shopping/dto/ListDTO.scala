@@ -1,7 +1,8 @@
 package org.shopping.dto
 
 import org.shopping.db._
-import org.shopping.modules._
+import org.shopping.models.ListDef
+import org.shopping.services._
 import org.shopping.util.Time
 
 case class ListDTO(id: Option[String], name: String, description: Option[String], userId: Option[String], created: Long) {
@@ -14,11 +15,11 @@ case class ListDTO(id: Option[String], name: String, description: Option[String]
     created = model.createdClient
   )
 
-  def toModel: ListDef = {
+  def toModel(id: String): ListDef = {
     val n = Time.now()
 
     ListDef(
-      id = id.getOrGuid,
+      id = id,
       userId = userId.getOrElse(throw new Exception("No user attached to this dto!")),
       name = name,
       description = description,
