@@ -15,6 +15,6 @@ namespace CommonBL.Abstracts
 
         Task<string> HttpPatch<T>(T req, string path, string authToken) where T : class;
 
-        Task<string> HttpDelete<T>(T req, string path, string authToken) where T : class;
+        Task<string> HttpDelete(string path, string authToken);
     }
 }

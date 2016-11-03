@@ -15,6 +15,9 @@ using CommonBL.Data;
 using Android.Graphics.Drawables;
 using Android.Support.V4.Content;
 using ShList.Code.Extended;
+using System.Threading.Tasks;
+using CommonBL.Data.Response;
+using CommonBL.Utils;
 
 namespace ShList.Code.Controls
 {
@@ -25,7 +28,7 @@ namespace ShList.Code.Controls
         private Activity m_ParentActivity = null;
         private TextView lstNm = null;
 
-        public event Action<int> Event_DeleteItem = null;
+        public event Func<int, Task> Event_DeleteItem = null;
 
         /// <summary>
         /// CtrlShoppingList
@@ -48,7 +51,7 @@ namespace ShList.Code.Controls
             LinearLayout llShopingListMain = FindViewById<LinearLayout>(Resource.Id.llShopingListMain);
             ImageButton btnDelete = FindViewById<ImageButton>(Resource.Id.btnDelete);
             ImageButton btnEdit = FindViewById<ImageButton>(Resource.Id.btnEdit);
-            lstNm.Text = string.IsNullOrEmpty(m_Data.ListName) ? ShAppContext.GetString(Resource.String.NewList) : m_Data.ListName;            
+            lstNm.Text = string.IsNullOrEmpty(m_Data.ListName)  || m_Data.ListName.Contains(Constants.DEFAULT_LIST_NAME) ? ShAppContext.GetString(Resource.String.NewList) : m_Data.ListName;            
             lstDate.Text = m_Data.ListDate.ToString("MMM/dd/yyy hh:mm:ss");
             llShopingListMain.Click += ShoppingList_Click;
             btnDelete.Click += BtnDelete_Click;

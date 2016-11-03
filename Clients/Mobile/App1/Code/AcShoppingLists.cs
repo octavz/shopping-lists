@@ -82,14 +82,27 @@ namespace ShList.Code
         /// <param name="progressDialog"></param>
         private void CreateUIList(ShoppingListDTO newList)
         {
-            CtrlShoppingList item = new CtrlShoppingList(this, ShAppContext, newList);            
-            item.Event_DeleteItem += (int id) =>
-            {
-                var view = FindViewById<CtrlShoppingList>(id);
-                ((view as View).Parent as ViewGroup).RemoveView(view);
-                ListsManager.Instance.DeleteList(view.Data);
-            };
+            CtrlShoppingList item = new CtrlShoppingList(this, ShAppContext, newList);
+            item.Event_DeleteItem += DeleteList;
             llShoppingLst.AddView(item, 0);
         }//CreateUIList
+
+        /// <summary>
+        /// DeleteList
+        /// </summary>
+        /// <param name="listUIId"></param>
+        private async Task DeleteList(int listUIId)
+        {
+            var view = FindViewById<CtrlShoppingList>(listUIId);
+            ((view as View).Parent as ViewGroup).RemoveView(view);
+            ListsManager.Instance.DeleteList(view.Data);
+
+            if (!string.IsNullOrEmpty(view.Data.Id)) //the list was not sync with the server
+            {
+                var progressDialog = ProgressDialog.Show(this, ShAppContext.GetString(Resource.String.PleaseWait), ShAppContext.GetString(Resource.String.DeletingList), true);
+                ResDeleteListDTO resDelete = await ListRepository.Instance.DeleteList(view.Data.Id, ShAppContext.UserToken);
+                progressDialog.Dismiss();
+            }//endif
+        }//DeleteList
     }
 }
