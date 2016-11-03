@@ -6,10 +6,11 @@ import Main.Messages exposing (..)
 import Repository exposing (..)
 import Main.Models exposing (..)
 import Login.Update exposing (..)
+import Supplier.Update exposing (..)
 import Login.Messages as Login
 import Register.Update exposing (..)
 import Register.Messages as Register
-
+import Supplier.Messages as Register
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
@@ -22,7 +23,7 @@ update msg model =
                 ( { model
                     | userData = user
                     , loginView = subModel
-                    , activePage = PageMyAccount
+                    , activePage = PageSuppliers
                   }
                 , Cmd.map Login subCmd
                 )
@@ -59,6 +60,13 @@ update msg model =
 
         SetActivePage page ->
             ( { model | activePage = setActivePage model page }, Cmd.none )
+
+        Supplier subMsg ->
+            let
+                ( subModel, subCmd ) =
+                    updateSupplier model.userData subMsg model.supplierView
+            in
+                ( { model | supplierView = subModel }, Cmd.map Supplier subCmd )
 
 
 setActivePage : Model -> Page -> Page

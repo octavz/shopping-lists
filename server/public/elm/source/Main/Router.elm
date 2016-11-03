@@ -21,7 +21,10 @@ delta2url previous current =
             Just <| UrlChange NewEntry "/#register"
 
         PageMyAccount ->
-            Just <| UrlChange NewEntry "/#my-account"
+            Just <| UrlChange NewEntry "/#account"
+
+        PageSuppliers ->
+            Just <| UrlChange NewEntry "/#suppliers"
 
         PageNotFound ->
             Just <| UrlChange NewEntry "/#404"
@@ -39,8 +42,11 @@ location2messages location =
         "#register" ->
             [ SetActivePage PageRegister ]
 
-        "#my-account" ->
+        "#account" ->
             [ SetActivePage PageMyAccount ]
+
+        "#suppliers" ->
+            [ SetActivePage PageSuppliers ]
 
         "#404" ->
             [ SetActivePage PageNotFound ]
