@@ -31,12 +31,12 @@ namespace CommonBL.Helpers
         }//HttpGet
 
 
-        async Task<string> IHttpHelper.HttpPut<T>(T req, string path, string authToken)
+        async Task<string> IHttpHelper.HttpPost<T>(T req, string path, string authToken)
         {
             return await Task.Run(() => m_dicTypesPut[typeof(T)]);
         }
 
-        async Task<string> IHttpHelper.HttpPatch<T>(T req, string path, string authToken)
+        async Task<string> IHttpHelper.HttpPut<T>(T req, string path, string authToken)
         {
             return await Task.Run(() => m_dicTypesPatch[typeof(T)]);
         }

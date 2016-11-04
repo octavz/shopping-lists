@@ -12,6 +12,7 @@ using Android.Widget;
 using Android.Support.V4.Widget;
 using Android.Support.V7.Widget;
 using Android.Support.Design.Widget;
+using CommonBL.Managers;
 
 namespace ShList.Code.Abstracts
 {
@@ -54,6 +55,7 @@ namespace ShList.Code.Abstracts
             if (menuItem.ItemId == Resource.Id.nav_logout)
             {
                 ShAppContext.ClearSettingsForLogout();
+                ListsManager.Instance.RemoveAll();
                 StartActivity(typeof(AcMain));
                 Finish();
             }//endif

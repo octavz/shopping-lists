@@ -29,6 +29,7 @@ namespace ShList.Code.Controls
         private TextView lstNm = null;
 
         public event Func<int, Task> Event_DeleteItem = null;
+        public event Func<int, Task> Event_EditItem = null;
 
         /// <summary>
         /// CtrlShoppingList
@@ -79,6 +80,8 @@ namespace ShList.Code.Controls
                  {
                      m_Data.ListName = txtLstName.Text;
                      lstNm.Text = txtLstName.Text;
+                     if (Event_EditItem != null)
+                         Event_EditItem(this.Id);
                      alert.Dismiss();
                  }
                  else                 

@@ -71,6 +71,7 @@ namespace ShList.Code
 
             var progressDialog = ProgressDialog.Show(this, ShAppContext.GetString(Resource.String.PleaseWait), ShAppContext.GetString(Resource.String.CreatingList), true);
             ResListDTO resList = await ListRepository.Instance.CreateList(lst);
+            newList.LoadFromResponse(resList);
             CreateUIList(newList);
             progressDialog.Dismiss();
         }//AddNewList
@@ -84,8 +85,22 @@ namespace ShList.Code
         {
             CtrlShoppingList item = new CtrlShoppingList(this, ShAppContext, newList);
             item.Event_DeleteItem += DeleteList;
+            item.Event_EditItem += EditList;
             llShoppingLst.AddView(item, 0);
         }//CreateUIList
+
+        private async Task EditList(int listUIId)
+        {
+            var view = FindViewById<CtrlShoppingList>(listUIId);                        
+
+            if (!string.IsNullOrEmpty(view.Data.Id)) //the list was not sync with the server
+            {
+                var progressDialog = ProgressDialog.Show(this, ShAppContext.GetString(Resource.String.PleaseWait), ShAppContext.GetString(Resource.String.UpdatingList), true);
+                ReqListDTO req = view.Data.GenerateRequestFormat(ShAppContext.UserId, ShAppContext.UserToken);
+                ResListDTO res = await ListRepository.Instance.UpdateList(req);
+                progressDialog.Dismiss();
+            }//endif
+        }//EditList
 
         /// <summary>
         /// DeleteList

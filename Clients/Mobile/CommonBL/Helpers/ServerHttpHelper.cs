@@ -21,23 +21,38 @@ namespace CommonBL.Helpers
 
         public async Task<string> HttpGet(string path, string authToken)
         {
-            HttpClient client = SetCustomHttpClient(authToken);
-
-            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, path);            
-            HttpResponseMessage msgRes = null;
-
-            using (msgRes = await client.SendAsync(request))
-            {
-                string cntRes = await msgRes.Content.ReadAsStringAsync();
-                return cntRes;
-            }
+            return await HttpLoad(path, authToken, HttpMethod.Get);
         }//HttpGet
+     
 
         public async Task<string> HttpDelete(string path, string authToken)
         {
+            return await HttpLoad(path, authToken, HttpMethod.Delete);
+        }//HttpDelete
+
+
+        public async Task<string> HttpPut<T>(T req, string path, string authToken) where T : class
+        {
+            return await HttpSend(req, path, authToken, HttpMethod.Put);
+        }//HttpPut
+
+        public async Task<string> HttpPost<T>(T req, string path, string authToken) where T : class
+        {
+            return await HttpSend(req, path, authToken, HttpMethod.Post);
+        }//HttpPost
+
+
+        /// <summary>
+        /// HttpLoad
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="authToken"></param>
+        /// <returns></returns>
+        private async Task<string> HttpLoad(string path, string authToken, HttpMethod verb)
+        {
             HttpClient client = SetCustomHttpClient(authToken);
 
-            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Delete, path);
+            HttpRequestMessage request = new HttpRequestMessage(verb, path);
             HttpResponseMessage msgRes = null;
 
             using (msgRes = await client.SendAsync(request))
@@ -45,22 +60,24 @@ namespace CommonBL.Helpers
                 string cntRes = await msgRes.Content.ReadAsStringAsync();
                 return cntRes;
             }
-        }
+        }//HttpLoad
 
-
-        public Task<string> HttpPatch<T>(T req, string path, string authToken) where T : class
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<string> HttpPut<T>(T req, string path, string authToken) where T : class
+        /// <summary>
+        /// HttpSend
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="req"></param>
+        /// <param name="path"></param>
+        /// <param name="authToken"></param>
+        /// <returns></returns>
+        private async Task<string> HttpSend<T>(T req, string path, string authToken, HttpMethod verb) where T : class
         {
             var json = JsonConvert.SerializeObject(req);
             var content = new StringContent(json, Encoding.UTF8, MEDIA_TYPE);
 
             HttpClient client = SetCustomHttpClient(authToken);
 
-            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, path);
+            HttpRequestMessage request = new HttpRequestMessage(verb, path);
             request.Content = content;
 
             HttpResponseMessage msgRes = null;
@@ -70,7 +87,7 @@ namespace CommonBL.Helpers
                 string cntRes = await msgRes.Content.ReadAsStringAsync();
                 return cntRes;
             }
-        }//HttpPut
+        }//HttpSend
 
         private  HttpClient SetCustomHttpClient(string authToken)
         {

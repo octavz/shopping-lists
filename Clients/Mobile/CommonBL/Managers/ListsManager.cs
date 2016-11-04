@@ -48,6 +48,11 @@ namespace CommonBL.Managers
             m_Lists.Remove(aList);
         }//DeleteList
 
+        public void RemoveAll()
+        {
+            m_Lists.Clear();
+        }//RemoveAll
+
         public List<ShoppingListDTO> Lists { get { return m_Lists.OrderBy(x => x.ListDate).ToList(); } }
 
         public static ListsManager Instance { get { return m_Manager.Value; } }

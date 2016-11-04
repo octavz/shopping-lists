@@ -20,10 +20,7 @@ namespace CommonBL.Data
 
         public ShoppingListDTO(ResListDTO aList)
         {
-            this.Id = aList.Id;
-            this.ListDate = Tools.UnixTimeStampToDateTime(aList.CreatedDate);
-            this.ListName = aList.Name;
-            this.ListDescription = aList.Description;            
+            LoadFromResponse(aList);
         }
 
 
@@ -35,6 +32,14 @@ namespace CommonBL.Data
 
         public DateTime ListDate { get; set; }
 
+        public void LoadFromResponse(ResListDTO aList)
+        {
+            this.Id = aList.Id;
+            this.ListDate = Tools.UnixTimeStampToDateTime(aList.CreatedDate);
+            this.ListName = aList.Name;
+            this.ListDescription = aList.Description;
+        }
+
         public ReqListDTO GenerateRequestFormat(string userId, string token)
         {
 
@@ -43,11 +48,12 @@ namespace CommonBL.Data
                 CreatedDate = (long)Tools.TimeStampToUnixDateTime(ListDate),
                 Id = Id,
                 Description = ListDescription,
-                Name = string.IsNullOrEmpty(ListName) ? Constants.DEFAULT_LIST_NAME : string.Empty,
+                Name = string.IsNullOrEmpty(ListName) ? Constants.DEFAULT_LIST_NAME : ListName,
                 UserId = userId
             };
             return dto;
         }//GenerateRequestFormat
+
 
     }
 }

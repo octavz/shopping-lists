@@ -36,4 +36,5 @@
   <string name="CreatingList">Creating list...</string>
   <string name="LoadingLists">Loading lists...</string>
   <string name="DeletingList">Deleting list...</string>
+  <string name="UpdatingList">Updating list...</string>
 </resources>

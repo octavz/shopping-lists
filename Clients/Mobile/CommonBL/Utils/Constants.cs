@@ -16,6 +16,7 @@ namespace CommonBL.Utils
 
         public const string URL_CREATE_LIST = "/api/list";
         public const string URL_DELETE_LIST = "/api/list/{0}";
+        public const string URL_UPDATE_LIST = "/api/list/{0}";
 
         public const string DEFAULT_LIST_NAME = "_deflistname2016";
     }
@@ -23,7 +24,8 @@ namespace CommonBL.Utils
     public enum ErrorCodes
     {
         CREATE_ACCOUNT_ALREADY_EXITS = 500,
-        UNAUTHORIZED_LOGIN = 401   
+        UNAUTHORIZED_LOGIN = 401,
+        FAILED_LOGIN = 404
     }
 
 

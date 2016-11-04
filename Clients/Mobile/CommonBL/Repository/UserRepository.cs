@@ -41,7 +41,7 @@ namespace CommonBL.Repository
         public async Task<ResLoginDTO> Login(ReqLoginDTO req)
         {
 
-            string sResJson = await m_httpHelper.HttpPut(req, Constants.URL_LOGIN, req.AuthorizationToken);
+            string sResJson = await m_httpHelper.HttpPost(req, Constants.URL_LOGIN, req.AuthorizationToken);
             try
             {
                 ResLoginDTO obj = JsonConvert.DeserializeObject<ResLoginDTO>(sResJson);
@@ -56,7 +56,7 @@ namespace CommonBL.Repository
 
         public async Task<ResLoginDTO> CreateAccount(ReqNewAccountDTO req)
         {
-            string sResJson = await m_httpHelper.HttpPut(req, Constants.URL_CREATE_ACCOUNT, req.AuthorizationToken);
+            string sResJson = await m_httpHelper.HttpPost(req, Constants.URL_CREATE_ACCOUNT, req.AuthorizationToken);
             try
             {
                 ResLoginDTO obj = JsonConvert.DeserializeObject<ResLoginDTO>(sResJson);

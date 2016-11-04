@@ -113,7 +113,7 @@ namespace ShList.Code
             ResLoginDTO resLogin = await UserRepository.Instance.Login(reqLogin);
             progressDialog.Dismiss();
 
-            if (resLogin.ErrorCode == (int)ErrorCodes.UNAUTHORIZED_LOGIN)
+            if (resLogin.ErrorCode == (int)ErrorCodes.UNAUTHORIZED_LOGIN || resLogin.ErrorCode == (int)ErrorCodes.FAILED_LOGIN)
             {
                 txtEmail.ShowError(ShAppContext.GetString(Resource.String.InvalidLoginData), ShAppContext);
                 return;

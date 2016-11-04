@@ -24,7 +24,7 @@ namespace CommonBL.Repository
 
         public async Task<ResListDTO> CreateList(ReqListDTO req)
         {
-            string sResJson = await m_httpHelper.HttpPut(req, Constants.URL_CREATE_LIST, req.AuthorizationToken);
+            string sResJson = await m_httpHelper.HttpPost(req, Constants.URL_CREATE_LIST, req.AuthorizationToken);
             try
             {
                 ResListDTO obj = JsonConvert.DeserializeObject<ResListDTO>(sResJson);
@@ -36,6 +36,21 @@ namespace CommonBL.Repository
             }
         }//CreateList
 
+
+        public async Task<ResListDTO> UpdateList(ReqListDTO req)
+        {
+            string sUrl = string.Format(Constants.URL_UPDATE_LIST, req.Id);
+            string sResJson = await m_httpHelper.HttpPut(req, sUrl, req.AuthorizationToken);
+            try
+            {
+                ResListDTO obj = JsonConvert.DeserializeObject<ResListDTO>(sResJson);
+                return obj;
+            }
+            catch (Exception e)
+            {
+                return new ResListDTO();
+            }
+        }//UpdateList
 
         public async Task<ResDeleteListDTO> DeleteList(string listId, string sToken)
         {

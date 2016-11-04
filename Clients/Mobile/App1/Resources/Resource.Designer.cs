@@ -2684,6 +2684,9 @@ namespace ShList
 			// aapt resource value: 0x7f070036
 			public const int ShoppingItem = 2131165238;
 			
+			// aapt resource value: 0x7f07003b
+			public const int UpdatingList = 2131165243;
+			
 			// aapt resource value: 0x7f070028
 			public const int Yes = 2131165224;
 			
