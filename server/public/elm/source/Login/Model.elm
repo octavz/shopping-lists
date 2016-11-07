@@ -9,10 +9,3 @@ type alias LoginModel =
     }
 
 
-emptyLoginModel : LoginModel
-emptyLoginModel =
-    { login = "aaa@aaa.com"
-    , password = "123456"
-    , signinAttempts = 0
-    , message = Nothing
-    }

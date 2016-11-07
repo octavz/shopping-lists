@@ -22,6 +22,10 @@ class SlickProductRepo @Inject()(protected val dbConfigProvider: DatabaseConfigP
     db.run(Products += model).map(_ => model)
   }
 
+  override def insertProducts(model: Seq[Product]): DAL[Seq[Product]] = {
+    db.run(Products ++= model).map(_ => model)
+  }
+
   override def updateProduct(model: Product): DAL[Product] = {
     val newModel = model.copy(updated = now())
     db.run(Products.filter(_.id === model.id).update(newModel)) map (_ => newModel)

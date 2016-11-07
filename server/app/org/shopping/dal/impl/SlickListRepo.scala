@@ -53,8 +53,7 @@ class SlickListRepo @Inject()(protected val dbConfigProvider: DatabaseConfigProv
       .headOption
   }
 
-  override def addListDefProducts(listId: String,
-    model: Seq[ListDefProduct]): DAL[Seq[ListDefProduct]] = {
+  override def addListDefProducts(listId: String, model: Seq[ListDefProduct]): DAL[Seq[ListDefProduct]] = {
     if (model.nonEmpty) {
       val query = for {
         _ <- ListDefProducts ++= model

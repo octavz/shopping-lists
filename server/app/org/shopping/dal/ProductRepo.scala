@@ -6,6 +6,8 @@ trait ProductRepo {
 
   def insertProduct(model: Product): DAL[Product]
 
+  def insertProducts(model: Seq[Product]): DAL[Seq[Product]]
+
   def insertSupplier(model: Supplier): DAL[Supplier]
 
   def insertProductPrice(model: ProductPrice): DAL[ProductPrice]

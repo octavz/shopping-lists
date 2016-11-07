@@ -1,18 +1,17 @@
 package org.shopping.dto
 
-import org.shopping.db._
 import org.shopping.models.ListDefProduct
 import org.shopping.util.Time
 
-case class ListItemDTO(productId: String, quantity: Int, description: Option[String]) {
+case class ListItemDTO(productId: Option[String], quantity: Int, description: Option[String]) {
 
   def this(model: ListDefProduct) = this(
-    productId = model.productId,
+    productId = Some(model.productId),
     quantity = model.quantity,
     description = model.description
   )
 
-  def toModel(listId: String) = {
+  def toModel(listId: String, productId: String) = {
     val n = Time.now()
     ListDefProduct(
       listDefId = listId,

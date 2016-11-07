@@ -104,4 +104,5 @@ class DefaultProductService @Inject()(dalUser: UserRepo, dalProduct: ProductRepo
       .getAllSuppliers
       .map(all => resultSync(SuppliersDTO(all.map(new SupplierDTO(_)))))
   }
+
 }

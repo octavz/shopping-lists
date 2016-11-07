@@ -145,8 +145,7 @@ trait DB {
     val description = column[Option[String]]("description", O.Length(100, varying = true), O.Default(None))
   }
 
-  class ListDefProducts(
-    _tableTag: Tag) extends Table[ListDefProduct](_tableTag, "list_def_products") {
+  class ListDefProducts(_tableTag: Tag) extends Table[ListDefProduct](_tableTag, "list_def_products") {
     def * = (listDefId, productId, description, bought, quantity, created, updated) <> (ListDefProduct.tupled, ListDefProduct.unapply)
 
     val listDefId = column[String]("list_def_id", O.PrimaryKey, O.Length(40, varying = true))
