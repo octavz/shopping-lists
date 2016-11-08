@@ -38,43 +38,51 @@ class DefaultListService @Inject()(userRepo: UserRepo, listRepo: ListRepo, produ
 
   def bought(lst: Seq[ListDefProduct]) = lst.filter(_.bought == 1).map(_.productId)
 
+  def combineListProducts(l1: Seq[ListDefProduct], l2: Seq[ListDefProduct]): Seq[ListDefProduct] =
+    (l1 ++ l2).groupBy(_.productId).map {
+      case (_, l) => l.head.copy(quantity = l.size)
+    }.toSeq
+
   override def addListItems(listId: String, listItems: ListItemsDTO): Result[ListItemsDTO] = {
     val now = Time.now()
     val notExisting = listItems.items.filter(_.productId.isEmpty)
     val models = notExisting
-      .map {
-        p =>
-          val pid = Gen.guid
-          pid -> Product(pid, userId, p.description.getOrElse("No description"), created = now, updated = now)
-      }.toMap
-    val
-    val allMap = models ++=
-
-    productRepo.insertProducts(models.values.toSeq).map { _ =>
-      cloneIfNotOwned(listId).flatMap { lst =>
-        listRepo.getListProductsByList(listId) flatMap { existing =>
-          val f = if (existing.size > MAX_ALLOWED) {
-            throw new RuntimeException(ErrorMessages.TOO_MANY_ITEMS)
-          } else {
-            listRepo.addListDefProducts(lst.id, model).map { listItems =>
-              resultSync(ListItemsDTO(items = listItems.map(new ListItemDTO(_)),
-                meta = Some(ListMetadata(listId, bought(existing)))))
-            }
-          }
-
-          //add meta to db
-          f flatMap { ret =>
-            listItems.meta match {
-              case Some(meta) =>
-                listRepo
-                  .updateBatchedBought(listId, meta.boughtItems.map(_ -> true).toMap)
-                  .map(_ => ret)
-              case _ => Future.successful(ret)
-            }
-          }
-        }
+      .map { p => Product(
+        id = Gen.guid,
+        userId = userId,
+        name = p.description.getOrElse("No description"),
+        created = now,
+        updated = now)
       }
-    } recover { case e: Throwable => resultExSync(e, "addListItems") }
+
+    val f = for {
+      _ <- productRepo.insertProducts(models)
+      lId <- cloneIfNotOwned(listId) map (_.id)
+      existing <- listRepo.getListProductsByList(lId)
+      items <- if (existing.size > MAX_ALLOWED) {
+        throw new RuntimeException(ErrorMessages.TOO_MANY_ITEMS)
+      } else {
+        val all = models.map(p => ListDefProduct(
+          listDefId = lId,
+          productId = p.id,
+          description = p.description,
+          created = now,
+          updated = now)) ++ listItems.items.filter(_.productId.isDefined).map(p => p.toModel(listId, p.productId.get))
+        listRepo.addListDefProducts(lId, combineListProducts(all, existing))
+      }
+      _ <- listItems.meta match {
+        case Some(meta) =>
+          listRepo.updateBatchedBought(lId, meta.boughtItems.map(_ -> true).toMap)
+        case _ => Future.successful(())
+      }
+    } yield {
+      resultSync(ListItemsDTO(items = items.map(new ListItemDTO(_)),
+        meta = Some(ListMetadata(listId, bought(existing)))))
+    }
+
+    f recover {
+      case e: Throwable => resultExSync(e, "addListItems")
+    }
   }
 
   override def getUserLists(userId: String, offset: Int, count: Int): Result[ListsDTO] = {
