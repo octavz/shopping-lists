@@ -9,11 +9,11 @@ import scala.concurrent.Future
 
 package object dal {
 
-  type DAL[T] = Future[T]
+  type Repo[T] = Future[T]
 
-  def dal[T](v: T): DAL[T] = Future.successful(v)
+  def dal[T](v: T): Repo[T] = Future.successful(v)
 
-  def dalErr[T](error: String): DAL[T] = Future.failed(new Exception(error))
+  def dalErr[T](error: String): Repo[T] = Future.failed(new Exception(error))
 
   object JsonFormats extends DefaultReads with DefaultWrites {
 

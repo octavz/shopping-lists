@@ -5,21 +5,21 @@ import org.shopping.models.{ListDef, ListDefProduct}
 
 trait ListRepo {
 
-  def insertList(model: ListDef): DAL[ListDef]
+  def insertList(model: ListDef): Repo[ListDef]
 
-  def getUserLists(uid: String, offset: Int, count: Int): DAL[(Seq[ListDef], Int)]
+  def getUserLists(uid: String, offset: Int, count: Int): Repo[(Seq[ListDef], Int)]
 
-  def updateList(list: ListDef): DAL[ListDef]
+  def updateList(list: ListDef): Repo[ListDef]
 
-  def getListDefById(id: String): DAL[Option[ListDef]]
+  def getListDefById(id: String): Repo[Option[ListDef]]
 
-  def addListDefProducts(listId: String, model: Seq[ListDefProduct]): DAL[Seq[ListDefProduct]]
+  def replaceListItems(listId: String, model: Seq[ListDefProduct]): Repo[Seq[ListDefProduct]]
 
-  def getListProductsByList(listDefId: String): DAL[Seq[ListDefProduct]]
+  def getListProductsByList(listDefId: String): Repo[Seq[ListDefProduct]]
 
-  def getListUsers(listId: String): DAL[Seq[String]]
+  def getListUsers(listId: String): Repo[Seq[String]]
 
-  def updateListProduct(listProduct: ListDefProduct): DAL[ListDefProduct]
+  def updateListProduct(listProduct: ListDefProduct): Repo[ListDefProduct]
 
-  def updateBatchedBought(listId: String, ids: Map[String, Boolean]): DAL[Int]
+  def updateBatchedBought(listId: String, ids: Map[String, Boolean]): Repo[Int]
 }

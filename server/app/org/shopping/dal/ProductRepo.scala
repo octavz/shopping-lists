@@ -4,23 +4,23 @@ import org.shopping.models._
 
 trait ProductRepo {
 
-  def insertProduct(model: Product): DAL[Product]
+  def insertProduct(model: Product): Repo[Product]
 
-  def insertProducts(model: Seq[Product]): DAL[Seq[Product]]
+  def insertProducts(model: Seq[Product]): Repo[Seq[Product]]
 
-  def insertSupplier(model: Supplier): DAL[Supplier]
+  def insertSupplier(model: Supplier): Repo[Supplier]
 
-  def insertProductPrice(model: ProductPrice): DAL[ProductPrice]
+  def insertProductPrice(model: ProductPrice): Repo[ProductPrice]
 
-  def updateProduct(model: Product): DAL[Product]
+  def updateProduct(model: Product): Repo[Product]
 
-  def getProductById(id: String): DAL[Option[Product]]
+  def getProductById(id: String): Repo[Option[Product]]
 
-  def searchProduct(name: String): DAL[Seq[Product]]
+  def searchProduct(name: String): Repo[Seq[Product]]
 
-  def getProductPrice(productId: String, supplierId: String): DAL[Option[ProductPrice]]
+  def getProductPrice(productId: String, supplierId: String): Repo[Option[ProductPrice]]
 
-  def updateProductPrice(productPrice: ProductPrice): DAL[ProductPrice]
+  def updateProductPrice(productPrice: ProductPrice): Repo[ProductPrice]
 
-  def getAllSuppliers: DAL[Seq[Supplier]]
+  def getAllSuppliers: Repo[Seq[Supplier]]
 }

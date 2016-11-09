@@ -246,6 +246,8 @@
   <component name="ScalaCompilerConfiguration">
     <profile name="SBT 1" modules="main">
       <option name="postfixOps" value="true" />
+      <option name="reflectiveCalls" value="true" />
+      <option name="higherKinds" value="true" />
       <option name="deprecationWarnings" value="true" />
       <option name="uncheckedWarnings" value="true" />
       <option name="featureWarnings" value="true" />

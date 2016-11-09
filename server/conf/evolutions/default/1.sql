@@ -21,7 +21,9 @@ CREATE TABLE users (
 
 CREATE TABLE user_sessions (
   id      CHARACTER VARYING(254) PRIMARY KEY,
-  user_id CHARACTER VARYING NOT NULL REFERENCES users
+  user_id CHARACTER VARYING NOT NULL REFERENCES users,
+  created        INTEGER DEFAULT 0                 NOT NULL,
+  updated        INTEGER DEFAULT 0                 NOT NULL
 );
 
 CREATE TABLE clients (

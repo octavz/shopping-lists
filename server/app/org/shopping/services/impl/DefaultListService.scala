@@ -31,7 +31,7 @@ class DefaultListService @Inject()(userRepo: UserRepo, listRepo: ListRepo, produ
         val uid = authData.user.id
         if (list.userId != userId) {
           val ts = Time.now()
-          listRepo.insertList(list.copy(id = Gen.guid, userId = uid, created = ts, createdClient = ts, updated = ts))
+          listRepo.insertList(list.copy(id = Gen.guid, userId = uid))
         } else Future.successful(list)
       case _ => throw new Exception("I couldn't find the list you look for.")
     }
@@ -44,15 +44,13 @@ class DefaultListService @Inject()(userRepo: UserRepo, listRepo: ListRepo, produ
     }.toSeq
 
   override def addListItems(listId: String, listItems: ListItemsDTO): Result[ListItemsDTO] = {
-    val now = Time.now()
     val notExisting = listItems.items.filter(_.productId.isEmpty)
     val models = notExisting
       .map { p => Product(
         id = Gen.guid,
         userId = userId,
-        name = p.description.getOrElse("No description"),
-        created = now,
-        updated = now)
+        name = p.description.getOrElse("No description")
+      )
       }
 
     val f = for {
@@ -62,13 +60,9 @@ class DefaultListService @Inject()(userRepo: UserRepo, listRepo: ListRepo, produ
       items <- if (existing.size > MAX_ALLOWED) {
         throw new RuntimeException(ErrorMessages.TOO_MANY_ITEMS)
       } else {
-        val all = models.map(p => ListDefProduct(
-          listDefId = lId,
-          productId = p.id,
-          description = p.description,
-          created = now,
-          updated = now)) ++ listItems.items.filter(_.productId.isDefined).map(p => p.toModel(listId, p.productId.get))
-        listRepo.addListDefProducts(lId, combineListProducts(all, existing))
+        val all = models.map(p => ListDefProduct(listDefId = lId, productId = p.id, description = p.description)) ++
+          listItems.items.filter(_.productId.isDefined).map(p => p.toModel(listId, p.productId.get))
+        listRepo.replaceListItems(lId, combineListProducts(all, existing))
       }
       _ <- listItems.meta match {
         case Some(meta) =>

@@ -129,10 +129,12 @@ trait DB {
   }
 
   class UserSessions(_tableTag: Tag) extends Table[UserSession](_tableTag, "user_sessions") {
-    def * = (id, userId) <> (UserSession.tupled, UserSession.unapply)
+    def * = (id, userId, created, updated) <> (UserSession.tupled, UserSession.unapply)
 
     val id = column[String]("id", O.PrimaryKey, O.Length(254, varying = true))
     val userId = column[String]("user_id")
+    val created = column[Long]("created")
+    val updated = column[Long]("updated")
 
     lazy val usersFk = foreignKey("user_sessions_user_id_fkey", userId, Users)(
       r => r.id, onUpdate = ForeignKeyAction.NoAction, onDelete = ForeignKeyAction.NoAction)

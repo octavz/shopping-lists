@@ -4,7 +4,7 @@ import com.google.inject.Inject
 import org.shopping.dal._
 import org.shopping.dto._
 import org.shopping.services.{ProductService, _}
-import org.shopping.util.{Constants, Gen, Time}
+import org.shopping.util.{Constants, Gen}
 import play.api.http.Status
 
 import scala.concurrent.ExecutionContext.Implicits._
@@ -13,7 +13,7 @@ import scala.concurrent._
 class DefaultProductService @Inject()(dalUser: UserRepo, dalProduct: ProductRepo) extends ProductService {
 
   override def insertProduct(dto: ProductDTO): Result[ProductDTO] = {
-    val model = dto.toModel(userId, Gen.guid).copy(created = Time.now(), updated = Time.now())
+    val model = dto.toModel(userId, Gen.guid)
     dalProduct
       .insertProduct(model)
       .map(p => resultSync(new ProductDTO(model)))
@@ -37,7 +37,7 @@ class DefaultProductService @Inject()(dalUser: UserRepo, dalProduct: ProductRepo
       dalProduct.getProductById(dto.id.get) flatMap {
         case None => resultError(Status.NOT_FOUND, "Product not found")
         case Some(existing) =>
-          val newProduct = existing.copy(name = dto.name, description = dto.description, updated = Time.now())
+          val newProduct = existing.copy(name = dto.name, description = dto.description)
           dalProduct.updateProduct(newProduct) map { p =>
             resultSync(new ProductDTO(p))
           }
@@ -55,7 +55,7 @@ class DefaultProductService @Inject()(dalUser: UserRepo, dalProduct: ProductRepo
     checkUser(valid(productId)) {
       dalProduct.getProductById(productId) flatMap {
         case Some(product) =>
-          val newProduct = product.copy(status = Constants.STATUS_DELETE, updated = Time.now())
+          val newProduct = product.copy(status = Constants.STATUS_DELETE)
           dalProduct.updateProduct(newProduct) map {
             _ =>
               resultSync(BooleanDTO(true))
@@ -68,9 +68,8 @@ class DefaultProductService @Inject()(dalUser: UserRepo, dalProduct: ProductRepo
     }
 
   override def insertSupplier(dto: SupplierDTO): Result[SupplierDTO] = checkUser(valid()) {
-    val n = Time.now
     dalProduct
-      .insertSupplier(dto.toModel(Gen.guid).copy(created = n, updated = n))
+      .insertSupplier(dto.toModel(Gen.guid))
       .map(a => resultSync(new SupplierDTO(a)))
       .recover {
         case e: Throwable =>
@@ -79,9 +78,8 @@ class DefaultProductService @Inject()(dalUser: UserRepo, dalProduct: ProductRepo
   }
 
   override def insertProductPrice(dto: ProductPriceDTO): Result[ProductPriceDTO] = checkUser(valid()) {
-    val n = Time.now()
     dalProduct
-      .insertProductPrice(dto.toModel(Gen.guid).copy(created = n, updated = n))
+      .insertProductPrice(dto.toModel(Gen.guid))
       .map(a => resultSync(new ProductPriceDTO(a)))
       .recover {
         case e: Throwable =>
@@ -92,7 +90,7 @@ class DefaultProductService @Inject()(dalUser: UserRepo, dalProduct: ProductRepo
   override def updateProductPrice(dto: ProductPriceDTO): Result[ProductPriceDTO] = checkUser(valid()) {
     dalProduct.getProductPrice(dto.productId, dto.supplierId) flatMap {
       case Some(pp) =>
-        val newModel = pp.copy(price = dto.price, updated = Time.now)
+        val newModel = pp.copy(price = dto.price)
         dalProduct.updateProductPrice(newModel).map(r => resultSync(new ProductPriceDTO(r)))
       case _ =>
         resultError(Status.NOT_FOUND, "ProductPrice not found")

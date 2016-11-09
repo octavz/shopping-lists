@@ -1,6 +1,5 @@
 package org.shopping.dal.impl
 
-import java.sql.Timestamp
 import java.util.Date
 import javax.inject.Inject
 

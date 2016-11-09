@@ -141,13 +141,13 @@ class ListServiceSpec extends Specification with Mockito {
 
       m.dalList.getListDefById(any) returns Future.successful(Some(listDef))
       m.dalList.insertList(any[ListDef]) answers (a => dal(a.asInstanceOf[ListDef]))
-      m.dalList.addListDefProducts(any, any) returns Future.successful(Seq(listProduct))
+      m.dalList.replaceListItems(any, any) returns Future.successful(Seq(listProduct))
       m.dalList.getListProductsByList(listId) returns Future.successful(Seq(listProduct))
 
       val s = Await.result(m.listService.addListItems(listId, items), Duration.Inf)
 
       there was no(m.dalList).insertList(any)
-      there was one(m.dalList).addListDefProducts(any, any)
+      there was one(m.dalList).replaceListItems(any, any)
       s must beRight
       val ret = s.merge.asInstanceOf[ListItemsDTO]
       ret.items.size === 1
@@ -163,13 +163,13 @@ class ListServiceSpec extends Specification with Mockito {
       val listProduct = ListDefProduct(listDef.id, "p1", None, 0, 0, now(), now())
       m.dalList.getListDefById(any) returns Future.successful(Some(listDef))
       m.dalList.insertList(any[ListDef]) answers (a => dal(a.asInstanceOf[ListDef]))
-      m.dalList.addListDefProducts(any, any) returns Future.successful(Seq(listProduct))
+      m.dalList.replaceListItems(any, any) returns Future.successful(Seq(listProduct))
       m.dalList.getListProductsByList(listId) returns Future.successful(Seq(listProduct))
 
       val s = Await.result(m.listService.addListItems(listId, items), Duration.Inf)
 
       there was one(m.dalList).insertList(any)
-      there was one(m.dalList).addListDefProducts(any, any)
+      there was one(m.dalList).replaceListItems(any, any)
       s must beRight
       val ret = s.merge.asInstanceOf[ListItemsDTO]
       ret.items.size === 1
