@@ -1,4 +1,4 @@
-package org.shopping.dal
+package org.shopping.repo
 
 import org.shopping.db._
 import org.shopping.models.{ListDef, ListDefProduct}

@@ -2,13 +2,14 @@ package org.shopping
 
 import org.shopping.dto.ErrorDTO
 import org.shopping.models.User
-import org.shopping.util.Gen
+import org.shopping.util.{ErrorMessages, Gen, _}
+import play.api.Logger
 
 import scala.concurrent._
 import scalaoauth2.provider.AuthInfo
-import ExecutionContext.Implicits.global
 
 package object services {
+  val log = Logger.logger
 
   implicit class CustomStringOption(str: Option[String]) {
 
@@ -19,27 +20,38 @@ package object services {
 
   }
 
-  type ResultError = ErrorDTO
-
   type Result[T] = Future[Either[ErrorDTO, T]]
+
   type AuthData = AuthInfo[User]
 
-  def result[T](v: T) = Future.successful(Right(v))
+  def result[T](v: T): Result[T] = Future.successful(Right(v))
 
-  def resultSync[T](v: T) = Right(v)
+  def resultSync[T](v: T): Either[ErrorDTO, T] = Right(v)
 
-  def resultError(errCode: Int, errMessage: String, data: String = "") = Future.successful(Left(ErrorDTO(errCode, errMessage)))
-
-  def resultError(err: (Int, String)) = err match {
-    case (errCode, errMessage) => Future.successful(Left(ErrorDTO(errCode, errMessage)))
+  def error[T](errMessage: String, errCode: Int = 400): Result[T] = {
+    log.error(s"${currentMethod()}: $errMessage")
+    Future.successful(Left(ErrorDTO(errCode, errMessage)))
   }
 
-  def resultErrorSync(errCode: Int, errMessage: String, data: String = "") = Left(ErrorDTO(errCode, errMessage))
+  def error[T](err: (Int, String)): Result[T] = err match {
+    case (errCode, errMessage) =>
+      log.error(s"${currentMethod()}: $errMessage")
+      Future.successful(Left(ErrorDTO(errCode, errMessage)))
+  }
 
-  def resultEx(ex: Throwable, data: String = "", errCode: Int = 500) = Future.successful(Left(ErrorDTO(errCode, ex.getMessage)))
+  def errorSync[T](errCode: Int, errMessage: String): Either[ErrorDTO, T] = {
+    log.error(s"${currentMethod()}: $errMessage")
+    Left(ErrorDTO(errCode, errMessage))
+  }
 
-  def resultExSync(ex: Throwable, data: String = "", errCode: Int = 500) = {
-    Left(ErrorDTO(errCode, ex.getMessage))
+  def ex[T](ex: Throwable, errMessage: String = ErrorMessages.SERVER_ERROR, errCode: Int = 500): Result[T] = {
+    log.error(errMessage, ex)
+    Future.successful(Left(ErrorDTO(errCode, errMessage)))
+  }
+
+  def exSync(ex: Throwable, errMessage: String = ErrorMessages.SERVER_ERROR, errCode: Int = 500) = {
+    log.error(errMessage, ex)
+    Left(ErrorDTO(errCode, errMessage))
   }
 
   object PermProject {
@@ -54,25 +66,7 @@ package object services {
     val PublicReadWriteDelete = 256
   }
 
-  implicit class CustomFuture[S, T](val f: Future[Either[String, S]]) {
-
-    def >>=(tf: S => Future[Either[String, Any]]): Future[Either[String, Any]] = {
-      val fRet: Future[Either[String, Any]] = f flatMap {
-        case Left(err) => Future.successful(Left(err))
-        case Right(r1) =>
-          tf(r1) map {
-            case Left(err) => Left(err)
-            case Right(r2) => Right(r2)
-          }
-      }
-      fRet recover {
-        case e: Throwable => Left(e.getMessage)
-      }
-    }
-
-  }
-
-  implicit class ErrorExtractor[T](val ret: Either[ResultError, T]) {
+  implicit class ErrorExtractor[T](val ret: Either[ErrorDTO, T]) {
 
     def errCode = ret match {
       case Left(er) => er.errCode

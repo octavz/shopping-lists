@@ -35,6 +35,7 @@ trait JsonDTOFormats extends BaseFormats with ConstraintReads {
   implicit val productPriceDTO = Json.format[ProductPriceDTO]
   implicit val supplierDTO = Json.format[SupplierDTO]
   implicit val suppliersDTO = Json.writes[SuppliersDTO]
+  implicit val syncDTO = Json.format[SyncDTO]
 }
 
 object JsonDTOFormats extends JsonDTOFormats

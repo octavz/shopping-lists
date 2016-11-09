@@ -18,7 +18,7 @@ trait BaseService {
   private[services] def checkUser[T](v: => Future[Boolean])(c: => Result[T])
     (implicit ec: ExecutionContext): Result[T] =
     v flatMap {
-      valid => if (!valid) resultError(401 -> "Permission denied.") else c
+      valid => if (!valid) error(401 -> "Permission denied.") else c
     }
 
 }

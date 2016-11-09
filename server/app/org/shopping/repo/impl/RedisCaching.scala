@@ -1,6 +1,6 @@
-package org.shopping.dal.impl
+package org.shopping.repo.impl
 
-import org.shopping.dal.Caching
+import org.shopping.repo.Caching
 import play.api.Logger
 import scredis._
 import scredis.serialization._

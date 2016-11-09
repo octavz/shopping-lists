@@ -504,6 +504,38 @@ POST         /api/register               @org.shopping.controllers.UserControlle
 ###
 GET          /api/user/:userId/lists     @org.shopping.controllers.ListController.getUserLists(userId: String, offset: Int, count: Int)
 
+###
+# tags:
+#   - List operations
+# summary: Sync lists
+# consumes:
+#   - application/json
+# produces:
+#   - application/json
+# parameters:
+#   - name: body
+#     in: body
+#     description: sync data
+#     required: true
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.SyncDTO'
+#   - name: "Authorization"
+#     in: "header"
+#     description: "Authorization code"
+#     required: true
+#     type: "string"
+# responses:
+#   200:
+#     description: sync user data
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.SyncDTO'
+#   401:
+#     description: Unauthorized
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
+###
+PUT          /api/data     @org.shopping.controllers.MainController.syncData()
+
 ### NoDocs ###
 GET          /app/*file                  controllers.Assets.at(path="/public/client/app",file)
 ### NoDocs ###

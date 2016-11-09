@@ -3,41 +3,40 @@ package org.shopping.services.impl
 import java.util.Date
 
 import com.google.inject.Inject
-import org.shopping.dal._
+import org.shopping.repo._
 import org.shopping.dto.{RegisterRequestDTO, UserDTO, UsersDTO}
 import org.shopping.models.UserSession
 import org.shopping.services.{UserService, _}
-import org.shopping.util.Gen
+import org.shopping.util.{ErrorMessages, Gen}
 import play.api.http.Status
 
 import scala.concurrent.ExecutionContext.Implicits._
 import scala.concurrent._
 import scalaoauth2.provider._
 
-class DefaultUserService @Inject()(dalUser: UserRepo, dalAuth: Oauth2Repo) extends UserService {
+class DefaultUserService @Inject()(userRepo: UserRepo, authRepo: Oauth2Repo) extends UserService {
 
   override def createSession(accessToken: String): Result[String] = {
-    dalAuth.findAuthInfoByAccessToken(scalaoauth2.provider.AccessToken(accessToken, None, None, None, new Date())) flatMap {
+    authRepo.findAuthInfoByAccessToken(scalaoauth2.provider.AccessToken(accessToken, None, None, None, new Date())) flatMap {
       authInfo =>
         if (authInfo.isEmpty) {
-          resultError(Status.NOT_FOUND, "Session not found")
+          error(errCode = Status.NOT_FOUND, errMessage = ErrorMessages.NOT_FOUND)
         } else {
           val model = UserSession(userId = authInfo.get.user.id, id = accessToken)
           val f = for {
-            fDelete <- dalUser.deleteSessionByUser(model.userId)
-            fInsert <- dalUser.insertSession(model)
+          //            fDelete <- userRepo.deleteSessionByUser(model.userId)
+            fInsert <- userRepo.insertSession(model)
           } yield resultSync(model.id)
 
           f recover { case e: Throwable =>
-            e.printStackTrace()
-            resultExSync(e,"createSession",Status.INTERNAL_SERVER_ERROR)
+            exSync(e)
           }
         }
     }
   }
 
   override def login(request: AuthorizationRequest): Future[Either[OAuthError, GrantHandlerResult]] = {
-    val ret = TokenEndpoint.handleRequest(request, dalAuth)
+    val ret = TokenEndpoint.handleRequest(request, authRepo)
     ret flatMap {
       case r@Right(v) =>
         createSession(v.accessToken) map (_ => r)
@@ -47,53 +46,66 @@ class DefaultUserService @Inject()(dalUser: UserRepo, dalAuth: Oauth2Repo) exten
 
   override def getUserById(id: String): Result[UserDTO] = {
     try {
-      dalUser.getUserById(id) map {
-        u =>
-          resultSync(new UserDTO(u))
+      userRepo.getUserById(id) map {
+        case Some(u) => resultSync(new UserDTO(u))
+        case _ => errorSync(404, ErrorMessages.NOT_FOUND)
       } recover {
-        case e: Throwable => resultExSync(e, "getUserById")
+        case e: Throwable => exSync(e)
       }
     }
     catch {
-      case e: Throwable => resultEx(e, "getUserById")
+      case e: Throwable => ex(e)
     }
   }
 
   def registerUser(u: RegisterRequestDTO): Result[RegisterRequestDTO] = {
     try {
       val model = u.toModel(Gen.guid)
-      val f = dalUser.getUserByEmail(u.login) flatMap {
-        case Some(_) => resultError(Status.INTERNAL_SERVER_ERROR, "Email already exists")
-        case _ => dalUser.insertUser(model) map (a => resultSync(new RegisterRequestDTO(a)))
+      val f = userRepo.getUserByEmail(u.login) flatMap {
+        case Some(_) => error(Status.INTERNAL_SERVER_ERROR -> ErrorMessages.EMAIL_ALREADY_EXISTS)
+        case _ => userRepo.insertUser(model) map (a => resultSync(new RegisterRequestDTO(a)))
       }
 
-      f recover { case e: Throwable => resultExSync(e, "registerUser") }
+      f recover { case e: Throwable => exSync(e) }
     } catch {
-      case e: Throwable => resultEx(e, "registerUser")
+      case e: Throwable => ex(e)
     }
   }
 
   override def getUserByToken(token: String): Result[UserDTO] = {
     val f: Result[UserDTO] = for {
-      at <- dalAuth.findAccessToken(token)
-      data <- dalAuth.findAuthInfoByAccessToken(at.getOrElse(throw new Exception("Token not found")))
+      optAccessToken <- authRepo.findAccessToken(token)
+      data <- optAccessToken match {
+        case Some(at) => authRepo.findAuthInfoByAccessToken(at)
+        case _ => Future.successful(None)
+      }
     } yield data match {
       case Some(info) => resultSync(new UserDTO(info.user))
-      case _ => resultErrorSync(404, "User not found by access token")
+      case _ => errorSync(404, ErrorMessages.NOT_FOUND)
     }
 
     f recover {
-      case e: Throwable => resultExSync(e, "getUserByToken")
+      case e: Throwable => exSync(e)
     }
 
   }
 
   override def searchUsers(email: Option[String], nick: Option[String]): Result[UsersDTO] = {
-    val f = dalUser.searchUsers(email, nick).map(lst => resultSync(UsersDTO(lst.map(u => new UserDTO(u)))))
-    f.recover {
-      case e: Throwable => resultExSync(e, "searchUsers")
-    }
+    userRepo
+      .searchUsers(email, nick)
+      .map(lst => resultSync(UsersDTO(lst.map(u => new UserDTO(u)))))
+      .recover {
+        case e: Throwable => exSync(e)
+      }
   }
 
+  override def updateUser(dto: UserDTO): Result[UserDTO] =
+    userRepo.getUserById(userId) flatMap {
+      case Some(u) =>
+        userRepo
+          .updateUser(u.copy(nick = dto.nick, password = dto.password))
+          .map(r => resultSync(new UserDTO(r)))
+      case None => error(404 -> ErrorMessages.NOT_FOUND)
+    }
 }
 

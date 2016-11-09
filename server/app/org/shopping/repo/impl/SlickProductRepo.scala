@@ -1,7 +1,7 @@
-package org.shopping.dal.impl
+package org.shopping.repo.impl
 
 import com.google.inject.Inject
-import org.shopping.dal._
+import org.shopping.repo._
 import org.shopping.db._
 import org.shopping.models.{Product, ProductPrice, Supplier}
 import org.shopping.util.Time._

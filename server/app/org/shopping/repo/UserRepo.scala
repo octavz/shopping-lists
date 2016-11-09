@@ -1,6 +1,5 @@
-package org.shopping.dal
+package org.shopping.repo
 
-import org.shopping.db._
 import org.shopping.models.{User, UserSession}
 
 trait UserRepo {
@@ -9,11 +8,13 @@ trait UserRepo {
 
   def insertUser(user: User): Repo[User]
 
+  def updateUser(user: User): Repo[User]
+
   def findSessionById(id: String): Repo[Option[UserSession]]
 
   def deleteSessionByUser(uid: String): Repo[Int]
 
-  def getUserById(uid: String): Repo[User]
+  def getUserById(uid: String): Repo[Option[User]]
 
   def getUserByEmail(email: String): Repo[Option[User]]
 

@@ -118,7 +118,11 @@
     <option name="PREFERRED_PROJECT_CODE_STYLE" value="Default (1)" />
   </component>
   <component name="ProjectDictionaryState">
-    <dictionary name="ozaharia" />
+    <dictionary name="ozaharia">
+      <words>
+        <w>guid</w>
+      </words>
+    </dictionary>
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -245,9 +249,6 @@
   </component>
   <component name="ScalaCompilerConfiguration">
     <profile name="SBT 1" modules="main">
-      <option name="postfixOps" value="true" />
-      <option name="reflectiveCalls" value="true" />
-      <option name="higherKinds" value="true" />
       <option name="deprecationWarnings" value="true" />
       <option name="uncheckedWarnings" value="true" />
       <option name="featureWarnings" value="true" />

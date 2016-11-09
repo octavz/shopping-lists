@@ -19,4 +19,6 @@ trait UserService extends BaseService {
 
   def searchUsers(email: Option[String], nick: Option[String]): Result[UsersDTO]
 
+  def updateUser(u: UserDTO): Result[UserDTO]
+
 }

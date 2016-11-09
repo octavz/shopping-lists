@@ -3,7 +3,7 @@ package org.shopping.controllers
 import com.google.inject.AbstractModule
 import org.junit.runner._
 import org.shopping.config.RunModule
-import org.shopping.dal.Oauth2Repo
+import org.shopping.repo.Oauth2Repo
 import org.shopping.dto._
 import org.shopping.services._
 import org.specs2.mock.Mockito
@@ -29,6 +29,7 @@ class UserAppSpec extends PlaySpecification with Mockito {
       bind(classOf[Oauth2Repo]).toInstance(mock[Oauth2Repo])
       bind(classOf[ListService]).toInstance(mock[ListService])
       bind(classOf[ProductService]).toInstance(mock[ProductService])
+      bind(classOf[MainService]).toInstance(mock[MainService])
     }
   }
 

@@ -1,10 +1,10 @@
 package org.shopping.services.impl
 
 import com.google.inject.Inject
-import org.shopping.dal._
+import org.shopping.repo._
 import org.shopping.dto._
 import org.shopping.services.{ProductService, _}
-import org.shopping.util.{Constants, Gen}
+import org.shopping.util.{Constants, ErrorMessages, Gen}
 import play.api.http.Status
 
 import scala.concurrent.ExecutionContext.Implicits._
@@ -17,7 +17,7 @@ class DefaultProductService @Inject()(dalUser: UserRepo, dalProduct: ProductRepo
     dalProduct
       .insertProduct(model)
       .map(p => resultSync(new ProductDTO(model)))
-      .recover { case e: Throwable => resultExSync(e, "insertProduct") }
+      .recover { case e: Throwable => exSync(e, "insertProduct") }
   }
 
   //  def createIfNotExists(productId: String): Future[Product] =
@@ -35,7 +35,7 @@ class DefaultProductService @Inject()(dalUser: UserRepo, dalProduct: ProductRepo
     val f = if (dto.id.isEmpty) Future.failed(new Exception("Product has empty id"))
     else checkUser(valid(dto.id.get)) {
       dalProduct.getProductById(dto.id.get) flatMap {
-        case None => resultError(Status.NOT_FOUND, "Product not found")
+        case None => error(errCode = Status.NOT_FOUND, errMessage = ErrorMessages.NOT_FOUND)
         case Some(existing) =>
           val newProduct = existing.copy(name = dto.name, description = dto.description)
           dalProduct.updateProduct(newProduct) map { p =>
@@ -44,7 +44,7 @@ class DefaultProductService @Inject()(dalUser: UserRepo, dalProduct: ProductRepo
       }
     }
 
-    f recover { case e: Throwable => resultExSync(e, "updateProduct") }
+    f recover { case e: Throwable => exSync(e, "updateProduct") }
   }
 
   private def valid(id: String): Future[Boolean] = Future.successful(true)
@@ -61,10 +61,10 @@ class DefaultProductService @Inject()(dalUser: UserRepo, dalProduct: ProductRepo
               resultSync(BooleanDTO(true))
           }
         case None =>
-          resultError(Status.NOT_FOUND, "Product not found")
+          error(errCode = Status.NOT_FOUND, errMessage = ErrorMessages.NOT_FOUND)
       }
     } recover {
-      case e: Throwable => resultExSync(e, "deleteProduct")
+      case e: Throwable => exSync(e, "deleteProduct")
     }
 
   override def insertSupplier(dto: SupplierDTO): Result[SupplierDTO] = checkUser(valid()) {
@@ -73,7 +73,7 @@ class DefaultProductService @Inject()(dalUser: UserRepo, dalProduct: ProductRepo
       .map(a => resultSync(new SupplierDTO(a)))
       .recover {
         case e: Throwable =>
-          resultExSync(e, "insertSupplier")
+          exSync(e, "insertSupplier")
       }
   }
 
@@ -83,7 +83,7 @@ class DefaultProductService @Inject()(dalUser: UserRepo, dalProduct: ProductRepo
       .map(a => resultSync(new ProductPriceDTO(a)))
       .recover {
         case e: Throwable =>
-          resultExSync(e, "insertProductPrice")
+          exSync(e, "insertProductPrice")
       }
   }
 
@@ -93,7 +93,7 @@ class DefaultProductService @Inject()(dalUser: UserRepo, dalProduct: ProductRepo
         val newModel = pp.copy(price = dto.price)
         dalProduct.updateProductPrice(newModel).map(r => resultSync(new ProductPriceDTO(r)))
       case _ =>
-        resultError(Status.NOT_FOUND, "ProductPrice not found")
+        error(errCode = Status.NOT_FOUND, errMessage = ErrorMessages.NOT_FOUND)
     }
   }
 

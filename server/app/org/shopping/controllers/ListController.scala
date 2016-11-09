@@ -1,9 +1,9 @@
 package org.shopping.controllers
 
-
 import com.google.inject.Inject
 import org.shopping.dto._
 import org.shopping.services.ListService
+import org.shopping.util.ErrorMessages
 import play.api.libs.json.JsResultException
 import play.api.mvc._
 
@@ -27,7 +27,7 @@ class ListController @Inject()(listService: ListService) extends BaseController(
         } catch {
           case e: Throwable => asyncBadRequest(e)
         }
-      }.getOrElse(asyncBadRequest(new Exception("Bad Json")))
+      }.getOrElse(asyncBadRequest(new Exception(ErrorMessages.BAD_JSON)))
   }
 
   def updateList(id: String) = Action.async {
@@ -47,22 +47,21 @@ class ListController @Inject()(listService: ListService) extends BaseController(
         } catch {
           case e: Throwable => asyncBadRequest(e)
         }
-      }.getOrElse(asyncBadRequest("Bad Json"))
+      }.getOrElse(asyncBadRequest(ErrorMessages.BAD_JSON))
   }
 
-  def getUserLists(userId: String, offset: Int, count: Int) =
-    Action.async {
-      implicit request =>
-        try {
-          authorize {
-            implicit authInfo =>
-              listService.getUserLists(userId, offset, count) map (response(_))
-          }
-        } catch {
-          case e: Throwable => asyncBadRequest(e)
+  def getUserLists(userId: String, offset: Int, count: Int) = Action.async {
+    implicit request =>
+      try {
+        authorize {
+          implicit authInfo =>
+            listService.getUserLists(userId, offset, count) map (response(_))
         }
+      } catch {
+        case e: Throwable => asyncBadRequest(e)
+      }
 
-    }
+  }
 
   def addListItems(listId: String) = Action.async {
     implicit request =>
@@ -81,7 +80,7 @@ class ListController @Inject()(listService: ListService) extends BaseController(
         } catch {
           case e: Throwable => asyncBadRequest(e)
         }
-      }.getOrElse(asyncBadRequest("Bad Json"))
+      }.getOrElse(asyncBadRequest(ErrorMessages.BAD_JSON))
   }
 
   def getListItems(listId: String) = Action.async {
@@ -96,14 +95,12 @@ class ListController @Inject()(listService: ListService) extends BaseController(
       }
   }
 
-  def deleteList(listId: String) =
-    Action.async {
-      implicit request =>
-        authorize {
-          implicit authInfo =>
-            listService.deleteList(listId) map (response(_))
-        }
-    }
-
+  def deleteList(listId: String) = Action.async {
+    implicit request =>
+      authorize {
+        implicit authInfo =>
+          listService.deleteList(listId) map (response(_))
+      }
+  }
 
 }

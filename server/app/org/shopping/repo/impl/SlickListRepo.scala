@@ -1,7 +1,7 @@
-package org.shopping.dal.impl
+package org.shopping.repo.impl
 
 import com.google.inject.Inject
-import org.shopping.dal._
+import org.shopping.repo._
 import org.shopping.db._
 import org.shopping.models.{ListDef, ListDefProduct, ListUser}
 import org.shopping.util.Constants
@@ -33,7 +33,11 @@ class SlickListRepo @Inject()(protected val dbConfigProvider: DatabaseConfigProv
   }
 
   override def getUserLists(uid: String, offset: Int, count: Int): Repo[(Seq[ListDef], Int)] = {
-    val query = ListDefs.filter(d => d.userId === uid && d.status =!= Constants.STATUS_DELETE)
+    val query = for {
+      (l,_) <- (ListDefs joinLeft ListsUsers on (_.userId === _.userId)).filter {
+        case (d, u) => (d.status =!= Constants.STATUS_DELETE) && (d.userId === uid || u.map(_.userId === uid))
+      }
+    } yield l
 
     val action = for {
       l <- query.drop(offset).take(count).result
@@ -57,7 +61,7 @@ class SlickListRepo @Inject()(protected val dbConfigProvider: DatabaseConfigProv
     if (model.nonEmpty) {
       val query = for {
         _ <- ListDefProducts.filter(_.listDefId === listId).delete
-        _ <- ListDefProducts ++= model.map(_.copy(updated = n).asInstanceOf[ListDefProduct])
+        _ <- ListDefProducts ++= model.map(_.copy(updated = n))
         ret <- ListDefProducts.filter(_.listDefId === listId).result
       } yield ret
       db.run(query.transactionally)

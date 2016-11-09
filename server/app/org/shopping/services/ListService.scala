@@ -1,6 +1,6 @@
 package org.shopping.services
 
-import org.shopping.dto.{BooleanDTO, ListDTO, ListItemsDTO, ListsDTO}
+import org.shopping.dto._
 
 trait ListService extends BaseService {
 

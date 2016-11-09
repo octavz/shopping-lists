@@ -1,10 +1,9 @@
-package org.shopping.dal
+package org.shopping.repo
 
 import com.google.inject.AbstractModule
 import org.shopping.config.RunModule
-import org.shopping.db._
 import org.shopping.models.User
-import org.shopping.services.{ListService, ProductService, UserService}
+import org.shopping.services.{ListService, MainService, ProductService, UserService}
 import org.shopping.util.Gen._
 import org.shopping.util.Time._
 import org.specs2.execute.AsResult
@@ -24,7 +23,7 @@ import slick.jdbc.JdbcBackend
 import scala.concurrent.duration._
 import scala.concurrent.{Future, _}
 
-class BaseDALSpec extends PlaySpecification with Mockito {
+class BaseRepoSpec extends PlaySpecification with Mockito {
 
   case class TestEnv(app: Application
                      , dbConfigProvider: DatabaseConfigProvider
@@ -72,6 +71,7 @@ class BaseDALSpec extends PlaySpecification with Mockito {
       bind(classOf[ProductService]).toInstance(mock[ProductService])
       bind(classOf[ListService]).toInstance(mock[ListService])
       bind(classOf[UserService]).toInstance(mock[UserService])
+      bind(classOf[MainService]).toInstance(mock[MainService])
       bind(classOf[Oauth2Repo]).toInstance(mock[Oauth2Repo])
     }
   }

@@ -1,8 +1,7 @@
-package org.shopping.dal
+package org.shopping.repo
 
 import org.junit.runner._
-import org.shopping.dal.impl.SlickUserRepo
-import org.shopping.db._
+import org.shopping.repo.impl.{SlickUserRepo, TestCaching}
 import org.shopping.models.{User, UserSession}
 import org.shopping.util.Gen._
 import org.specs2.runner._
@@ -10,41 +9,34 @@ import org.specs2.runner._
 import scala.concurrent._
 import scala.concurrent.duration._
 
-/**
-  * .
-  * main test class for DefaultAssetServiceComponent
-  * it mocks AssetRepoComponent
-  */
 @RunWith(classOf[JUnitRunner])
-class UserDALSpec extends BaseDALSpec {
+class UserRepoSpec extends BaseRepoSpec {
 
   "User DAL" should {
 
     "insertSession, findSessionById, deleteSessionByUser" in {
       test { env =>
-        val dao = new SlickUserRepo(env.dbConfigProvider/*, new TestCaching*/)
+        val dao = new SlickUserRepo(env.dbConfigProvider, new TestCaching)
         val us = UserSession(id = guid, userId = "1")
-        val res = Await.result(dao.insertSession(us), Duration.Inf)
+        Await.ready(dao.insertSession(us), Duration.Inf)
         val ret = Await.result(dao.findSessionById(us.id), Duration.Inf)
-        val v = ret.asInstanceOf[Option[UserSession]]
-        v must beSome
-        v === Some(us)
+        ret must beSome
+        ret.get.id === us.id
+        ret.get.userId === us.userId
         val retDelete = Await.result(dao.deleteSessionByUser(us.userId), Duration.Inf)
-        retDelete.asInstanceOf[Int] === 1
+        retDelete === 1
       }
     }
 
     "insertUser,getUserById, getUserByEmail" in {
       test { env =>
-        val dao = new SlickUserRepo(env.dbConfigProvider/*, new TestCaching*/)
+        val dao = new SlickUserRepo(env.dbConfigProvider, new TestCaching)
         val usr = newUser
-        val res = Await.result(dao.insertUser(usr), Duration.Inf)
+        Await.ready(dao.insertUser(usr), Duration.Inf)
         val ret = Await.result(dao.getUserById(usr.id), Duration.Inf)
-        val v = ret.asInstanceOf[User]
-        v === usr
+        ret.get === usr
         val ret1 = Await.result(dao.getUserByEmail(usr.login), Duration.Inf)
-        val v1 = ret.asInstanceOf[User]
-        v1 === usr
+        ret1.get === usr
       }
     }
 

@@ -1,11 +1,12 @@
 package org.shopping.services
 
 import org.junit.runner._
-import org.shopping.dal._
+import org.shopping.repo._
 import org.shopping.db._
 import org.shopping.dto.RegisterRequestDTO
 import org.shopping.models.{User, UserSession}
 import org.shopping.services.impl._
+import org.shopping.util.ErrorMessages
 import org.shopping.util.Gen._
 import org.shopping.util.Time._
 import org.specs2.mock._
@@ -26,20 +27,14 @@ class UserServiceSpec extends Specification with Mockito {
   def userModule(dalUser: UserRepo = mock[UserRepo], dalAuth: Oauth2Repo = mock[Oauth2Repo]): MockContext = {
     val ret = new DefaultUserService(dalUser, dalAuth)
     ret.setAuth(AuthInfo[User](user =
-      User(id = guid, login = guid, password = guid, created = now, updated = now,
+      User(id = guid, login = guid, password = guid, created = now(), updated = now(),
         lastLogin = nowo, providerToken = guido, nick = guid), Some("1"), None, None))
     MockContext(ret, dalUser, dalAuth)
   }
 
-  /**
-    * generates  strings to be used in test
-    *
-    * @param size the size of the string
-    * @return the generated string
-    */
   def genString(size: Int): String = (for (i <- 1 to size) yield "a").mkString
 
-  def newUser = User(id = guid, login = guid, providerToken = None, created = now, updated = now, lastLogin = None, password = guid, nick = guid)
+  def newUser = User(id = guid, login = guid, providerToken = None, created = now(), updated = now(), lastLogin = None, password = guid, nick = guid)
 
   "User module" should {
 
@@ -63,7 +58,7 @@ class UserServiceSpec extends Specification with Mockito {
       val id = guid
       val m = userModule()
 
-      m.dalUser.getUserById(id) returns Future.successful(newUser.copy(id = id))
+      m.dalUser.getUserById(id) returns Future.successful(Some(newUser.copy(id = id)))
       val s = Await.result(m.userModule.getUserById(id), duration)
       there was one(m.dalUser).getUserById(id)
     }
@@ -71,8 +66,8 @@ class UserServiceSpec extends Specification with Mockito {
     "implement register and call dal" in {
       val u = RegisterRequestDTO(login = guid, password = guid)
       val m = userModule()
-      m.dalUser.insertUser(any[User]) answers (a => dal(a.asInstanceOf[User]))
-      m.dalUser.getUserByEmail(any[String]) returns dal(None)
+      m.dalUser.insertUser(any[User]) answers (a => repo(a.asInstanceOf[User]))
+      m.dalUser.getUserByEmail(any[String]) returns repo(None)
       val s = Await.result(m.userModule.registerUser(u), duration)
       there was one(m.dalUser).getUserByEmail(anyString)
       there was one(m.dalUser).insertUser(any[User])
@@ -82,8 +77,8 @@ class UserServiceSpec extends Specification with Mockito {
     "not call insert if email already exists" in {
       val u = RegisterRequestDTO(login = guid, password = guid)
       val m = userModule()
-      m.dalUser.insertUser(any[User]) answers (a => dal(a.asInstanceOf[User]))
-      m.dalUser.getUserByEmail(any[String]) returns dal(Some(newUser))
+      m.dalUser.insertUser(any[User]) answers (a => repo(a.asInstanceOf[User]))
+      m.dalUser.getUserByEmail(any[String]) returns repo(Some(newUser))
 
       val s = Await.result(m.userModule.registerUser(u), duration)
 
@@ -91,15 +86,8 @@ class UserServiceSpec extends Specification with Mockito {
       there was no(m.dalUser).insertUser(any[User])
       s must beLeft
       s.errCode === 500
-      s.errMessage must contain("Email already exists")
+      s.errMessage === ErrorMessages.EMAIL_ALREADY_EXISTS
     }
 
-    "work wih chaining" in {
-
-      val f1: Future[Either[String, Int]] = Future.successful(Right(1))
-
-      val res = f1 >>= (v0 => Future.successful(Right((v0, "test")))) >>= { case (a, b) => Future.successful(Right(s"$b$a")) }
-      Await.result(res, Duration.Inf) === Right("test1")
-    }
   }
 }

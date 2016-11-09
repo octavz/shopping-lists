@@ -1,7 +1,7 @@
 package org.shopping.controllers
 
 import com.google.inject.Inject
-import org.shopping.dal.Oauth2Repo
+import org.shopping.repo.Oauth2Repo
 import org.shopping.dto.{ErrorDTO, JsonDTOFormats}
 import org.shopping.models.User
 import org.shopping.services.BaseService

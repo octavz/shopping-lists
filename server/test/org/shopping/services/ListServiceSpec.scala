@@ -1,10 +1,9 @@
 package org.shopping.services
 
 import org.junit.runner._
-import org.shopping.dal._
-import org.shopping.db._
+import org.shopping.repo._
 import org.shopping.dto._
-import org.shopping.models.{ListDef, ListDefProduct, User}
+import org.shopping.models.{ListDef, ListDefProduct, Product, User}
 import org.shopping.services.impl._
 import org.shopping.util.Gen._
 import org.shopping.util.Time._
@@ -24,12 +23,13 @@ class ListServiceSpec extends Specification with Mockito {
     User(id = guid, login = guid, password = guid, created = now(), updated = now(),
       lastLogin = nowo, providerToken = guido, nick = guid), Some("1"), None, None)
 
-  case class MockedContext(listService: DefaultListService, dalUser: UserRepo, dalList: ListRepo)
+  case class MockedContext(listService: DefaultListService, userRepo: UserRepo, listRepo: ListRepo, productRepo: ProductRepo)
 
-  def module(dalUser: UserRepo = mock[UserRepo], dalList: ListRepo = mock[ListRepo]) = {
-    val ret = new DefaultListService(dalUser, dalList)
+  def service(userRepo: UserRepo = mock[UserRepo], listRepo: ListRepo = mock[ListRepo], productRepo: ProductRepo = mock[ProductRepo]) = {
+    val ret = new DefaultListService(userRepo, listRepo, productRepo)
+    productRepo.insertProducts(any[Seq[Product]]) answers (a => repo(a.asInstanceOf[Seq[Product]]))
     ret.setAuth(authInfo)
-    MockedContext(ret, dalUser, dalList)
+    MockedContext(ret, userRepo, listRepo, productRepo)
   }
 
   def genString(size: Int): String = (for (i <- 1 to size) yield "a").mkString
@@ -39,52 +39,52 @@ class ListServiceSpec extends Specification with Mockito {
 
   "List module" should {
 
-    "implement insertList and call dal" in {
-      val m = module()
+    "implement insertList and call repo" in {
+      val m = service()
       val dto = ListDTO(id = guido, name = guid, description = guido, userId = Some("userId"), created = 1000)
 
-      m.dalList.insertList(any[ListDef]) answers (a => dal(a.asInstanceOf[ListDef]))
+      m.listRepo.insertList(any[ListDef]) answers (a => repo(a.asInstanceOf[ListDef]))
 
       val s = Await.result(m.listService.insertList(dto), Duration.Inf)
-      there was one(m.dalList).insertList(any[ListDef])
+      there was one(m.listRepo).insertList(any[ListDef])
       s must beRight
     }
 
-    "implement updateList and call dal" in {
-      val m = module()
+    "implement updateList and call repo" in {
+      val m = service()
       val dto = ListDTO(id = guido, name = guid, description = guido, userId = Some("userId"), created = 1000)
 
-      m.dalList.updateList(any[ListDef]) answers (a => dal(a.asInstanceOf[ListDef]))
-      m.dalList.getListDefById(any) returns dal(Some(genListDef(authInfo.user.id)))
-      m.dalList.getListUsers(any) returns dal(Seq(authInfo.user.id))
+      m.listRepo.updateList(any[ListDef]) answers (a => repo(a.asInstanceOf[ListDef]))
+      m.listRepo.getListDefById(any) returns repo(Some(genListDef(authInfo.user.id)))
+      m.listRepo.getListUsers(any) returns repo(Seq(authInfo.user.id))
       val s = Await.result(m.listService.updateList(dto), Duration.Inf)
-      there was one(m.dalList).updateList(any[ListDef])
-      there was one(m.dalList).getListDefById(dto.id.get)
+      there was one(m.listRepo).updateList(any[ListDef])
+      there was one(m.listRepo).getListDefById(dto.id.get)
       s must beRight
     }
 
-    "return right error when dal crashes" in {
-      val m = module()
+    "return right error when repo crashes" in {
+      val m = service()
       val dto = ListDTO(id = guido, name = guid, description = guido, userId = Some("userId"), created = 1000)
 
-      m.dalList.insertList(any[ListDef]) returns Future.failed(new Exception("test"))
+      m.listRepo.insertList(any[ListDef]) returns Future.failed(new Exception("test"))
       val s = Await.result(m.listService.insertList(dto), Duration.Inf)
-      there was one(m.dalList).insertList(any[ListDef])
+      there was one(m.listRepo).insertList(any[ListDef])
       s must beLeft
-      val ErrorDTO(code, message) = s.merge.asInstanceOf[ResultError]
+      val ErrorDTO(code, message) = s.merge.asInstanceOf[ErrorDTO]
       code === Status.INTERNAL_SERVER_ERROR
-      message === "test"
+      message === "insertList"
     }
 
     "implement get user lists" in {
-      val m = module()
-      m.dalList.getUserLists(anyString, any, any) returns dal((Seq(), 1))
+      val m = service()
+      m.listRepo.getUserLists(anyString, any, any) returns repo((Seq(), 1))
       val s = m.listService.getUserLists(m.listService.userId, 0, 100)
       s must not be null
     }
 
-    "get user lists and call dal" in {
-      val m = module()
+    "get user lists and call repo" in {
+      val m = service()
       val listDef = ListDef(
         id = guid,
         userId = "1",
@@ -93,11 +93,11 @@ class ListServiceSpec extends Specification with Mockito {
         createdClient = now(),
         created = now(),
         updated = now())
-      m.dalList.getUserLists(anyString, any, any) returns dal((Seq(listDef), 1))
+      m.listRepo.getUserLists(anyString, any, any) returns repo((Seq(listDef), 1))
 
       val s = Await.result(m.listService.getUserLists(m.listService.userId, 0, 100), Duration.Inf)
 
-      there was one(m.dalList).getUserLists(m.listService.authData.user.id, 0, 100)
+      there was one(m.listRepo).getUserLists(m.listService.authData.user.id, 0, 100)
       s must beRight
       val ret = s.merge.asInstanceOf[ListsDTO]
       ret.items.size === 1
@@ -106,70 +106,70 @@ class ListServiceSpec extends Specification with Mockito {
       ret.items.head.description === listDef.description
     }
 
-    "get user list should handle dal errors" in {
-      val m = module()
-      m.dalList.getUserLists(anyString, any, any) returns dalErr("Test error")
+    "get user list should handle repo errors" in {
+      val m = service()
+      m.listRepo.getUserLists(anyString, any, any) returns repoErr("Test error")
       val s = Await.result(m.listService.getUserLists(m.listService.authData.user.id, 0, 100), Duration.Inf)
-      there was one(m.dalList).getUserLists(m.listService.authData.user.id, 0, 100)
+      there was one(m.listRepo).getUserLists(m.listService.authData.user.id, 0, 100)
       s must beLeft
-      val ErrorDTO(code, message) = s.merge.asInstanceOf[ResultError]
+      val ErrorDTO(code, message) = s.merge.asInstanceOf[ErrorDTO]
       code === Status.INTERNAL_SERVER_ERROR
-      message === "Test error"
+      message === "getUserLists"
     }
 
     "get user lists and handle future failure" in {
-      val m = module()
+      val m = service()
 
-      m.dalList.getUserLists(anyString, any, any) returns Future.failed(new RuntimeException("test future"))
+      m.listRepo.getUserLists(anyString, any, any) returns Future.failed(new RuntimeException("test future"))
 
       val s = Await.result(m.listService.getUserLists(m.listService.authData.user.id, 0, 100), Duration.Inf)
-      there was one(m.dalList).getUserLists(m.listService.authData.user.id, 0, 100)
+      there was one(m.listRepo).getUserLists(m.listService.authData.user.id, 0, 100)
       s must beLeft
-      val ErrorDTO(code, message) = s.merge.asInstanceOf[ResultError]
+      val ErrorDTO(code, message) = s.merge.asInstanceOf[ErrorDTO]
       code === Status.INTERNAL_SERVER_ERROR
-      message === "test future"
+      message === "getUserLists"
     }
 
     "add items to list will not clone if owned" in {
-      val m = module()
+      val m = service()
       val listId = "listId"
-      val items = ListItemsDTO(Seq(ListItemDTO("prodId", 10, None)), None)
+      val items = ListItemsDTO(Seq(ListItemDTO(Some("prodId"), 10, None)), None)
 
       val listDef = ListDef(id = guid, userId = authInfo.user.id, name = guid,
         description = guido, createdClient = now(), created = now(), updated = now())
       val listProduct = ListDefProduct(listDef.id, "p1", None, 0, 0, now(), now())
 
-      m.dalList.getListDefById(any) returns Future.successful(Some(listDef))
-      m.dalList.insertList(any[ListDef]) answers (a => dal(a.asInstanceOf[ListDef]))
-      m.dalList.replaceListItems(any, any) returns Future.successful(Seq(listProduct))
-      m.dalList.getListProductsByList(listId) returns Future.successful(Seq(listProduct))
+      m.listRepo.getListDefById(any) returns Future.successful(Some(listDef))
+      m.listRepo.insertList(any[ListDef]) returns repo(listDef)
+      m.listRepo.replaceListItems(any, any) returns Future.successful(Seq(listProduct))
+      m.listRepo.getListProductsByList(listDef.id) returns Future.successful(Seq(listProduct))
 
       val s = Await.result(m.listService.addListItems(listId, items), Duration.Inf)
 
-      there was no(m.dalList).insertList(any)
-      there was one(m.dalList).replaceListItems(any, any)
+      there was no(m.listRepo).insertList(any)
+      there was one(m.listRepo).replaceListItems(any, any)
       s must beRight
       val ret = s.merge.asInstanceOf[ListItemsDTO]
       ret.items.size === 1
     }
 
     "add items to list will clone not owned" in {
-      val m = module()
+      val m = service()
       val listId = "listId"
-      val items = ListItemsDTO(Seq(ListItemDTO("prodId", 10, None)), None)
+      val items = ListItemsDTO(Seq(ListItemDTO(Some("prodId"), 10, None)), None)
 
       val listDef = ListDef(id = guid, userId = "1", name = guid,
         description = guido, createdClient = now(), created = now(), updated = now())
       val listProduct = ListDefProduct(listDef.id, "p1", None, 0, 0, now(), now())
-      m.dalList.getListDefById(any) returns Future.successful(Some(listDef))
-      m.dalList.insertList(any[ListDef]) answers (a => dal(a.asInstanceOf[ListDef]))
-      m.dalList.replaceListItems(any, any) returns Future.successful(Seq(listProduct))
-      m.dalList.getListProductsByList(listId) returns Future.successful(Seq(listProduct))
+      m.listRepo.getListDefById(any) returns Future.successful(Some(listDef))
+      m.listRepo.insertList(any[ListDef]) answers (a => repo(listDef))
+      m.listRepo.replaceListItems(any, any) returns Future.successful(Seq(listProduct))
+      m.listRepo.getListProductsByList(listDef.id) returns Future.successful(Seq(listProduct))
 
       val s = Await.result(m.listService.addListItems(listId, items), Duration.Inf)
 
-      there was one(m.dalList).insertList(any)
-      there was one(m.dalList).replaceListItems(any, any)
+      there was one(m.listRepo).insertList(any)
+      there was one(m.listRepo).replaceListItems(any, any)
       s must beRight
       val ret = s.merge.asInstanceOf[ListItemsDTO]
       ret.items.size === 1

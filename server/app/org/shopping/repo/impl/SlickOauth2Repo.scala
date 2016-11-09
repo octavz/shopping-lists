@@ -1,9 +1,9 @@
-package org.shopping.dal.impl
+package org.shopping.repo.impl
 
 import java.util.Date
 import javax.inject.Inject
 
-import org.shopping.dal.Oauth2Repo
+import org.shopping.repo.Oauth2Repo
 import org.shopping.db._
 import org.shopping.models.{AccessToken, AuthCode, User}
 import org.shopping.util.{Crypto, Time}

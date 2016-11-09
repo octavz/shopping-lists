@@ -1,8 +1,8 @@
 package org.shopping.config
 
 import com.google.inject.AbstractModule
-import org.shopping.dal.impl._
-import org.shopping.dal.{ListRepo, Oauth2Repo, ProductRepo, UserRepo}
+import org.shopping.repo.impl._
+import org.shopping.repo._
 import org.shopping.services.impl._
 import org.shopping.services._
 
@@ -15,6 +15,8 @@ class RunModule extends AbstractModule {
     bind(classOf[ListService]).to(classOf[DefaultListService])
     bind(classOf[UserService]).to(classOf[DefaultUserService])
     bind(classOf[ProductService]).to(classOf[DefaultProductService])
+    bind(classOf[MainService]).to(classOf[DefaultMainService])
+    bind(classOf[Caching]).to(classOf[TestCaching])
   }
 
 }

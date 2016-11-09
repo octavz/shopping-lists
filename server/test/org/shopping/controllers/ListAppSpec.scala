@@ -2,7 +2,7 @@ package org.shopping.controllers
 
 import org.junit.runner._
 import org.shopping.config.RunModule
-import org.shopping.dal.Oauth2Repo
+import org.shopping.repo.Oauth2Repo
 import org.shopping.dto._
 import org.shopping.models.User
 import org.shopping.services._
@@ -49,6 +49,7 @@ class ListAppSpec extends PlaySpecification with Mockito {
       .overrides(bind[ListService].toInstance(mp))
       .overrides(bind[UserService].toInstance(mock[UserService]))
       .overrides(bind[ProductService].toInstance(mock[ProductService]))
+      .overrides(bind[MainService].toInstance(mock[MainService]))
       .overrides(bind[Oauth2Repo].toInstance(dalAuth))
       .build()
     MockContext(ret, mp, dalAuth, u)

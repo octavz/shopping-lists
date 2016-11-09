@@ -1,4 +1,4 @@
-package org.shopping.dal
+package org.shopping.repo
 
 import play.api.libs.json.Format
 
