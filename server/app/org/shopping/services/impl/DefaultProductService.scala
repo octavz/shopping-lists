@@ -17,25 +17,14 @@ class DefaultProductService @Inject()(dalUser: UserRepo, dalProduct: ProductRepo
     dalProduct
       .insertProduct(model)
       .map(p => resultSync(new ProductDTO(model)))
-      .recover { case e: Throwable => exSync(e, "insertProduct") }
+      .recover { case e: Throwable => exSync(e) }
   }
 
-  //  def createIfNotExists(productId: String): Future[Product] =
-  //    dalProduct.getProductById(productId) flatMap {
-  //      case Some(list) =>
-  //        val uid = authData.user.id
-  //        if (list.userId != userId) {
-  //          val ts = Time.now()
-  //          dalProduct.insertProduct(list.copy(id = Gen.guid, userId = uid, created = ts, createdClient = ts, updated = ts))
-  //        } else Future.successful(list)
-  //      case _ => throw new Exception("I couldn't find the list you look for.")
-  //    }
-
   override def updateProduct(dto: ProductDTO): Result[ProductDTO] = {
-    val f = if (dto.id.isEmpty) Future.failed(new Exception("Product has empty id"))
+    val f = if (dto.id.isEmpty) error(401 -> ErrorMessages.EMPTY_ID)
     else checkUser(valid(dto.id.get)) {
       dalProduct.getProductById(dto.id.get) flatMap {
-        case None => error(errCode = Status.NOT_FOUND, errMessage = ErrorMessages.NOT_FOUND)
+        case None => error(Status.NOT_FOUND -> ErrorMessages.NOT_FOUND)
         case Some(existing) =>
           val newProduct = existing.copy(name = dto.name, description = dto.description)
           dalProduct.updateProduct(newProduct) map { p =>
@@ -44,12 +33,12 @@ class DefaultProductService @Inject()(dalUser: UserRepo, dalProduct: ProductRepo
       }
     }
 
-    f recover { case e: Throwable => exSync(e, "updateProduct") }
+    f recover { case e: Throwable => exSync(e) }
   }
 
-  private def valid(id: String): Future[Boolean] = Future.successful(true)
+  private def valid(id: String): Future[Boolean] = Future.successful(true) //check if the current user is allowed to do this
 
-  private def valid(): Future[Boolean] = Future.successful(true)
+  private def valid(): Future[Boolean] = Future.successful(true) //check if the current user is allowed to do this
 
   override def deleteProduct(productId: String): Result[BooleanDTO] =
     checkUser(valid(productId)) {
@@ -61,10 +50,10 @@ class DefaultProductService @Inject()(dalUser: UserRepo, dalProduct: ProductRepo
               resultSync(BooleanDTO(true))
           }
         case None =>
-          error(errCode = Status.NOT_FOUND, errMessage = ErrorMessages.NOT_FOUND)
+          error(Status.NOT_FOUND -> ErrorMessages.NOT_FOUND)
       }
     } recover {
-      case e: Throwable => exSync(e, "deleteProduct")
+      case e: Throwable => exSync(e)
     }
 
   override def insertSupplier(dto: SupplierDTO): Result[SupplierDTO] = checkUser(valid()) {
@@ -72,8 +61,7 @@ class DefaultProductService @Inject()(dalUser: UserRepo, dalProduct: ProductRepo
       .insertSupplier(dto.toModel(Gen.guid))
       .map(a => resultSync(new SupplierDTO(a)))
       .recover {
-        case e: Throwable =>
-          exSync(e, "insertSupplier")
+        case e: Throwable => exSync(e)
       }
   }
 
@@ -82,8 +70,7 @@ class DefaultProductService @Inject()(dalUser: UserRepo, dalProduct: ProductRepo
       .insertProductPrice(dto.toModel(Gen.guid))
       .map(a => resultSync(new ProductPriceDTO(a)))
       .recover {
-        case e: Throwable =>
-          exSync(e, "insertProductPrice")
+        case e: Throwable => exSync(e)
       }
   }
 
@@ -93,7 +80,7 @@ class DefaultProductService @Inject()(dalUser: UserRepo, dalProduct: ProductRepo
         val newModel = pp.copy(price = dto.price)
         dalProduct.updateProductPrice(newModel).map(r => resultSync(new ProductPriceDTO(r)))
       case _ =>
-        error(errCode = Status.NOT_FOUND, errMessage = ErrorMessages.NOT_FOUND)
+        error(Status.NOT_FOUND -> ErrorMessages.NOT_FOUND)
     }
   }
 

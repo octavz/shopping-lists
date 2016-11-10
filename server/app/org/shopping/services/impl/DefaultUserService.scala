@@ -16,11 +16,16 @@ import scalaoauth2.provider._
 
 class DefaultUserService @Inject()(userRepo: UserRepo, authRepo: Oauth2Repo) extends UserService {
 
-  override def createSession(accessToken: String): Result[String] = {
-    authRepo.findAuthInfoByAccessToken(scalaoauth2.provider.AccessToken(accessToken, None, None, None, new Date())) flatMap {
+  override def createSession(accessToken: String): Result[String] =
+    authRepo.findAuthInfoByAccessToken(
+      scalaoauth2.provider.AccessToken(token = accessToken,
+        refreshToken = None,
+        scope = None,
+        expiresIn = None,
+        createdAt = new Date())) flatMap {
       authInfo =>
         if (authInfo.isEmpty) {
-          error(errCode = Status.NOT_FOUND, errMessage = ErrorMessages.NOT_FOUND)
+          error(Status.NOT_FOUND -> ErrorMessages.NOT_FOUND)
         } else {
           val model = UserSession(userId = authInfo.get.user.id, id = accessToken)
           val f = for {
@@ -33,7 +38,6 @@ class DefaultUserService @Inject()(userRepo: UserRepo, authRepo: Oauth2Repo) ext
           }
         }
     }
-  }
 
   override def login(request: AuthorizationRequest): Future[Either[OAuthError, GrantHandlerResult]] = {
     val ret = TokenEndpoint.handleRequest(request, authRepo)
@@ -87,13 +91,12 @@ class DefaultUserService @Inject()(userRepo: UserRepo, authRepo: Oauth2Repo) ext
     f recover {
       case e: Throwable => exSync(e)
     }
-
   }
 
   override def searchUsers(email: Option[String], nick: Option[String]): Result[UsersDTO] = {
     userRepo
       .searchUsers(email, nick)
-      .map(lst => resultSync(UsersDTO(lst.map(u => new UserDTO(u)))))
+      .map(lst => resultSync(UsersDTO(lst.map(new UserDTO(_)))))
       .recover {
         case e: Throwable => exSync(e)
       }

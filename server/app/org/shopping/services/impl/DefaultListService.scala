@@ -103,7 +103,7 @@ class DefaultListService @Inject()(userRepo: UserRepo, listRepo: ListRepo, produ
     case Some(id) =>
       checkUser(valid(id)) {
         listRepo.getListDefById(id) flatMap {
-          case None => error(errCode = Status.NOT_FOUND, errMessage = ErrorMessages.NOT_FOUND)
+          case None => error(Status.NOT_FOUND -> ErrorMessages.NOT_FOUND)
           case Some(list) => listRepo.updateList(dto.toModel(dto.id.get)) map {
             p =>
               resultSync(new ListDTO(p))
@@ -139,7 +139,7 @@ class DefaultListService @Inject()(userRepo: UserRepo, listRepo: ListRepo, produ
               resultSync(BooleanDTO(true))
           }
         case None =>
-          error(errCode = Status.NOT_FOUND, errMessage = ErrorMessages.NOT_FOUND)
+          error(Status.NOT_FOUND -> ErrorMessages.NOT_FOUND)
       }
     } recover {
       case e: Throwable => exSync(e, "deleteList")

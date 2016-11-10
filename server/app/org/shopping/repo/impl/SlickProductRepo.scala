@@ -1,9 +1,9 @@
 package org.shopping.repo.impl
 
 import com.google.inject.Inject
-import org.shopping.repo._
 import org.shopping.db._
 import org.shopping.models.{Product, ProductPrice, Supplier}
+import org.shopping.repo._
 import org.shopping.util.Time._
 import play.api.db.slick.{DatabaseConfigProvider, HasDatabaseConfigProvider}
 import slick.driver.JdbcProfile
@@ -29,7 +29,7 @@ class SlickProductRepo @Inject()(protected val dbConfigProvider: DatabaseConfigP
   }
 
   override def updateProduct(model: Product): Repo[Product] = model.update { m =>
-    db.run(Products.filter(_.id === model.id).update(m)) map (_ => m)
+    db.run(Products.filter(_.id === model.id).update(m)).map(_ => m)
   }
 
   override def getProductById(id: String): Repo[Option[Product]] =
@@ -45,8 +45,8 @@ class SlickProductRepo @Inject()(protected val dbConfigProvider: DatabaseConfigP
     db.run(ProductPrices += m).map(_ => m)
   }
 
-  override def searchProduct(name: String): Repo[Seq[Product]] = {
-    db.run(Products.filter(_.name like "%name%").result)
+  override def searchProduct(name: String): Repo[Seq[Product]] = db.run {
+    Products.filter(_.name like "%name%").result
   }
 
   override def getProductPrice(productId: String, supplierId: String): Repo[Option[ProductPrice]] = {

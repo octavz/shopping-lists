@@ -74,11 +74,11 @@ class ListAppSpec extends PlaySpecification with Mockito {
             }
             """)))
         page must beSome
+        val json = contentAsJson(page.get)
         status(page.get) === OK
         Await.ready(page.get, Duration.Inf)
         there was one(module.listModule).setAuth(authInfo)
         there was one(module.listModule).insertList(any[ListDTO])
-        val json = contentAsJson(page.get)
         json \ "name" === JsDefined(JsString("list"))
         json \ "description" === JsDefined(JsString("123456"))
       }

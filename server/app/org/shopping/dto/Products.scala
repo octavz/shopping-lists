@@ -1,17 +1,15 @@
 package org.shopping.dto
 
 import org.shopping.models._
-import org.shopping.util.Time
 
 case class ProductDTO(id: Option[String], name: String, description: Option[String] = None) {
 
   def this(model: Product) =
     this(id = Some(model.id), name = model.name, description = model.description)
 
-  def toModel(userId: String, id: String): Product = {
-    val n = Time.now()
-    Product(id = id, userId = userId, name = name, description = description, created = n, updated = n)
-  }
+  def toModel(userId: String, id: String): Product =
+    Product(id = id, userId = userId, name = name, description = description)
+
 }
 
 case class SuppliersDTO(items: Seq[SupplierDTO])
