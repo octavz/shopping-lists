@@ -11,12 +11,12 @@ package object models {
     val updated: Long
     type T <: BaseModel
 
-    def insert[S[_]](c: T => S[T]): S[T] = {
+    def touch2[S[_]](c: T => S[T]): S[T] = {
       val n = now()
       c(copyFn2(n, n))
     }
 
-    def update[S[_]](c: T => S[T]): S[T] = c(copyFn1(now()))
+    def touch1[S[_]](c: T => S[T]): S[T] = c(copyFn1(now()))
 
     def copyFn1(a: Long): T
 

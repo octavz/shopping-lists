@@ -19,7 +19,7 @@ class SlickListRepo @Inject()(protected val dbConfigProvider: DatabaseConfigProv
 
   import dbConfig.driver.api._
 
-  override def insertList(model: ListDef): Repo[ListDef] = model.insert { m =>
+  override def insertList(model: ListDef): Repo[ListDef] = model.touch2 { m =>
     val action = for {
       _ <- ListDefs += m
       _ <- ListsUsers += ListUser(m.id, m.userId)
@@ -28,7 +28,7 @@ class SlickListRepo @Inject()(protected val dbConfigProvider: DatabaseConfigProv
     db run action.transactionally map (_ => m)
   }
 
-  override def updateList(model: ListDef): Repo[ListDef] = model.update { m =>
+  override def updateList(model: ListDef): Repo[ListDef] = model.touch1 { m =>
     db.run(ListDefs.filter(_.id === m.id).update(m)) map (_ => m)
   }
 

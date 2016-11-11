@@ -18,7 +18,7 @@ class SlickProductRepo @Inject()(protected val dbConfigProvider: DatabaseConfigP
 
   import dbConfig.driver.api._
 
-  override def insertProduct(model: Product): Repo[Product] = model.insert { m =>
+  override def insertProduct(model: Product): Repo[Product] = model.touch2 { m =>
     db.run(Products += m).map(_ => m)
   }
 
@@ -28,7 +28,7 @@ class SlickProductRepo @Inject()(protected val dbConfigProvider: DatabaseConfigP
     db.run(Products ++= newModel).map(_ => newModel)
   }
 
-  override def updateProduct(model: Product): Repo[Product] = model.update { m =>
+  override def updateProduct(model: Product): Repo[Product] = model.touch1 { m =>
     db.run(Products.filter(_.id === model.id).update(m)).map(_ => m)
   }
 
@@ -37,11 +37,11 @@ class SlickProductRepo @Inject()(protected val dbConfigProvider: DatabaseConfigP
       Products.filter(_.id === id).result.headOption
     }
 
-  override def insertSupplier(model: Supplier): Repo[Supplier] = model.insert { m =>
+  override def insertSupplier(model: Supplier): Repo[Supplier] = model.touch2 { m =>
     db.run(Suppliers += model).map(_ => model)
   }
 
-  override def insertProductPrice(model: ProductPrice): Repo[ProductPrice] = model.insert { m =>
+  override def insertProductPrice(model: ProductPrice): Repo[ProductPrice] = model.touch2 { m =>
     db.run(ProductPrices += m).map(_ => m)
   }
 
@@ -55,7 +55,7 @@ class SlickProductRepo @Inject()(protected val dbConfigProvider: DatabaseConfigP
     }
   }
 
-  override def updateProductPrice(model: ProductPrice): Repo[ProductPrice] = model.update { m =>
+  override def updateProductPrice(model: ProductPrice): Repo[ProductPrice] = model.touch1 { m =>
     db.run {
       ProductPrices
         .filter(p => p.productId === m.productId && p.supplierId === m.supplierId)

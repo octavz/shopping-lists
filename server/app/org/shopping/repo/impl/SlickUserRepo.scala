@@ -19,7 +19,7 @@ class SlickUserRepo @Inject()(protected val dbConfigProvider: DatabaseConfigProv
 
   import profile.api._
 
-  override def insertSession(model: UserSession): Repo[UserSession] = model.insert { m =>
+  override def insertSession(model: UserSession): Repo[UserSession] = model.touch2 { m =>
     db.run(UserSessions += m).map(_ => m)
   }
 
@@ -37,7 +37,7 @@ class SlickUserRepo @Inject()(protected val dbConfigProvider: DatabaseConfigProv
       db.run(Users.filter(_.id === uid).result.headOption)
     }
 
-  override def insertUser(user: User): Repo[User] = user.insert { m =>
+  override def insertUser(user: User): Repo[User] = user.touch2 { m =>
     db.run(Users += m).map(_ => m)
   }
 
@@ -56,7 +56,7 @@ class SlickUserRepo @Inject()(protected val dbConfigProvider: DatabaseConfigProv
     r map (_.toSeq)
   }
 
-  override def updateUser(user: User): Repo[User] = user.update { m =>
+  override def updateUser(user: User): Repo[User] = user.touch1 { m =>
     db.run(Users.filter(_.id === m.id).update(m)).map(_ => m)
   }
 

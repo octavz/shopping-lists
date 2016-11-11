@@ -25,7 +25,8 @@ class ListServiceSpec extends Specification with Mockito {
 
   case class MockedContext(listService: DefaultListService, userRepo: UserRepo, listRepo: ListRepo, productRepo: ProductRepo)
 
-  def service(userRepo: UserRepo = mock[UserRepo], listRepo: ListRepo = mock[ListRepo], productRepo: ProductRepo = mock[ProductRepo]) = {
+  def service(userRepo: UserRepo = mock[UserRepo], listRepo: ListRepo = mock[ListRepo],
+    productRepo: ProductRepo = mock[ProductRepo]) = {
     val ret = new DefaultListService(userRepo, listRepo, productRepo)
     productRepo.insertProducts(any[Seq[Product]]) answers (a => repo(a.asInstanceOf[Seq[Product]]))
     ret.setAuth(authInfo)
@@ -133,7 +134,7 @@ class ListServiceSpec extends Specification with Mockito {
     "add items to list will not clone if owned" in {
       val m = service()
       val listId = "listId"
-      val items = ListItemsDTO(Seq(ListItemDTO(Some("prodId"), 10, None)), None)
+      val items = ListItemsDTO(Seq(ListItemDTO(Some("prodId"), 10, None)), Some(ListMetadata(listId, Nil)))
 
       val listDef = ListDef(id = guid, userId = authInfo.user.id, name = guid,
         description = guido, createdClient = now(), created = now(), updated = now())
@@ -144,7 +145,8 @@ class ListServiceSpec extends Specification with Mockito {
       m.listRepo.replaceListItems(any, any) returns Future.successful(Seq(listProduct))
       m.listRepo.getListProductsByList(listDef.id) returns Future.successful(Seq(listProduct))
 
-      val s = Await.result(m.listService.addListItems(listId, items), Duration.Inf)
+      m.listRepo.updateBatchedBought(any, any) returns repo(1)
+      val s = Await.result(m.listService.addListItems(items), Duration.Inf)
 
       there was no(m.listRepo).insertList(any)
       there was one(m.listRepo).replaceListItems(any, any)
@@ -156,7 +158,7 @@ class ListServiceSpec extends Specification with Mockito {
     "add items to list will clone not owned" in {
       val m = service()
       val listId = "listId"
-      val items = ListItemsDTO(Seq(ListItemDTO(Some("prodId"), 10, None)), None)
+      val items = ListItemsDTO(Seq(ListItemDTO(Some("prodId"), 10, None)), Some(ListMetadata(listId, Nil)))
 
       val listDef = ListDef(id = guid, userId = "1", name = guid,
         description = guido, createdClient = now(), created = now(), updated = now())
@@ -166,7 +168,8 @@ class ListServiceSpec extends Specification with Mockito {
       m.listRepo.replaceListItems(any, any) returns Future.successful(Seq(listProduct))
       m.listRepo.getListProductsByList(listDef.id) returns Future.successful(Seq(listProduct))
 
-      val s = Await.result(m.listService.addListItems(listId, items), Duration.Inf)
+      m.listRepo.updateBatchedBought(any, any) returns repo(1)
+      val s = Await.result(m.listService.addListItems(items), Duration.Inf)
 
       there was one(m.listRepo).insertList(any)
       there was one(m.listRepo).replaceListItems(any, any)

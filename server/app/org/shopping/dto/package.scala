@@ -5,8 +5,10 @@ package object dto {
   case class BooleanDTO(value: Boolean)
 
   case class ErrorDTO(errCode: Int, message: String)
+
   case class StringDTO(value: String)
-  case class SyncDTO(userData: UserDTO,
+
+  case class SyncDTO(userData: Option[UserDTO],
     listsMeta: ListsDTO,
     lists: Seq[ListItemsDTO],
     products: Seq[ProductDTO],

@@ -12,7 +12,7 @@ trait ListService extends BaseService {
 
   def getUserLists(userId: String, offset: Int, count: Int): Result[ListsDTO]
 
-  def addListItems(listId: String, listItems: ListItemsDTO): Result[ListItemsDTO]
+  def addListItems(listItems: ListItemsDTO): Result[ListItemsDTO]
 
   def getListItems(listId: String): Result[ListItemsDTO]
 

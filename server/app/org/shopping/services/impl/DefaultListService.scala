@@ -48,7 +48,8 @@ class DefaultListService @Inject()(userRepo: UserRepo, listRepo: ListRepo, produ
       case (_, l) => l.head.copy(quantity = l.size)
     }.toSeq
 
-  override def addListItems(listId: String, listItems: ListItemsDTO): Result[ListItemsDTO] = {
+  override def addListItems(listItems: ListItemsDTO): Result[ListItemsDTO] = {
+    val listId: String = listItems.meta.get.listId
     val models = listItems.items
       .filter(_.productId.isEmpty)
       .map(p => Product(id = Gen.guid, userId = userId, name = p.description.getOrElse("")))
@@ -62,14 +63,12 @@ class DefaultListService @Inject()(userRepo: UserRepo, listRepo: ListRepo, produ
         val lId = l.id
         for {
           existing <- listRepo.getListProductsByList(lId)
-          items <- {
-            if (existing.size > MAX_ALLOWED) {
-              error(ErrorMessages.TOO_MANY_ITEMS)
-            } else {
-              val all = models.map(p => ListDefProduct(listDefId = lId, productId = p.id, description = p.description)) ++
-                listItems.items.filter(_.productId.isDefined).map(p => p.toModel(listId, p.productId.get))
-              listRepo.replaceListItems(lId, combineListProducts(all, existing)).map(_.map(new ListItemDTO(_))).map(resultSync)
-            }
+          items <- if (existing.size > MAX_ALLOWED) {
+            error(ErrorMessages.TOO_MANY_ITEMS)
+          } else {
+            val all = models.map(p => ListDefProduct(listDefId = lId, productId = p.id, description = p.description)) ++
+              listItems.items.filter(_.productId.isDefined).map(p => p.toModel(listId, p.productId.get))
+            listRepo.replaceListItems(lId, combineListProducts(all, existing)).map(_.map(new ListItemDTO(_))).map(resultSync)
           }
           _ <- listItems.meta match {
             case Some(meta) =>
@@ -86,7 +85,9 @@ class DefaultListService @Inject()(userRepo: UserRepo, listRepo: ListRepo, produ
     }
 
     f recover {
-      case e: Throwable => exSync(e)
+      case e: Throwable =>
+        e.printStackTrace()
+        exSync(e)
     }
   }
 

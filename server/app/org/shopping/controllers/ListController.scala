@@ -71,7 +71,11 @@ class ListController @Inject()(listService: ListService) extends BaseController(
             implicit authInfo =>
               try {
                 val dto = json.as[ListItemsDTO]
-                listService.addListItems(listId, dto) map (response(_))
+                val meta = Some(dto.meta
+                  .fold
+                  (ListMetadata(listId, Seq.empty[String]))
+                  (_.copy(listId = listId)))
+                listService.addListItems(dto.copy(meta = meta)) map (response(_))
               } catch {
                 case je: JsResultException => asyncBadRequest(je.errors.mkString(","))
                 case e: Throwable => asyncBadRequest(e)

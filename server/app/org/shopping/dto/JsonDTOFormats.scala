@@ -41,7 +41,7 @@ trait JsonDTOFormats extends BaseFormats with ConstraintReads {
       (__ \ 'status).readNullable[Int]
     ) (ListDTO)
 
-  implicit val listWrite = Json.writes[ListDTO]
+  implicit val list = Json.format[ListDTO]
   implicit val lists = Json.format[ListsDTO]
   implicit val loginResponse = Json.writes[LoginResponseDTO]
   implicit val loginRequest = Json.reads[LoginRequestDTO]
