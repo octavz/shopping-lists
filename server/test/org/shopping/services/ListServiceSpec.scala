@@ -38,7 +38,7 @@ class ListServiceSpec extends Specification with Mockito {
   def genListDef(
     userId: String) = ListDef(id = guid, userId = userId, name = guid, description = guido, createdClient = now(), created = now(), updated = now())
 
-  "List module" should {
+  "List service" should {
 
     "implement insertList and call repo" in {
       val m = service()

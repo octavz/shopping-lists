@@ -10,11 +10,11 @@ import play.api.http.Status
 import scala.concurrent.ExecutionContext.Implicits._
 import scala.concurrent._
 
-class DefaultProductService @Inject()(dalUser: UserRepo, dalProduct: ProductRepo) extends ProductService {
+class DefaultProductService @Inject()(userRepo: UserRepo, productRepo: ProductRepo) extends ProductService {
 
   override def insertProduct(dto: ProductDTO): Result[ProductDTO] = {
     val model = dto.toModel(userId, Gen.guid)
-    dalProduct
+    productRepo
       .insertProduct(model)
       .map(p => resultSync(new ProductDTO(model)))
       .recover { case e: Throwable => exSync(e) }
@@ -23,11 +23,11 @@ class DefaultProductService @Inject()(dalUser: UserRepo, dalProduct: ProductRepo
   override def updateProduct(dto: ProductDTO): Result[ProductDTO] = {
     val f = if (dto.id.isEmpty) error(401 -> ErrorMessages.EMPTY_ID)
     else checkUser(valid(dto.id.get)) {
-      dalProduct.getProductById(dto.id.get) flatMap {
+      productRepo.getProductById(dto.id.get) flatMap {
         case None => error(Status.NOT_FOUND -> ErrorMessages.NOT_FOUND)
         case Some(existing) =>
           val newProduct = existing.copy(name = dto.name, description = dto.description)
-          dalProduct.updateProduct(newProduct) map { p =>
+          productRepo.updateProduct(newProduct) map { p =>
             resultSync(new ProductDTO(p))
           }
       }
@@ -42,10 +42,10 @@ class DefaultProductService @Inject()(dalUser: UserRepo, dalProduct: ProductRepo
 
   override def deleteProduct(productId: String): Result[BooleanDTO] =
     checkUser(valid(productId)) {
-      dalProduct.getProductById(productId) flatMap {
+      productRepo.getProductById(productId) flatMap {
         case Some(product) =>
           val newProduct = product.copy(status = Constants.STATUS_DELETE)
-          dalProduct.updateProduct(newProduct) map {
+          productRepo.updateProduct(newProduct) map {
             _ =>
               resultSync(BooleanDTO(true))
           }
@@ -57,7 +57,7 @@ class DefaultProductService @Inject()(dalUser: UserRepo, dalProduct: ProductRepo
     }
 
   override def insertSupplier(dto: SupplierDTO): Result[SupplierDTO] = checkUser(valid()) {
-    dalProduct
+    productRepo
       .insertSupplier(dto.toModel(Gen.guid))
       .map(a => resultSync(new SupplierDTO(a)))
       .recover {
@@ -66,7 +66,7 @@ class DefaultProductService @Inject()(dalUser: UserRepo, dalProduct: ProductRepo
   }
 
   override def insertProductPrice(dto: ProductPriceDTO): Result[ProductPriceDTO] = checkUser(valid()) {
-    dalProduct
+    productRepo
       .insertProductPrice(dto.toModel(Gen.guid))
       .map(a => resultSync(new ProductPriceDTO(a)))
       .recover {
@@ -75,17 +75,17 @@ class DefaultProductService @Inject()(dalUser: UserRepo, dalProduct: ProductRepo
   }
 
   override def updateProductPrice(dto: ProductPriceDTO): Result[ProductPriceDTO] = checkUser(valid()) {
-    dalProduct.getProductPrice(dto.productId, dto.supplierId) flatMap {
+    productRepo.getProductPrice(dto.productId, dto.supplierId) flatMap {
       case Some(pp) =>
         val newModel = pp.copy(price = dto.price)
-        dalProduct.updateProductPrice(newModel).map(r => resultSync(new ProductPriceDTO(r)))
+        productRepo.updateProductPrice(newModel).map(r => resultSync(new ProductPriceDTO(r)))
       case _ =>
         error(Status.NOT_FOUND -> ErrorMessages.NOT_FOUND)
     }
   }
 
   override def getAllSuppliers: Result[SuppliersDTO] = checkUser(valid()) {
-    dalProduct
+    productRepo
       .getAllSuppliers
       .map(all => resultSync(SuppliersDTO(all.map(new SupplierDTO(_)))))
   }

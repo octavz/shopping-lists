@@ -28,12 +28,12 @@ class ListAppSpec extends PlaySpecification with Mockito {
 
   def anUser = User(id = guid, login = guid, providerToken = None, created = now(), updated = now(), lastLogin = None, password = guid, nick = guid)
 
-  case class MockContext(app: Application, listModule: ListService, dalAuth: Oauth2Repo, user: User)
+  case class MockContext(app: Application, listService: ListService, authRepo: Oauth2Repo, user: User)
 
-  def app(mp: ListService = mock[ListService], dalAuth: Oauth2Repo = mock[Oauth2Repo], u: User = anUser): MockContext = {
-    dalAuth.findAccessToken(anyString) returns Future.successful(Some(AccessToken("token", None, None, None, new java.util.Date())))
+  def app(mp: ListService = mock[ListService], authRepo: Oauth2Repo = mock[Oauth2Repo], u: User = anUser): MockContext = {
+    authRepo.findAccessToken(anyString) returns Future.successful(Some(AccessToken("token", None, None, None, new java.util.Date())))
     //auth.isAccessTokenExpired(any[AccessToken]) returns false
-    dalAuth.findAuthInfoByAccessToken(any[AccessToken]) returns Future.successful(Some(authInfo))
+    authRepo.findAuthInfoByAccessToken(any[AccessToken]) returns Future.successful(Some(authInfo))
 
     val ret = new GuiceApplicationBuilder()
         .disable(classOf[RunModule])
@@ -50,9 +50,9 @@ class ListAppSpec extends PlaySpecification with Mockito {
       .overrides(bind[UserService].toInstance(mock[UserService]))
       .overrides(bind[ProductService].toInstance(mock[ProductService]))
       .overrides(bind[MainService].toInstance(mock[MainService]))
-      .overrides(bind[Oauth2Repo].toInstance(dalAuth))
+      .overrides(bind[Oauth2Repo].toInstance(authRepo))
       .build()
-    MockContext(ret, mp, dalAuth, u)
+    MockContext(ret, mp, authRepo, u)
   }
 
   implicit val authInfo = new AuthData(anUser, Some("1"), None, None)
@@ -60,10 +60,10 @@ class ListAppSpec extends PlaySpecification with Mockito {
   "List controller" should {
 
     "have create list route and authorize" in {
-      val module = app()
-      module.listModule.insertList(any[ListDTO]) answers (p => result(p.asInstanceOf[ListDTO]))
-      running(module.app) {
-        val page = route(module.app, FakeRequest(POST, "/api/list")
+      val service = app()
+      service.listService.insertList(any[ListDTO]) answers (p => result(p.asInstanceOf[ListDTO]))
+      running(service.app) {
+        val page = route(service.app, FakeRequest(POST, "/api/list")
           .withHeaders("Authorization" -> "OAuth token")
           .withJsonBody(Json.parse(
             """
@@ -77,24 +77,24 @@ class ListAppSpec extends PlaySpecification with Mockito {
         val json = contentAsJson(page.get)
         status(page.get) === OK
         Await.ready(page.get, Duration.Inf)
-        there was one(module.listModule).setAuth(authInfo)
-        there was one(module.listModule).insertList(any[ListDTO])
+        there was one(service.listService).setAuth(authInfo)
+        there was one(service.listService).insertList(any[ListDTO])
         json \ "name" === JsDefined(JsString("list"))
         json \ "description" === JsDefined(JsString("123456"))
       }
     }
 
     "get all lists" in {
-      val module = app()
+      val service = app()
       val p = ListDTO(id = guido, name = guid, description = guido, userId = Some("userId"), created = 1000)
-      module.listModule.getUserLists("id", 0, 10) returns result(ListsDTO(items = List(p), total = 1))
-      running(module.app) {
-        val page = route(module.app, FakeRequest(GET, "/api/user/id/lists?offset=0&count=10").withHeaders("Authorization" -> "OAuth token"))
+      service.listService.getUserLists("id", 0, 10) returns result(ListsDTO(items = List(p), total = 1))
+      running(service.app) {
+        val page = route(service.app, FakeRequest(GET, "/api/user/id/lists?offset=0&count=10").withHeaders("Authorization" -> "OAuth token"))
         page must beSome
         status(page.get) === OK
         Await.ready(page.get, Duration.Inf)
-        there was one(module.listModule).setAuth(authInfo)
-        there was one(module.listModule).getUserLists("id", 0, 10)
+        there was one(service.listService).setAuth(authInfo)
+        there was one(service.listService).getUserLists("id", 0, 10)
         val json = contentAsJson(page.get)
         val arr = (json \ "items").as[JsArray].value
         arr.size === 1
@@ -106,11 +106,11 @@ class ListAppSpec extends PlaySpecification with Mockito {
     }
 
     "update lists" in {
-      val module = app()
+      val service = app()
       val p = ListDTO(id = guido, name = guid, description = guido, userId = Some("userId"), created = 1000)
-      module.listModule.updateList(any) returns result(p)
-      running(module.app) {
-        val page = route(module.app, FakeRequest(PUT, "/api/list/id").withHeaders("Authorization" -> "OAuth token").withJsonBody(Json.parse(
+      service.listService.updateList(any) returns result(p)
+      running(service.app) {
+        val page = route(service.app, FakeRequest(PUT, "/api/list/id").withHeaders("Authorization" -> "OAuth token").withJsonBody(Json.parse(
           s"""
                 {
                 "name":"${p.name}",
@@ -123,8 +123,8 @@ class ListAppSpec extends PlaySpecification with Mockito {
         page must beSome
         status(page.get) === OK
         Await.ready(page.get, Duration.Inf)
-        there was one(module.listModule).setAuth(authInfo)
-        there was one(module.listModule).updateList(any)
+        there was one(service.listService).setAuth(authInfo)
+        there was one(service.listService).updateList(any)
         json \ "name" === JsDefined(JsString(p.name))
         json \ "description" === JsDefined(JsString(p.description.get))
       }

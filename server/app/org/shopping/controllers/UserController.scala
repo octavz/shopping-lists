@@ -16,7 +16,7 @@ class UserController @Inject()(userService: UserService) extends BaseController(
 
   def accessToken = Action.async {
     implicit request =>
-      issueAccessToken(dalAuth)
+      issueAccessToken(authRepo)
   }
 
   //  val loginForm = Form(
