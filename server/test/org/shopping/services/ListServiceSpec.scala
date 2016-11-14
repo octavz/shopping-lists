@@ -140,10 +140,10 @@ class ListServiceSpec extends Specification with Mockito {
         description = guido, createdClient = now(), created = now(), updated = now())
       val listProduct = ListDefProduct(listDef.id, "p1", None, 0, 0, now(), now())
 
-      m.listRepo.getListDefById(any) returns Future.successful(Some(listDef))
+      m.listRepo.getListDefById(any) returns repo(Some(listDef))
       m.listRepo.insertList(any[ListDef]) returns repo(listDef)
-      m.listRepo.replaceListItems(any, any) returns Future.successful(Seq(listProduct))
-      m.listRepo.getListProductsByList(listDef.id) returns Future.successful(Seq(listProduct))
+      m.listRepo.replaceListItems(any, any) returns repo(Seq(listProduct))
+      m.listRepo.getListProductsByList(listDef.id) returns repo(Seq(listProduct))
 
       m.listRepo.updateBatchedBought(any, any) returns repo(1)
       val s = Await.result(m.listService.addListItems(items), Duration.Inf)
@@ -163,10 +163,10 @@ class ListServiceSpec extends Specification with Mockito {
       val listDef = ListDef(id = guid, userId = "1", name = guid,
         description = guido, createdClient = now(), created = now(), updated = now())
       val listProduct = ListDefProduct(listDef.id, "p1", None, 0, 0, now(), now())
-      m.listRepo.getListDefById(any) returns Future.successful(Some(listDef))
-      m.listRepo.insertList(any[ListDef]) answers (a => repo(listDef))
-      m.listRepo.replaceListItems(any, any) returns Future.successful(Seq(listProduct))
-      m.listRepo.getListProductsByList(listDef.id) returns Future.successful(Seq(listProduct))
+      m.listRepo.getListDefById(any) returns repo(Some(listDef))
+      m.listRepo.insertList(any[ListDef]) returns repo(listDef)
+      m.listRepo.replaceListItems(any, any) returns repo(Seq(listProduct))
+      m.listRepo.getListProductsByList(listDef.id) returns repo(Seq(listProduct))
 
       m.listRepo.updateBatchedBought(any, any) returns repo(1)
       val s = Await.result(m.listService.addListItems(items), Duration.Inf)

@@ -1,7 +1,7 @@
 package org.shopping.util
 
 object ErrorMessages {
-
+  val LISTS_ONE_ID_ONLY = "LISTS_ONE_ID_ONLY"
   val TOO_MANY_ITEMS =  "TOO_MANY_ITEMS"
   val EMPTY_ID =  "EMPTY_ID"
   val NOT_FOUND =  "NOT_FOUND"

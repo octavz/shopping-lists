@@ -1,4 +1,4 @@
-# shopping SCHEMA
+# lists SCHEMA
 # --- !Ups
 
 CREATE TABLE user_statuses (
@@ -21,9 +21,9 @@ CREATE TABLE users (
 
 CREATE TABLE user_sessions (
   id      CHARACTER VARYING(254) PRIMARY KEY,
-  user_id CHARACTER VARYING NOT NULL REFERENCES users,
-  created        INTEGER DEFAULT 0                 NOT NULL,
-  updated        INTEGER DEFAULT 0                 NOT NULL
+  user_id CHARACTER VARYING                 NOT NULL REFERENCES users,
+  created INTEGER DEFAULT 0                 NOT NULL,
+  updated INTEGER DEFAULT 0                 NOT NULL
 );
 
 CREATE TABLE clients (
@@ -104,7 +104,7 @@ CREATE TABLE list_def_products (
 
 CREATE TABLE suppliers (
   id          CHARACTER VARYING(40) PRIMARY KEY,
-  name        CHARACTER VARYING(255) NOT NULL,
+  name        CHARACTER VARYING(255)  NOT NULL,
   description TEXT,
   created     INTEGER DEFAULT 0       NOT NULL,
   updated     INTEGER DEFAULT 0       NOT NULL
@@ -115,8 +115,8 @@ CREATE TABLE product_prices (
   product_id  CHARACTER VARYING(40)    NOT NULL REFERENCES products,
   supplier_id CHARACTER VARYING(40)    NOT NULL REFERENCES suppliers,
   price       NUMERIC(10, 2) DEFAULT 0 NOT NULL,
-  created     INTEGER DEFAULT 0       NOT NULL,
-  updated     INTEGER DEFAULT 0       NOT NULL,
+  created     INTEGER DEFAULT 0        NOT NULL,
+  updated     INTEGER DEFAULT 0        NOT NULL,
   PRIMARY KEY (product_id, supplier_id)
 );
 
@@ -141,6 +141,29 @@ VALUES ('3', '2', 'list name3', 'description', 0, 1477550565, 1477550565);
 INSERT INTO grant_types (id, grant_type) VALUES (1, 'password');
 INSERT INTO clients (id, secret) VALUES (1, 'secret');
 INSERT INTO client_grant_types VALUES (1, 1);
+
+INSERT INTO suppliers (id, name, description, created, updated) VALUES ('1', 'Kaufland', '', 1477550565, 1477550565);
+INSERT INTO suppliers (id, name, description, created, updated) VALUES ('2', 'Carrefour', '', 1477550565, 1477550565);
+INSERT INTO suppliers (id, name, description, created, updated) VALUES ('3', 'Lidl', '', 1477550565, 1477550565);
+INSERT INTO suppliers (id, name, description, created, updated) VALUES ('4', 'Emag', '', 1477550565, 1477550565);
+
+INSERT into products(id, user_id, name) values ('1','1','Mere');
+INSERT into products(id, user_id, name) values ('2','1','TV');
+INSERT into products(id, user_id, name) values ('3','1','Pere');
+INSERT into products(id, user_id, name) values ('4','1','Varza');
+INSERT into products(id, user_id, name) values ('5','1','Otet');
+INSERT into products(id, user_id, name) values ('6','1','Ulei');
+INSERT into products(id, user_id, name) values ('7','1','Ulei masline');
+
+INSERT INTO product_prices (user_id, product_id, supplier_id, price) VALUES ('1','1','1',3.99);
+INSERT INTO product_prices (user_id, product_id, supplier_id, price) VALUES ('1','1','2',3.5);
+INSERT INTO product_prices (user_id, product_id, supplier_id, price) VALUES ('1','1','3',3.0);
+INSERT INTO product_prices (user_id, product_id, supplier_id, price) VALUES ('1','2','1',1500);
+INSERT INTO product_prices (user_id, product_id, supplier_id, price) VALUES ('1','2','2',1200.99);
+INSERT INTO product_prices (user_id, product_id, supplier_id, price) VALUES ('1','2','4',1313.99);
+
+# --- !Downs
+
 
 # --- !Downs
 

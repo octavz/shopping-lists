@@ -99,16 +99,20 @@ class DefaultListService @Inject()(userRepo: UserRepo, listRepo: ListRepo, produ
     }
   }
 
+  override def updateLists(lists: ListsDTO): Result[ListsDTO] = Future.sequence(lists.items map updateList) map {
+    seqEitherWithFold(_)(Seq.empty[ListDTO])(_ :+ _).right map (ListsDTO(_))
+  }
+
   override def updateList(dto: ListDTO): Result[ListDTO] = dto.id match {
     case None => error(ErrorMessages.EMPTY_ID)
     case Some(id) =>
       checkUser(valid(id)) {
-        listRepo.getListDefById(id) flatMap {
-          case None => error(Status.NOT_FOUND -> ErrorMessages.NOT_FOUND)
-          case Some(list) => listRepo.updateList(dto.toModel(dto.id.get)) map {
+        cloneIfNotOwned(id) flatMap {
+          case Right(listDef) => listRepo.updateList(dto.toModel(listDef.id)) map {
             p =>
               resultSync(new ListDTO(p))
           }
+          case Left(err) => error(err)
         }
       } recover {
         case e: Throwable => exSync(e, "updateList")

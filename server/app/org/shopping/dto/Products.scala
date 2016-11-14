@@ -12,6 +12,8 @@ case class ProductDTO(id: Option[String], name: String, description: Option[Stri
 
 }
 
+case class ProductsDTO(items: Seq[ProductDTO], offset: Int, count: Int, total: Int)
+
 case class SuppliersDTO(items: Seq[SupplierDTO])
 
 case class SupplierDTO(id: Option[String], name: String, description: Option[String]) {

@@ -29,4 +29,4 @@ case class ListItemDTO(productId: Option[String], quantity: Int, description: Op
 
 }
 
-case class ListsDTO(items: Seq[ListDTO], total: Int)
+case class ListsDTO(items: Seq[ListDTO], total: Int = 1000)

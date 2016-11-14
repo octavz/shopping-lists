@@ -19,6 +19,7 @@ class SlickOauth2Repo @Inject()(protected val dbConfigProvider: DatabaseConfigPr
     with HasDatabaseConfigProvider[JdbcProfile]
     with DB {
   val profile = dbConfig.driver
+  val accessTokenExpiresIn = 24 * 60 * 60 // 1 day
 
   import profile.api._
 
@@ -37,7 +38,6 @@ class SlickOauth2Repo @Inject()(protected val dbConfigProvider: DatabaseConfigPr
   }
 
   override def createAccessToken(authInfo: AuthInfo[User]): Future[scalaoauth2.provider.AccessToken] = {
-    val accessTokenExpiresIn = 60 * 60 // 1 hour
     val now = new Date()
     val createdAt = Time.dateToTs(now)
     val refreshToken = Some(Crypto.generateToken())
@@ -52,8 +52,8 @@ class SlickOauth2Repo @Inject()(protected val dbConfigProvider: DatabaseConfigPr
   override def deleteExistingAndCreate(accessToken: AccessToken, userId: String, clientId: String): Future[Int] = {
     val action = (for {
     // these two operations should happen inside a transaction
-    //        d <-  AccessTokens.filter(a => a.clientId === clientId && a.userId === userId).delete
-      d <- sqlu"delete from access_tokens where client_id = $clientId and user_id = $userId"
+      d <- AccessTokens.filter(a => a.clientId === clientId && a.userId === userId).delete
+      //      d <- sqlu"delete from access_tokens where client_id = $clientId and user_id = $userId"
       r <- AccessTokens += accessToken
     } yield r).transactionally
 
@@ -61,7 +61,8 @@ class SlickOauth2Repo @Inject()(protected val dbConfigProvider: DatabaseConfigPr
   }
 
   override def getStoredAccessToken(authInfo: AuthInfo[User]): Future[Option[scalaoauth2.provider.AccessToken]] = {
-    val action = AccessTokens.filter(a => a.clientId === authInfo.clientId && a.userId === authInfo.user.id).result.headOption
+    val action = AccessTokens.filter(
+      a => a.clientId === authInfo.clientId && a.userId === authInfo.user.id).result.headOption
     db.run(action).map {
       opt =>
         opt.map(a =>
@@ -69,7 +70,8 @@ class SlickOauth2Repo @Inject()(protected val dbConfigProvider: DatabaseConfigPr
     }
   }
 
-  override def refreshAccessToken(authInfo: AuthInfo[User], refreshToken: String): Future[scalaoauth2.provider.AccessToken] = {
+  override def refreshAccessToken(authInfo: AuthInfo[User],
+    refreshToken: String): Future[scalaoauth2.provider.AccessToken] = {
     createAccessToken(authInfo)
   }
 
@@ -126,7 +128,8 @@ class SlickOauth2Repo @Inject()(protected val dbConfigProvider: DatabaseConfigPr
     }
 
 
-  override def findClientUser(clientCredential: ClientCredential, scope: Option[String]): Future[Option[User]] = Future.successful {
+  override def findClientUser(clientCredential: ClientCredential,
+    scope: Option[String]): Future[Option[User]] = Future.successful {
     //    scope match {
     //      case Some(s) => Clients.filter(c => c.id === clientCredential.clientId && c.scope === s)
     //      case _ => Clients.filter(c => c.id === clientCredential.clientId )
@@ -135,7 +138,7 @@ class SlickOauth2Repo @Inject()(protected val dbConfigProvider: DatabaseConfigPr
   }
 
   override def deleteAuthCode(code: String): Future[Unit] = {
-    val sql = sqlu"""delete from auth_codes where authorization_code = $code"""
+    val sql = AuthCodes.filter(_.authorizationCode === code).delete //sqlu"""delete from auth_codes where authorization_code = $code"""
     db.run(sql) map (_ => ())
   }
 
