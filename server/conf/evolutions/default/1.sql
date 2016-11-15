@@ -85,6 +85,7 @@ CREATE TABLE products (
   id          CHARACTER VARYING(40) PRIMARY KEY,
   user_id     CHARACTER VARYING(40)   NOT NULL REFERENCES users,
   name        CHARACTER VARYING(255)  NOT NULL,
+  tags        CHARACTER VARYING(255)  NOT NULL,
   description TEXT,
   status      SMALLINT DEFAULT 0      NOT NULL,
   created     INTEGER DEFAULT 0       NOT NULL,
@@ -138,6 +139,10 @@ VALUES ('2', '1', 'list name2', 'description', 0, 1477550565, 1477550565);
 INSERT INTO list_defs (id, user_id, name, description, status, created, updated)
 VALUES ('3', '2', 'list name3', 'description', 0, 1477550565, 1477550565);
 
+INSERT INTO lists_users (list_def_id, user_id) VALUES ('1', '1');
+INSERT INTO lists_users (list_def_id, user_id) VALUES ('2', '2');
+INSERT INTO lists_users (list_def_id, user_id) VALUES ('3', '1');
+
 INSERT INTO grant_types (id, grant_type) VALUES (1, 'password');
 INSERT INTO clients (id, secret) VALUES (1, 'secret');
 INSERT INTO client_grant_types VALUES (1, 1);
@@ -147,20 +152,25 @@ INSERT INTO suppliers (id, name, description, created, updated) VALUES ('2', 'Ca
 INSERT INTO suppliers (id, name, description, created, updated) VALUES ('3', 'Lidl', '', 1477550565, 1477550565);
 INSERT INTO suppliers (id, name, description, created, updated) VALUES ('4', 'Emag', '', 1477550565, 1477550565);
 
-INSERT into products(id, user_id, name) values ('1','1','Mere');
-INSERT into products(id, user_id, name) values ('2','1','TV');
-INSERT into products(id, user_id, name) values ('3','1','Pere');
-INSERT into products(id, user_id, name) values ('4','1','Varza');
-INSERT into products(id, user_id, name) values ('5','1','Otet');
-INSERT into products(id, user_id, name) values ('6','1','Ulei');
-INSERT into products(id, user_id, name) values ('7','1','Ulei masline');
+INSERT INTO products (id, user_id, name, tags) VALUES ('1', '1', 'Mere', 'mere');
+INSERT INTO products (id, user_id, name, tags) VALUES ('2', '1', 'TV', 'tv');
+INSERT INTO products (id, user_id, name, tags) VALUES ('3', '1', 'Pere','pere');
+INSERT INTO products (id, user_id, name, tags) VALUES ('4', '1', 'Varza', 'varza');
+INSERT INTO products (id, user_id, name, tags) VALUES ('5', '1', 'Otet','otet');
+INSERT INTO products (id, user_id, name, tags) VALUES ('6', '1', 'Ulei', 'ulei');
+INSERT INTO products (id, user_id, name, tags) VALUES ('7', '1', 'Ulei masline', 'ulei masline');
 
-INSERT INTO product_prices (user_id, product_id, supplier_id, price) VALUES ('1','1','1',3.99);
-INSERT INTO product_prices (user_id, product_id, supplier_id, price) VALUES ('1','1','2',3.5);
-INSERT INTO product_prices (user_id, product_id, supplier_id, price) VALUES ('1','1','3',3.0);
-INSERT INTO product_prices (user_id, product_id, supplier_id, price) VALUES ('1','2','1',1500);
-INSERT INTO product_prices (user_id, product_id, supplier_id, price) VALUES ('1','2','2',1200.99);
-INSERT INTO product_prices (user_id, product_id, supplier_id, price) VALUES ('1','2','4',1313.99);
+INSERT INTO product_prices (user_id, product_id, supplier_id, price) VALUES ('1', '1', '1', 3.99);
+INSERT INTO product_prices (user_id, product_id, supplier_id, price) VALUES ('1', '1', '2', 3.5);
+INSERT INTO product_prices (user_id, product_id, supplier_id, price) VALUES ('1', '1', '3', 3.0);
+INSERT INTO product_prices (user_id, product_id, supplier_id, price) VALUES ('1', '2', '1', 1500);
+INSERT INTO product_prices (user_id, product_id, supplier_id, price) VALUES ('1', '2', '2', 1200.99);
+INSERT INTO product_prices (user_id, product_id, supplier_id, price) VALUES ('1', '2', '4', 1313.99);
+
+INSERT INTO list_def_products (product_id, list_def_id, description, quantity, bought, created, updated)
+VALUES ('1', '1', 'verzi', 2, 0, 1477550565, 1477550565);
+INSERT INTO list_def_products (product_id, list_def_id, description, quantity, bought, created, updated)
+VALUES ('2', '1', 'samsung', 1, 0, 1477550565, 1477550565);
 
 # --- !Downs
 

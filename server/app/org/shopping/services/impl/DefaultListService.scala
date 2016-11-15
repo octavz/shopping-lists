@@ -52,7 +52,7 @@ class DefaultListService @Inject()(userRepo: UserRepo, listRepo: ListRepo, produ
     val listId: String = listItems.meta.get.listId
     val models = listItems.items
       .filter(_.productId.isEmpty)
-      .map(p => Product(id = Gen.guid, userId = userId, name = p.description.getOrElse("")))
+      .map(p => Product(id = Gen.guid, userId = userId, name = p.description.getOrElse(""), tags = p.description.getOrElse("").toLowerCase))
     val f1 = for {
       _ <- productRepo.insertProducts(models)
       l <- cloneIfNotOwned(listId)
@@ -119,8 +119,11 @@ class DefaultListService @Inject()(userRepo: UserRepo, listRepo: ListRepo, produ
       }
   }
 
-  private def valid(listId: String): Future[Boolean] =
-    listRepo.getListUsers(listId) map (_.contains(userId))
+  private def valid(listId: String): Future[Boolean] = {
+    listRepo.getListUsers(listId) map {
+      lst => lst.contains(userId)
+    }
+  }
 
   override def getListItems(listId: String): Result[ListItemsDTO] =
     checkUser(valid(listId)) {
@@ -131,7 +134,9 @@ class DefaultListService @Inject()(userRepo: UserRepo, listRepo: ListRepo, produ
             meta = Some(ListMetadata(listId, bought(items)))))
       }
     } recover {
-      case e: Throwable => exSync(e, "getListItems")
+      case e: Throwable =>
+        e.printStackTrace()
+        exSync(e, "getListItems")
     }
 
   override def deleteList(listId: String): Result[BooleanDTO] =

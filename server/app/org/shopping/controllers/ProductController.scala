@@ -130,4 +130,17 @@ class ProductController @Inject()(productService: ProductService) extends BaseCo
 
     }
 
+  def searchProducts(q: String, offset: Int, count: Int) =
+    Action.async {
+      implicit request =>
+        try {
+          authorize {
+            implicit authInfo =>
+              productService.searchProduct(q, offset, count) map (response(_))
+          }
+        } catch {
+          case e: Throwable => asyncBadRequest(e)
+        }
+    }
+
 }

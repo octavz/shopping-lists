@@ -2,13 +2,13 @@ package org.shopping.dto
 
 import org.shopping.models._
 
-case class ProductDTO(id: Option[String], name: String, description: Option[String] = None) {
+case class ProductDTO(id: Option[String], name: String, tags: String, description: Option[String] = None) {
 
   def this(model: Product) =
-    this(id = Some(model.id), name = model.name, description = model.description)
+    this(id = Some(model.id), name = model.name, tags = model.tags, description = model.description)
 
   def toModel(userId: String, id: String): Product =
-    Product(id = id, userId = userId, name = name, description = description)
+    Product(id = id, userId = userId, name = name, tags = tags, description = description)
 
 }
 
