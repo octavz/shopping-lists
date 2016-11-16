@@ -28,10 +28,15 @@ namespace ShList.Code
         EditText txtPassword = null;
         EditText txtEmail = null;
         LinearLayout llLinkSignUp = null;
+       
 
         protected async override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
+
+            var startServiceIntent = new Intent(ShAppContext, typeof(SyncService));
+            StartService(startServiceIntent);                      
+
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.AcMain);         
 
@@ -69,6 +74,7 @@ namespace ShList.Code
                 }//else
                 return;
             }//we have a token
+          
         }//OnCreate
 
         /// <summary>

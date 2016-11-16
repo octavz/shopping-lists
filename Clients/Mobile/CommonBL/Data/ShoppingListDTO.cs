@@ -16,6 +16,7 @@ namespace CommonBL.Data
         public ShoppingListDTO()
         {
             ListName = string.Empty;
+            IsDirty = false;
         }
 
         public ShoppingListDTO(ResListDTO aList)
@@ -23,14 +24,17 @@ namespace CommonBL.Data
             LoadFromResponse(aList);
         }
 
+        public string Id { get; set; }//DB id
 
-        public string Id { get; set; }
+        public string InternalId { get; set; }//Application level only
 
         public string ListName { get; set; }
 
         public string ListDescription { get; set; }
 
         public DateTime ListDate { get; set; }
+
+        public bool IsDirty { get; set; }//used for sync
 
         public void LoadFromResponse(ResListDTO aList)
         {
