@@ -37,7 +37,7 @@ class MainController @Inject()(mainService: MainService) extends BaseController(
           authorize {
             implicit authInfo =>
               try {
-                mainService.sync(json.as[SyncDTO]) map (response(_))
+                mainService.sync(json.as[SyncDTO]) map response[SyncDTO]
               } catch {
                 case je: JsResultException => asyncBadRequest(je.errors.mkString(","))
                 case e: Throwable => asyncBadRequest(e)

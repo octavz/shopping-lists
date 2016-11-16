@@ -18,4 +18,6 @@ trait ProductService extends BaseService {
 
   def updateProductPrice(dto: ProductPriceDTO): Result[ProductPriceDTO]
 
+  def searchProduct(query: String, offset: Int, count: Int): Result[ProductsDTO]
+
 }

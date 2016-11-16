@@ -8,6 +8,8 @@ trait ListService extends BaseService {
 
   def updateList(list: ListDTO): Result[ListDTO]
 
+  def updateLists(lists: ListsDTO): Result[ListsDTO]
+
   def deleteList(list: String): Result[BooleanDTO]
 
   def getUserLists(userId: String, offset: Int, count: Int): Result[ListsDTO]

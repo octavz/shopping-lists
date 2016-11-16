@@ -12,7 +12,7 @@ import scala.concurrent.duration._
 @RunWith(classOf[JUnitRunner])
 class UserRepoSpec extends BaseRepoSpec {
 
-  "User DAL" should {
+  "User Repo" should {
 
     "insertSession, findSessionById, deleteSessionByUser" in {
       test { env =>

@@ -15,17 +15,17 @@ class ListRepoSpec extends BaseRepoSpec {
 
   import org.shopping.util.Time._
 
-  "Lists DAL" should {
-    def newDal(te: TestEnv) = new SlickListRepo(te.dbConfigProvider /*, new TestCaching*/)
+  "Lists Repo" should {
+    def newRepo(te: TestEnv) = new SlickListRepo(te.dbConfigProvider /*, new TestCaching*/)
 
     "insert list" in {
       test { env =>
-        val dal = newDal(env)
+        val repo = newRepo(env)
         val schema = org.shopping.db.DB(env.dbConfig.driver)
         import env.dbConfig.driver.api._
         import schema._
         val model = ListDef(id = guid, userId = "1", name = guid, description = guido, createdClient = now(), created = now(), updated = now())
-        val res = waitFor(dal.insertList(model))
+        val res = waitFor(repo.insertList(model))
         res must beAnInstanceOf[ListDef]
         val defs = waitFor(env.db.run(ListDefs.filter(_.id === model.id).result))
         defs.size === 1
@@ -34,8 +34,8 @@ class ListRepoSpec extends BaseRepoSpec {
 
     "get private lists by user" in {
       test { env =>
-        val dal = newDal(env)
-        val ret = Await.result(dal.getUserLists("1", 0, 100), Duration.Inf)
+        val repo = newRepo(env)
+        val ret = Await.result(repo.getUserLists("1", 0, 100), Duration.Inf)
         val lists = ret._1.distinct
         lists.size === 2
         lists.sortBy(_.id).head.id === "1"

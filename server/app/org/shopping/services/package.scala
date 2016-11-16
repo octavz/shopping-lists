@@ -20,7 +20,7 @@ package object services {
 
   }
 
-  type Result[T] = Future[Either[ErrorDTO, T]]
+  type Result[+T] = Future[Either[ErrorDTO, T]]
 
   type AuthData = AuthInfo[User]
 
@@ -28,23 +28,25 @@ package object services {
 
   def resultSync[T](v: T): Either[ErrorDTO, T] = Right(v)
 
-  def error[T](errMessage: String, errCode: Int = 400): Result[T] = {
+  def error(err: ErrorDTO): Result[Nothing] = Future.successful(Left(err))
+
+  def error(errMessage: String, errCode: Int = 400): Result[Nothing] = {
     log.error(s"${currentMethod()}: $errMessage")
     Future.successful(Left(ErrorDTO(errCode, errMessage)))
   }
 
-  def error[T](err: (Int, String)): Result[T] = err match {
+  def error(err: (Int, String)): Result[Nothing] = err match {
     case (errCode, errMessage) =>
       log.error(s"${currentMethod()}: $errMessage")
       Future.successful(Left(ErrorDTO(errCode, errMessage)))
   }
 
-  def errorSync[T](errCode: Int, errMessage: String): Either[ErrorDTO, T] = {
+  def errorSync(errCode: Int, errMessage: String): Either[ErrorDTO, Nothing] = {
     log.error(s"${currentMethod()}: $errMessage")
     Left(ErrorDTO(errCode, errMessage))
   }
 
-  def ex[T](ex: Throwable, errMessage: String = ErrorMessages.SERVER_ERROR, errCode: Int = 500): Result[T] = {
+  def ex(ex: Throwable, errMessage: String = ErrorMessages.SERVER_ERROR, errCode: Int = 500): Result[Nothing] = {
     log.error(errMessage, ex)
     Future.successful(Left(ErrorDTO(errCode, errMessage)))
   }
@@ -54,17 +56,20 @@ package object services {
     Left(ErrorDTO(errCode, errMessage))
   }
 
-  object PermProject {
-    val OwnerRead = 1
-    val OwnerReadWrite = 2
-    val OwnerReadWriteDelete = 4
-    val GroupRead = 8
-    val GroupReadWrite = 16
-    val GroupReadWriteDelete = 32
-    val PublicRead = 64
-    val PublicReadWrite = 128
-    val PublicReadWriteDelete = 256
-  }
+  def seqEither[S, T](data: Seq[Either[S, T]]): Either[S, Seq[T]] =
+    data.partition(_.isRight) match {
+      case (l, Nil) => Right(l.map(_.right.get))
+      case (_, h :: _) => Left(h.left.get)
+    }
+
+
+  def seqEitherWithFold[S, T1, T2](data: Seq[Either[S, T1]])(acc: T2)(f: (T2, T1) => T2): Either[S, T2] =
+    data.partition(_.isRight) match {
+      case (l, Nil) => Right(l
+        .map(_.right.get)
+        .foldLeft(acc)(f))
+      case (_, h :: _) => Left(h.left.get)
+    }
 
   implicit class ErrorExtractor[T](val ret: Either[ErrorDTO, T]) {
 

@@ -9,9 +9,8 @@ package object dto {
   case class StringDTO(value: String)
 
   case class SyncDTO(userData: Option[UserDTO],
-    listsMeta: ListsDTO,
-    lists: Seq[ListItemsDTO],
-    products: Seq[ProductDTO],
-    prices: Seq[ProductPriceDTO])
-
+    listsMeta: Option[ListsDTO],
+    lists: Option[Seq[ListItemsDTO]],
+    products: Option[Seq[ProductDTO]],
+    prices: Option[Seq[ProductPriceDTO]])
 }

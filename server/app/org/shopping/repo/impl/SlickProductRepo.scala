@@ -4,6 +4,7 @@ import com.google.inject.Inject
 import org.shopping.db._
 import org.shopping.models.{Product, ProductPrice, Supplier}
 import org.shopping.repo._
+import org.shopping.util.Constants
 import org.shopping.util.Time._
 import play.api.db.slick.{DatabaseConfigProvider, HasDatabaseConfigProvider}
 import slick.driver.JdbcProfile
@@ -45,8 +46,12 @@ class SlickProductRepo @Inject()(protected val dbConfigProvider: DatabaseConfigP
     db.run(ProductPrices += m).map(_ => m)
   }
 
-  override def searchProduct(name: String): Repo[Seq[Product]] = db.run {
-    Products.filter(_.name like "%name%").result
+  override def searchProduct(name: String, offset: Int, count: Int): Repo[(Seq[Product], Int)] = db.run {
+    val q = Products.filter(p => (p.name like "%name%") && (p.status =!= Constants.STATUS_DELETE))
+    for {
+      res <- q.drop(offset).take(count).result
+      total <- q.length.result
+    } yield (res, total)
   }
 
   override def getProductPrice(productId: String, supplierId: String): Repo[Option[ProductPrice]] = {
@@ -55,13 +60,14 @@ class SlickProductRepo @Inject()(protected val dbConfigProvider: DatabaseConfigP
     }
   }
 
-  override def updateProductPrice(model: ProductPrice): Repo[ProductPrice] = model.touch1 { m =>
-    db.run {
-      ProductPrices
-        .filter(p => p.productId === m.productId && p.supplierId === m.supplierId)
-        .update(m)
-        .map(_ => m)
-    }
+  override def updateProductPrice(model: ProductPrice): Repo[ProductPrice] = model.touch1 {
+    m =>
+      db.run {
+        ProductPrices
+          .filter(p => p.productId === m.productId && p.supplierId === m.supplierId)
+          .update(m)
+          .map(_ => m)
+      }
   }
 
   override def getAllSuppliers: Repo[Seq[Supplier]] = db.run(Suppliers.result)

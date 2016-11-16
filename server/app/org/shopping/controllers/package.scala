@@ -28,12 +28,9 @@ package object controllers {
     Future.successful(BadRequest(err(500, msg)))
   }
 
-
-  def response[T <: AnyRef](a: Either[ErrorDTO, T])(implicit tjs: Writes[T]) = {
-    a match {
-      case Left(err) => InternalServerError(Json.toJson(err))
-      case Right(o) => Ok(Json.toJson(o)(tjs))
-    }
+  def response[T: Writes](a: Either[ErrorDTO, T]) = a match {
+    case Left(err) => InternalServerError(Json.toJson(err))
+    case Right(o) => Ok(Json.toJson(o)(implicitly[Writes[T]]))
   }
 
 }
