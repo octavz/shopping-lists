@@ -32,8 +32,7 @@ libraryDependencies ++= Seq(
   "com.github.nscala-time" %% "nscala-time" % "2.0.0",
   "com.livestream" %% "scredis" % "2.0.6",
   "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.7.2",
-  "org.webjars" % "swagger-ui" % "2.2.2"
-)
+  "org.webjars" % "swagger-ui" % "2.2.2")
 
 lazy val main = (project in file(".")).enablePlugins(PlayScala, SwaggerPlugin)
 

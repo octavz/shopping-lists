@@ -3,6 +3,7 @@ Clients/Mobile/App1/bin/
 server/target
 server/project/target
 server/.idea
+server/node_modules
 server/logs/application.log
 server/main.iws
 server/project/project
@@ -11,3 +12,4 @@ Clients/Mobile/CommonBL/obj/
 Clients/web/.idea
 Clients/web/web.iml
 Clients/Mobile/packages/
+server/public/elm/node_modules
