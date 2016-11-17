@@ -16,8 +16,7 @@ namespace CommonBL.Helpers
 {
     public class ServerHttpHelper : IHttpHelper
     {
-        private const string AUTHORIZATION_HEADER = "Bearer";
-        private const string MEDIA_TYPE = "application/json";
+        private const string AUTHORIZATION_HEADER = "Bearer";   
 
         public async Task<string> HttpGet(string path, string authToken)
         {
@@ -73,7 +72,7 @@ namespace CommonBL.Helpers
         private async Task<string> HttpSend<T>(T req, string path, string authToken, HttpMethod verb) where T : class
         {
             var json = JsonConvert.SerializeObject(req);
-            var content = new StringContent(json, Encoding.UTF8, MEDIA_TYPE);
+            var content = new StringContent(json, Encoding.UTF8, Constants.MEDIA_TYPE);
 
             HttpClient client = SetCustomHttpClient(authToken);
 
@@ -96,7 +95,7 @@ namespace CommonBL.Helpers
             client.BaseAddress = new Uri(Constants.SERVER);
             client.DefaultRequestHeaders
                   .Accept
-                  .Add(new MediaTypeWithQualityHeaderValue(MEDIA_TYPE));//ACCEPT header
+                  .Add(new MediaTypeWithQualityHeaderValue(Constants.MEDIA_TYPE));//ACCEPT header
             return client;
         }//SetCustomHttpClient
     }

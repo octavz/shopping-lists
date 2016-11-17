@@ -39,6 +39,7 @@ namespace ShList.Code.Abstracts
             navigationView.NavigationItemSelected += NavigationView_NavigationItemSelected;
         }
 
+
         /// <summary>
         /// NavigationView_NavigationItemSelected
         /// </summary>
