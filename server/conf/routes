@@ -3,6 +3,9 @@
 # ~~~~
 ### NoDocs ###
 OPTIONS        /*path                          @org.shopping.controllers.MainController.options(path)
+
+GET /                                          @org.shopping.controllers.MainController.index()
+
 ### NoDocs ###
 POST           /api/oauth2/access_token        @org.shopping.controllers.UserController.accessToken
 
@@ -562,6 +565,7 @@ GET            /api/user/:userId/lists         @org.shopping.controllers.ListCon
 #       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
 ###
 PUT            /api/data                       @org.shopping.controllers.MainController.syncData()
+
 
 ### NoDocs ###
 GET            /app/*file                      controllers.Assets.at(path="/public/client/app",file)
