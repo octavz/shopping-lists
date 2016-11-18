@@ -86,11 +86,16 @@
     <Compile Include="Code\AcListItems.cs" />
     <Compile Include="Code\AcNewAccount.cs" />
     <Compile Include="Code\AcShoppingLists.cs" />
+    <Compile Include="Code\Common\FilesManager.cs" />
     <Compile Include="Code\Controls\CtrlItemList.cs" />
     <Compile Include="Code\Controls\CtrlShoppingList.cs" />
     <Compile Include="Code\Extended\ExtEditText.cs" />
     <Compile Include="Code\Extended\ShApplication.cs" />
     <Compile Include="Code\AcMain.cs" />
+    <Compile Include="Code\MessageReciever.cs" />
+    <Compile Include="Code\SyncBinder.cs" />
+    <Compile Include="Code\SyncCom.cs" />
+    <Compile Include="Code\SyncService.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

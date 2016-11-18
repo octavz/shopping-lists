@@ -93,10 +93,19 @@ class DefaultProductService @Inject()(userRepo: UserRepo, productRepo: ProductRe
   override def searchProduct(query: String, offset: Int, count: Int): Result[ProductsDTO] = {
     productRepo
       .searchProduct(query, offset, count)
-      .map(a => resultSync(ProductsDTO(items = a._1.map(new ProductDTO(_).copy(tags = "")), offset = offset, count = count, total = a._2)))
+<<<<<<< HEAD
+      .map {
+        case (l, r) =>
+          resultSync(ProductsDTO(items = l.map(new ProductDTO(_).copy(tags = "")), offset = offset, count = count, total = r))
+      } recover {
+      case e: Throwable => exSync(e)
+    }
+=======
+      .map(a => resultSync(ProductsDTO(items = a._1.map(new ProductDTO(_)), offset = offset, count = count, total = a._2)))
       .recover {
         case e: Throwable => exSync(e)
       }
 
+>>>>>>> 65da67533117f12934e709c0a9c5cb951bf40392
   }
 }

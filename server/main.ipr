@@ -19,30 +19,9 @@
       </profile>
     </annotationProcessing>
   </component>
-  <component name="CopyrightManager" default="">
-    <LanguageOptions name="Scala">
-      <option name="fileTypeOverride" value="1" />
-    </LanguageOptions>
-  </component>
-  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="PostgreSQL - lists@localhost" uuid="6c146d86-e13d-4e0d-8a4f-ade99bafa345">
-      <driver-ref>postgresql</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://localhost:5432/lists</jdbc-url>
-    </data-source>
-    <data-source source="LOCAL" name="PostgreSQL - mytest@localhost" uuid="846b0a53-149e-45a5-82ed-c01362ae415e">
-      <driver-ref>postgresql</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://localhost:5432/mytest</jdbc-url>
-    </data-source>
-  </component>
+  <component name="CopyrightManager" default="" />
   <component name="Encoding">
     <file url="PROJECT" charset="UTF-8" />
-  </component>
-  <component name="EntryPointsManager">
-    <entry_points version="2.0" />
   </component>
   <component name="GradleLocalSettings">
     <option name="modificationStamps">
@@ -57,13 +36,6 @@
       <projects_view />
     </option>
   </component>
-  <component name="JavaScriptLibraryMappings">
-    <file url="file://$PROJECT_DIR$/public/client" libraries="{server/public/client/node_modules}" />
-    <includedPredefinedLibrary name="ECMAScript 6" />
-  </component>
-  <component name="JavaScriptSettings">
-    <option name="languageLevel" value="JSX" />
-  </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_STRING" value="-encoding utf8 -g" />
   </component>
@@ -73,11 +45,6 @@
         <option name="mavenHome" value="Bundled (Maven 3)" />
       </MavenGeneralSettings>
     </option>
-  </component>
-  <component name="Play2CompilerConfiguration">
-    <option name="PLAY_ENABLED" value="true" />
-    <option name="PROJECT_PLAY_MODULE" value="main" />
-    <option name="PROJECT_URI" value="" />
   </component>
   <component name="Play2ExcludedModulesSettings">
     <option name="INFO">
@@ -111,19 +78,6 @@
       </map>
     </option>
   </component>
-  <component name="ProjectCodeStyleSettingsManager">
-    <option name="PER_PROJECT_SETTINGS">
-      <value />
-    </option>
-    <option name="PREFERRED_PROJECT_CODE_STYLE" value="Default (1)" />
-  </component>
-  <component name="ProjectDictionaryState">
-    <dictionary name="ozaharia">
-      <words>
-        <w>guid</w>
-      </words>
-    </dictionary>
-  </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
@@ -143,7 +97,18 @@
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false" assert-keyword="true" jdk-15="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
+  <component name="PropertiesComponent">
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+  </component>
   <component name="RunManager">
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <method />
+    </configuration>
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="WIDTH" value="400" />
       <option name="HEIGHT" value="300" />
@@ -195,37 +160,6 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
-    <configuration default="true" type="TestNG" factoryName="TestNG">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="GROUP_NAME" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="OUTPUT_DIRECTORY" />
-      <option name="ANNOTATION_TYPE" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
-      <envs />
-      <properties />
-      <listeners />
-      <method />
-    </configuration>
-    <configuration name="&lt;template&gt;" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" default="true" selected="false">
-      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
-    </configuration>
   </component>
   <component name="SbtLocalSettings">
     <option name="modificationStamps">
@@ -235,8 +169,8 @@
         <entry key="$PROJECT_DIR$/../../movies/server" value="1438428983834" />
         <entry key="$PROJECT_DIR$/../../project" value="1433352582183" />
         <entry key="$PROJECT_DIR$/../../resty" value="1444327355586" />
-        <entry key="$PROJECT_DIR$/../Server" value="1473397058481" />
-        <entry key="$PROJECT_DIR$" value="1475436234980" />
+        <entry key="$PROJECT_DIR$" value="1473397058481" />
+        <entry key="$PROJECT_DIR$" value="1479224001000" />
         <entry key="$USER_HOME$/zion/zion-smith" value="7299250211553" />
         <entry key="$USER_HOME$/zion/zion-trinity" value="7293553765495" />
         <entry key="$USER_HOME$/zion_/zion-smith" value="7294543084591" />
@@ -263,7 +197,7 @@
     <option name="linkedExternalProjectsSettings">
       <SbtProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="jdk" value="1.8" />
+        <option name="jdk" value="1.8 (1)" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
@@ -278,38 +212,12 @@
     <option name="maximumHeapSize" value="1768" />
     <option name="vmParameters" value="-XX:MaxPermSize=2384M" />
   </component>
-  <component name="SqlDialectMappings">
-    <file url="file://$PROJECT_DIR$/conf/evolutions/default/1.sql" dialect="PostgreSQL" />
-  </component>
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$/.." vcs="Git" />
-  </component>
-  <component name="dataSourceStorageLocal">
-    <data-source name="PostgreSQL - lists@localhost" uuid="6c146d86-e13d-4e0d-8a4f-ade99bafa345">
-      <database-info product="PostgreSQL" version="9.5.4" jdbc-version="4.0" driver-name="PostgreSQL Native Driver" driver-version="PostgreSQL 9.4 JDBC4 (build 1201)">
-        <identifier-quote-string>&quot;</identifier-quote-string>
-      </database-info>
-      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
-      <secret-storage>master_key</secret-storage>
-      <user-name>postgres</user-name>
-      <introspection-scope>lists:pg_catalog,postgres,public</introspection-scope>
-      <resolve-scope>lists:postgres,public</resolve-scope>
-    </data-source>
-    <data-source name="PostgreSQL - mytest@localhost" uuid="846b0a53-149e-45a5-82ed-c01362ae415e">
-      <database-info product="PostgreSQL" version="9.5.4" jdbc-version="4.0" driver-name="PostgreSQL Native Driver" driver-version="PostgreSQL 9.4 JDBC4 (build 1201)">
-        <identifier-quote-string>&quot;</identifier-quote-string>
-      </database-info>
-      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
-      <secret-storage>master_key</secret-storage>
-      <user-name>postgres</user-name>
-      <introspection-scope>mytest:pg_catalog,postgres,public</introspection-scope>
-      <resolve-scope>mytest:postgres,public</resolve-scope>
-    </data-source>
   </component>
   <component name="libraryTable">
     <library name="SBT: aopalliance:aopalliance:1.0:jar">
       <CLASSES>
-        <root url="jar://$USER_HOME$/Apps/activator-1.3.4/repository/aopalliance/aopalliance/1.0/jars/aopalliance.jar!/" />
         <root url="jar://$USER_HOME$/.ivy2/cache/aopalliance/aopalliance/jars/aopalliance-1.0.jar!/" />
       </CLASSES>
       <JAVADOC />
@@ -319,7 +227,6 @@
     </library>
     <library name="SBT: cglib:cglib-nodep:2.1_3:jar">
       <CLASSES>
-        <root url="jar://$USER_HOME$/Apps/activator-1.3.4/repository/cglib/cglib-nodep/2.1_3/jars/cglib-nodep.jar!/" />
         <root url="jar://$USER_HOME$/.ivy2/cache/cglib/cglib-nodep/jars/cglib-nodep-2.1_3.jar!/" />
       </CLASSES>
       <JAVADOC />
@@ -482,7 +389,6 @@
     </library>
     <library name="SBT: com.novocode:junit-interface:0.11:jar">
       <CLASSES>
-        <root url="jar://$USER_HOME$/Apps/activator-1.3.4/repository/com.novocode/junit-interface/0.11/jars/junit-interface.jar!/" />
         <root url="jar://$USER_HOME$/.ivy2/cache/com.novocode/junit-interface/jars/junit-interface-0.11.jar!/" />
       </CLASSES>
       <JAVADOC />
@@ -843,7 +749,6 @@
     </library>
     <library name="SBT: commons-io:commons-io:2.4:jar">
       <CLASSES>
-        <root url="jar://$USER_HOME$/Apps/activator-1.3.4/repository/commons-io/commons-io/2.4/jars/commons-io.jar!/" />
         <root url="jar://$USER_HOME$/.ivy2/cache/commons-io/commons-io/jars/commons-io-2.4.jar!/" />
       </CLASSES>
       <JAVADOC />
@@ -941,7 +846,6 @@
     </library>
     <library name="SBT: javax.inject:javax.inject:1:jar">
       <CLASSES>
-        <root url="jar://$USER_HOME$/Apps/activator-1.3.4/repository/javax.inject/javax.inject/1/jars/javax.inject.jar!/" />
         <root url="jar://$USER_HOME$/.ivy2/cache/javax.inject/javax.inject/jars/javax.inject-1.jar!/" />
       </CLASSES>
       <JAVADOC />
@@ -951,7 +855,6 @@
     </library>
     <library name="SBT: javax.transaction:jta:1.1:jar">
       <CLASSES>
-        <root url="jar://$USER_HOME$/Apps/activator-1.3.4/repository/javax.transaction/jta/1.1/jars/jta.jar!/" />
         <root url="jar://$USER_HOME$/.ivy2/cache/javax.transaction/jta/jars/jta-1.1.jar!/" />
       </CLASSES>
       <JAVADOC />
@@ -961,7 +864,6 @@
     </library>
     <library name="SBT: javax.validation:validation-api:1.1.0.Final:jar">
       <CLASSES>
-        <root url="jar://$USER_HOME$/Apps/activator-1.3.4/repository/javax.validation/validation-api/1.1.0.Final/jars/validation-api.jar!/" />
         <root url="jar://$USER_HOME$/.ivy2/cache/javax.validation/validation-api/jars/validation-api-1.1.0.Final.jar!/" />
       </CLASSES>
       <JAVADOC />
@@ -980,7 +882,6 @@
     </library>
     <library name="SBT: junit:junit:4.12:jar">
       <CLASSES>
-        <root url="jar://$USER_HOME$/Apps/activator-1.3.4/repository/junit/junit/4.12/jars/junit.jar!/" />
         <root url="jar://$USER_HOME$/.ivy2/cache/junit/junit/jars/junit-4.12.jar!/" />
       </CLASSES>
       <JAVADOC />
@@ -1170,7 +1071,6 @@
     </library>
     <library name="SBT: org.hamcrest:hamcrest-core:1.3:jar">
       <CLASSES>
-        <root url="jar://$USER_HOME$/Apps/activator-1.3.4/repository/org.hamcrest/hamcrest-core/1.3/jars/hamcrest-core.jar!/" />
         <root url="jar://$USER_HOME$/.ivy2/cache/org.hamcrest/hamcrest-core/jars/hamcrest-core-1.3.jar!/" />
       </CLASSES>
       <JAVADOC />
@@ -1189,7 +1089,6 @@
     </library>
     <library name="SBT: org.javassist:javassist:3.19.0-GA:jar">
       <CLASSES>
-        <root url="jar://$USER_HOME$/Apps/activator-1.3.4/repository/org.javassist/javassist/3.19.0-GA/bundles/javassist.jar!/" />
         <root url="jar://$USER_HOME$/.ivy2/cache/org.javassist/javassist/bundles/javassist-3.19.0-GA.jar!/" />
       </CLASSES>
       <JAVADOC />
@@ -1217,7 +1116,6 @@
     </library>
     <library name="SBT: org.mockito:mockito-core:1.9.5:jar">
       <CLASSES>
-        <root url="jar://$USER_HOME$/Apps/activator-1.3.4/repository/org.mockito/mockito-core/1.9.5/jars/mockito-core.jar!/" />
         <root url="jar://$USER_HOME$/.ivy2/cache/org.mockito/mockito-core/jars/mockito-core-1.9.5.jar!/" />
       </CLASSES>
       <JAVADOC />
@@ -1227,7 +1125,6 @@
     </library>
     <library name="SBT: org.objenesis:objenesis:1.0:jar">
       <CLASSES>
-        <root url="jar://$USER_HOME$/Apps/activator-1.3.4/repository/org.objenesis/objenesis/1.0/jars/objenesis.jar!/" />
         <root url="jar://$USER_HOME$/.ivy2/cache/org.objenesis/objenesis/jars/objenesis-1.0.jar!/" />
       </CLASSES>
       <JAVADOC />
@@ -1246,7 +1143,6 @@
     </library>
     <library name="SBT: org.reactivestreams:reactive-streams:1.0.0:jar">
       <CLASSES>
-        <root url="jar://$USER_HOME$/Apps/activator-1.3.4/repository/org.reactivestreams/reactive-streams/1.0.0/jars/reactive-streams.jar!/" />
         <root url="jar://$USER_HOME$/.ivy2/cache/org.reactivestreams/reactive-streams/jars/reactive-streams-1.0.0.jar!/" />
       </CLASSES>
       <JAVADOC />
@@ -1344,7 +1240,6 @@
     </library>
     <library name="SBT: org.scala-stm:scala-stm_2.11:0.7:jar">
       <CLASSES>
-        <root url="jar://$USER_HOME$/Apps/activator-1.3.4/repository/org.scala-stm/scala-stm_2.11/0.7/jars/scala-stm_2.11.jar!/" />
         <root url="jar://$USER_HOME$/.ivy2/cache/org.scala-stm/scala-stm_2.11/jars/scala-stm_2.11-0.7.jar!/" />
       </CLASSES>
       <JAVADOC />
@@ -1604,7 +1499,6 @@
     </library>
     <library name="SBT: org.w3c.css:sac:1.3:jar">
       <CLASSES>
-        <root url="jar://$USER_HOME$/Apps/activator-1.3.4/repository/org.w3c.css/sac/1.3/jars/sac.jar!/" />
         <root url="jar://$USER_HOME$/.ivy2/cache/org.w3c.css/sac/jars/sac-1.3.jar!/" />
       </CLASSES>
       <JAVADOC />
@@ -1614,7 +1508,6 @@
     </library>
     <library name="SBT: org.webbitserver:webbit:0.4.14:jar">
       <CLASSES>
-        <root url="jar://$USER_HOME$/Apps/activator-1.3.4/repository/org.webbitserver/webbit/0.4.14/jars/webbit.jar!/" />
         <root url="jar://$USER_HOME$/.ivy2/cache/org.webbitserver/webbit/jars/webbit-0.4.14.jar!/" />
       </CLASSES>
       <JAVADOC />
@@ -1658,7 +1551,6 @@
     </library>
     <library name="SBT: xerces:xercesImpl:2.11.0:jar">
       <CLASSES>
-        <root url="jar://$USER_HOME$/Apps/activator-1.3.4/repository/xerces/xercesImpl/2.11.0/jars/xercesImpl.jar!/" />
         <root url="jar://$USER_HOME$/.ivy2/cache/xerces/xercesImpl/jars/xercesImpl-2.11.0.jar!/" />
       </CLASSES>
       <JAVADOC />
@@ -1668,7 +1560,6 @@
     </library>
     <library name="SBT: xml-apis:xml-apis:1.4.01:jar">
       <CLASSES>
-        <root url="jar://$USER_HOME$/Apps/activator-1.3.4/repository/xml-apis/xml-apis/1.4.01/jars/xml-apis.jar!/" />
         <root url="jar://$USER_HOME$/.ivy2/cache/xml-apis/xml-apis/jars/xml-apis-1.4.01.jar!/" />
       </CLASSES>
       <JAVADOC />
@@ -1679,6 +1570,30 @@
   </component>
   <component name="masterDetails">
     <states>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>scala-sdk-2.11.7</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
       <state key="ProjectJDKs.UI">
         <settings>
           <last-edited>1.8</last-edited>
@@ -1686,6 +1601,17 @@
             <option name="proportions">
               <list>
                 <option value="0.19999999" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
               </list>
             </option>
           </splitter-proportions>

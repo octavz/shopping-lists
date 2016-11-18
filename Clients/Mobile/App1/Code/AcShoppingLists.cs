@@ -17,6 +17,8 @@ using CommonBL.Data.Request;
 using CommonBL.Repository;
 using CommonBL.Data.Response;
 using System.Threading.Tasks;
+using ShList.Code.Common;
+using Android.Support.V4.Content;
 
 namespace ShList.Code
 {
@@ -26,22 +28,40 @@ namespace ShList.Code
     {
         LinearLayout llShoppingLst = null;
         Button btnCreateList = null;
+        SyncCom con = null;
 
-        protected async override void OnCreate(Bundle bundle)
+        protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
 
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.AcShoppingLists);
-            
+
+            var startServiceIntent = new Intent(ShAppContext, typeof(SyncService));
+            con = new SyncCom(this);
+            ApplicationContext.BindService(startServiceIntent, con, Bind.AutoCreate);
+
             llShoppingLst = FindViewById<LinearLayout>(Resource.Id.listShopping);
             btnCreateList = FindViewById<Button>(Resource.Id.btnCreateList);
 
             btnCreateList.Click += AddNewList;
 
-            await LoadLists();
+            LoadLists();
             GenerateUILists();
+
+            IntentFilter filter = new IntentFilter(Intent.ActionSend);
+            MessageReciever receiver = new MessageReciever(this);
+            LocalBroadcastManager.GetInstance(this).RegisterReceiver(receiver, filter);
         }//OnCreate
+
+        public void ProcessMessage(Intent intent)
+        {
+            //intent.GetStringExtra("WearMessage");
+            int a = 2;
+            LoadLists();
+            GenerateUILists();
+        }
+
 
         /// <summary>
         /// GenerateUILists
@@ -49,31 +69,27 @@ namespace ShList.Code
         private void GenerateUILists()
         {
             ListsManager lstMgr = ListsManager.Instance;
-            lstMgr.Lists.ForEach(x => {
+            llShoppingLst.RemoveAllViews();
+            lstMgr.Lists.ForEach(x =>
+            {
                 CreateUIList(x);
             });
         }//GenerateUILists
 
-        private async Task LoadLists()
+        private void LoadLists()
         {
-            var progressDialog = ProgressDialog.Show(this, ShAppContext.GetString(Resource.String.PleaseWait), ShAppContext.GetString(Resource.String.LoadingLists), true);
-            ResUserLists resLists = await UserRepository.Instance.GetUserLists(ShAppContext.UserId, ShAppContext.UserToken);
+            string data = FilesManager.ReadShListsState();
+            if (string.IsNullOrEmpty(data))
+                return;
             ListsManager lstMgr = ListsManager.Instance;
-            resLists.LstItems.ForEach(x => lstMgr.AddListFromResponse(x));
-            progressDialog.Dismiss();
-            return;
+            lstMgr.ImportSerializedData(data);
         }//LoadLists
 
-        private async void AddNewList(object sender, EventArgs e)
+        private void AddNewList(object sender, EventArgs e)
         {
             ShoppingListDTO newList = ListsManager.Instance.CreateNewList();
             ReqListDTO lst = newList.GenerateRequestFormat(ShAppContext.UserId, ShAppContext.UserToken);
-
-            var progressDialog = ProgressDialog.Show(this, ShAppContext.GetString(Resource.String.PleaseWait), ShAppContext.GetString(Resource.String.CreatingList), true);
-            ResListDTO resList = await ListRepository.Instance.CreateList(lst);
-            newList.LoadFromResponse(resList);
             CreateUIList(newList);
-            progressDialog.Dismiss();
         }//AddNewList
 
         /// <summary>
@@ -82,42 +98,45 @@ namespace ShList.Code
         /// <param name="newList"></param>
         /// <param name="progressDialog"></param>
         private void CreateUIList(ShoppingListDTO newList)
-        {
+        {            
             CtrlShoppingList item = new CtrlShoppingList(this, ShAppContext, newList);
             item.Event_DeleteItem += DeleteList;
             item.Event_EditItem += EditList;
             llShoppingLst.AddView(item, 0);
+            llShoppingLst.RequestLayout();
         }//CreateUIList
 
-        private async Task EditList(int listUIId)
+        private void EditList(int listUIId, string newName)
         {
-            var view = FindViewById<CtrlShoppingList>(listUIId);                        
-
-            if (!string.IsNullOrEmpty(view.Data.Id)) //the list was not sync with the server
-            {
-                var progressDialog = ProgressDialog.Show(this, ShAppContext.GetString(Resource.String.PleaseWait), ShAppContext.GetString(Resource.String.UpdatingList), true);
-                ReqListDTO req = view.Data.GenerateRequestFormat(ShAppContext.UserId, ShAppContext.UserToken);
-                ResListDTO res = await ListRepository.Instance.UpdateList(req);
-                progressDialog.Dismiss();
-            }//endif
+            var view = FindViewById<CtrlShoppingList>(listUIId);
+            ListsManager.Instance.UpdateListName(view.Data.InternalId, newName);
         }//EditList
 
         /// <summary>
         /// DeleteList
         /// </summary>
         /// <param name="listUIId"></param>
-        private async Task DeleteList(int listUIId)
+        private void DeleteList(int listUIId)
         {
             var view = FindViewById<CtrlShoppingList>(listUIId);
             ((view as View).Parent as ViewGroup).RemoveView(view);
-            ListsManager.Instance.DeleteList(view.Data);
-
-            if (!string.IsNullOrEmpty(view.Data.Id)) //the list was not sync with the server
-            {
-                var progressDialog = ProgressDialog.Show(this, ShAppContext.GetString(Resource.String.PleaseWait), ShAppContext.GetString(Resource.String.DeletingList), true);
-                ResDeleteListDTO resDelete = await ListRepository.Instance.DeleteList(view.Data.Id, ShAppContext.UserToken);
-                progressDialog.Dismiss();
-            }//endif
+            ListsManager.Instance.DeleteList(view.Data.InternalId);
         }//DeleteList
+
+        protected override void OnResume()
+        {
+            base.OnResume();
+            GenerateUILists();
+        }
+
+        internal class MessageReciever : BroadcastReceiver
+        {
+            AcShoppingLists _main;
+            public MessageReciever(AcShoppingLists owner) { this._main = owner; }
+            public override void OnReceive(Context context, Intent intent)
+            {
+                _main.ProcessMessage(intent);
+            }
+        }
     }
 }

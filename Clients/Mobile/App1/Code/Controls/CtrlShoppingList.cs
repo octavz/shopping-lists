@@ -28,8 +28,8 @@ namespace ShList.Code.Controls
         private Activity m_ParentActivity = null;
         private TextView lstNm = null;
 
-        public event Func<int, Task> Event_DeleteItem = null;
-        public event Func<int, Task> Event_EditItem = null;
+        public event Action<int> Event_DeleteItem = null;
+        public event Action<int,string> Event_EditItem = null;
 
         /// <summary>
         /// CtrlShoppingList
@@ -77,11 +77,10 @@ namespace ShList.Code.Controls
             alert.GetButton((int)DialogButtonType.Positive).Click += (senderAlert, args) =>
              {
                  if (!string.IsNullOrEmpty(txtLstName.Text))
-                 {
-                     m_Data.ListName = txtLstName.Text;
+                 {                     
                      lstNm.Text = txtLstName.Text;
                      if (Event_EditItem != null)
-                         Event_EditItem(this.Id);
+                         Event_EditItem(this.Id, txtLstName.Text);
                      alert.Dismiss();
                  }
                  else                 
