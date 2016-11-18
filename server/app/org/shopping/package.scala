@@ -43,7 +43,6 @@ package object shopping {
     def toResponse(implicit m: Writes[T]) = result map {
       case Right(r) => Ok(Json.toJson(r).toString())
       case Left(ErrorDTO(code, msg)) => BadRequest(Json.obj("errCode" -> code, "errMessage" -> msg))
-
     }
   }
 

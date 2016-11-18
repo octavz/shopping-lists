@@ -59,7 +59,7 @@ class MainServiceSpec extends Specification with Mockito {
     ListItemsDTO(items = ids.map(newListItemDTO), meta = Some(ListMetadata(guid, Nil)))
 
   private def newProductDTO(id: String = guid) =
-    ProductDTO(id = Some(id), name = s"name $id", description = Some(s"desc $id"))
+    ProductDTO(id = Some(id), name = s"name $id", tags = "tags", description = Some(s"desc $id"))
 
   private def newProductPriceDTO(pid: String = guid) =
     ProductPriceDTO(productId = pid, supplierId = s"s-$pid", price = BigDecimal(100))
@@ -72,6 +72,7 @@ class MainServiceSpec extends Specification with Mockito {
       m.listService.getUserLists(anyString, anyInt, anyInt) returns result(ListsDTO(Seq(newListDTO(guid))))
       m.listService.updateLists(any[ListsDTO]) returns result(ListsDTO(Seq(newListDTO(guid))))
       m.listService.addListItems(any[ListItemsDTO]) returns result(newListItemsDTO(guid, guid))
+      m.listService.getListItems(anyString) returns result(newListItemsDTO(guid, guid))
       m.productService.insertProduct(any[ProductDTO]) returns result(newProductDTO(guid))
       m.productService.insertProductPrice(any[ProductPriceDTO]) returns result(newProductPriceDTO(guid))
       m

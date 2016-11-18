@@ -27,16 +27,16 @@ class DefaultMainService @Inject()(
         lst => resultSync(
           lst.flatMap {
             case Left(err) => None
-            case Right(li) => if(li.items.isEmpty) None else Some(li)
+            case Right(li) => if (li.items.isEmpty) None else Some(li)
           })
       }
     })
 
-  override def sync(data: SyncDTO): Result[SyncDTO] = {
+  override def sync(data: SyncDTO): Result[SyncDTO] = try {
     for {
       userData <- data.userData.fold(userService.getUserById(userId))(userService.updateUser)
       meta <- data.listsMeta.fold(listService.getUserLists(userId, 0, 1000))(listService.updateLists)
-      lists <- getItems(meta)
+      lists <- data.lists.fold(getItems(meta))(a => sequence(a.map(listService.addListItems)).flatMap(_ => getItems(meta)))
       products <- sequence(data.products.getOrElse(Nil).map(productService.insertProduct)).map(seqEither)
       prices <- sequence(data.prices.getOrElse(Nil).map(productService.insertProductPrice)).map(seqEither)
     } yield for {
@@ -52,6 +52,8 @@ class DefaultMainService @Inject()(
       products = Some(rProducts),
       prices = Some(rPrices)
     )
+  } catch {
+    case e: Throwable => ex(e)
   }
 
 }
