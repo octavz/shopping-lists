@@ -30,7 +30,7 @@ package object services {
 
   def error(err: ErrorDTO): Result[Nothing] = Future.successful(Left(err))
 
-  def errorSync(err: ErrorDTO): Either[ErrorDTO,Nothing] = Left(err)
+  def errorSync(err: ErrorDTO): Either[ErrorDTO, Nothing] = Left(err)
 
   def error(errMessage: String, errCode: Int = 400): Result[Nothing] = {
     log.error(s"${currentMethod()}: $errMessage")

@@ -4,7 +4,6 @@ import org.junit.runner._
 import org.shopping.dto._
 import org.shopping.models.User
 import org.shopping.services.impl._
-import org.shopping.util.Gen
 import org.shopping.util.Gen._
 import org.shopping.util.Time._
 import org.specs2.mock._
@@ -26,10 +25,10 @@ class MainServiceSpec extends Specification with Mockito {
   private val userDto = new UserDTO(userModel)
 
   case class MockContext(mainService: DefaultMainService, userService: UserService, listService: ListService,
-    productService: ProductService)
+                         productService: ProductService)
 
   private def service(userService: UserService = mock[UserService], listService: ListService = mock[ListService],
-    productService: ProductService = mock[ProductService]) = {
+                      productService: ProductService = mock[ProductService]) = {
     val ret = new DefaultMainService(userService, listService, productService)
     ret.setAuth(AuthInfo[User](user = userModel, Some("1"), None, None))
     MockContext(ret, userService, listService, productService)
@@ -69,7 +68,7 @@ class MainServiceSpec extends Specification with Mockito {
     def mock(m: MockContext) = {
       m.userService.getUserById(anyString) returns result(userDto)
       m.userService.updateUser(any[UserDTO]) returns result(userDto)
-      m.listService.getUserLists(anyString, anyInt, anyInt) returns result(ListsDTO(Seq(newListDTO(guid))))
+      m.listService.getUserLists(anyString, anyInt, anyInt) returns result(ListsDTO(Seq(newListDTO("listId1"), newListDTO("listId2"))))
       m.listService.updateLists(any[ListsDTO]) returns result(ListsDTO(Seq(newListDTO(guid))))
       m.listService.addListItems(any[ListItemsDTO]) returns result(newListItemsDTO(guid, guid))
       m.listService.getListItems(anyString) returns result(newListItemsDTO(guid, guid))
@@ -78,12 +77,33 @@ class MainServiceSpec extends Specification with Mockito {
       m
     }
 
-    "implement sync" in {
+    def assertSync(implicit fret: Result[SyncDTO]) = {
+      val ret = Await.result(fret, Duration.Inf)
+      ret should beRight
+      val res = ret.right.get
+      res.userData must beSome
+      res.userData.get.id === userModel.id
+      res.listsMeta must beSome
+      res.listsMeta.get.items.size === 2
+      res.lists must beSome
+      res.lists.get.size === 2
+    }
+
+    "when sync with empty values return existing state" in {
       val s = mock(service())
       val data = SyncDTO(userData = None, listsMeta = None, lists = None, products = None, prices = None)
-      val ret = Await.result(s.mainService.sync(data), Duration.Inf)
-      ret should beRight
+      implicit val res = s.mainService.sync(data)
+      assertSync
     }
+
+    "when sync with some userData call userService and save" in {
+      val s = mock(service())
+      val userDto = UserDTO(login = "login", password = "pass", id = "id", nick = "nick")
+      val data = SyncDTO(userData = Some(userDto), listsMeta = None, lists = None, products = None, prices = None)
+      implicit val res = s.mainService.sync(data)
+      assertSync
+    }
+
 
   }
 }
