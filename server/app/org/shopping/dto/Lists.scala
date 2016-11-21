@@ -15,8 +15,8 @@ case class ListDTO(id: Option[String], name: String, description: Option[String]
     userId = Some(model.userId),
     created = model.createdClient)
 
-  def toModel(id: String): ListDef = ListDef(id = id,
-    userId = userId.getOrElse(throw new Exception("No user attached to this dto!")),
+  def toModel(id: String, userId: String): ListDef = ListDef(id = id,
+    userId = userId,
     name = name, description = description, createdClient = created)
 }
 case class ListItemDTO(productId: Option[String], quantity: Int, description: Option[String], status: Int = 0) {

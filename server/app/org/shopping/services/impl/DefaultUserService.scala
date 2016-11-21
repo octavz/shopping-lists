@@ -48,7 +48,7 @@ class DefaultUserService @Inject()(userRepo: UserRepo, authRepo: Oauth2Repo) ext
     }
   }
 
-  override def getUserById(id: String): Result[UserDTO] = {
+  override def getUserById(id: String)(implicit authData: AuthData): Result[UserDTO] = {
     try {
       userRepo.getUserById(id) map {
         case Some(u) => resultSync(new UserDTO(u))
@@ -93,7 +93,7 @@ class DefaultUserService @Inject()(userRepo: UserRepo, authRepo: Oauth2Repo) ext
     }
   }
 
-  override def searchUsers(email: Option[String], nick: Option[String]): Result[UsersDTO] = {
+  override def searchUsers(email: Option[String], nick: Option[String])(implicit authData: AuthData): Result[UsersDTO] = {
     userRepo
       .searchUsers(email, nick)
       .map(lst => resultSync(UsersDTO(lst.map(new UserDTO(_)))))
@@ -102,7 +102,7 @@ class DefaultUserService @Inject()(userRepo: UserRepo, authRepo: Oauth2Repo) ext
       }
   }
 
-  override def updateUser(dto: UserDTO): Result[UserDTO] =
+  override def updateUser(dto: UserDTO)(implicit authData: AuthData): Result[UserDTO] =
     userRepo.getUserById(userId) flatMap {
       case Some(u) =>
         userRepo

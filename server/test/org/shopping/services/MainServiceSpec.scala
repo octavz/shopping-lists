@@ -19,18 +19,19 @@ class MainServiceSpec extends Specification with Mockito {
 
   val duration = Duration.Inf
 
-  private val userModel = User(id = guid, login = guid, password = guid, created = now(), updated = now(),
+  private val userModel = User(id = "id_user", login = guid, password = guid, created = now(), updated = now(),
     lastLogin = nowo, providerToken = guido, nick = guid)
 
   private val userDto = new UserDTO(userModel)
 
+  implicit val authInfo = AuthInfo[User](user = userModel, Some("1"), None, None)
+
   case class MockContext(mainService: DefaultMainService, userService: UserService, listService: ListService,
-                         productService: ProductService)
+    productService: ProductService)
 
   private def service(userService: UserService = mock[UserService], listService: ListService = mock[ListService],
-                      productService: ProductService = mock[ProductService]) = {
+    productService: ProductService = mock[ProductService]) = {
     val ret = new DefaultMainService(userService, listService, productService)
-    ret.setAuth(AuthInfo[User](user = userModel, Some("1"), None, None))
     MockContext(ret, userService, listService, productService)
   }
 
@@ -69,6 +70,7 @@ class MainServiceSpec extends Specification with Mockito {
       m.userService.getUserById(anyString) returns result(userDto)
       m.userService.updateUser(any[UserDTO]) returns result(userDto)
       m.listService.getUserLists(anyString, anyInt, anyInt) returns result(ListsDTO(Seq(newListDTO("listId1"), newListDTO("listId2"))))
+      m.listService.insertLists(any[ListsDTO]) returns result(ListsDTO(Seq(newListDTO(guid))))
       m.listService.updateLists(any[ListsDTO]) returns result(ListsDTO(Seq(newListDTO(guid))))
       m.listService.addListItems(any[ListItemsDTO]) returns result(newListItemsDTO(guid, guid))
       m.listService.getListItems(anyString) returns result(newListItemsDTO(guid, guid))
@@ -93,14 +95,44 @@ class MainServiceSpec extends Specification with Mockito {
       val s = mock(service())
       val data = SyncDTO(userData = None, listsMeta = None, lists = None, products = None, prices = None)
       implicit val res = s.mainService.sync(data)
+      there was one(s.userService).getUserById(userDto.id)
+      there was one(s.listService).getUserLists(userDto.id, 0, 1000)
+      there was one(s.listService).getListItems("listId1")
+      there was one(s.listService).getListItems("listId2")
+      there was no(s.productService).insertProduct(any)
+      there was no(s.productService).insertProductPrice(any)
       assertSync
     }
 
-    "when sync with some userData call userService and save" in {
+    "when sync with some userData call userService update and save" in {
       val s = mock(service())
-      val userDto = UserDTO(login = "login", password = "pass", id = "id", nick = "nick")
-      val data = SyncDTO(userData = Some(userDto), listsMeta = None, lists = None, products = None, prices = None)
+      val dto = UserDTO(login = "login", password = "pass", id = "id", nick = "nick")
+      val data = SyncDTO(userData = Some(dto), listsMeta = None, lists = None, products = None, prices = None)
       implicit val res = s.mainService.sync(data)
+      there was one(s.userService).updateUser(dto)
+      there was one(s.listService).getUserLists(userDto.id, 0, 1000)
+      there was one(s.listService).getListItems("listId1")
+      there was one(s.listService).getListItems("listId2")
+      there was no(s.productService).insertProduct(any)
+      there was no(s.productService).insertProductPrice(any)
+      assertSync
+    }
+
+    "when sync with lists meta call listService" in {
+      val s = mock(service())
+      val l1 = newListDTO()
+      val l2 = newListDTO()
+      val l3 = newListDTO().copy(id = None)
+
+      val data = SyncDTO(userData = None, listsMeta = Some(ListsDTO(items = Seq(l1, l2, l3))), lists = None, products = None, prices = None)
+      implicit val res = s.mainService.sync(data)
+      there was one(s.userService).getUserById(userDto.id)
+      there was one(s.listService).getUserLists(userDto.id, 0, 1000)
+      there was one(s.listService).insertLists(ListsDTO(Seq(l3)))
+      there was one(s.listService).updateLists(ListsDTO(Seq(l1,l2)))
+      there was three(s.listService).getListItems(anyString) //l1,l2, l3
+      there was no(s.productService).insertProduct(any)
+      there was no(s.productService).insertProductPrice(any)
       assertSync
     }
 

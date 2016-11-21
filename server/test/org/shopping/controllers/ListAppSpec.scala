@@ -77,7 +77,6 @@ class ListAppSpec extends PlaySpecification with Mockito {
         val json = contentAsJson(page.get)
         status(page.get) === OK
         Await.ready(page.get, Duration.Inf)
-        there was one(service.listService).setAuth(authInfo)
         there was one(service.listService).insertList(any[ListDTO])
         json \ "name" === JsDefined(JsString("list"))
         json \ "description" === JsDefined(JsString("123456"))
@@ -93,7 +92,6 @@ class ListAppSpec extends PlaySpecification with Mockito {
         page must beSome
         status(page.get) === OK
         Await.ready(page.get, Duration.Inf)
-        there was one(service.listService).setAuth(authInfo)
         there was one(service.listService).getUserLists("id", 0, 10)
         val json = contentAsJson(page.get)
         val arr = (json \ "items").as[JsArray].value
@@ -123,7 +121,6 @@ class ListAppSpec extends PlaySpecification with Mockito {
         page must beSome
         status(page.get) === OK
         Await.ready(page.get, Duration.Inf)
-        there was one(service.listService).setAuth(authInfo)
         there was one(service.listService).updateList(any)
         json \ "name" === JsDefined(JsString(p.name))
         json \ "description" === JsDefined(JsString(p.description.get))

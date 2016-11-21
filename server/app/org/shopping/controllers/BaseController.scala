@@ -23,7 +23,6 @@ class BaseController(service: BaseService)
       case Left(e) if e.statusCode == 400 => Future.successful(BadRequest(err(400, e.description)).withHeaders(responseOAuthErrorHeader(e)))
       case Left(e) if e.statusCode == 401 => Future.successful(Unauthorized(err(401, "UNAUTHORIZED")).withHeaders(responseOAuthErrorHeader(e)))
       case Right(authInfo) =>
-        service.setAuth(authInfo)
         callback(authInfo)
     }
 

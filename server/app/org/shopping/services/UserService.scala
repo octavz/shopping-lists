@@ -7,7 +7,7 @@ import scalaoauth2.provider.{AuthorizationRequest, GrantHandlerResult, OAuthErro
 
 trait UserService extends BaseService {
 
-  def getUserById(uid: String): Result[UserDTO]
+  def getUserById(uid: String)(implicit authData: AuthData): Result[UserDTO]
 
   def getUserByToken(token: String): Result[UserDTO]
 
@@ -17,8 +17,8 @@ trait UserService extends BaseService {
 
   def registerUser(u: RegisterRequestDTO): Result[RegisterRequestDTO]
 
-  def searchUsers(email: Option[String], nick: Option[String]): Result[UsersDTO]
+  def searchUsers(email: Option[String], nick: Option[String])(implicit authData: AuthData): Result[UsersDTO]
 
-  def updateUser(u: UserDTO): Result[UserDTO]
+  def updateUser(u: UserDTO)(implicit authData: AuthData): Result[UserDTO]
 
 }

@@ -4,6 +4,6 @@ import org.shopping.dto._
 
 trait MainService extends BaseService {
 
-  def sync(data: SyncDTO): Result[SyncDTO]
+  def sync(data: SyncDTO)(implicit authData: AuthData): Result[SyncDTO]
 
 }

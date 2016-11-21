@@ -22,13 +22,14 @@ class UserServiceSpec extends Specification with Mockito {
 
   val duration = Duration.Inf
 
+  implicit val authData = AuthInfo[User](user =
+    User(id = guid, login = guid, password = guid, created = now(), updated = now(),
+      lastLogin = nowo, providerToken = guido, nick = guid), Some("1"), None, None)
+
   case class MockContext(userService: DefaultUserService, userRepo: UserRepo, authRepo: Oauth2Repo)
 
   def userService(userRepo: UserRepo = mock[UserRepo], authRepo: Oauth2Repo = mock[Oauth2Repo]): MockContext = {
     val ret = new DefaultUserService(userRepo, authRepo)
-    ret.setAuth(AuthInfo[User](user =
-      User(id = guid, login = guid, password = guid, created = now(), updated = now(),
-        lastLogin = nowo, providerToken = guido, nick = guid), Some("1"), None, None))
     MockContext(ret, userRepo, authRepo)
   }
 

@@ -15,8 +15,8 @@ import scala.language.postfixOps
 
 class DefaultListService @Inject()(userRepo: UserRepo, listRepo: ListRepo, productRepo: ProductRepo) extends ListService {
 
-  override def insertList(dto: ListDTO): Result[ListDTO] = {
-    val listDef = dto.toModel(Gen.guid)
+  override def insertList(dto: ListDTO)(implicit authData: AuthData): Result[ListDTO] = {
+    val listDef = dto.toModel(Gen.guid, userId)
 
     listRepo
       .insertList(listDef)
@@ -28,7 +28,7 @@ class DefaultListService @Inject()(userRepo: UserRepo, listRepo: ListRepo, produ
 
   private[impl] val MAX_ALLOWED = 100
 
-  private[impl] def cloneIfNotOwned(listId: String): Result[ListDef] =
+  private[impl] def cloneIfNotOwned(listId: String)(implicit authData: AuthData): Result[ListDef] =
     listRepo.getListDefById(listId) flatMap {
       case Some(list) =>
         val ret =
@@ -48,11 +48,12 @@ class DefaultListService @Inject()(userRepo: UserRepo, listRepo: ListRepo, produ
       case (_, l) => l.head.copy(quantity = l.size)
     }.toSeq
 
-  override def addListItems(listItems: ListItemsDTO): Result[ListItemsDTO] = {
-    val listId: String = listItems.meta.get.listId
+  override def addListItems(listItems: ListItemsDTO)(implicit authData: AuthData): Result[ListItemsDTO] = {
+    val listId = listItems.meta.get.listId
     val models = listItems.items
       .filter(_.productId.isEmpty)
-      .map(p => Product(id = Gen.guid, userId = userId, name = p.description.getOrElse(""), tags = p.description.getOrElse("").toLowerCase))
+      .map(
+        p => Product(id = Gen.guid, userId = userId, name = p.description.getOrElse(""), tags = p.description.getOrElse("").toLowerCase))
     val f1 = for {
       _ <- productRepo.insertProducts(models)
       l <- cloneIfNotOwned(listId)
@@ -91,7 +92,7 @@ class DefaultListService @Inject()(userRepo: UserRepo, listRepo: ListRepo, produ
     }
   }
 
-  override def getUserLists(uid: String, offset: Int, count: Int): Result[ListsDTO] = {
+  override def getUserLists(uid: String, offset: Int, count: Int)(implicit authData: AuthData): Result[ListsDTO] = {
     listRepo.getUserLists(userId, offset, count) map {
       case (seq, total) => resultSync(ListsDTO(items = seq.map(new ListDTO(_)), total = total))
     } recover {
@@ -99,16 +100,20 @@ class DefaultListService @Inject()(userRepo: UserRepo, listRepo: ListRepo, produ
     }
   }
 
-  override def updateLists(lists: ListsDTO): Result[ListsDTO] = Future.sequence(lists.items map updateList) map {
+  override def updateLists(lists: ListsDTO)(implicit authData: AuthData): Result[ListsDTO] = Future.sequence(lists.items map updateList) map {
     seqEitherWithFold(_)(Seq.empty[ListDTO])(_ :+ _).right map (ListsDTO(_))
   }
 
-  override def updateList(dto: ListDTO): Result[ListDTO] = dto.id match {
+  override def insertLists(lists: ListsDTO)(implicit authData: AuthData): Result[ListsDTO] = Future.sequence(lists.items map insertList) map {
+    seqEitherWithFold(_)(Seq.empty[ListDTO])(_ :+ _).right map (ListsDTO(_))
+  }
+
+  override def updateList(dto: ListDTO)(implicit authData: AuthData): Result[ListDTO] = dto.id match {
     case None => error(ErrorMessages.EMPTY_ID)
     case Some(id) =>
       checkUser(valid(id)) {
         cloneIfNotOwned(id) flatMap {
-          case Right(listDef) => listRepo.updateList(dto.toModel(listDef.id)) map {
+          case Right(listDef) => listRepo.updateList(dto.toModel(listDef.id, userId)) map {
             p =>
               resultSync(new ListDTO(p))
           }
@@ -119,13 +124,13 @@ class DefaultListService @Inject()(userRepo: UserRepo, listRepo: ListRepo, produ
       }
   }
 
-  private def valid(listId: String): Future[Boolean] = {
+  private def valid(listId: String)(implicit authData: AuthData): Future[Boolean] = {
     listRepo.getListUsers(listId) map {
       lst => lst.contains(userId)
     }
   }
 
-  override def getListItems(listId: String): Result[ListItemsDTO] =
+  override def getListItems(listId: String)(implicit authData: AuthData): Result[ListItemsDTO] =
     checkUser(valid(listId)) {
       listRepo.getListProductsByList(listId) map {
         items =>
@@ -139,7 +144,7 @@ class DefaultListService @Inject()(userRepo: UserRepo, listRepo: ListRepo, produ
         exSync(e, "getListItems")
     }
 
-  override def deleteList(listId: String): Result[BooleanDTO] =
+  override def deleteList(listId: String)(implicit authData: AuthData): Result[BooleanDTO] =
     checkUser(valid(listId)) {
       listRepo.getListDefById(listId) flatMap {
         case Some(list) =>

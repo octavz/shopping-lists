@@ -27,9 +27,9 @@ class UserController @Inject()(userService: UserService) extends BaseController(
   //  )
 
   private def auth(login: String, password: String,
-                   grantType: Option[String] = None,
-                   clientId: Option[String] = None,
-                   clientSecret: Option[String] = None) = AuthorizationRequest(headers = Map.empty
+    grantType: Option[String] = None,
+    clientId: Option[String] = None,
+    clientSecret: Option[String] = None) = AuthorizationRequest(headers = Map.empty
     , params = Map(
       "grant_type" -> Seq(grantType.getOrElse("password"))
       , "client_id" -> Seq(clientId.getOrElse("1"))
@@ -54,7 +54,7 @@ class UserController @Inject()(userService: UserService) extends BaseController(
               }
             }
           case _ =>
-              Future.successful(Unauthorized(err(401, "Unauthorized")))
+            Future.successful(Unauthorized(err(401, "Unauthorized")))
         }
       }.getOrElse(Future.successful(BadRequest(err(400, "Wrong json"))))
   }
@@ -72,7 +72,7 @@ class UserController @Inject()(userService: UserService) extends BaseController(
             }
           }
         case _ =>
-            Future.successful(Unauthorized(err(401, "Unauthorized")))
+          Future.successful(Unauthorized(err(401, "Unauthorized")))
       }
   }
 
@@ -121,7 +121,10 @@ class UserController @Inject()(userService: UserService) extends BaseController(
   def getUserById(userId: String) = Action.async {
     implicit request =>
       try {
-        userService.getUserById(userId).toResponse
+        authorize {
+          implicit authInfo =>
+            userService.getUserById(userId).toResponse
+        }
       } catch {
         case e: Throwable => Future.successful(BadRequest(err(400, s"Wrong json: ${e.getMessage}")))
       }
