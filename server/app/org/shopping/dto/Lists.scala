@@ -9,7 +9,7 @@ case class ListMeta(listId: String, boughtItems: Seq[String])
 case class ListDTO(id: Option[String],
   name: String,
   description: Option[String],
-  userId: Option[String],
+  userId: Option[String] ,
   created: Long,
   items: Option[Seq[ListItemDTO]],
   meta: Option[ListMeta] = None,
