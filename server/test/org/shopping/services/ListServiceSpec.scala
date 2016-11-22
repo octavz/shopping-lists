@@ -3,7 +3,7 @@ package org.shopping.services
 import org.junit.runner._
 import org.shopping.repo._
 import org.shopping.dto._
-import org.shopping.models.{ListDef, ListDefProduct, Product, User}
+import org.shopping.models._
 import org.shopping.services.impl._
 import org.shopping.util.Gen._
 import org.shopping.util.Time._
@@ -34,14 +34,16 @@ class ListServiceSpec extends Specification with Mockito {
 
   def genString(size: Int): String = (for (i <- 1 to size) yield "a").mkString
 
-  def genListDef(
-    userId: String) = ListDef(id = guid, userId = userId, name = guid, description = guido, createdClient = now(), created = now(), updated = now())
+  def genListDef(userId: String) =
+    ListWithItems(
+      ListDef(id = guid, userId = userId, name = guid, description = guido, createdClient = now(), created = now(), updated = now()),
+      Nil)
 
   "List service" should {
 
     "implement insertList and call repo" in {
       val m = service()
-      val dto = ListDTO(id = guido, name = guid, description = guido, userId = Some("userId"), created = 1000)
+      val dto = ListDTO(id = guido, name = guid, description = guido, userId = Some("userId"), created = 1000, items = None)
 
       m.listRepo.insertList(any[ListDef]) answers (a => repo(a.asInstanceOf[ListDef]))
 
@@ -52,7 +54,7 @@ class ListServiceSpec extends Specification with Mockito {
 
     "implement updateList and call repo" in {
       val m = service()
-      val dto = ListDTO(id = guido, name = guid, description = guido, userId = Some("userId"), created = 1000)
+      val dto = ListDTO(id = guido, name = guid, description = guido, userId = Some("userId"), created = 1000, items = None)
 
       m.listRepo.updateList(any[ListDef]) answers (a => repo(a.asInstanceOf[ListDef]))
       m.listRepo.getListDefById(any) returns repo(Some(genListDef(authInfo.user.id)))
@@ -65,7 +67,7 @@ class ListServiceSpec extends Specification with Mockito {
 
     "return right error when repo crashes" in {
       val m = service()
-      val dto = ListDTO(id = guido, name = guid, description = guido, userId = Some("userId"), created = 1000)
+      val dto = ListDTO(id = guido, name = guid, description = guido, userId = Some("userId"), created = 1000, items = None)
 
       m.listRepo.insertList(any[ListDef]) returns Future.failed(new Exception("test"))
       val s = Await.result(m.listService.insertList(dto), Duration.Inf)
@@ -93,7 +95,7 @@ class ListServiceSpec extends Specification with Mockito {
         createdClient = now(),
         created = now(),
         updated = now())
-      m.listRepo.getUserLists(anyString, any, any) returns repo((Seq(listDef), 1))
+      m.listRepo.getUserLists(anyString, any, any) returns repo((Seq(ListWithItems(listDef, Nil)), 1))
 
       val s = Await.result(m.listService.getUserLists(m.listService.userId, 0, 100), Duration.Inf)
 
@@ -130,50 +132,51 @@ class ListServiceSpec extends Specification with Mockito {
       message === "getUserLists"
     }
 
-    "add items to list will not clone if owned" in {
+    "update list will not clone if owned" in {
       val m = service()
       val listId = "listId"
-      val items = ListItemsDTO(Seq(ListItemDTO(Some("prodId"), 10, None)), Some(ListMetadata(listId, Nil)))
+      val list = ListDTO(id = Some(listId), name = guid, description = guido, userId = Some("userId"), created = 1000, items = None)
 
-      val listDef = ListDef(id = guid, userId = authInfo.user.id, name = guid,
-        description = guido, createdClient = now(), created = now(), updated = now())
+      val listDef = ListDef(id = guid, userId = authInfo.user.id, name = guid, description = guido, createdClient = now(), created = now(), updated = now())
       val listProduct = ListDefProduct(listDef.id, "p1", None, 0, 0, now(), now())
 
-      m.listRepo.getListDefById(any) returns repo(Some(listDef))
-      m.listRepo.insertList(any[ListDef]) returns repo(listDef)
+      m.listRepo.getUserLists(anyString, any, any) returns repo((Seq(ListWithItems(listDef, Nil)), 1))
+      m.listRepo.getListDefById(any) returns repo(Some(ListWithItems(listDef, Seq(listProduct))))
       m.listRepo.replaceListItems(any, any) returns repo(Seq(listProduct))
       m.listRepo.getListProductsByList(listDef.id) returns repo(Seq(listProduct))
 
       m.listRepo.updateBatchedBought(any, any) returns repo(1)
-      val s = Await.result(m.listService.addListItems(items), Duration.Inf)
+      val s = Await.result(m.listService.updateList(list), Duration.Inf)
 
       there was no(m.listRepo).insertList(any)
       there was one(m.listRepo).replaceListItems(any, any)
       s must beRight
-      val ret = s.merge.asInstanceOf[ListItemsDTO]
+      val ret = s.merge.asInstanceOf[ListDTO]
       ret.items.size === 1
     }
 
     "add items to list will clone not owned" in {
       val m = service()
       val listId = "listId"
-      val items = ListItemsDTO(Seq(ListItemDTO(Some("prodId"), 10, None)), Some(ListMetadata(listId, Nil)))
+      val list = ListDTO(id = Some(listId), name = guid, description = guido, userId = Some("userId"), created = 1000, items = None)
 
       val listDef = ListDef(id = guid, userId = "1", name = guid,
         description = guido, createdClient = now(), created = now(), updated = now())
       val listProduct = ListDefProduct(listDef.id, "p1", None, 0, 0, now(), now())
-      m.listRepo.getListDefById(any) returns repo(Some(listDef))
+
+      m.listRepo.getUserLists(anyString, any, any) returns repo((Seq(ListWithItems(listDef, Nil)), 1))
+      m.listRepo.getListDefById(any) returns repo(Some(ListWithItems(listDef, Nil)))
       m.listRepo.insertList(any[ListDef]) returns repo(listDef)
       m.listRepo.replaceListItems(any, any) returns repo(Seq(listProduct))
       m.listRepo.getListProductsByList(listDef.id) returns repo(Seq(listProduct))
 
       m.listRepo.updateBatchedBought(any, any) returns repo(1)
-      val s = Await.result(m.listService.addListItems(items), Duration.Inf)
+      val s = Await.result(m.listService.updateList(list), Duration.Inf)
 
       there was one(m.listRepo).insertList(any)
       there was one(m.listRepo).replaceListItems(any, any)
       s must beRight
-      val ret = s.merge.asInstanceOf[ListItemsDTO]
+      val ret = s.merge.asInstanceOf[ListDTO]
       ret.items.size === 1
     }
 

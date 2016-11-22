@@ -296,42 +296,6 @@ DELETE         /api/list/:listId               @org.shopping.controllers.ListCon
 
 ###
 # tags:
-#   - List operations
-# summary: Add multiple list Items
-# consumes:
-#   - application/json
-# produces:
-#   - application/json
-# parameters:
-#   - name: body
-#     in: body
-#     description: add list item data
-#     required: true
-#     schema:
-#       $ref: '#/definitions/org.shopping.dto.ListItemDTO'
-#   - name: "Authorization"
-#     in: "header"
-#     description: "Authorization code"
-#     required: true
-#     type: "string"
-# responses:
-#   201:
-#     description: Item created
-#     schema:
-#       $ref: '#/definitions/org.shopping.dto.ListItemsDTO'
-#   404:
-#     description: Entity not found
-#     schema:
-#       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
-#   401:
-#     description: Unauthorized
-#     schema:
-#       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
-###
-POST           /api/list/:listId/items         @org.shopping.controllers.ListController.addListItems(listId: String)
-
-###
-# tags:
 #   - Product operations
 # summary: Search products
 # produces:
@@ -385,34 +349,6 @@ GET            /api/products                   @org.shopping.controllers.Product
 #       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
 ###
 GET            /api/suppliers                  @org.shopping.controllers.ProductController.getAllSuppliers
-
-###
-# tags:
-#   - List operations
-# summary: Get List by Id
-# produces:
-#   - application/json
-# parameters:
-#   - name: "Authorization"
-#     in: "header"
-#     description: "Authorization code"
-#     required: true
-#     type: "string"
-# responses:
-#   200:
-#     description: get list b id
-#     schema:
-#       $ref: '#/definitions/org.shopping.dto.ListDTO'
-#   404:
-#     description: Entity not found
-#     schema:
-#       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
-#   401:
-#     description: Unauthorized
-#     schema:
-#       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
-###
-GET            /api/list/:listId/items         @org.shopping.controllers.ListController.getListItems(listId: String)
 
 ###
 # tags:
@@ -473,7 +409,7 @@ GET            /api/user                       @org.shopping.controllers.UserCon
 #     type: "string"
 # responses:
 #   200:
-#     description: get items
+#     description: search users by email, or nick
 #     schema:
 #       $ref: '#/definitions/org.shopping.dto.UsersDTO'
 #   401:

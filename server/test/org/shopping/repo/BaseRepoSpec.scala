@@ -52,7 +52,6 @@ class BaseRepoSpec extends PlaySpecification with Mockito {
         AsResult(t(e))
       } catch {
         case e: Throwable =>
-          e.printStackTrace()
           failure(e.getMessage)
       } finally {
         Evolutions.cleanupEvolutions(database)
@@ -60,7 +59,6 @@ class BaseRepoSpec extends PlaySpecification with Mockito {
     }
   } catch {
     case e: Exception =>
-      e.printStackTrace()
       failure(e.getMessage)
   }
 

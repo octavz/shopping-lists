@@ -10,7 +10,6 @@ package object dto {
 
   case class SyncDTO(userData: Option[UserDTO],
     listsMeta: Option[ListsDTO],
-    lists: Option[Seq[ListItemsDTO]],
     products: Option[Seq[ProductDTO]],
     prices: Option[Seq[ProductPriceDTO]])
 }

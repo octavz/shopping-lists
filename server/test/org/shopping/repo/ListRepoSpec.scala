@@ -38,7 +38,7 @@ class ListRepoSpec extends BaseRepoSpec {
         val ret = Await.result(repo.getUserLists("1", 0, 100), Duration.Inf)
         val lists = ret._1.distinct
         lists.size === 2
-        lists.sortBy(_.id).head.id === "1"
+        lists.sortBy(_.list.id).head.list.id === "1"
       }
     }
 

@@ -141,4 +141,6 @@ package object models {
     override def copyFn2(a: Long, b: Long): T = copy(created = a, updated = b)
   }
 
+  case class ListWithItems(list: ListDef, items: Seq[ListDefProduct])
+
 }

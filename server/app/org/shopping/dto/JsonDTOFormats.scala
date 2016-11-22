@@ -23,24 +23,13 @@ trait JsonDTOFormats extends BaseFormats with ConstraintReads {
   implicit val usersDTO = Json.format[UsersDTO]
   implicit val taskDTO = Json.format[ListItemDTO]
   implicit val errorDTO = Json.writes[ErrorDTO]
-  implicit val metaResponse = Json.format[ListMetadata]
-  implicit val tasksDTO = Json.format[ListItemsDTO]
+  implicit val metaResponse = Json.format[ListMeta]
   implicit val registerRequestDTO = (
     (__ \ 'login).format[String](maxLength[String](200) keepAnd email) ~
       (__ \ 'password).format[String](minLength[String](6) keepAnd maxLength[String](50))
     ) (RegisterRequestDTO, unlift(RegisterRequestDTO.unapply))
 
   implicit val registerResponseDTO = Json.writes[RegisterResponseDTO]
-
-  implicit val listRead = (
-    (__ \ 'id).readNullable[String](maxLength[String](50)) ~
-      (__ \ 'name).read[String](minLength[String](1) keepAnd maxLength[String](200)) ~
-      (__ \ 'description).readNullable[String](maxLength[String](1500)) ~
-      (__ \ 'userId).readNullable[String] ~
-      (__ \ 'created).read[Long] ~
-      (__ \ 'status).readNullable[Int]
-    ) (ListDTO)
-
   implicit val list = Json.format[ListDTO]
   implicit val lists = Json.format[ListsDTO]
   implicit val loginResponse = Json.writes[LoginResponseDTO]

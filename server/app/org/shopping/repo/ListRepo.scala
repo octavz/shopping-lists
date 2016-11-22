@@ -1,17 +1,16 @@
 package org.shopping.repo
 
-import org.shopping.db._
-import org.shopping.models.{ListDef, ListDefProduct}
+import org.shopping.models.{ListDef, ListDefProduct, ListWithItems}
 
 trait ListRepo {
 
   def insertList(model: ListDef): Repo[ListDef]
 
-  def getUserLists(uid: String, offset: Int, count: Int): Repo[(Seq[ListDef], Int)]
+  def getUserLists(uid: String, offset: Int, count: Int): Repo[(Seq[ListWithItems], Int)]
 
   def updateList(list: ListDef): Repo[ListDef]
 
-  def getListDefById(id: String): Repo[Option[ListDef]]
+  def getListDefById(id: String): Repo[Option[ListWithItems]]
 
   def replaceListItems(listId: String, model: Seq[ListDefProduct]): Repo[Seq[ListDefProduct]]
 

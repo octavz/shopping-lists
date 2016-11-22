@@ -78,7 +78,6 @@ class UserAppSpec extends PlaySpecification with Mockito {
         page must beSome
         val res = Await.result(page.get, Duration.Inf)
         val json = contentAsJson(page.get)
-        println(json)
         (json \ "login").get === JsString("login")
       }
     }

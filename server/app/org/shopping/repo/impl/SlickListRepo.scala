@@ -3,13 +3,14 @@ package org.shopping.repo.impl
 import com.google.inject.Inject
 import org.shopping.repo._
 import org.shopping.db._
-import org.shopping.models.{ListDef, ListDefProduct, ListUser}
+import org.shopping.models.{ListDef, ListDefProduct, ListUser, ListWithItems}
 import org.shopping.util.Constants
 import org.shopping.util.Time._
 import play.api.db.slick.{DatabaseConfigProvider, HasDatabaseConfigProvider}
 import slick.driver.JdbcProfile
 
 import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.Future
 
 class SlickListRepo @Inject()(protected val dbConfigProvider: DatabaseConfigProvider)
   extends ListRepo
@@ -32,29 +33,42 @@ class SlickListRepo @Inject()(protected val dbConfigProvider: DatabaseConfigProv
     db.run(ListDefs.filter(_.id === m.id).update(m)) map (_ => m)
   }
 
-  override def getUserLists(uid: String, offset: Int, count: Int): Repo[(Seq[ListDef], Int)] = {
+  override def getUserLists(uid: String, offset: Int, count: Int): Repo[(Seq[ListWithItems], Int)] = {
     val query = for {
-      (l,_) <- (ListDefs join ListsUsers on (_.id === _.listDefId)).filter {
+      (l, _) <- (ListDefs join ListsUsers on (_.id === _.listDefId)).filter {
         case (d, u) => (d.status =!= Constants.STATUS_DELETE) && (u.userId === uid)
       }
     } yield l
 
-    println(query.result.statements)
     val action = for {
       l <- query.drop(offset).take(count).result
       c <- query.length.result
     } yield (l, c)
 
-    db.run(action.transactionally).map {
-      case (l, c) => (l, c)
+    db.run(action.transactionally) flatMap {
+      case (lists, total) => addItemsToLists(lists) map (_ -> total)
     }
   }
 
-  override def getListDefById(id: String) = {
-    db run ListDefs.filter(p => p.id === id && p.status =!= Constants.STATUS_DELETE)
-      .take(1)
-      .result
-      .headOption
+  private[repo] def addItemsToList(list: ListDef): Repo[ListWithItems] = addItemsToLists(Seq(list)).map(_.head)
+
+  private[repo] def addItemsToLists(lists: Seq[ListDef]): Repo[Seq[ListWithItems]] = {
+    val listIds = lists.map(_.id)
+    val qProdsByLst = ListDefProducts.filter(_.listDefId.inSet(listIds))
+    db.run(qProdsByLst.result) map { res =>
+      lists map (l => ListWithItems(l, res.filter(_.listDefId == l.id)))
+    }
+  }
+
+  override def getListDefById(id: String): Repo[Option[ListWithItems]] = {
+    val q = for {
+      (d, p) <- (ListDefs joinLeft ListDefProducts on (_.id === _.listDefId)).filter {
+        case (p, _) => p.id === id && p.status =!= Constants.STATUS_DELETE
+      }
+    } yield (d, p)
+
+    val ret = db.run(q.result).map(_.groupBy(_._1).map { case (k, v) => k -> v.flatMap(_._2) })
+    ret.map(_.headOption.map(ListWithItems.tupled))
   }
 
   override def replaceListItems(listId: String, model: Seq[ListDefProduct]): Repo[Seq[ListDefProduct]] = {
