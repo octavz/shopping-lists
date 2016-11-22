@@ -45,9 +45,12 @@ namespace ShList.Code.Common
             var filename = Path.Combine(path, FILE_SH_LISTS_STATE);
             if (!File.Exists(filename))
                 return null;
-            using (var streamReader = new StreamReader(filename))
+            lock (m_locker)
             {
-                return streamReader.ReadToEnd();
+                using (var streamReader = new StreamReader(filename))
+                {
+                    return streamReader.ReadToEnd();
+                }
             }
         }//ReadShListsState
 

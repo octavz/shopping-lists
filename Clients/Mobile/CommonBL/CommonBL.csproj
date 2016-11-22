@@ -56,8 +56,10 @@
     <Compile Include="Data\Response\ResDeleteListDTO.cs" />
     <Compile Include="Data\Response\ResListDTO.cs" />
     <Compile Include="Data\Response\ResLoginDTO.cs" />
+    <Compile Include="Data\Response\ResSyncDTO.cs" />
     <Compile Include="Data\Response\ResUserLists.cs" />
     <Compile Include="Data\ShoppingListDTO.cs" />
+    <Compile Include="Data\ShStorage.cs" />
     <Compile Include="Helpers\MockHttpHelper.cs" />
     <Compile Include="Helpers\ServerHttpHelper.cs" />
     <Compile Include="Managers\ListsManager.cs" />
