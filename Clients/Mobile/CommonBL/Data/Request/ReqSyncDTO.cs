@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,7 @@ namespace CommonBL.Data.Request
         public ListMetaDTO listsMeta { get; set; }
 
         public List<FullListDTO> lists { get; set; }
+
     }//ReqSyncDTO
 
     public class FullListDTO

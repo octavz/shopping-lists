@@ -82,13 +82,12 @@ namespace ShList.Code
             if (string.IsNullOrEmpty(data))
                 return;
             ListsManager lstMgr = ListsManager.Instance;
-            lstMgr.ImportSerializedData(data);
+            lstMgr.ImportSerializedDataFromLocalStorage(data);
         }//LoadLists
 
         private void AddNewList(object sender, EventArgs e)
         {
-            ShoppingListDTO newList = ListsManager.Instance.CreateNewList();
-            ReqListDTO lst = newList.GenerateRequestFormat(ShAppContext.UserId, ShAppContext.UserToken);
+            ShoppingListDTO newList = ListsManager.Instance.CreateNewList();            
             CreateUIList(newList);
         }//AddNewList
 
