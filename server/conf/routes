@@ -2,9 +2,12 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 ### NoDocs ###
-OPTIONS      /*path                      @org.shopping.controllers.MainController.options(path)
+OPTIONS        /*path                          @org.shopping.controllers.MainController.options(path)
+
+GET /                                          @org.shopping.controllers.MainController.index()
+
 ### NoDocs ###
-POST         /api/oauth2/access_token    @org.shopping.controllers.UserController.accessToken
+POST           /api/oauth2/access_token        @org.shopping.controllers.UserController.accessToken
 
 ###
 # tags:
@@ -36,7 +39,7 @@ POST         /api/oauth2/access_token    @org.shopping.controllers.UserControlle
 #     schema:
 #       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
 ###
-POST         /api/product                   @org.shopping.controllers.ProductController.insertProduct
+POST           /api/product                    @org.shopping.controllers.ProductController.insertProduct
 
 ###
 # tags:
@@ -68,7 +71,7 @@ POST         /api/product                   @org.shopping.controllers.ProductCon
 #     schema:
 #       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
 ###
-POST         /api/supplier                   @org.shopping.controllers.ProductController.insertSupplier
+POST           /api/supplier                   @org.shopping.controllers.ProductController.insertSupplier
 
 ###
 # tags:
@@ -100,7 +103,7 @@ POST         /api/supplier                   @org.shopping.controllers.ProductCo
 #     schema:
 #       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
 ###
-POST         /api/productPrice                   @org.shopping.controllers.ProductController.insertProductPrice
+POST           /api/productPrice               @org.shopping.controllers.ProductController.insertProductPrice
 
 ###
 # tags:
@@ -136,7 +139,7 @@ POST         /api/productPrice                   @org.shopping.controllers.Produ
 #     schema:
 #       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
 ###
-PUT          /api/product/:productId           @org.shopping.controllers.ProductController.updateProduct(productId: String)
+PUT            /api/product/:productId         @org.shopping.controllers.ProductController.updateProduct(productId: String)
 
 ###
 # tags:
@@ -172,7 +175,7 @@ PUT          /api/product/:productId           @org.shopping.controllers.Product
 #     schema:
 #       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
 ###
-PUT          /api/productPrice           @org.shopping.controllers.ProductController.updateProductPrice()
+PUT            /api/productPrice               @org.shopping.controllers.ProductController.updateProductPrice()
 
 ###
 # tags:
@@ -196,7 +199,7 @@ PUT          /api/productPrice           @org.shopping.controllers.ProductContro
 #     schema:
 #       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
 ###
-DELETE       /api/product/:productId           @org.shopping.controllers.ProductController.deleteProduct(productId: String)
+DELETE         /api/product/:productId         @org.shopping.controllers.ProductController.deleteProduct(productId: String)
 
 
 ###
@@ -229,7 +232,7 @@ DELETE       /api/product/:productId           @org.shopping.controllers.Product
 #     schema:
 #       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
 ###
-POST         /api/list                   @org.shopping.controllers.ListController.insertList
+POST           /api/list                       @org.shopping.controllers.ListController.insertList
 
 ###
 # tags:
@@ -265,7 +268,7 @@ POST         /api/list                   @org.shopping.controllers.ListControlle
 #     schema:
 #       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
 ###
-PUT          /api/list/:listId           @org.shopping.controllers.ListController.updateList(listId: String)
+PUT            /api/list/:listId               @org.shopping.controllers.ListController.updateList(listId: String)
 
 ###
 # tags:
@@ -289,7 +292,7 @@ PUT          /api/list/:listId           @org.shopping.controllers.ListControlle
 #     schema:
 #       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
 ###
-DELETE       /api/list/:listId           @org.shopping.controllers.ListController.deleteList(listId: String)
+DELETE         /api/list/:listId               @org.shopping.controllers.ListController.deleteList(listId: String)
 
 ###
 # tags:
@@ -325,8 +328,35 @@ DELETE       /api/list/:listId           @org.shopping.controllers.ListControlle
 #     schema:
 #       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
 ###
-POST         /api/list/:listId/items      @org.shopping.controllers.ListController.addListItems(listId: String)
+POST           /api/list/:listId/items         @org.shopping.controllers.ListController.addListItems(listId: String)
 
+###
+# tags:
+#   - Product operations
+# summary: Search products
+# produces:
+#   - application/json
+# parameters:
+#   - name: "Authorization"
+#     in: "header"
+#     description: "Authorization code"
+#     required: true
+#     type: "string"
+# responses:
+#   200:
+#     description: products
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.ProductsDTO'
+#   404:
+#     description: Entity not found
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
+#   401:
+#     description: Unauthorized
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
+###
+GET            /api/products                   @org.shopping.controllers.ProductController.searchProducts(q: String, offset: Int, count: Int)
 
 ###
 # tags:
@@ -354,7 +384,7 @@ POST         /api/list/:listId/items      @org.shopping.controllers.ListControll
 #     schema:
 #       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
 ###
-GET         /api/suppliers      @org.shopping.controllers.ProductController.getAllSuppliers
+GET            /api/suppliers                  @org.shopping.controllers.ProductController.getAllSuppliers
 
 ###
 # tags:
@@ -382,7 +412,7 @@ GET         /api/suppliers      @org.shopping.controllers.ProductController.getA
 #     schema:
 #       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
 ###
-GET         /api/list/:listId/items      @org.shopping.controllers.ListController.getListItems(listId: String)
+GET            /api/list/:listId/items         @org.shopping.controllers.ListController.getListItems(listId: String)
 
 ###
 # tags:
@@ -403,7 +433,7 @@ GET         /api/list/:listId/items      @org.shopping.controllers.ListControlle
 #     schema:
 #       $ref: '#/definitions/org.shopping.dto.LoginResponseDTO'
 ###
-POST         /api/login                  @org.shopping.controllers.UserController.login
+POST           /api/login                      @org.shopping.controllers.UserController.login
 
 ###
 # tags:
@@ -427,7 +457,7 @@ POST         /api/login                  @org.shopping.controllers.UserControlle
 #     schema:
 #       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
 ###
-GET          /api/user                   @org.shopping.controllers.UserController.getUserBySession
+GET            /api/user                       @org.shopping.controllers.UserController.getUserBySession
 
 ###
 # tags:
@@ -451,7 +481,7 @@ GET          /api/user                   @org.shopping.controllers.UserControlle
 #     schema:
 #       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
 ###
-GET          /api/users                   @org.shopping.controllers.UserController.searchUsers(email: Option[String], nick: Option[String])
+GET            /api/users                      @org.shopping.controllers.UserController.searchUsers(email: Option[String], nick: Option[String])
 
 ###
 # tags:
@@ -474,7 +504,7 @@ GET          /api/users                   @org.shopping.controllers.UserControll
 #     schema:
 #       $ref: '#/definitions/org.shopping.dto.LoginResponseDTO'
 ###
-POST         /api/register               @org.shopping.controllers.UserController.registerAndLogin
+POST           /api/register                   @org.shopping.controllers.UserController.registerAndLogin
 
 ###
 # tags:
@@ -502,7 +532,7 @@ POST         /api/register               @org.shopping.controllers.UserControlle
 #     schema:
 #       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
 ###
-GET          /api/user/:userId/lists     @org.shopping.controllers.ListController.getUserLists(userId: String, offset: Int, count: Int)
+GET            /api/user/:userId/lists         @org.shopping.controllers.ListController.getUserLists(userId: String, offset: Int, count: Int)
 
 ###
 # tags:
@@ -534,23 +564,24 @@ GET          /api/user/:userId/lists     @org.shopping.controllers.ListControlle
 #     schema:
 #       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
 ###
-PUT          /api/data     @org.shopping.controllers.MainController.syncData()
+PUT            /api/data                       @org.shopping.controllers.MainController.syncData()
+
 
 ### NoDocs ###
-GET          /app/*file                  controllers.Assets.at(path="/public/client/app",file)
+GET            /app/*file                      controllers.Assets.at(path="/public/client/app",file)
 ### NoDocs ###
-GET          /public.html                controllers.Assets.at(path="/public/client",file="public.html")
+GET            /public.html                    controllers.Assets.at(path="/public/client",file="public.html")
 ### NoDocs ###
-GET          /autologin.html             controllers.Assets.at(path="/public/client",file="autologin.html")
+GET            /autologin.html                 controllers.Assets.at(path="/public/client",file="autologin.html")
 ### NoDocs ###
-GET          /index.html                 controllers.Assets.at(path="/public/client",file="index.html")
+GET            /index.html                     controllers.Assets.at(path="/public/client",file="index.html")
 
 ### NoDocs ###
-GET   /docs/swagger-ui/*file        controllers.Assets.at(path:String="/public/lib/swagger-ui", file:String)
+GET            /docs/swagger-ui/*file          controllers.Assets.at(path:String="/public/lib/swagger-ui", file:String)
 ### NoDocs ###
-GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+GET            /assets/*file                   controllers.Assets.versioned(path="/public", file: Asset)
 ### NoDocs ###
-GET   /docs                         controllers.Default.redirect(to = "/docs/swagger-ui/index.html?url=/assets/swagger.json")
+GET            /docs                           controllers.Default.redirect(to = "/docs/swagger-ui/index.html?url=/assets/swagger.json")
 
 
 

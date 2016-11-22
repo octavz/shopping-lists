@@ -86,7 +86,7 @@ package object models {
 
   case class ListUser(listDefId: String, userId: String)
 
-  case class Product(id: String, userId: String, name: String, description: Option[String] = None,
+  case class Product(id: String, userId: String, name: String, tags: String, description: Option[String] = None,
     status: Short = 0,
     override val created: Long = 0,
     override val updated: Long = 0) extends BaseModel {

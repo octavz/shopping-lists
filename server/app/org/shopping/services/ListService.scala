@@ -4,18 +4,20 @@ import org.shopping.dto._
 
 trait ListService extends BaseService {
 
-  def insertList(list: ListDTO): Result[ListDTO]
+  def insertList(list: ListDTO)(implicit authData: AuthData): Result[ListDTO]
 
-  def updateList(list: ListDTO): Result[ListDTO]
+  def updateList(list: ListDTO)(implicit authData: AuthData): Result[ListDTO]
 
-  def updateLists(lists: ListsDTO): Result[ListsDTO]
+  def updateLists(lists: ListsDTO)(implicit authData: AuthData): Result[ListsDTO]
 
-  def deleteList(list: String): Result[BooleanDTO]
+  def insertLists(lists: ListsDTO)(implicit authData: AuthData): Result[ListsDTO]
 
-  def getUserLists(userId: String, offset: Int, count: Int): Result[ListsDTO]
+  def deleteList(list: String)(implicit authData: AuthData): Result[BooleanDTO]
 
-  def addListItems(listItems: ListItemsDTO): Result[ListItemsDTO]
+  def getUserLists(userId: String, offset: Int, count: Int)(implicit authData: AuthData): Result[ListsDTO]
 
-  def getListItems(listId: String): Result[ListItemsDTO]
+  def addListItems(listItems: ListItemsDTO)(implicit authData: AuthData): Result[ListItemsDTO]
+
+  def getListItems(listId: String)(implicit authData: AuthData): Result[ListItemsDTO]
 
 }

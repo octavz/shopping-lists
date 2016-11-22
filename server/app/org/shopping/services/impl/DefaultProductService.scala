@@ -12,7 +12,7 @@ import scala.concurrent._
 
 class DefaultProductService @Inject()(userRepo: UserRepo, productRepo: ProductRepo) extends ProductService {
 
-  override def insertProduct(dto: ProductDTO): Result[ProductDTO] = {
+  override def insertProduct(dto: ProductDTO)(implicit authData: AuthData): Result[ProductDTO] = {
     val model = dto.toModel(userId, Gen.guid)
     productRepo
       .insertProduct(model)
@@ -20,7 +20,7 @@ class DefaultProductService @Inject()(userRepo: UserRepo, productRepo: ProductRe
       .recover { case e: Throwable => exSync(e) }
   }
 
-  override def updateProduct(dto: ProductDTO): Result[ProductDTO] = {
+  override def updateProduct(dto: ProductDTO)(implicit authData: AuthData): Result[ProductDTO] = {
     val f = if (dto.id.isEmpty) error(401 -> ErrorMessages.EMPTY_ID)
     else checkUser(valid(dto.id.get)) {
       productRepo.getProductById(dto.id.get) flatMap {
@@ -40,7 +40,7 @@ class DefaultProductService @Inject()(userRepo: UserRepo, productRepo: ProductRe
 
   private def valid(): Future[Boolean] = Future.successful(true) //check if the current user is allowed to do this
 
-  override def deleteProduct(productId: String): Result[BooleanDTO] =
+  override def deleteProduct(productId: String)(implicit authData: AuthData): Result[BooleanDTO] =
     checkUser(valid(productId)) {
       productRepo.getProductById(productId) flatMap {
         case Some(product) =>
@@ -56,7 +56,7 @@ class DefaultProductService @Inject()(userRepo: UserRepo, productRepo: ProductRe
       case e: Throwable => exSync(e)
     }
 
-  override def insertSupplier(dto: SupplierDTO): Result[SupplierDTO] = checkUser(valid()) {
+  override def insertSupplier(dto: SupplierDTO)(implicit authData: AuthData): Result[SupplierDTO] = checkUser(valid()) {
     productRepo
       .insertSupplier(dto.toModel(Gen.guid))
       .map(a => resultSync(new SupplierDTO(a)))
@@ -65,7 +65,7 @@ class DefaultProductService @Inject()(userRepo: UserRepo, productRepo: ProductRe
       }
   }
 
-  override def insertProductPrice(dto: ProductPriceDTO): Result[ProductPriceDTO] = checkUser(valid()) {
+  override def insertProductPrice(dto: ProductPriceDTO)(implicit authData: AuthData): Result[ProductPriceDTO] = checkUser(valid()) {
     productRepo
       .insertProductPrice(dto.toModel(Gen.guid))
       .map(a => resultSync(new ProductPriceDTO(a)))
@@ -74,7 +74,7 @@ class DefaultProductService @Inject()(userRepo: UserRepo, productRepo: ProductRe
       }
   }
 
-  override def updateProductPrice(dto: ProductPriceDTO): Result[ProductPriceDTO] = checkUser(valid()) {
+  override def updateProductPrice(dto: ProductPriceDTO)(implicit authData: AuthData): Result[ProductPriceDTO] = checkUser(valid()) {
     productRepo.getProductPrice(dto.productId, dto.supplierId) flatMap {
       case Some(pp) =>
         val newModel = pp.copy(price = dto.price)
@@ -84,16 +84,16 @@ class DefaultProductService @Inject()(userRepo: UserRepo, productRepo: ProductRe
     }
   }
 
-  override def getAllSuppliers: Result[SuppliersDTO] = checkUser(valid()) {
+  override def getAllSuppliers(implicit authData: AuthData): Result[SuppliersDTO] = checkUser(valid()) {
     productRepo
       .getAllSuppliers
       .map(all => resultSync(SuppliersDTO(all.map(new SupplierDTO(_)))))
   }
 
-  override def searchProduct(query: String, offset: Int, count: Int): Result[ProductsDTO] = {
+  override def searchProduct(query: String, offset: Int, count: Int)(implicit authData: AuthData): Result[ProductsDTO] = {
     productRepo
       .searchProduct(query, offset, count)
-      .map(a => resultSync(ProductsDTO(items = a._1.map(new ProductDTO(_)), offset = offset, count = count, total = a._2)))
+      .map(a => resultSync(ProductsDTO(items = a._1.map(new ProductDTO(_).copy(tags = "")), offset = offset, count = count, total = a._2)))
       .recover {
         case e: Throwable => exSync(e)
       }

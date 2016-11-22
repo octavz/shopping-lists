@@ -3,6 +3,7 @@ Clients/Mobile/App1/bin/
 server/target
 server/project/target
 server/.idea
+server/*.ipr
 server/node_modules
 server/logs/application.log
 server/main.iws

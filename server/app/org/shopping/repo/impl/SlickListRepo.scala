@@ -34,11 +34,12 @@ class SlickListRepo @Inject()(protected val dbConfigProvider: DatabaseConfigProv
 
   override def getUserLists(uid: String, offset: Int, count: Int): Repo[(Seq[ListDef], Int)] = {
     val query = for {
-      (l,_) <- (ListDefs joinLeft ListsUsers on (_.userId === _.userId)).filter {
-        case (d, u) => (d.status =!= Constants.STATUS_DELETE) && (d.userId === uid || u.map(_.userId === uid))
+      (l,_) <- (ListDefs join ListsUsers on (_.id === _.listDefId)).filter {
+        case (d, u) => (d.status =!= Constants.STATUS_DELETE) && (u.userId === uid)
       }
     } yield l
 
+    println(query.result.statements)
     val action = for {
       l <- query.drop(offset).take(count).result
       c <- query.length.result

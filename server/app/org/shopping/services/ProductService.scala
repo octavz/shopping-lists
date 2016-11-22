@@ -4,20 +4,20 @@ import org.shopping.dto._
 
 trait ProductService extends BaseService {
 
-  def insertProduct(dto: ProductDTO): Result[ProductDTO]
+  def insertProduct(dto: ProductDTO)(implicit authData: AuthData): Result[ProductDTO]
 
-  def updateProduct(dto: ProductDTO): Result[ProductDTO]
+  def updateProduct(dto: ProductDTO)(implicit authData: AuthData): Result[ProductDTO]
 
-  def deleteProduct(id: String): Result[BooleanDTO]
+  def deleteProduct(id: String)(implicit authData: AuthData): Result[BooleanDTO]
 
-  def insertSupplier(dto: SupplierDTO): Result[SupplierDTO]
+  def insertSupplier(dto: SupplierDTO)(implicit authData: AuthData): Result[SupplierDTO]
 
-  def getAllSuppliers: Result[SuppliersDTO]
+  def getAllSuppliers(implicit authData: AuthData): Result[SuppliersDTO]
 
-  def insertProductPrice(dto: ProductPriceDTO): Result[ProductPriceDTO]
+  def insertProductPrice(dto: ProductPriceDTO)(implicit authData: AuthData): Result[ProductPriceDTO]
 
-  def updateProductPrice(dto: ProductPriceDTO): Result[ProductPriceDTO]
+  def updateProductPrice(dto: ProductPriceDTO)(implicit authData: AuthData): Result[ProductPriceDTO]
 
-  def searchProduct(query: String, offset: Int, count: Int): Result[ProductsDTO]
+  def searchProduct(query: String, offset: Int, count: Int)(implicit authData: AuthData): Result[ProductsDTO]
 
 }

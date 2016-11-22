@@ -19,7 +19,7 @@ import scalaoauth2.provider.AuthInfo
 @RunWith(classOf[JUnitRunner])
 class ListServiceSpec extends Specification with Mockito {
 
-  val authInfo = AuthInfo(user =
+  implicit val authInfo = AuthInfo(user =
     User(id = guid, login = guid, password = guid, created = now(), updated = now(),
       lastLogin = nowo, providerToken = guido, nick = guid), Some("1"), None, None)
 
@@ -29,7 +29,6 @@ class ListServiceSpec extends Specification with Mockito {
     productRepo: ProductRepo = mock[ProductRepo]) = {
     val ret = new DefaultListService(userRepo, listRepo, productRepo)
     productRepo.insertProducts(any[Seq[Product]]) answers (a => repo(a.asInstanceOf[Seq[Product]]))
-    ret.setAuth(authInfo)
     MockedContext(ret, userRepo, listRepo, productRepo)
   }
 
@@ -98,7 +97,7 @@ class ListServiceSpec extends Specification with Mockito {
 
       val s = Await.result(m.listService.getUserLists(m.listService.userId, 0, 100), Duration.Inf)
 
-      there was one(m.listRepo).getUserLists(m.listService.authData.user.id, 0, 100)
+      there was one(m.listRepo).getUserLists(authInfo.user.id, 0, 100)
       s must beRight
       val ret = s.merge.asInstanceOf[ListsDTO]
       ret.items.size === 1
@@ -110,8 +109,8 @@ class ListServiceSpec extends Specification with Mockito {
     "get user list should handle repo errors" in {
       val m = service()
       m.listRepo.getUserLists(anyString, any, any) returns repoErr("Test error")
-      val s = Await.result(m.listService.getUserLists(m.listService.authData.user.id, 0, 100), Duration.Inf)
-      there was one(m.listRepo).getUserLists(m.listService.authData.user.id, 0, 100)
+      val s = Await.result(m.listService.getUserLists(authInfo.user.id, 0, 100), Duration.Inf)
+      there was one(m.listRepo).getUserLists(authInfo.user.id, 0, 100)
       s must beLeft
       val ErrorDTO(code, message) = s.merge.asInstanceOf[ErrorDTO]
       code === Status.INTERNAL_SERVER_ERROR
@@ -123,8 +122,8 @@ class ListServiceSpec extends Specification with Mockito {
 
       m.listRepo.getUserLists(anyString, any, any) returns Future.failed(new RuntimeException("test future"))
 
-      val s = Await.result(m.listService.getUserLists(m.listService.authData.user.id, 0, 100), Duration.Inf)
-      there was one(m.listRepo).getUserLists(m.listService.authData.user.id, 0, 100)
+      val s = Await.result(m.listService.getUserLists(authInfo.user.id, 0, 100), Duration.Inf)
+      there was one(m.listRepo).getUserLists(authInfo.user.id, 0, 100)
       s must beLeft
       val ErrorDTO(code, message) = s.merge.asInstanceOf[ErrorDTO]
       code === Status.INTERNAL_SERVER_ERROR

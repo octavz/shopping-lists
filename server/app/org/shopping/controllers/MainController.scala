@@ -12,8 +12,11 @@ import play.api.mvc.Action
 import scala.concurrent.ExecutionContext.Implicits.global
 
 class MainController @Inject()(mainService: MainService) extends BaseController(mainService) {
+  val version = "0.1.10"
 
   def build = Action { _ => Ok("build")}
+
+  def index = Action { Ok(version)}
 
   def indexUser(user: String) = Action.async {
     implicit request =>

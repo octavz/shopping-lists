@@ -47,7 +47,8 @@ class SlickProductRepo @Inject()(protected val dbConfigProvider: DatabaseConfigP
   }
 
   override def searchProduct(name: String, offset: Int, count: Int): Repo[(Seq[Product], Int)] = db.run {
-    val q = Products.filter(p => (p.name like "%name%") && (p.status =!= Constants.STATUS_DELETE))
+    val q = Products.filter(p => (p.tags like s"%${name.toLowerCase()}%") && (p.status =!= Constants.STATUS_DELETE))
+    println(q.result.statements)
     for {
       res <- q.drop(offset).take(count).result
       total <- q.length.result
