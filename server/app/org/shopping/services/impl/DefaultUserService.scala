@@ -3,9 +3,9 @@ package org.shopping.services.impl
 import java.util.Date
 
 import com.google.inject.Inject
-import org.shopping.repo._
-import org.shopping.dto.{RegisterRequestDTO, UserDTO, UsersDTO}
+import org.shopping.dto.{RegisterRequestDTO, UpdateUserDTO, UserDTO, UsersDTO}
 import org.shopping.models.UserSession
+import org.shopping.repo._
 import org.shopping.services.{UserService, _}
 import org.shopping.util.{ErrorMessages, Gen}
 import play.api.http.Status
@@ -102,13 +102,17 @@ class DefaultUserService @Inject()(userRepo: UserRepo, authRepo: Oauth2Repo) ext
       }
   }
 
-  override def updateUser(dto: UserDTO)(implicit authData: AuthData): Result[UserDTO] =
-    userRepo.getUserById(userId) flatMap {
-      case Some(u) =>
-        userRepo
-          .updateUser(u.copy(nick = dto.nick, password = dto.password))
-          .map(r => resultSync(new UserDTO(r)))
-      case None => error(404 -> ErrorMessages.NOT_FOUND)
-    }
+  override def updateUser(dto: UpdateUserDTO)(implicit authData: AuthData): Result[UserDTO] =
+    if (dto.password.isDefined && dto.password.size < 6) error(400 -> ErrorMessages.PASSWORD_TOO_SMALL)
+    else
+      userRepo.getUserById(userId) flatMap {
+        case Some(u) =>
+          userRepo
+            .updateUser(u.copy(
+              nick = if (dto.nick.isDefined) dto.nick.get else u.nick,
+              password = if (dto.password.isDefined) dto.password.get else u.password))
+            .map(r => resultSync(new UserDTO(r)))
+        case None => error(404 -> ErrorMessages.NOT_FOUND)
+      }
 }
 

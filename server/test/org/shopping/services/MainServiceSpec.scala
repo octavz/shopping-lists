@@ -58,7 +58,7 @@ class MainServiceSpec extends Specification with Mockito {
 
     def mock(m: MockContext) = {
       m.userService.getUserById(anyString)(any) returns result(userDto)
-      m.userService.updateUser(any[UserDTO])(any) returns result(userDto)
+      m.userService.updateUser(any[UpdateUserDTO])(any) returns result(userDto)
       m.listService.getUserLists(anyString, anyInt, anyInt)(any) returns result(ListsDTO(Seq(newListDTO("listId1"), newListDTO("listId2"))))
       m.listService.insertLists(any[ListsDTO])(any) returns result(ListsDTO(Seq(newListDTO(guid))))
       m.listService.updateLists(any[ListsDTO])(any) returns result(ListsDTO(Seq(newListDTO(guid))))
@@ -72,7 +72,7 @@ class MainServiceSpec extends Specification with Mockito {
       ret should beRight
       val res = ret.right.get
       res.userData must beSome
-      res.userData.get.id === userModel.id
+      res.userData.get.id.get === userModel.id
       res.listsMeta must beSome
       res.listsMeta.get.items.size === 2
     }
@@ -90,7 +90,7 @@ class MainServiceSpec extends Specification with Mockito {
 
     "when sync with some userData call userService update and save" in {
       val s = mock(service())
-      val dto = UserDTO(login = "login", password = "pass", id = "id", nick = "nick")
+      val dto = UpdateUserDTO(login = Some("login"), password = Some("pass"), id = Some("id"), nick = Some("nick"))
       val data = SyncDTO(userData = Some(dto), listsMeta = None,  products = None, prices = None)
       implicit val res = s.mainService.sync(data)
       assertSync

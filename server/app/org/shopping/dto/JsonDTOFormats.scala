@@ -20,6 +20,7 @@ trait JsonDTOFormats extends BaseFormats with ConstraintReads {
   implicit val stringDTO = Json.format[StringDTO]
   implicit val booleanDTO = Json.format[BooleanDTO]
   implicit val userDTO = Json.format[UserDTO]
+  implicit val updateUserDTO = Json.format[UpdateUserDTO]
   implicit val usersDTO = Json.format[UsersDTO]
   implicit val taskDTO = Json.format[ListItemDTO]
   implicit val errorDTO = Json.writes[ErrorDTO]

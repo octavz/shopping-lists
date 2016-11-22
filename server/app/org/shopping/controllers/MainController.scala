@@ -12,7 +12,7 @@ import play.api.mvc.Action
 import scala.concurrent.ExecutionContext.Implicits.global
 
 class MainController @Inject()(mainService: MainService) extends BaseController(mainService) {
-  val version = "0.1.10"
+  val version = "0.1.13"
 
   def build = Action { _ => Ok("build")}
 

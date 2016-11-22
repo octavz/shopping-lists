@@ -4,6 +4,8 @@ import org.shopping.models.User
 
 case class UsersDTO(items: Seq[UserDTO])
 
+case class UpdateUserDTO(login: Option[String], password: Option[String], id: Option[String], nick: Option[String])
+
 case class UserDTO(login: String, password: String, id: String, nick: String) {
 
   def this(model: User) = this(model.login, model.password, model.id, model.nick)

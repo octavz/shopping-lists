@@ -9,9 +9,9 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future._
 
 class DefaultMainService @Inject()(
-  userService: UserService,
-  listService: ListService,
-  productService: ProductService) extends MainService {
+                                    userService: UserService,
+                                    listService: ListService,
+                                    productService: ProductService) extends MainService {
 
   private def userLists(implicit authData: AuthData) = listService.getUserLists(userId, 0, 1000)
 
@@ -36,7 +36,7 @@ class DefaultMainService @Inject()(
       rProducts <- products.right
       rPrices <- prices.right
     } yield SyncDTO(
-      userData = Some(rUserData),
+      userData = Some(UpdateUserDTO(id = Some(rUserData.id), login = Some(rUserData.login), nick = Some(rUserData.nick), password = None)),
       listsMeta = Some(rMeta),
       products = Some(rProducts),
       prices = Some(rPrices)
