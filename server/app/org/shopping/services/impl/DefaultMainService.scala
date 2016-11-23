@@ -9,9 +9,9 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future._
 
 class DefaultMainService @Inject()(
-                                    userService: UserService,
-                                    listService: ListService,
-                                    productService: ProductService) extends MainService {
+  userService: UserService,
+  listService: ListService,
+  productService: ProductService) extends MainService {
 
   private def userLists(implicit authData: AuthData) = listService.getUserLists(userId, 0, 1000)
 
@@ -22,11 +22,7 @@ class DefaultMainService @Inject()(
         val (toUpdate, toInsert) = l.items.partition(_.id.isDefined)
         val fUpdate = listService.updateLists(ListsDTO(toUpdate))
         val fInsert = listService.insertLists(ListsDTO(toInsert))
-        for {
-          _ <- fUpdate
-          _ <- fInsert
-          r <- userLists
-        } yield r
+        fUpdate flatMap (_ => fInsert flatMap (_ => userLists))
       }
       products <- sequence(data.products.getOrElse(Nil).map(productService.insertProduct)).map(seqEither)
       prices <- sequence(data.prices.getOrElse(Nil).map(productService.insertProductPrice)).map(seqEither)

@@ -55,7 +55,8 @@ class DefaultListService @Inject()(userRepo: UserRepo, listRepo: ListRepo, produ
     }.toSeq
 
 
-  private[services] def setItems(fullList: ListWithItems, items: Seq[ListItemDTO])(implicit a: AuthData): Result[Seq[ListItemDTO]] =
+  private[services] def setItems(fullList: ListWithItems, items: Seq[ListItemDTO])
+    (implicit a: AuthData): Result[Seq[ListItemDTO]] =
     if (items.size > MAX_ALLOWED) {
       error(ErrorMessages.TOO_MANY_ITEMS)
     } else if (items.isEmpty) {
@@ -77,8 +78,7 @@ class DefaultListService @Inject()(userRepo: UserRepo, listRepo: ListRepo, produ
 
   override def getUserLists(uid: String, offset: Int, count: Int)(implicit a: AuthData): Result[ListsDTO] = {
     listRepo.getUserLists(userId, offset, count) map {
-      case (seq, total) => resultSync(ListsDTO(items = seq.map(
-        l => new ListDTO(l.list, l.items)), total = total))
+      case (seq, total) => resultSync(ListsDTO(items = seq.map(l => new ListDTO(l.list, l.items)), total = total))
     } recover {
       case e: Throwable => exSync(e, "getUserLists")
     }
@@ -95,16 +95,16 @@ class DefaultListService @Inject()(userRepo: UserRepo, listRepo: ListRepo, produ
     }
 
   override def updateList(dto: ListDTO)(implicit a: AuthData): Result[ListDTO] = dto.id match {
-    case None => error(ErrorMessages.EMPTY_ID)
+    case None =>
+      error(ErrorMessages.EMPTY_ID)
     case Some(id) =>
       checkUser(valid(id)) {
         cloneIfNotOwned(id).flatMap {
           case Right(lst) =>
             setItems(lst, dto.items.getOrElse(Nil)).flatMap {
               case Right(its) =>
-                listRepo.updateList(dto.toModel(lst.list.id, userId)).map {
-                  p =>
-                    resultSync(new ListDTO(p, its.toList))
+                listRepo.updateList(dto.toModel(lst.list.id, userId)).map { p =>
+                  resultSync(new ListDTO(p, its.toList))
                 }
               case Left(err) => error(err)
             }
@@ -122,9 +122,8 @@ class DefaultListService @Inject()(userRepo: UserRepo, listRepo: ListRepo, produ
     checkUser(valid(listId)) {
       listRepo.getListDefById(listId) flatMap {
         case Some(ListWithItems(list, items)) =>
-          listRepo.updateList(list.copy(status = Constants.STATUS_DELETE)) map {
-            _ =>
-              resultSync(BooleanDTO(true))
+          listRepo.updateList(list.copy(status = Constants.STATUS_DELETE)) map { _ =>
+            resultSync(BooleanDTO(true))
           }
         case None =>
           error(Status.NOT_FOUND -> ErrorMessages.NOT_FOUND)

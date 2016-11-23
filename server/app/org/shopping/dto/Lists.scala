@@ -13,7 +13,7 @@ case class ListDTO(id: Option[String],
   created: Long,
   items: Option[Seq[ListItemDTO]],
   meta: Option[ListMeta] = None,
-  status: Option[Int] = Some(0)) {
+  status: Option[Short] = Some(0)) {
 
   def this(model: ListDef, items: Seq[ListDefProduct]) = this(
     id = Some(model.id),
@@ -32,7 +32,7 @@ case class ListDTO(id: Option[String],
     items = Some(items))
 
   def toModel(id: String, userId: String): ListDef = ListDef(
-    id = id, userId = userId, name = name, description = description, createdClient = created)
+    id = id, userId = userId, name = name, description = description, createdClient = created, status = status.getOrElse(0))
 }
 
 case class ListItemDTO(productId: Option[String], quantity: Int, description: Option[String], status: Int = 0) {
