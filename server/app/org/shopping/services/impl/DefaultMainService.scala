@@ -9,20 +9,9 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future._
 
 class DefaultMainService @Inject()(
-  userService: UserService,
-  listService: ListService,
-  productService: ProductService) extends MainService {
-
-  private def getItems(lists: Either[ErrorDTO, ListsDTO])(implicit authData: AuthData): Result[Seq[ListItemsDTO]] =
-    lists.fold(error, { l =>
-      sequence(l.items.map(_.id.get).map(listService.getListItems)) map {
-        lst => resultSync(
-          lst.flatMap {
-            case Left(err) => None
-            case Right(li) => if (li.items.isEmpty) None else Some(li)
-          })
-      }
-    })
+                                    userService: UserService,
+                                    listService: ListService,
+                                    productService: ProductService) extends MainService {
 
   private def userLists(implicit authData: AuthData) = listService.getUserLists(userId, 0, 1000)
 
@@ -39,19 +28,16 @@ class DefaultMainService @Inject()(
           r <- userLists
         } yield r
       }
-      lists <- data.lists.fold(getItems(meta))(a => sequence(a.map(listService.addListItems)).flatMap(_ => getItems(meta)))
       products <- sequence(data.products.getOrElse(Nil).map(productService.insertProduct)).map(seqEither)
       prices <- sequence(data.prices.getOrElse(Nil).map(productService.insertProductPrice)).map(seqEither)
     } yield for {
       rUserData <- userData.right
       rMeta <- meta.right
-      rLists <- lists.right
       rProducts <- products.right
       rPrices <- prices.right
     } yield SyncDTO(
-      userData = Some(rUserData),
+      userData = Some(UpdateUserDTO(id = Some(rUserData.id), login = Some(rUserData.login), nick = Some(rUserData.nick), password = None)),
       listsMeta = Some(rMeta),
-      lists = Some(rLists),
       products = Some(rProducts),
       prices = Some(rPrices)
     )

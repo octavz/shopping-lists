@@ -1,6 +1,8 @@
 package org.shopping.util
 
 object ErrorMessages {
+  val PASSWORD_TOO_SMALL: String = "PASSWORD_TOO_SMALL"
+
   val LISTS_ONE_ID_ONLY = "LISTS_ONE_ID_ONLY"
   val TOO_MANY_ITEMS =  "TOO_MANY_ITEMS"
   val EMPTY_ID =  "EMPTY_ID"

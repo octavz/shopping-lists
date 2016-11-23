@@ -20,7 +20,6 @@ class ErrorHandler extends HttpErrorHandler with JsonDTOFormats {
   }
 
   def onServerError(request: RequestHeader, exception: Throwable) = {
-    exception.printStackTrace()
     Future.successful(
       InternalServerError(Json.toJson(ErrorDTO(500, exception.getMessage)))
     )

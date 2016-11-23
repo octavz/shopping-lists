@@ -1,6 +1,6 @@
 package org.shopping.services
 
-import org.shopping.dto.{RegisterRequestDTO, UserDTO, UsersDTO}
+import org.shopping.dto.{RegisterRequestDTO, UpdateUserDTO, UserDTO, UsersDTO}
 
 import scala.concurrent.Future
 import scalaoauth2.provider.{AuthorizationRequest, GrantHandlerResult, OAuthError}
@@ -19,6 +19,6 @@ trait UserService extends BaseService {
 
   def searchUsers(email: Option[String], nick: Option[String])(implicit authData: AuthData): Result[UsersDTO]
 
-  def updateUser(u: UserDTO)(implicit authData: AuthData): Result[UserDTO]
+  def updateUser(u: UpdateUserDTO)(implicit authData: AuthData): Result[UserDTO]
 
 }

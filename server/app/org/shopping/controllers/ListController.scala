@@ -63,42 +63,6 @@ class ListController @Inject()(listService: ListService) extends BaseController(
 
   }
 
-  def addListItems(listId: String) = Action.async {
-    implicit request =>
-      request.body.asJson.map {
-        json => try {
-          authorize {
-            implicit authInfo =>
-              try {
-                val dto = json.as[ListItemsDTO]
-                val meta = Some(dto.meta
-                  .fold
-                  (ListMetadata(listId, Seq.empty[String]))
-                  (_.copy(listId = listId)))
-                listService.addListItems(dto.copy(meta = meta)) map (response(_))
-              } catch {
-                case je: JsResultException => asyncBadRequest(je.errors.mkString(","))
-                case e: Throwable => asyncBadRequest(e)
-              }
-          }
-        } catch {
-          case e: Throwable => asyncBadRequest(e)
-        }
-      }.getOrElse(asyncBadRequest(ErrorMessages.BAD_JSON))
-  }
-
-  def getListItems(listId: String) = Action.async {
-    implicit request =>
-      try {
-        authorize {
-          implicit authInfo =>
-            listService.getListItems(listId) map (response(_))
-        }
-      } catch {
-        case e: Throwable => asyncBadRequest(e)
-      }
-  }
-
   def deleteList(listId: String) = Action.async {
     implicit request =>
       authorize {

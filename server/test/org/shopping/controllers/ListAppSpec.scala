@@ -24,7 +24,8 @@ import scalaoauth2.provider.AccessToken
 @RunWith(classOf[JUnitRunner])
 class ListAppSpec extends PlaySpecification with Mockito {
 
-  def waitFor[T](f: Future[T], duration: FiniteDuration = 1000.milli)(implicit ec: ExecutionContext): T = Await.result(f, duration)
+  def waitFor[T](f: Future[T], duration: FiniteDuration = 1000.milli)
+    (implicit ec: ExecutionContext): T = Await.result(f, duration)
 
   def anUser = User(id = guid, login = guid, providerToken = None, created = now(), updated = now(), lastLogin = None, password = guid, nick = guid)
 
@@ -36,7 +37,7 @@ class ListAppSpec extends PlaySpecification with Mockito {
     authRepo.findAuthInfoByAccessToken(any[AccessToken]) returns Future.successful(Some(authInfo))
 
     val ret = new GuiceApplicationBuilder()
-        .disable(classOf[RunModule])
+      .disable(classOf[RunModule])
       .configure(
         Map(
           "evolutions" -> "disabled",
@@ -61,23 +62,18 @@ class ListAppSpec extends PlaySpecification with Mockito {
 
     "have create list route and authorize" in {
       val service = app()
-      service.listService.insertList(any[ListDTO]) answers (p => result(p.asInstanceOf[ListDTO]))
+      service.listService.insertList(any[ListDTO])(any).answers(p =>
+        result(p.asInstanceOf[Array[Object]](0).asInstanceOf[ListDTO]))
       running(service.app) {
         val page = route(service.app, FakeRequest(POST, "/api/list")
           .withHeaders("Authorization" -> "OAuth token")
           .withJsonBody(Json.parse(
-            """
-            {
-            "name":"list",
-            "description":"123456",
-            "created" : 10000
-            }
-            """)))
+            """{"name":"list", "description":"123456", "created" : 10000}""")))
         page must beSome
         val json = contentAsJson(page.get)
         status(page.get) === OK
         Await.ready(page.get, Duration.Inf)
-        there was one(service.listService).insertList(any[ListDTO])
+        there was one(service.listService).insertList(any[ListDTO])(any)
         json \ "name" === JsDefined(JsString("list"))
         json \ "description" === JsDefined(JsString("123456"))
       }
@@ -85,7 +81,7 @@ class ListAppSpec extends PlaySpecification with Mockito {
 
     "get all lists" in {
       val service = app()
-      val p = ListDTO(id = guido, name = guid, description = guido, userId = Some("userId"), created = 1000)
+      val p = ListDTO(id = guido, name = guid, description = guido, userId = Some("userId"), created = 1000, items = None)
       service.listService.getUserLists("id", 0, 10) returns result(ListsDTO(items = List(p), total = 1))
       running(service.app) {
         val page = route(service.app, FakeRequest(GET, "/api/user/id/lists?offset=0&count=10").withHeaders("Authorization" -> "OAuth token"))
@@ -105,23 +101,19 @@ class ListAppSpec extends PlaySpecification with Mockito {
 
     "update lists" in {
       val service = app()
-      val p = ListDTO(id = guido, name = guid, description = guido, userId = Some("userId"), created = 1000)
-      service.listService.updateList(any) returns result(p)
+      val p = ListDTO(id = guido, name = guid, description = guido, userId = Some("userId"), created = 1000, items = None)
+      service.listService.updateList(any)(any) returns result(p)
       running(service.app) {
-        val page = route(service.app, FakeRequest(PUT, "/api/list/id").withHeaders("Authorization" -> "OAuth token").withJsonBody(Json.parse(
-          s"""
-                {
-                "name":"${p.name}",
-                "description":"${p.description}",
-                "created":${p.created}
-                }
-              """)))
+        val page = route(service.app, FakeRequest(PUT, "/api/list/id")
+          .withHeaders("Authorization" -> "OAuth token")
+          .withJsonBody(Json.parse(
+            s"""{"name":"${p.name}", "description":"${p.description}", "created":${p.created}}""")))
         Await.ready(page.get, Duration.Inf)
         val json = contentAsJson(page.get)
         page must beSome
         status(page.get) === OK
         Await.ready(page.get, Duration.Inf)
-        there was one(service.listService).updateList(any)
+        there was one(service.listService).updateList(any)(any)
         json \ "name" === JsDefined(JsString(p.name))
         json \ "description" === JsDefined(JsString(p.description.get))
       }

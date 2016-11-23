@@ -8,9 +8,8 @@ package object dto {
 
   case class StringDTO(value: String)
 
-  case class SyncDTO(userData: Option[UserDTO],
+  case class SyncDTO(userData: Option[UpdateUserDTO],
     listsMeta: Option[ListsDTO],
-    lists: Option[Seq[ListItemsDTO]],
     products: Option[Seq[ProductDTO]],
     prices: Option[Seq[ProductPriceDTO]])
 }

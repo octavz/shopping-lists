@@ -10,6 +10,7 @@ import play.api.db.slick.{DatabaseConfigProvider, HasDatabaseConfigProvider}
 import slick.driver.JdbcProfile
 
 import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.Future
 
 class SlickProductRepo @Inject()(protected val dbConfigProvider: DatabaseConfigProvider)
   extends ProductRepo
@@ -23,11 +24,14 @@ class SlickProductRepo @Inject()(protected val dbConfigProvider: DatabaseConfigP
     db.run(Products += m).map(_ => m)
   }
 
-  override def insertProducts(model: Seq[Product]): Repo[Seq[Product]] = {
-    val n = now()
-    val newModel = model.map(_.copy(created = n, updated = n))
-    db.run(Products ++= newModel).map(_ => newModel)
-  }
+  override def insertProducts(model: Seq[Product]): Repo[Seq[Product]] =
+    if (model.isEmpty) {
+      Future.successful(Nil)
+    } else {
+      val n = now()
+      val newModel = model.map(_.copy(created = n, updated = n))
+      db.run(Products ++= newModel).map(_ => newModel)
+    }
 
   override def updateProduct(model: Product): Repo[Product] = model.touch1 { m =>
     db.run(Products.filter(_.id === model.id).update(m)).map(_ => m)
@@ -48,7 +52,6 @@ class SlickProductRepo @Inject()(protected val dbConfigProvider: DatabaseConfigP
 
   override def searchProduct(name: String, offset: Int, count: Int): Repo[(Seq[Product], Int)] = db.run {
     val q = Products.filter(p => (p.tags like s"%${name.toLowerCase()}%") && (p.status =!= Constants.STATUS_DELETE))
-    println(q.result.statements)
     for {
       res <- q.drop(offset).take(count).result
       total <- q.length.result

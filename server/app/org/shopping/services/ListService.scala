@@ -16,8 +16,4 @@ trait ListService extends BaseService {
 
   def getUserLists(userId: String, offset: Int, count: Int)(implicit authData: AuthData): Result[ListsDTO]
 
-  def addListItems(listItems: ListItemsDTO)(implicit authData: AuthData): Result[ListItemsDTO]
-
-  def getListItems(listId: String)(implicit authData: AuthData): Result[ListItemsDTO]
-
 }
