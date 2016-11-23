@@ -59,7 +59,8 @@ namespace CommonBL.Managers
                 return;
             lock (mLocker)
             {
-                mStorage.ShLists.Remove(aList);
+                aList.IsDeleted = true;
+                aList.IsDirty = true;
             }
         }//DeleteList
 
@@ -114,6 +115,7 @@ namespace CommonBL.Managers
                 aList.name = string.IsNullOrEmpty(L.ListName) ? Constants.DEFAULT_LIST_NAME : L.ListName;
                 aList.userId = userId;
                 aList.id = string.IsNullOrEmpty(L.Id) ? null : L.Id;
+                aList.status = L.IsDeleted ? 5 : 0;
 
                 aReq.listsMeta.items.Add(aList);
                 aReq.listsMeta.total = aReq.listsMeta.items.Count;

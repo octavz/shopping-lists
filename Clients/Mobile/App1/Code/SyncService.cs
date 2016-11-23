@@ -141,7 +141,7 @@ namespace ShList.Code
             string newhash = Guid.NewGuid().ToString();
             if (ResSync.ErrorCode == 0)
             {
-                newhash = sResJson.GetHashCode().ToString();
+                newhash = Tools.GetMd5Hash(sResJson);
                 if (newhash != ListsManager.Instance.CurrentJsonHash && SyncUi != null)
                 {
                     ListsManager.Instance.ImportSyncData(newhash, ResSync);
@@ -152,7 +152,7 @@ namespace ShList.Code
             else
                 Log.Debug(logTimerType, "Error response from server - NOT sync");
 
-            if (SaveWithSameHash || (SaveWithSameHash == false && newhash != ListsManager.Instance.CurrentJsonHash))
+            if ((SaveWithSameHash && newhash == ListsManager.Instance.CurrentJsonHash) || (newhash != ListsManager.Instance.CurrentJsonHash))
             {
                 string sJson = ListsManager.Instance.GetSerializedDataForLocalStorage();
                 FilesManager.WriteShListsState(sJson);

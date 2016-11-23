@@ -40,8 +40,7 @@ namespace CommonBL.Data.Request
     public class ItemsMetaDTO
     {
         public ItemsMetaDTO()
-        {
-            listId = string.Empty;
+        {            
             boughtItems = new List<string>();
         }
 
@@ -53,8 +52,7 @@ namespace CommonBL.Data.Request
     {
         public ItemDTO()
         {
-            productId = string.Empty;
-            description = string.Empty;
+          
         }
 
         public string productId { get; set; }
@@ -77,11 +75,7 @@ namespace CommonBL.Data.Request
     public class ShListDTO
     {
         public ShListDTO()
-        {
-            id = string.Empty;
-            name = string.Empty;
-            description = string.Empty;
-            userId = string.Empty;
+        {           
         }
 
         public string id { get; set; }
@@ -98,10 +92,6 @@ namespace CommonBL.Data.Request
     {
         public UserDTO()
         {
-            id = string.Empty;
-            login = string.Empty;
-            password = string.Empty;
-            nick = string.Empty;
         }
 
         public string id { get; set; }
