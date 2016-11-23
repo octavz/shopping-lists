@@ -17,6 +17,7 @@ namespace CommonBL.Data
         {
             ListName = string.Empty;
             IsDirty = false;
+            IsDeleted = false;
         }
 
         public ShoppingListDTO(ResListDTO aList)
@@ -35,6 +36,6 @@ namespace CommonBL.Data
 
         public bool IsDirty { get; set; }//used for sync
       
-
+        public bool IsDeleted { get; set; }
     }
 }

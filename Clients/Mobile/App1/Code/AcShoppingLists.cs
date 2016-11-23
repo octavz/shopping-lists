@@ -71,7 +71,8 @@ namespace ShList.Code
             llShoppingLst.RemoveAllViews();
             lstMgr.Lists.ForEach(x =>
             {
-                CreateUIList(x);
+                if (!x.IsDeleted)
+                    CreateUIList(x);
             });
         }//GenerateUILists
 
@@ -120,8 +121,11 @@ namespace ShList.Code
         private void DeleteList(int listUIId)
         {
             var view = FindViewById<CtrlShoppingList>(listUIId);
-            ((view as View).Parent as ViewGroup).RemoveView(view);
-            ListsManager.Instance.DeleteList(view.Data.InternalId);
+            if (view != null)
+            {
+                ((view as View).Parent as ViewGroup).RemoveView(view);
+                ListsManager.Instance.DeleteList(view.Data.InternalId);
+            }//endif
         }//DeleteList
 
         protected override void OnResume()
