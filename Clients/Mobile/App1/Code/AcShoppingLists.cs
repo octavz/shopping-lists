@@ -58,7 +58,6 @@ namespace ShList.Code
         {
             //intent.GetStringExtra("WearMessage");
             int a = 2;
-            LoadLists();
             GenerateUILists();
         }
 
@@ -78,16 +77,19 @@ namespace ShList.Code
 
         private void LoadLists()
         {
-            string data = FilesManager.ReadShListsState();
+            ListsManager lstMgr = ListsManager.Instance;
+            string data = string.Empty;
+            if (lstMgr.Lists.Count == 0)
+                data = FilesManager.ReadShListsState();
             if (string.IsNullOrEmpty(data))
                 return;
-            ListsManager lstMgr = ListsManager.Instance;
+
             lstMgr.ImportSerializedDataFromLocalStorage(data);
         }//LoadLists
 
         private void AddNewList(object sender, EventArgs e)
         {
-            ShoppingListDTO newList = ListsManager.Instance.CreateNewList();            
+            ShoppingListDTO newList = ListsManager.Instance.CreateNewList();
             CreateUIList(newList);
         }//AddNewList
 
@@ -97,7 +99,7 @@ namespace ShList.Code
         /// <param name="newList"></param>
         /// <param name="progressDialog"></param>
         private void CreateUIList(ShoppingListDTO newList)
-        {            
+        {
             CtrlShoppingList item = new CtrlShoppingList(this, ShAppContext, newList);
             item.Event_DeleteItem += DeleteList;
             item.Event_EditItem += EditList;
