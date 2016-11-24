@@ -71,6 +71,7 @@ CREATE TABLE list_defs (
   description    TEXT,
   status         SMALLINT DEFAULT 0      NOT NULL,
   created_client INTEGER DEFAULT 0       NOT NULL,
+  client_tag     CHARACTER VARYING (200) DEFAULT ''       NOT NULL,
   created        INTEGER DEFAULT 0       NOT NULL,
   updated        INTEGER DEFAULT 0       NOT NULL
 );
@@ -88,6 +89,7 @@ CREATE TABLE products (
   tags        CHARACTER VARYING(255)  NOT NULL,
   description TEXT,
   status      SMALLINT DEFAULT 0      NOT NULL,
+  client_tag  CHARACTER VARYING (200) DEFAULT ''       NOT NULL,
   created     INTEGER DEFAULT 0       NOT NULL,
   updated     INTEGER DEFAULT 0       NOT NULL
 );
@@ -98,6 +100,7 @@ CREATE TABLE list_def_products (
   description TEXT,
   quantity    INT,
   bought      SMALLINT DEFAULT 0      NOT NULL,
+  client_tag  CHARACTER VARYING (200) DEFAULT ''       NOT NULL,
   created     INTEGER DEFAULT 0       NOT NULL,
   updated     INTEGER DEFAULT 0       NOT NULL,
   PRIMARY KEY (product_id, list_def_id)
@@ -107,6 +110,7 @@ CREATE TABLE suppliers (
   id          CHARACTER VARYING(40) PRIMARY KEY,
   name        CHARACTER VARYING(255)  NOT NULL,
   description TEXT,
+  client_tag  CHARACTER VARYING (200) DEFAULT ''       NOT NULL,
   created     INTEGER DEFAULT 0       NOT NULL,
   updated     INTEGER DEFAULT 0       NOT NULL
 );

@@ -4,6 +4,7 @@
 ### NoDocs ###
 OPTIONS        /*path                          @org.shopping.controllers.MainController.options(path)
 
+### NoDocs ###
 GET /                                          @org.shopping.controllers.MainController.index()
 
 ### NoDocs ###

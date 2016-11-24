@@ -63,8 +63,7 @@ package object models {
   case class GrantType(id: Int, grantType: String)
 
   case class ListDef(id: String, userId: String, name: String, description: Option[String] = None,
-    status: Short = 0, createdClient: Long = 0,
-    override val created: Long = 0,
+    status: Short = 0, createdClient: Long = 0, clientTag: String = "", override val created: Long = 0,
     override val updated: Long = 0) extends BaseModel {
     type T = ListDef
 
@@ -74,8 +73,7 @@ package object models {
   }
 
   case class ListDefProduct(listDefId: String, productId: String, description: Option[String],
-    bought: Short = 0, quantity: Int = 0,
-    override val created: Long = 0,
+    bought: Short = 0, quantity: Int = 0, clientTag: String = "", override val created: Long = 0,
     override val updated: Long = 0) extends BaseModel {
     type T = ListDefProduct
 
@@ -87,8 +85,7 @@ package object models {
   case class ListUser(listDefId: String, userId: String)
 
   case class Product(id: String, userId: String, name: String, tags: String, description: Option[String] = None,
-    status: Short = 0,
-    override val created: Long = 0,
+    clientTag: String = "", status: Short = 0, override val created: Long = 0,
     override val updated: Long = 0) extends BaseModel {
     type T = Product
 
@@ -122,9 +119,8 @@ package object models {
 
   case class UserStatus(id: Int, description: Option[String] = None)
 
-  case class Supplier(id: String, name: String, description: Option[String] = None,
-    override val created: Long = 0,
-    override val updated: Long = 0) extends BaseModel {
+  case class Supplier(id: String, name: String, description: Option[String] = None, clientTag: String = "",
+    override val created: Long = 0, override val updated: Long = 0) extends BaseModel {
     type T = Supplier
 
     override def copyFn1(a: Long): T = copy(updated = a)

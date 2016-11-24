@@ -83,7 +83,7 @@ trait DB {
   }
 
   class ListDefs(_tableTag: Tag) extends Table[ListDef](_tableTag, "list_defs") {
-    def * = (id, userId, name, description, status, createdClient, created, updated) <> (ListDef.tupled, ListDef.unapply)
+    def * = (id, userId, name, description, status, createdClient, clientTag, created, updated) <> (ListDef.tupled, ListDef.unapply)
 
     val id = column[String]("id", O.PrimaryKey, O.Length(40, varying = true))
     val userId = column[String]("user_id", O.Length(40, varying = true))
@@ -91,18 +91,20 @@ trait DB {
     val description = column[Option[String]]("description", O.Default(None))
     val status = column[Short]("status", O.Default(0))
     val createdClient = column[Long]("created_client")
+    val clientTag = column[String]("client_tag", O.Length(200, varying = true))
     val created = column[Long]("created")
     val updated = column[Long]("updated")
   }
 
   class Products(_tableTag: Tag) extends Table[Product](_tableTag, "products") {
-    def * = (id, userId, name, tags, description, status, created, updated) <> (Product.tupled, Product.unapply)
+    def * = (id, userId, name, tags, description, clientTag, status, created, updated) <> (Product.tupled, Product.unapply)
 
     val id = column[String]("id", O.PrimaryKey, O.Length(40, varying = true))
     val userId = column[String]("user_id", O.Length(40, varying = true))
     val name = column[String]("name", O.Length(255, varying = true))
     val tags = column[String]("tags", O.Length(255, varying = true))
     val description = column[Option[String]]("description", O.Default(None))
+    val clientTag = column[String]("client_tag", O.Length(200, varying = true))
     val status = column[Short]("status", O.Default(0))
     val created = column[Long]("created")
     val updated = column[Long]("updated")
@@ -149,16 +151,17 @@ trait DB {
   }
 
   class ListDefProducts(_tableTag: Tag) extends Table[ListDefProduct](_tableTag, "list_def_products") {
-    def * = (listDefId, productId, description, bought, quantity, created, updated) <> (ListDefProduct.tupled, ListDefProduct.unapply)
+    def * = (listDefId, productId, description, bought, quantity, clientTag, created, updated) <> (ListDefProduct.tupled, ListDefProduct.unapply)
 
     val listDefId = column[String]("list_def_id", O.PrimaryKey, O.Length(40, varying = true))
     val productId = column[String]("product_id", O.PrimaryKey, O.Length(40, varying = true))
 
     val quantity = column[Int]("quantity", O.Default(0))
-    val created = column[Long]("created")
-    val updated = column[Long]("updated")
     val description = column[Option[String]]("description", O.Length(100, varying = true), O.Default(None))
     val bought = column[Short]("bought", O.Default(0))
+    val clientTag = column[String]("client_tag", O.Length(200, varying = true))
+    val created = column[Long]("created")
+    val updated = column[Long]("updated")
 
     lazy val listsFk = foreignKey("list_products_list_def_id_fkey", listDefId, ListDefs)(
       r => r.id, onUpdate = ForeignKeyAction.NoAction, onDelete = ForeignKeyAction.NoAction)
@@ -179,11 +182,12 @@ trait DB {
   }
 
   class Suppliers(_tableTag: Tag) extends Table[Supplier](_tableTag, "suppliers") {
-    def * = (id, name, description, created, updated) <> (Supplier.tupled, Supplier.unapply)
+    def * = (id, name, description, clientTag, created, updated) <> (Supplier.tupled, Supplier.unapply)
 
     val id = column[String]("id", O.PrimaryKey)
     val name = column[String]("name", O.Length(255, varying = true))
     val description = column[Option[String]]("description", O.Length(1000, varying = true), O.Default(None))
+    val clientTag = column[String]("client_tag", O.Length(200, varying = true))
     val created = column[Long]("created")
     val updated = column[Long]("updated")
   }

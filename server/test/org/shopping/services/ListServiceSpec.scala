@@ -26,7 +26,7 @@ class ListServiceSpec extends Specification with Mockito {
   case class MockedContext(listService: DefaultListService, userRepo: UserRepo, listRepo: ListRepo, productRepo: ProductRepo)
 
   def service(userRepo: UserRepo = mock[UserRepo], listRepo: ListRepo = mock[ListRepo],
-              productRepo: ProductRepo = mock[ProductRepo]) = {
+    productRepo: ProductRepo = mock[ProductRepo]) = {
     val ret = new DefaultListService(userRepo, listRepo, productRepo)
     productRepo.insertProducts(any[Seq[Product]]) answers (a => repo(a.asInstanceOf[Seq[Product]]))
     MockedContext(ret, userRepo, listRepo, productRepo)
@@ -137,7 +137,7 @@ class ListServiceSpec extends Specification with Mockito {
       val listId = "listId"
       val listDef = ListDef(id = guid, userId = authInfo.user.id, name = guid,
         description = guido, createdClient = now(), created = now(), updated = now())
-      val listProduct = ListDefProduct(listDef.id, "p1", None, 0, 0, now(), now())
+      val listProduct = ListDefProduct(listDef.id, "p1", None, 0, 0, "", now(), now())
       val list = ListDTO(id = Some(listId), name = guid, description = guido, userId = None, created = 1000,
         items = Some(Seq(new ListItemDTO(listProduct))))
 
@@ -163,7 +163,7 @@ class ListServiceSpec extends Specification with Mockito {
       val listId = "listId"
       val listDef = ListDef(id = guid, userId = "1", name = guid,
         description = guido, createdClient = now(), created = now(), updated = now())
-      val listProduct = ListDefProduct(listDef.id, "p1", None, 0, 0, now(), now())
+      val listProduct = ListDefProduct(listDef.id, "p1", None, 0, 0, "", now(), now())
       val list = ListDTO(id = Some(listId),
         name = guid,
         description = guido,
@@ -194,7 +194,7 @@ class ListServiceSpec extends Specification with Mockito {
       val listId = "listId"
       val listDef = ListDef(id = guid, userId = authInfo.user.id, name = guid,
         description = guido, createdClient = now(), created = now(), updated = now())
-      val listProduct = ListDefProduct(listDef.id, "p1", None, 0, 0, now(), now())
+      val listProduct = ListDefProduct(listDef.id, "p1", None, 0, 0, "", now(), now())
       val list = ListDTO(id = Some(listId), name = guid, description = guido,
         userId = None, created = 1000, items = None)
 
