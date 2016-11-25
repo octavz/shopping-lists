@@ -112,9 +112,17 @@ namespace ShList.Code.Controls
 
         private void ShoppingList_Click(object sender, EventArgs e)
         {
-            m_ParentActivity.StartActivity(typeof(AcListItems));
+            //Bundle options = new Bundle();
+            //options.putString(key, value);
+            //m_ParentActivity.StartActivity(typeof(AcListItems),);
         }
 
+        public void UpdateCtrlData(ShoppingListDTO aData)
+        {
+            m_Data = aData;
+            lstNm.Text = string.IsNullOrEmpty(m_Data.ListName) || m_Data.ListName.Contains(Constants.DEFAULT_LIST_NAME) ? ShAppContext.GetString(Resource.String.NewList) : m_Data.ListName;
+            this.Invalidate();
+        }
 
        public ShoppingListDTO Data  { get { return m_Data; } }
 

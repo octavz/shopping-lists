@@ -58,9 +58,46 @@ namespace ShList.Code
         {
             //intent.GetStringExtra("WearMessage");
             int a = 2;
-            GenerateUILists();
-        }
 
+            var allUiLists = ListsManager.Instance.Lists.Where(x => x.IsDeleted == false).OrderBy(x => x.ListDate).ToList();
+       
+
+            ViewGroup viewGroup = (ViewGroup)llShoppingLst;
+            //remove all that are not in the datalist
+            for (int i = 0; i < viewGroup.ChildCount; i++)
+            {
+                CtrlShoppingList child = viewGroup.GetChildAt(i) as CtrlShoppingList;
+                if (child == null) continue;
+                var foundList = allUiLists.Where(x => x.InternalId == child.Data.InternalId).FirstOrDefault();
+                if (foundList == null)
+                    ((child as View).Parent as ViewGroup).RemoveView(child);
+            }//for
+
+            for (int i = 0; i < allUiLists.Count; i++)
+            {
+                CtrlShoppingList wantedView = null;
+                for (int j = 0; j < viewGroup.ChildCount; j++)
+                {
+                    CtrlShoppingList child = viewGroup.GetChildAt(j) as CtrlShoppingList;
+                    if (child.Data.InternalId == allUiLists[i].InternalId)
+                    {
+                        wantedView = child;
+                        break;
+                    }
+                }//for
+
+                if (wantedView != null)
+                {
+                    // update the existing ones
+                    wantedView.UpdateCtrlData(allUiLists[i]);
+                }
+                else
+                {
+                    CreateUIList(allUiLists[i], i);
+                }
+            }//for
+
+        }//ProcessMessage
 
         /// <summary>
         /// GenerateUILists
@@ -68,10 +105,8 @@ namespace ShList.Code
         private void GenerateUILists()
         {
             ListsManager lstMgr = ListsManager.Instance;
-            llShoppingLst.RemoveAllViews();
             lstMgr.Lists.ForEach(x =>
             {
-                if (!x.IsDeleted)
                     CreateUIList(x);
             });
         }//GenerateUILists
@@ -99,19 +134,22 @@ namespace ShList.Code
         /// </summary>
         /// <param name="newList"></param>
         /// <param name="progressDialog"></param>
-        private void CreateUIList(ShoppingListDTO newList)
+        private void CreateUIList(ShoppingListDTO newList, int position =0)
         {
             CtrlShoppingList item = new CtrlShoppingList(this, ShAppContext, newList);
             item.Event_DeleteItem += DeleteList;
             item.Event_EditItem += EditList;
-            llShoppingLst.AddView(item, 0);
+            llShoppingLst.AddView(item, position);
             llShoppingLst.RequestLayout();
         }//CreateUIList
 
         private void EditList(int listUIId, string newName)
         {
             var view = FindViewById<CtrlShoppingList>(listUIId);
-            ListsManager.Instance.UpdateListName(view.Data.InternalId, newName);
+            if (view != null)
+            {
+                ListsManager.Instance.UpdateListName(view.Data.InternalId, newName);
+            }
         }//EditList
 
         /// <summary>
@@ -131,6 +169,7 @@ namespace ShList.Code
         protected override void OnResume()
         {
             base.OnResume();
+            llShoppingLst.RemoveAllViews();
             GenerateUILists();
         }
 

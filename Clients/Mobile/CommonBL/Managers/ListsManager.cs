@@ -22,7 +22,7 @@ namespace CommonBL.Managers
         /// ListsManager - constructor
         /// </summary>
         private ListsManager()
-        {            
+        {
         }//ListsManager
 
         public ShoppingListDTO CreateNewList()
@@ -61,16 +61,9 @@ namespace CommonBL.Managers
             {
                 aList.IsDeleted = true;
                 aList.IsDirty = true;
+                aList.InternalId = null;
             }
         }//DeleteList
-
-        public void RemoveAll()
-        {
-            lock (mLocker)
-            {
-                mStorage.ShLists.Clear();
-            }
-        }//RemoveAll
 
         /// <summary>
         /// SetNoDirty
@@ -92,7 +85,7 @@ namespace CommonBL.Managers
         {
             try
             {
-                mStorage = JsonConvert.DeserializeObject<ShStorage>(json);                
+                mStorage = JsonConvert.DeserializeObject<ShStorage>(json);
             }
             catch (Exception e)
             {
@@ -106,7 +99,7 @@ namespace CommonBL.Managers
             ReqSyncDTO aReq = new ReqSyncDTO();
             aReq.userData.id = userId;
             aReq.userData.login = loginAcc;
-            
+
             mStorage.ShLists.ForEach(L =>
             {
                 ShListDTO aList = new ShListDTO();
@@ -116,7 +109,7 @@ namespace CommonBL.Managers
                 aList.userId = userId;
                 aList.id = string.IsNullOrEmpty(L.Id) ? null : L.Id;
                 aList.status = L.IsDeleted ? 5 : 0;
-
+                aList.clientTag = L.InternalId;
                 aReq.listsMeta.items.Add(aList);
                 aReq.listsMeta.total = aReq.listsMeta.items.Count;
             });
@@ -124,22 +117,43 @@ namespace CommonBL.Managers
             return aReq;
         }//GenerateRequestDTOForSync
 
+        public void RemoveAll()
+        {
+            mStorage.ShLists.Clear();
+        }
+
         public void ImportSyncData(string jsonHash, ResSyncDTO dto)
         {
-            RemoveAll();
             mStorage.SyncJsonHash = jsonHash;
+
+            //delete those that are not returned
+            List<string> ids = dto.listsMeta.items.Select(x => x.clientTag).ToList();
+            mStorage.ShLists.RemoveAll(x => !ids.Contains(x.InternalId) && !string.IsNullOrEmpty(x.Id)); //delete those that exists but not the new items that were just created
+
+
             dto.listsMeta.items.ForEach(L =>
             {
-                ShoppingListDTO newList = new ShoppingListDTO()
+                ShoppingListDTO wantedlist = mStorage.ShLists.Where(x => x.InternalId == L.clientTag).FirstOrDefault();
+
+                if (wantedlist == null)
                 {
-                    ListDate = Tools.UnixTimeStampToDateTime(L.created),
-                    IsDirty = false,
-                    InternalId = Guid.NewGuid().ToString(),
-                    Id = L.id,
-                    ListDescription= L.description,
-                    ListName = L.name
-                };
-                mStorage.ShLists.Add(newList);
+                    ShoppingListDTO newList = new ShoppingListDTO()
+                    {
+                        ListDate = Tools.UnixTimeStampToDateTime(L.created),
+                        IsDirty = false,
+                        InternalId = Guid.NewGuid().ToString(),
+                        Id = L.id,
+                        ListDescription = L.description,
+                        ListName = L.name
+                    };
+                    mStorage.ShLists.Add(newList);
+                }//new one
+                else
+                {
+                    wantedlist.Id = L.id;
+                    wantedlist.ListDescription = L.description;
+                    wantedlist.ListName = L.name;
+                }
             });
         }//ImportSyncData
 
