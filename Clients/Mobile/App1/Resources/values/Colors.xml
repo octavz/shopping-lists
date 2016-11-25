@@ -5,6 +5,6 @@
 
   <color name="itemList">#E43F3F</color>
   <color name="itemBorder">#C0C0C0</color>
-
+  <color name="itemBackground">#00A9FF</color>
 
 </resources>

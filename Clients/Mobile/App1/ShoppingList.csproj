@@ -96,7 +96,6 @@
     <Compile Include="Code\Extended\ExtEditText.cs" />
     <Compile Include="Code\Extended\ShApplication.cs" />
     <Compile Include="Code\AcMain.cs" />
-    <Compile Include="Code\MessageReciever.cs" />
     <Compile Include="Code\SyncBinder.cs" />
     <Compile Include="Code\SyncCom.cs" />
     <Compile Include="Code\SyncService.cs" />

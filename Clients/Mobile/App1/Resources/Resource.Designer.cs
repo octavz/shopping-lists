@@ -988,32 +988,32 @@ namespace ShList
 		public partial class Color
 		{
 			
-			// aapt resource value: 0x7f0b0048
-			public const int abc_background_cache_hint_selector_material_dark = 2131427400;
-			
 			// aapt resource value: 0x7f0b0049
-			public const int abc_background_cache_hint_selector_material_light = 2131427401;
+			public const int abc_background_cache_hint_selector_material_dark = 2131427401;
 			
 			// aapt resource value: 0x7f0b004a
-			public const int abc_color_highlight_material = 2131427402;
+			public const int abc_background_cache_hint_selector_material_light = 2131427402;
+			
+			// aapt resource value: 0x7f0b004b
+			public const int abc_color_highlight_material = 2131427403;
 			
 			// aapt resource value: 0x7f0b0000
 			public const int abc_input_method_navigation_guard = 2131427328;
 			
-			// aapt resource value: 0x7f0b004b
-			public const int abc_primary_text_disable_only_material_dark = 2131427403;
-			
 			// aapt resource value: 0x7f0b004c
-			public const int abc_primary_text_disable_only_material_light = 2131427404;
+			public const int abc_primary_text_disable_only_material_dark = 2131427404;
 			
 			// aapt resource value: 0x7f0b004d
-			public const int abc_primary_text_material_dark = 2131427405;
+			public const int abc_primary_text_disable_only_material_light = 2131427405;
 			
 			// aapt resource value: 0x7f0b004e
-			public const int abc_primary_text_material_light = 2131427406;
+			public const int abc_primary_text_material_dark = 2131427406;
 			
 			// aapt resource value: 0x7f0b004f
-			public const int abc_search_url_text = 2131427407;
+			public const int abc_primary_text_material_light = 2131427407;
+			
+			// aapt resource value: 0x7f0b0050
+			public const int abc_search_url_text = 2131427408;
 			
 			// aapt resource value: 0x7f0b0001
 			public const int abc_search_url_text_normal = 2131427329;
@@ -1024,11 +1024,11 @@ namespace ShList
 			// aapt resource value: 0x7f0b0003
 			public const int abc_search_url_text_selected = 2131427331;
 			
-			// aapt resource value: 0x7f0b0050
-			public const int abc_secondary_text_material_dark = 2131427408;
-			
 			// aapt resource value: 0x7f0b0051
-			public const int abc_secondary_text_material_light = 2131427409;
+			public const int abc_secondary_text_material_dark = 2131427409;
+			
+			// aapt resource value: 0x7f0b0052
+			public const int abc_secondary_text_material_light = 2131427410;
 			
 			// aapt resource value: 0x7f0b0004
 			public const int accent_material_dark = 2131427332;
@@ -1138,6 +1138,9 @@ namespace ShList
 			// aapt resource value: 0x7f0b001b
 			public const int hint_foreground_material_light = 2131427355;
 			
+			// aapt resource value: 0x7f0b0048
+			public const int itemBackground = 2131427400;
+			
 			// aapt resource value: 0x7f0b0047
 			public const int itemBorder = 2131427399;
 			
@@ -1228,11 +1231,11 @@ namespace ShList
 			// aapt resource value: 0x7f0b0037
 			public const int switch_thumb_disabled_material_light = 2131427383;
 			
-			// aapt resource value: 0x7f0b0052
-			public const int switch_thumb_material_dark = 2131427410;
-			
 			// aapt resource value: 0x7f0b0053
-			public const int switch_thumb_material_light = 2131427411;
+			public const int switch_thumb_material_dark = 2131427411;
+			
+			// aapt resource value: 0x7f0b0054
+			public const int switch_thumb_material_light = 2131427412;
 			
 			// aapt resource value: 0x7f0b0038
 			public const int switch_thumb_normal_material_dark = 2131427384;
@@ -1927,11 +1930,11 @@ namespace ShList
 			// aapt resource value: 0x7f06007b
 			public const int btnCreateList = 2131099771;
 			
-			// aapt resource value: 0x7f060082
-			public const int btnDelete = 2131099778;
-			
 			// aapt resource value: 0x7f060081
-			public const int btnEdit = 2131099777;
+			public const int btnDelete = 2131099777;
+			
+			// aapt resource value: 0x7f060084
+			public const int btnEdit = 2131099780;
 			
 			// aapt resource value: 0x7f060075
 			public const int btnLogin = 2131099765;
@@ -2290,8 +2293,8 @@ namespace ShList
 			// aapt resource value: 0x7f060085
 			public const int touch_outside = 2131099781;
 			
-			// aapt resource value: 0x7f060084
-			public const int txtDate = 2131099780;
+			// aapt resource value: 0x7f060083
+			public const int txtDate = 2131099779;
 			
 			// aapt resource value: 0x7f06008f
 			public const int txtDlgListName = 2131099791;
@@ -2302,8 +2305,8 @@ namespace ShList
 			// aapt resource value: 0x7f06006e
 			public const int txtItemName = 2131099758;
 			
-			// aapt resource value: 0x7f060083
-			public const int txtListName = 2131099779;
+			// aapt resource value: 0x7f060082
+			public const int txtListName = 2131099778;
 			
 			// aapt resource value: 0x7f060074
 			public const int txtPassword = 2131099764;
@@ -3254,6 +3257,9 @@ namespace ShList
 			
 			// aapt resource value: 0x7f09001b
 			public const int Platform_Widget_AppCompat_Spinner = 2131296283;
+			
+			// aapt resource value: 0x7f090159
+			public const int ProductItemLayout = 2131296601;
 			
 			// aapt resource value: 0x7f090028
 			public const int RtlOverlay_DialogWindowTitle_AppCompat = 2131296296;

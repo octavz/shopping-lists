@@ -13,15 +13,12 @@ namespace CommonBL.Data.Request
         {
             userData = new UserDTO();
             listsMeta = new ListMetaDTO();
-            lists = new List<FullListDTO>();
         }
 
         public UserDTO userData { get; set; }
 
         public ListMetaDTO listsMeta { get; set; }
-
-        public List<FullListDTO> lists { get; set; }
-
+        
     }//ReqSyncDTO
 
     public class FullListDTO
@@ -82,9 +79,9 @@ namespace CommonBL.Data.Request
         public string name { get; set; }
         public string description { get; set; }
         public string userId { get; set; }
-
         public long created { get; set; }
         public int status { get; set; }
+        public string clientTag { get; set; }
     }
 
 

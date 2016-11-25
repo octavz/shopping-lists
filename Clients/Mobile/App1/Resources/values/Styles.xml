@@ -12,4 +12,7 @@
     <item name="android:textColor">@color/itemList</item>
   </style>
 
+  <style name="ProductItemLayout">
+    <item name="android:background">@color/itemBackground</item>
+  </style>
 </resources>
