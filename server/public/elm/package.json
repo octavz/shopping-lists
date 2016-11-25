@@ -4,8 +4,9 @@
   "description": "",
   "main": "api.js",
   "dependencies": {
-    "ace-css": "^1.0.1",
     "css-loader": "^0.23.1",
+    "sass-loader": "^4.0.2",
+    "node-sass": "^3.14.0-0",
     "elm-webpack-loader": "^3.0.1",
     "file-loader": "^0.8.5",
     "font-awesome": "^4.6.1",
@@ -16,7 +17,9 @@
     "webpack-dev-middleware": "^1.6.1",
     "webpack-dev-server": "^1.14.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "extract-text-webpack-plugin": "^1.0.1"
+  },
   "scripts": {
     "api": "node api.js",
     "build": "webpack",
