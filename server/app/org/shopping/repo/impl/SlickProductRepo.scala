@@ -2,10 +2,9 @@ package org.shopping.repo.impl
 
 import com.google.inject.Inject
 import org.shopping.db._
-import org.shopping.models.{Product, ProductPrice, Supplier}
+import org.shopping.models._
 import org.shopping.repo._
 import org.shopping.util.Constants
-import org.shopping.util.Time._
 import play.api.db.slick.{DatabaseConfigProvider, HasDatabaseConfigProvider}
 import slick.driver.JdbcProfile
 
@@ -28,8 +27,7 @@ class SlickProductRepo @Inject()(protected val dbConfigProvider: DatabaseConfigP
     if (model.isEmpty) {
       Future.successful(Nil)
     } else {
-      val n = now()
-      val newModel = model.map(_.copy(created = n, updated = n))
+      val newModel = model.map(touch2(_))
       db.run(Products ++= newModel).map(_ => newModel)
     }
 

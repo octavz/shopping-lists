@@ -2,9 +2,19 @@ package org.shopping
 
 import org.shopping.util.Time._
 
+import scala.concurrent.Future
+
 package object models {
 
   import scala.language.higherKinds
+
+  def touch1[T <: BaseModel](b: T): b.T = b.copyFn1(now())
+
+  def touch2[T <: BaseModel](b: T): b.T = {
+    val n = now()
+    b.copyFn2(n, n)
+  }
+
 
   trait BaseModel {
     val created: Long
