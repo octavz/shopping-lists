@@ -35,7 +35,10 @@ class DefaultListService @Inject()(userRepo: UserRepo, listRepo: ListRepo, produ
           val newList = list.copy(id = Gen.guid, userId = userId)
           listRepo.insertList(newList) flatMap { nl =>
             val newItems = items.map(_.copy(listDefId = nl.id))
-            listRepo.replaceListItems(newList.id, newItems) map (_ => Right(ListWithItems(nl, newItems)))
+            if (newItems.nonEmpty)
+              listRepo.replaceListItems(newList.id, newItems) map (_ => Right(ListWithItems(nl, newItems)))
+            else
+              result(ListWithItems(nl, Nil))
           }
         } else {
           Future.successful(Right(ListWithItems(list, items)))
@@ -70,7 +73,10 @@ class DefaultListService @Inject()(userRepo: UserRepo, listRepo: ListRepo, produ
         Product(id = Gen.guid, userId = userId, name = p.description.getOrElse(""), tags = p.description.getOrElse("").toLowerCase))
       productRepo.insertProducts(notExistingProducts) flatMap { _ =>
         val all = notExistingProducts.map(prod2item) ++ withId.map(p => p.toModel(listId, p.productId.get))
-        listRepo.replaceListItems(listId, all).map(_.map(new ListItemDTO(_))) map resultSync
+        if (all.nonEmpty)
+          listRepo.replaceListItems(listId, all).map(_.map(new ListItemDTO(_))) map resultSync
+        else
+          result(Nil)
       } recover {
         case e: Throwable => exSync(e)
       }
@@ -111,7 +117,8 @@ class DefaultListService @Inject()(userRepo: UserRepo, listRepo: ListRepo, produ
           case Left(err) => error(err)
         }
       } recover {
-        case e: Throwable => exSync(e, "updateList")
+        case e: Throwable =>
+          exSync(e, "updateList")
       }
   }
 

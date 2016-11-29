@@ -85,7 +85,7 @@ class SlickListRepo @Inject()(protected val dbConfigProvider: DatabaseConfigProv
     }
   }
 
-  override def getListProductsByList(listDefId: String): Repo[Seq[ListDefProduct]] = {
+  def getListProductsByList(listDefId: String): Repo[Seq[ListDefProduct]] = {
     db run ListDefProducts.filter(_.listDefId === listDefId).result
   }
 

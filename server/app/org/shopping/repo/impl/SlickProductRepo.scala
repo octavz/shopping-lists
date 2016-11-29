@@ -72,5 +72,6 @@ class SlickProductRepo @Inject()(protected val dbConfigProvider: DatabaseConfigP
       }
   }
 
-  override def getAllSuppliers: Repo[Seq[Supplier]] = db.run(Suppliers.result)
+  override def getAllSuppliers: Repo[Seq[Supplier]] =
+    db.run(Suppliers.result)
 }

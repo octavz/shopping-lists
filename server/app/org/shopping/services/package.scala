@@ -54,6 +54,7 @@ package object services {
   }
 
   def exSync(ex: Throwable, errMessage: String = ErrorMessages.SERVER_ERROR, errCode: Int = 500) = {
+//    ex.printStackTrace()
     log.error(errMessage, ex)
     Left(ErrorDTO(errCode, errMessage))
   }

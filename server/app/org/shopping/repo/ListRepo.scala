@@ -14,8 +14,6 @@ trait ListRepo {
 
   def replaceListItems(listId: String, model: Seq[ListDefProduct]): Repo[Seq[ListDefProduct]]
 
-  def getListProductsByList(listDefId: String): Repo[Seq[ListDefProduct]]
-
   def getListUsers(listId: String): Repo[Seq[String]]
 
   def updateListProduct(listProduct: ListDefProduct): Repo[ListDefProduct]

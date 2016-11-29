@@ -18,7 +18,10 @@ val appResolvers = Seq(
   "Typesafe Repository" at "http://repo.typesafe.com/typesafe/releases/")
 
 libraryDependencies ++= Seq(
-  specs2 % Test,
+  "org.scalatestplus.play" %% "scalatestplus-play" % "1.5.0" % "test",
+//      "org.mockito" % "mockito-core" % "2.2.26",
+  "org.scalamock" %% "scalamock-scalatest-support" % "3.2.2" % "test",
+    specs2 % Test,
   cache,
   json,
   filters,
@@ -27,9 +30,9 @@ libraryDependencies ++= Seq(
   "com.typesafe.play" %% "play-slick" % "2.0.0",
   "com.typesafe.play" %% "play-slick-evolutions" % "2.0.0",
   "com.nulab-inc" %% "play2-oauth2-provider" % "0.15.0",
-  //    "org.mockito" % "mockito-all" % "2.0.2-beta",
   //"com.wix" %% "accord-core" % "0.4-SNAPSHOT",
   "com.github.nscala-time" %% "nscala-time" % "2.0.0",
+  "org.scalaz" %% "scalaz-core" % "7.2.7",
   "com.livestream" %% "scredis" % "2.0.6",
   "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.7.2",
   "org.webjars" % "swagger-ui" % "2.2.2")
