@@ -30,6 +30,7 @@ namespace ShList.Code.Controls
 
         public event Action<int> Event_DeleteItem = null;
         public event Action<int,string> Event_EditItem = null;
+        public event Action<int> Event_ClickItem = null;
 
         /// <summary>
         /// CtrlShoppingList
@@ -79,8 +80,7 @@ namespace ShList.Code.Controls
                  if (!string.IsNullOrEmpty(txtLstName.Text))
                  {                     
                      lstNm.Text = txtLstName.Text;
-                     if (Event_EditItem != null)
-                         Event_EditItem(this.Id, txtLstName.Text);
+                     Event_EditItem?.Invoke(this.Id, txtLstName.Text);
                      alert.Dismiss();
                  }
                  else                 
@@ -102,8 +102,7 @@ namespace ShList.Code.Controls
 
             alert.SetPositiveButton(Resource.String.Yes, (senderAlert, args) =>
             {
-                if (Event_DeleteItem != null)
-                    Event_DeleteItem(this.Id);
+                Event_DeleteItem?.Invoke(this.Id);
             });
 
             alert.SetNegativeButton(Resource.String.No, (senderAlert, args) => { });
@@ -112,9 +111,7 @@ namespace ShList.Code.Controls
 
         private void ShoppingList_Click(object sender, EventArgs e)
         {
-            //Bundle options = new Bundle();
-            //options.putString(key, value);
-            //m_ParentActivity.StartActivity(typeof(AcListItems),);
+            Event_ClickItem?.Invoke(this.Id);        
         }
 
         public void UpdateCtrlData(ShoppingListDTO aData)
