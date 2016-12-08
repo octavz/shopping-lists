@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace CommonBL.Managers
@@ -39,6 +40,33 @@ namespace CommonBL.Managers
                 return newList;
             }//lock           
         }//AddNewList
+
+        /// <summary>
+        /// CreateListItem
+        /// </summary>
+        /// <param name="listInternalId"></param>
+        /// <param name="description"></param>
+        /// <param name="quantity"></param>
+        /// <returns></returns>
+        public ItemListDTO CreateListItem(string listInternalId, string description, int quantity)
+        {
+            ShoppingListDTO lst = GetListByInternalId(listInternalId);
+            if (lst == null)
+                return null;
+            
+            lock (mLocker)
+            {
+                ItemListDTO item = new ItemListDTO();
+                item.InternalId = Guid.NewGuid().ToString();
+                item.Quantity = quantity;
+                item.Description = description;
+                
+                lst.Items.Add(item);
+                lst.IsDirty = true;
+                return item;
+            }
+        }//CreateListItem
+
 
         public void UpdateListName(string UIId, string newName)
         {
@@ -72,6 +100,17 @@ namespace CommonBL.Managers
         {
             mStorage.ShLists.ForEach(x => x.IsDirty = false);
         }//SetNoDirty
+
+        /// <summary>
+        /// GetListByInternalId
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ShoppingListDTO GetListByInternalId(string id)
+        {
+            var aList = mStorage.ShLists.Where(x => x.InternalId == id).FirstOrDefault();
+            return aList;
+        }//GetListByInternalId
 
 
         public string GetSerializedDataForLocalStorage()
@@ -110,8 +149,21 @@ namespace CommonBL.Managers
                 aList.id = string.IsNullOrEmpty(L.Id) ? null : L.Id;
                 aList.status = L.IsDeleted ? 5 : 0;
                 aList.clientTag = L.InternalId;
+
+                aList.items = L.Items.Count > 0 ? new List<ItemDTO>() : null;
+
+                L.Items.ForEach(I => {
+                    ItemDTO anItem = new ItemDTO();
+                    anItem.productId = string.IsNullOrEmpty(I.ProductId) ? null : I.ProductId;
+                    anItem.quantity = I.Quantity;
+                    anItem.description = I.Description;
+                    anItem.status = I.IsDeleted ? 5 : 0;
+                    anItem.clientTag = I.InternalId;
+                    aList.items.Add(anItem);
+                });
+
                 aReq.listsMeta.items.Add(aList);
-                aReq.listsMeta.total = aReq.listsMeta.items.Count;
+                aReq.listsMeta.total = aReq.listsMeta.items.Count;                
             });
 
             return aReq;

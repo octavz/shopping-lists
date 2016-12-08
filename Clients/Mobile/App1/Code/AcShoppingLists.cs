@@ -19,6 +19,7 @@ using CommonBL.Data.Response;
 using System.Threading.Tasks;
 using ShList.Code.Common;
 using Android.Support.V4.Content;
+using CommonBL.Utils;
 
 namespace ShList.Code
 {
@@ -60,7 +61,7 @@ namespace ShList.Code
             int a = 2;
 
             var allUiLists = ListsManager.Instance.Lists.Where(x => x.IsDeleted == false).OrderBy(x => x.ListDate).ToList();
-       
+
 
             ViewGroup viewGroup = (ViewGroup)llShoppingLst;
             //remove all that are not in the datalist
@@ -105,10 +106,10 @@ namespace ShList.Code
         private void GenerateUILists()
         {
             ListsManager lstMgr = ListsManager.Instance;
-            lstMgr.Lists.ForEach(x =>
+            for (int i = 0; i < lstMgr.Lists.Count; i++)
             {
-                    CreateUIList(x);
-            });
+                CreateUIList(lstMgr.Lists[i], i);
+            }
         }//GenerateUILists
 
         private void LoadLists()
@@ -134,14 +135,30 @@ namespace ShList.Code
         /// </summary>
         /// <param name="newList"></param>
         /// <param name="progressDialog"></param>
-        private void CreateUIList(ShoppingListDTO newList, int position =0)
+        private void CreateUIList(ShoppingListDTO newList, int position = 0)
         {
             CtrlShoppingList item = new CtrlShoppingList(this, ShAppContext, newList);
             item.Event_DeleteItem += DeleteList;
             item.Event_EditItem += EditList;
+            item.Event_ClickItem += ClickList;
             llShoppingLst.AddView(item, position);
             llShoppingLst.RequestLayout();
         }//CreateUIList
+
+        /// <summary>
+        /// ClickList
+        /// </summary>
+        /// <param name="listUIId"></param>
+        private void ClickList(int listUIId)
+        {
+            var view = FindViewById<CtrlShoppingList>(listUIId);
+            if (view == null)
+                return;
+
+            var intItems = new Intent(this, typeof(AcListItems));
+            intItems.PutExtra(Constants.KEY_ID_LIST, view.Data.InternalId);
+            StartActivity(intItems);
+        }//ClickList
 
         private void EditList(int listUIId, string newName)
         {
@@ -171,7 +188,7 @@ namespace ShList.Code
             base.OnResume();
             llShoppingLst.RemoveAllViews();
             GenerateUILists();
-        }
+        }//OnResume
 
         internal class MessageReciever : BroadcastReceiver
         {

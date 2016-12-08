@@ -23,6 +23,8 @@ namespace CommonBL.Utils
         public const string URL_SYNC = "/api/data";
 
         public const string DEFAULT_LIST_NAME = "_deflistname2016";
+
+        public const string KEY_ID_LIST = "_listId";
     }
 
     public enum ErrorCodes

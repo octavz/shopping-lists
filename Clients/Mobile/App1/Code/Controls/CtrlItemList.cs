@@ -18,10 +18,8 @@ namespace ShList.Code.Controls
     [Register("CtrlItemList")]
     public class CtrlItemList : AControl
     {
-
+        private ItemListDTO m_Data = null;
         private Activity m_ParentActivity = null;
-
-
         public event Action<int> Event_DeleteItem = null;
 
         /// <summary>
@@ -32,14 +30,17 @@ namespace ShList.Code.Controls
         {
             this.Id = View.GenerateViewId();
             m_ParentActivity = parent;
+            m_Data = data;
             Inflate(cnt, Resource.Layout.CtrlItemList, this);
             Initialize();
         }//CtrlShoppingList
 
         void Initialize()
         {
-
-
-        }
+            TextView lblItem = FindViewById<TextView>(Resource.Id.lblItem);
+            TextView lblQuantity = FindViewById<TextView>(Resource.Id.lblQuantity);
+            lblItem.Text = m_Data.Description;
+            lblQuantity.Text = "Quantity: " + m_Data.Quantity;
+        }//Initialize
     }
 }

@@ -56,6 +56,8 @@ namespace CommonBL.Data.Request
         public int quantity { get; set; }
         public string description { get; set; }        
         public int  status { get; set; }
+
+        public string clientTag { get; set; }
     }
 
     public class ListMetaDTO
@@ -82,7 +84,8 @@ namespace CommonBL.Data.Request
         public long created { get; set; }
         public int status { get; set; }
         public string clientTag { get; set; }
-    }
+        public List<ItemDTO> items{ get; set; }
+}
 
 
     public class UserDTO
