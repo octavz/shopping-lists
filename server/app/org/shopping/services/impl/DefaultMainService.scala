@@ -9,19 +9,24 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future._
 
 class DefaultMainService @Inject()(
-  userService: UserService,
-  listService: ListService,
-  productService: ProductService) extends MainService {
+                                    userService: UserService,
+                                    listService: ListService,
+                                    productService: ProductService) extends MainService {
 
-  private def userLists(implicit authData: AuthData) = listService.getUserLists(userId, 0, 1000)
+  private def userLists(implicit authData: AuthData) =
+    listService.getUserLists(userId, 0, 1000)
 
   override def sync(data: SyncDTO)(implicit authData: AuthData): Result[SyncDTO] = try {
     for {
       userData <- data.userData.fold(userService.getUserById(userId))(userService.updateUser)
       meta <- data.listsMeta.fold(userLists) { l =>
         val (toUpdate, toInsert) = l.items.partition(_.id.isDefined)
-        val fUpdate = listService.updateLists(ListsDTO(toUpdate))
-        val fInsert = listService.insertLists(ListsDTO(toInsert))
+        val fUpdate =
+          if (toUpdate.nonEmpty) listService.updateLists(ListsDTO(toUpdate))
+          else result(ListsDTO(Nil))
+        val fInsert =
+          if (toInsert.nonEmpty) listService.insertLists(ListsDTO(toInsert))
+          else result(ListsDTO(Nil))
         fUpdate flatMap (_ => fInsert flatMap (_ => userLists))
       }
       products <- sequence(data.products.getOrElse(Nil).map(productService.insertProduct)).map(seqEither)
@@ -38,7 +43,9 @@ class DefaultMainService @Inject()(
       prices = Some(rPrices)
     )
   } catch {
-    case e: Throwable => ex(e)
+    case e: Throwable =>
+      e.printStackTrace()
+      ex(e)
   }
 
 }

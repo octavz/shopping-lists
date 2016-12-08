@@ -1,16 +1,14 @@
 package org.shopping.repo
 
-import org.junit.runner._
+import org.shopping.models._
 import org.shopping.repo.impl.{SlickUserRepo, TestCaching}
-import org.shopping.models.{User, UserSession}
 import org.shopping.util.Gen._
-import org.specs2.runner._
 
 import scala.concurrent._
 import scala.concurrent.duration._
+import scala.concurrent.ExecutionContext.Implicits.global
 
-@RunWith(classOf[JUnitRunner])
-class UserRepoSpec extends BaseRepoSpec {
+class SlickUserRepoTest extends BaseRepoSpec {
 
   "User Repo" should {
 
@@ -20,7 +18,7 @@ class UserRepoSpec extends BaseRepoSpec {
         val us = UserSession(id = guid, userId = "1")
         Await.ready(dao.insertSession(us), Duration.Inf)
         val ret = Await.result(dao.findSessionById(us.id), Duration.Inf)
-        ret must beSome
+        assert(ret.isDefined)
         ret.get.id === us.id
         ret.get.userId === us.userId
         val retDelete = Await.result(dao.deleteSessionByUser(us.userId), Duration.Inf)
@@ -31,7 +29,7 @@ class UserRepoSpec extends BaseRepoSpec {
     "insertUser,getUserById, getUserByEmail" in {
       test { env =>
         val dao = new SlickUserRepo(env.dbConfigProvider, new TestCaching)
-        val usr = newUser
+        val usr = anUser
         Await.ready(dao.insertUser(usr), Duration.Inf)
         val ret = Await.result(dao.getUserById(usr.id), Duration.Inf)
         ret.get === usr

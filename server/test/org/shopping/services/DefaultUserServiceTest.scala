@@ -16,7 +16,7 @@ import scala.concurrent._
 import scala.concurrent.duration._
 import scalaoauth2.provider.AuthInfo
 
-class UserServiceSpec extends PlaySpec with MockFactory {
+class DefaultUserServiceTest extends PlaySpec with MockFactory {
 
   val duration = Duration.Inf
 

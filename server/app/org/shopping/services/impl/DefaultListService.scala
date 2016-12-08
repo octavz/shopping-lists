@@ -19,7 +19,7 @@ class DefaultListService @Inject()(userRepo: UserRepo, listRepo: ListRepo, produ
   override def insertList(dto: ListDTO)(implicit a: AuthData): Result[ListDTO] = {
     val listDef = dto.toModel(Gen.guid, userId)
     listRepo.insertList(listDef) flatMap { list =>
-      setItems(ListWithItems(listDef, Nil), dto.items.getOrElse(Nil).take(MAX_ALLOWED)) map {
+      setItems(ListWithItems(listDef, Nil), dto.items.getOrElse(Nil).take(MAX_ALLOWED).toList) map {
         case Right(its) => resultSync(new ListDTO(list, its.toList))
         case Left(err) => errorSync(err)
       }
@@ -58,27 +58,29 @@ class DefaultListService @Inject()(userRepo: UserRepo, listRepo: ListRepo, produ
     }.toSeq
 
 
-  private[services] def setItems(fullList: ListWithItems, items: Seq[ListItemDTO])
-    (implicit a: AuthData): Result[Seq[ListItemDTO]] =
+  private[services] def setItems(fullList: ListWithItems, items: List[ListItemDTO])(implicit a: AuthData): Result[Seq[ListItemDTO]] =
     if (items.size > MAX_ALLOWED) {
       error(ErrorMessages.TOO_MANY_ITEMS)
     } else if (items.isEmpty) {
       result(Nil)
     } else {
       val listId = fullList.list.id
-      def prod2item(p: Product): ListDefProduct =
-        ListDefProduct(listDefId = listId, productId = p.id, description = p.description)
       val (woId, withId) = items.partition(_.productId.isEmpty)
       val notExistingProducts = woId.map(p =>
         Product(id = Gen.guid, userId = userId, name = p.description.getOrElse(""), tags = p.description.getOrElse("").toLowerCase))
+
       productRepo.insertProducts(notExistingProducts) flatMap { _ =>
-        val all = notExistingProducts.map(prod2item) ++ withId.map(p => p.toModel(listId, p.productId.get))
+        val mapped = (woId zip notExistingProducts).map {
+          case (li, prod) => li.toModel(listId, prod.id)
+        }
+        val all = mapped ++ withId.map(p => p.toModel(listId, p.productId.get))
         if (all.nonEmpty)
           listRepo.replaceListItems(listId, all).map(_.map(new ListItemDTO(_))) map resultSync
         else
           result(Nil)
       } recover {
-        case e: Throwable => exSync(e)
+        case e: Throwable =>
+          exSync(e)
       }
     }
 
@@ -107,7 +109,7 @@ class DefaultListService @Inject()(userRepo: UserRepo, listRepo: ListRepo, produ
       checkUser(valid(id)) {
         cloneIfNotOwned(id).flatMap {
           case Right(lst) =>
-            setItems(lst, dto.items.getOrElse(Nil)).flatMap {
+            setItems(lst, dto.items.getOrElse(Nil).toList).flatMap {
               case Right(its) =>
                 listRepo.updateList(dto.toModel(lst.list.id, userId)).map { p =>
                   resultSync(new ListDTO(p, its.toList))
@@ -118,6 +120,7 @@ class DefaultListService @Inject()(userRepo: UserRepo, listRepo: ListRepo, produ
         }
       } recover {
         case e: Throwable =>
+          e.printStackTrace()
           exSync(e, "updateList")
       }
   }
@@ -128,7 +131,7 @@ class DefaultListService @Inject()(userRepo: UserRepo, listRepo: ListRepo, produ
   override def deleteList(listId: String)(implicit a: AuthData): Result[BooleanDTO] =
     checkUser(valid(listId)) {
       listRepo.getListDefById(listId) flatMap {
-        case Some(ListWithItems(list, items)) =>
+        case Some(ListWithItems(list, _)) =>
           listRepo.updateList(list.copy(status = Constants.STATUS_DELETE)) map { _ =>
             resultSync(BooleanDTO(true))
           }

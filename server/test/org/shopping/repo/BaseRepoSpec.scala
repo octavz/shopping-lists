@@ -1,29 +1,24 @@
 package org.shopping.repo
 
 import com.google.inject.AbstractModule
+import org.shopping.BaseSpec
 import org.shopping.config.RunModule
-import org.shopping.models.User
 import org.shopping.services.{ListService, MainService, ProductService, UserService}
-import org.shopping.util.Gen._
-import org.shopping.util.Time._
-import org.specs2.execute.AsResult
-import org.specs2.mock.Mockito
 import play.api.db.DBApi
 import play.api.db.evolutions._
 import play.api.db.slick._
 import play.api.inject.guice.GuiceApplicationBuilder
 import play.api.inject.{BindingKey, QualifierInstance}
-import play.api.test.PlaySpecification
 import play.api.{Application, Mode}
 import slick.backend.DatabaseConfig
 import slick.dbio.{DBIOAction, NoStream}
 import slick.driver.JdbcProfile
 import slick.jdbc.JdbcBackend
+import scala.concurrent.ExecutionContext.Implicits.global
 
 import scala.concurrent.duration._
-import scala.concurrent.{Future, _}
 
-class BaseRepoSpec extends PlaySpecification with Mockito {
+class BaseRepoSpec extends BaseSpec {
 
   case class TestEnv(app: Application
                      , dbConfigProvider: DatabaseConfigProvider
@@ -32,8 +27,8 @@ class BaseRepoSpec extends PlaySpecification with Mockito {
 
   val duration = Duration.Inf
 
-  def test[T: AsResult](t: TestEnv => T) = try {
-    println("Building environment")
+  def test(t: TestEnv => Unit) = try {
+//    println("Building environment")
     //    val dbRandom = Gen.guid
     val dbRandom = ""
     val app = guiceApp(dbRandom).build()
@@ -49,23 +44,20 @@ class BaseRepoSpec extends PlaySpecification with Mockito {
       val database = inj.instanceOf[DBApi].database("default")
       try {
         Evolutions.applyEvolutions(database)
-        AsResult(t(e))
+        t(e)
       } catch {
-        case e: Throwable =>
-          failure(e.getMessage)
+        case e: Throwable => throw e
       } finally {
         Evolutions.cleanupEvolutions(database)
       }
     }
   } catch {
     case e: Exception =>
-      failure(e.getMessage)
+      throw e
   }
 
-  def waitFor[T](f: Future[T]): T = Await.result(f, duration)
-
   class TestModule extends AbstractModule {
-    override def configure() = {
+    override def configure(): Unit = {
       bind(classOf[ProductService]).toInstance(mock[ProductService])
       bind(classOf[ListService]).toInstance(mock[ListService])
       bind(classOf[UserService]).toInstance(mock[UserService])
@@ -74,27 +66,17 @@ class BaseRepoSpec extends PlaySpecification with Mockito {
     }
   }
 
-  def guiceApp(dbName: String, module: AbstractModule = new TestModule) =
+  def guiceApp(dbName: String, module: AbstractModule = new TestModule): GuiceApplicationBuilder =
     new GuiceApplicationBuilder()
       .disable[RunModule]
       .bindings(module)
-      .configure(
-        Map(
-          "evolutions" -> "disabled",
-          "slick.dbs.default.driver" -> "slick.driver.PostgresDriver$",
-          "slick.dbs.default.db.driver" -> "org.postgresql.Driver",
-          "slick.dbs.default.db.url" -> s"jdbc:postgresql://localhost:5432/mytest",
-          "slick.dbs.default.db.user" -> "postgres",
-          "slick.dbs.default.db.password" -> "root"
-        ))
+      .configure(testConf)
       .in(Mode.Test)
 
   def dbSync[R](a: DBIOAction[R, NoStream, Nothing])(implicit dbConfig: DatabaseConfig[JdbcProfile]): R = {
     waitFor(dbConfig.db.run(a))
   }
 
-  def newUser = User(id = guid, login = guid, providerToken = None, created = now, updated = now, lastLogin = None, password = guid, nick = guid)
-
-  def genString(size: Int): String = (for (i <- 1 to size) yield "a").mkString
+  def genString(size: Int): String = "a" * size
 
 }

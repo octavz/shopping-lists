@@ -22,3 +22,4 @@ addSbtPlugin("com.iheart" % "sbt-play-swagger" % "0.5.2")
 //addSbtPlugin("org.ensime" % "ensime-sbt" % "0.1.5")
 
 //addSbtPlugin("de.johoop" % "jacoco4sbt" % "2.1.5")
+addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.3.5")

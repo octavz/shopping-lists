@@ -11,13 +11,14 @@ import org.shopping.services.impl._
 import org.shopping.util.Gen._
 import org.shopping.util.Time._
 import play.api.http.Status
+import play.api.libs.json.Json
 
 import scala.concurrent._
 import scala.concurrent.duration._
 import scalaoauth2.provider.AuthInfo
 
 @RunWith(classOf[JUnitRunner])
-class ListServiceSpec extends PlaySpec with MockFactory {
+class DefaultListServiceTest extends PlaySpec with MockFactory {
 
   implicit val authInfo = AuthInfo(user =
     User(id = guid, login = guid, password = guid, created = now(), updated = now(),
@@ -25,8 +26,8 @@ class ListServiceSpec extends PlaySpec with MockFactory {
 
   case class MockedContext(listService: DefaultListService, userRepo: UserRepo, listRepo: ListRepo, productRepo: ProductRepo)
 
-  def service(userRepo: UserRepo = mock[UserRepo], listRepo: ListRepo = mock[ListRepo],
-    productRepo: ProductRepo = mock[ProductRepo]) = {
+  private def service(userRepo: UserRepo = mock[UserRepo], listRepo: ListRepo = mock[ListRepo],
+              productRepo: ProductRepo = mock[ProductRepo]) = {
     val ret = new DefaultListService(userRepo, listRepo, productRepo)
     MockedContext(ret, userRepo, listRepo, productRepo)
   }
@@ -177,6 +178,57 @@ class ListServiceSpec extends PlaySpec with MockFactory {
       s must be('right)
       val ret = s.merge.asInstanceOf[ListDTO]
       ret.items.size mustBe 1
+    }
+
+    "correctly convert a ListItem to Product" in {
+      val dto = ListItemDTO(productId = Some("pid"), quantity = 2, description = Some("desc"), status = 2, clientTag = Some("test"))
+      val model = dto.toModel("listId", "prodId")
+      model.description === dto.description
+      model.clientTag === dto.clientTag
+      model.listDefId === "listId"
+      model.productId === "pid"
+      model.quantity === model.quantity
+    }
+
+    "correctly update existing list when items don't exist" in {
+      val m = service()
+      val listId = "861154c2-e311-438e-97cf-420ffe7913ce"
+      val listDef = ListDef(id = listId, userId = authInfo.user.id, name = guid,
+        description = guido, createdClient = now(), created = now(), updated = now())
+      val p1 = Product(id = guid, userId = authInfo.user.id, name = "apa", tags = "apa")
+      val p2 = Product(id = guid, userId = authInfo.user.id, name = "bere", tags = "bere")
+
+      val listProduct = ListDefProduct(listDef.id, "p1", None, 0, 0, "", now(), now())
+      (m.listRepo.getListUsers _).expects(*).once().returns(repo(Seq(authInfo.user.id)))
+      (m.listRepo.getListDefById _).expects(listId).once().returns(repo(Some(ListWithItems(listDef, Seq(listProduct)))))
+      (m.productRepo.insertProducts _).expects(where { model: Seq[Product] =>
+        val apa = model.find(_.name.contains("apa"))
+        val beer = model.find(_.name.contains("bere"))
+        model.size == 2 && apa.isDefined && beer.isDefined
+      }).once()
+        .onCall { _: Seq[Product] => repo(Seq(p1, p2)) }
+
+      (m.listRepo.replaceListItems _).expects(where { (lid: String, model: Seq[ListDefProduct]) =>
+        val apa = model.find(_.description.contains("apa"))
+        val beer = model.find(_.description.contains("bere"))
+        lid == listId && model.size == 2 && apa.isDefined && beer.isDefined
+      }).once().returns(repo(Seq(listProduct)))
+      (m.listRepo.updateList _).expects(*).once().returns(repo(listDef))
+
+      val list = Json.parse(
+        s"""{"id": "$listId",
+              "name": "l1", "userId": "41af8c9f-08d7-4144-9ab4-cdf605e5da5c",
+              "created": 1480683428, "status": 0,
+              "clientTag": "82f47c8a-3f0b-4c69-bf5c-6af3e24fc5f8",
+              "items": [
+                {"quantity": 1, "description": "apa", "status": 0, "clientTag": "d249094f-a3a5-4828-91ba-bc7011f579da"},
+                {"quantity": 2, "description": "bere", "status": 0, "clientTag": "54238caf-3784-4589-a3a6-a02072a3d439"}
+                ]}""").as[ListDTO](JsonDTOFormats.list)
+      val s = Await.result(m.listService.updateList(list), Duration.Inf)
+
+      s must be('right)
+      val res = s.merge.asInstanceOf[ListDTO]
+      res === list
     }
 
   }

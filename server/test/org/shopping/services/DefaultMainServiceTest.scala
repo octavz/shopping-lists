@@ -7,12 +7,13 @@ import org.shopping.models.User
 import org.shopping.services.impl._
 import org.shopping.util.Gen._
 import org.shopping.util.Time._
+import play.api.libs.json.Json
 
 import scala.concurrent.Await
 import scala.concurrent.duration._
 import scalaoauth2.provider.AuthInfo
 
-class MainServiceSpec extends PlaySpec with MockFactory {
+class DefaultMainServiceTest extends PlaySpec with MockFactory {
 
   val duration = Duration.Inf
 
@@ -24,10 +25,10 @@ class MainServiceSpec extends PlaySpec with MockFactory {
   implicit val authInfo = AuthInfo[User](user = userModel, Some("1"), None, None)
 
   case class MockContext(mainService: DefaultMainService, userService: UserService, listService: ListService,
-    productService: ProductService)
+                         productService: ProductService)
 
   private def service(userService: UserService = mock[UserService], listService: ListService = mock[ListService],
-    productService: ProductService = mock[ProductService]) = {
+                      productService: ProductService = mock[ProductService]) = {
     val ret = new DefaultMainService(userService, listService, productService)
     MockContext(ret, userService, listService, productService)
   }
@@ -98,6 +99,46 @@ class MainServiceSpec extends PlaySpec with MockFactory {
       (m.listService.insertLists(_: ListsDTO)(_: AuthData)).expects(*, *).once().returns(result(ListsDTO(Seq(newListDTO(guid)))))
 
       val data = SyncDTO(userData = None, listsMeta = Some(ListsDTO(items = Seq(l2, l3))), products = None, prices = None)
+      implicit val res = m.mainService.sync(data)
+      assertSync
+    }
+
+    "handle correctly new items when syncing" in {
+      import JsonDTOFormats._
+      val m = service()
+      val l1 = newListDTO()
+      val l2 = newListDTO()
+      (m.userService.updateUser(_: UpdateUserDTO)(_: AuthData)).expects(*, *).once().returns(result(userDto))
+      (m.listService.getUserLists(_: String, _: Int, _: Int)(_: AuthData)).expects(userDto.id, 0, 1000, authInfo).once()
+        .returns(result(ListsDTO(Seq(newListDTO("listId1"), newListDTO("listId2")))))
+      (m.listService.updateLists(_: ListsDTO)(_: AuthData))
+        .expects(where { (lists: ListsDTO, _: AuthData) => {
+          val l = lists.items.find(_.name == "L1")
+          lists.items.size == 2 && l.isDefined && l.get.items.isDefined && l.get.items.get.size == 2
+        }
+        }).returns(result(ListsDTO(Seq(l1, l2))))
+
+      val data = Json.parse(
+        """{"userData": { "id": "41af8c9f-08d7-4144-9ab4-cdf605e5da5c", "login": "q@q.q"},
+        "listsMeta": {
+          "items": [{
+              "id": "5466b15b-f89f-4b3d-99f6-ad3a4d1fe4c8",
+              "name": "L2",
+              "userId": "41af8c9f-08d7-4144-9ab4-cdf605e5da5c",
+              "created": 1480683427,
+              "status": 0,
+              "clientTag": "c98b6164-1975-4515-ad08-b4a47c6decce"
+            }, {
+              "id": "861154c2-e311-438e-97cf-420ffe7913ce",
+              "name": "L1",
+              "userid": "41af8c9f-08d7-4144-9ab4-cdf605e5da5c",
+              "created": 1480683428,
+              "status": 0,
+              "clientTag": "82f47c8a-3f0b-4c69-bf5c-6af3e24fc5f8",
+              "items": [
+                {"quantity": 1, "description": "apa", "status": 0, "clientTag": "d249094f-a3a5-4828-91ba-bc7011f579da"},
+                {"quantity": 2, "description": "bere", "status": 0, "clientTag": "54238caf-3784-4589-a3a6-a02072a3d439"}
+                ]}], "total": 2}}""").as[SyncDTO]
       implicit val res = m.mainService.sync(data)
       assertSync
     }

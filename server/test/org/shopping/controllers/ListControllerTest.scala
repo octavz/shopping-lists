@@ -1,35 +1,27 @@
 package org.shopping.controllers
 
-import org.scalamock.scalatest.MockFactory
-import org.scalatestplus.play.{OneAppPerSuite, PlaySpec}
+import org.shopping.BaseSpec
 import org.shopping.config.RunModule
 import org.shopping.dto._
 import org.shopping.models.User
 import org.shopping.repo.Oauth2Repo
 import org.shopping.services._
 import org.shopping.util.Gen._
-import org.shopping.util.Time._
-import play.api.{Application, Play}
 import play.api.inject.bind
 import play.api.inject.guice.GuiceApplicationBuilder
 import play.api.libs.json._
+import play.api.test.Helpers._
 import play.api.test._
+import play.api.{Application, Play}
 
 import scala.concurrent._
 import scala.concurrent.duration._
 import scala.language.postfixOps
 import scalaoauth2.provider.AccessToken
-import play.api.mvc._
-import play.api.test._
-import play.api.test.Helpers._
 
 
-class ListAppSpec extends PlaySpec with MockFactory {
+class ListControllerTest extends BaseSpec{
 
-  def waitFor[T](f: Future[T], duration: FiniteDuration = 1000.milli)
-    (implicit ec: ExecutionContext): T = Await.result(f, duration)
-
-  def anUser = User(id = guid, login = guid, providerToken = None, created = now(), updated = now(), lastLogin = None, password = guid, nick = guid)
 
   case class MockContext(app: Application, listService: ListService, authRepo: Oauth2Repo, user: User)
 
@@ -40,15 +32,7 @@ class ListAppSpec extends PlaySpec with MockFactory {
 
     val ret = new GuiceApplicationBuilder()
       .disable(classOf[RunModule])
-      .configure(
-        Map(
-          "evolutions" -> "disabled",
-          "slick.dbs.default.driver" -> "slick.driver.PostgresDriver$",
-          "slick.dbs.default.db.driver" -> "org.postgresql.Driver",
-          "slick.dbs.default.db.url" -> s"jdbc:postgresql://localhost:5432/mytest",
-          "slick.dbs.default.db.user" -> "postgres",
-          "slick.dbs.default.db.password" -> "root"
-        ))
+      .configure(testConf)
       .overrides(bind[ListService].toInstance(mp))
       .overrides(bind[UserService].toInstance(mock[UserService]))
       .overrides(bind[ProductService].toInstance(mock[ProductService]))
@@ -58,25 +42,12 @@ class ListAppSpec extends PlaySpec with MockFactory {
     MockContext(ret, mp, authRepo, u)
   }
 
-
-  implicit val authInfo = new AuthData(anUser, Some("1"), None, None)
-
   "List controller" must {
-
-    def running(a: Application)(call: => Unit) = {
-      Play.start(a)
-      try {
-        call
-      } catch {
-        case t: Throwable =>
-          Play.stop(a)
-          throw t
-      }
-    }
 
     "have create list route and authorize" in {
       val service = app()
-      (service.listService.insertList(_: ListDTO)(_: AuthData)).expects(*, *).once().onCall { (l: ListDTO, a: AuthData) =>
+      (service.listService.insertList(_: ListDTO)(_: AuthData)).expects(*, *).once()
+        .onCall { (l: ListDTO, _: AuthData) =>
         result(l)
       }
       running(service.app) {
@@ -96,7 +67,8 @@ class ListAppSpec extends PlaySpec with MockFactory {
     "have a route for get all lists and call the list service" in {
       val service = app()
       val p = ListDTO(id = guido, name = guid, description = guido, userId = Some("userId"), created = 1000, items = None)
-      (service.listService.getUserLists(_: String, _: Int, _: Int)(_: AuthData)).expects("id", 0, 10, *).once()
+      (service.listService.getUserLists(_: String, _: Int, _: Int)(_: AuthData))
+        .expects("id", 0, 10, *).once()
         .returns(result(ListsDTO(items = List(p), total = 1)))
       running(service.app) {
         val page = route(service.app, FakeRequest(GET, "/api/user/id/lists?offset=0&count=10").withHeaders("Authorization" -> "OAuth token"))

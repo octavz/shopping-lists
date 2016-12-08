@@ -2,18 +2,18 @@ package org.shopping
 
 import org.shopping.dto.ErrorDTO
 import org.shopping.models.User
-import org.shopping.util.{ErrorMessages, Gen, _}
-import play.api.Logger
+import org.shopping.util._
+import org.slf4j.Logger
 
 import scala.concurrent._
 import scalaoauth2.provider.AuthInfo
 
 package object services {
-  val log = Logger.logger
+  val log: Logger = play.api.Logger.logger
 
   implicit class CustomStringOption(str: Option[String]) {
 
-    def getOrGuid = str match {
+    def getOrGuid: String = str match {
       case Some(s) => if (s.isEmpty) Gen.guid else s
       case _ => Gen.guid
     }
@@ -53,8 +53,8 @@ package object services {
     Future.successful(Left(ErrorDTO(errCode, errMessage)))
   }
 
-  def exSync(ex: Throwable, errMessage: String = ErrorMessages.SERVER_ERROR, errCode: Int = 500) = {
-//    ex.printStackTrace()
+  def exSync(ex: Throwable, errMessage: String = ErrorMessages.SERVER_ERROR, errCode: Int = 500): Either[ErrorDTO, Nothing] = {
+    //    ex.printStackTrace()
     log.error(errMessage, ex)
     Left(ErrorDTO(errCode, errMessage))
   }
@@ -76,18 +76,18 @@ package object services {
 
   implicit class ErrorExtractor[T](val ret: Either[ErrorDTO, T]) {
 
-    def errCode = ret match {
+    def errCode: Int = ret match {
       case Left(er) => er.errCode
       case _ => 0
     }
 
-    def errMessage = ret match {
+    def errMessage: String = ret match {
       case Left(er) => er.message
       case _ => ""
     }
 
-    def value = ret match {
-      case Left(er) => None
+    def value: Option[T] = ret match {
+      case Left(_) => None
       case Right(v) => Some(v)
     }
   }

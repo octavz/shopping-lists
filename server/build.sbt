@@ -21,7 +21,7 @@ libraryDependencies ++= Seq(
   "org.scalatestplus.play" %% "scalatestplus-play" % "1.5.0" % "test",
 //      "org.mockito" % "mockito-core" % "2.2.26",
   "org.scalamock" %% "scalamock-scalatest-support" % "3.2.2" % "test",
-    specs2 % Test,
+//    specs2 % Test,
   cache,
   json,
   filters,
