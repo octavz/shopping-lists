@@ -74,10 +74,8 @@ class DefaultListService @Inject()(userRepo: UserRepo, listRepo: ListRepo, produ
           case (li, prod) => li.toModel(listId, prod.id)
         }
         val all = mapped ++ withId.map(p => p.toModel(listId, p.productId.get))
-        if (all.nonEmpty)
-          listRepo.replaceListItems(listId, all).map(_.map(new ListItemDTO(_))) map resultSync
-        else
-          result(Nil)
+        if (all.nonEmpty) listRepo.replaceListItems(listId, all).map(_.map(new ListItemDTO(_))) map resultSync
+        else result(Nil)
       } recover {
         case e: Throwable =>
           exSync(e)

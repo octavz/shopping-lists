@@ -10,7 +10,7 @@ import scala.concurrent.ExecutionContext.Implicits.global
 
 class ProductController @Inject()(productService: ProductService) extends BaseController(productService) {
 
-  def insertProduct() = Action.async {
+  def insertProduct(): Action[AnyContent] = Action.async {
     implicit request =>
       request.body.asJson.map {
         json => try {
@@ -29,7 +29,7 @@ class ProductController @Inject()(productService: ProductService) extends BaseCo
       }.getOrElse(asyncBadRequest("Bad Json"))
   }
 
-  def insertSupplier() = Action.async {
+  def insertSupplier(): Action[AnyContent] = Action.async {
     implicit request =>
       request.body.asJson.map {
         json => try {
@@ -48,7 +48,7 @@ class ProductController @Inject()(productService: ProductService) extends BaseCo
       }.getOrElse(asyncBadRequest("Bad Json"))
   }
 
-  def insertProductPrice() = Action.async {
+  def insertProductPrice(): Action[AnyContent] = Action.async {
     implicit request =>
       request.body.asJson.map {
         json => try {
@@ -67,7 +67,7 @@ class ProductController @Inject()(productService: ProductService) extends BaseCo
       }.getOrElse(asyncBadRequest("Bad Json"))
   }
 
-  def updateProduct(id: String) = Action.async {
+  def updateProduct(id: String): Action[AnyContent] = Action.async {
     implicit request =>
       request.body.asJson.map {
         json => try {
@@ -87,7 +87,7 @@ class ProductController @Inject()(productService: ProductService) extends BaseCo
       }.getOrElse(asyncBadRequest("Bad Json"))
   }
 
-  def deleteProduct(listId: String) = Action.async {
+  def deleteProduct(listId: String): Action[AnyContent] = Action.async {
     implicit request =>
       authorize {
         implicit authInfo =>
@@ -95,7 +95,7 @@ class ProductController @Inject()(productService: ProductService) extends BaseCo
       }
   }
 
-  def updateProductPrice() = Action.async {
+  def updateProductPrice(): Action[AnyContent] = Action.async {
     implicit request =>
       request.body.asJson.map {
         json => try {
@@ -116,7 +116,7 @@ class ProductController @Inject()(productService: ProductService) extends BaseCo
   }
 
 
-  def getAllSuppliers() =
+  def getAllSuppliers(): Action[AnyContent] =
     Action.async {
       implicit request =>
         try {
@@ -130,7 +130,7 @@ class ProductController @Inject()(productService: ProductService) extends BaseCo
 
     }
 
-  def searchProducts(q: String, offset: Int, count: Int) =
+  def searchProducts(q: String, offset: Int, count: Int): Action[AnyContent] =
     Action.async {
       implicit request =>
         try {

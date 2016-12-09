@@ -27,7 +27,7 @@ class BaseRepoSpec extends BaseSpec {
 
   val duration = Duration.Inf
 
-  def test(t: TestEnv => Unit) = try {
+  def test(t: TestEnv => Unit): Unit = try {
 //    println("Building environment")
     //    val dbRandom = Gen.guid
     val dbRandom = ""

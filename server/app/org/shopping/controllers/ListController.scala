@@ -11,7 +11,7 @@ import scala.concurrent.ExecutionContext.Implicits.global
 
 class ListController @Inject()(listService: ListService) extends BaseController(listService) {
 
-  def insertList() = Action.async {
+  def insertList(): Action[AnyContent] = Action.async {
     implicit request =>
       request.body.asJson.map {
         json => try {
@@ -30,7 +30,7 @@ class ListController @Inject()(listService: ListService) extends BaseController(
       }.getOrElse(asyncBadRequest(new Exception(ErrorMessages.BAD_JSON)))
   }
 
-  def updateList(id: String) = Action.async {
+  def updateList(id: String): Action[AnyContent] = Action.async {
     implicit request =>
       request.body.asJson.map {
         json => try {
@@ -50,7 +50,7 @@ class ListController @Inject()(listService: ListService) extends BaseController(
       }.getOrElse(asyncBadRequest(ErrorMessages.BAD_JSON))
   }
 
-  def getUserLists(userId: String, offset: Int, count: Int) = Action.async {
+  def getUserLists(userId: String, offset: Int, count: Int): Action[AnyContent] = Action.async {
     implicit request =>
       try {
         authorize {
@@ -63,7 +63,7 @@ class ListController @Inject()(listService: ListService) extends BaseController(
 
   }
 
-  def deleteList(listId: String) = Action.async {
+  def deleteList(listId: String): Action[AnyContent] = Action.async {
     implicit request =>
       authorize {
         implicit authInfo =>

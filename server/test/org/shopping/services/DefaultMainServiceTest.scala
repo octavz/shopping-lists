@@ -44,7 +44,7 @@ class DefaultMainServiceTest extends PlaySpec with MockFactory {
     items = Some(Seq(newListItemDTO(), newListItemDTO())))
 
   private def newListItemDTO(id: String = guid) =
-    ListItemDTO(productId = Some(id), quantity = 1, description = Some(s"desc $id"))
+    ListItemDTO(productId = Some(id), quantity = 1, description = Some(s"desc $id"), bought = 0)
 
   private def newProductDTO(id: String = guid) =
     ProductDTO(id = Some(id), name = s"name $id", tags = "tags", description = Some(s"desc $id"))
@@ -136,8 +136,8 @@ class DefaultMainServiceTest extends PlaySpec with MockFactory {
               "status": 0,
               "clientTag": "82f47c8a-3f0b-4c69-bf5c-6af3e24fc5f8",
               "items": [
-                {"quantity": 1, "description": "apa", "status": 0, "clientTag": "d249094f-a3a5-4828-91ba-bc7011f579da"},
-                {"quantity": 2, "description": "bere", "status": 0, "clientTag": "54238caf-3784-4589-a3a6-a02072a3d439"}
+                {"quantity": 1, "description": "apa", "status": 0, "clientTag": "d249094f-a3a5-4828-91ba-bc7011f579da", "bought": 0},
+                {"quantity": 2, "description": "bere", "status": 0, "clientTag": "54238caf-3784-4589-a3a6-a02072a3d439", "bought": 0}
                 ]}], "total": 2}}""").as[SyncDTO]
       implicit val res = m.mainService.sync(data)
       assertSync

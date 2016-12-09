@@ -12,15 +12,15 @@ import scala.concurrent._
 import scala.concurrent.duration._
 import scala.language.postfixOps
 
-class BaseSpec extends PlaySpec with MockFactory{
+class BaseSpec extends PlaySpec with MockFactory {
   val testConf = Map(
-      "evolutions" -> "disabled",
-      "slick.dbs.default.driver" -> "slick.driver.PostgresDriver$",
-      "slick.dbs.default.db.driver" -> "org.postgresql.Driver",
-      "slick.dbs.default.db.url" -> s"jdbc:postgresql://localhost:5432/mytest",
-      "slick.dbs.default.db.user" -> "postgres",
-      "slick.dbs.default.db.password" -> "root"
-    )
+    "evolutions" -> "disabled",
+    "slick.dbs.default.driver" -> "slick.driver.PostgresDriver$",
+    "slick.dbs.default.db.driver" -> "org.postgresql.Driver",
+    "slick.dbs.default.db.url" -> s"jdbc:postgresql://localhost:5432/mytest",
+    "slick.dbs.default.db.user" -> "postgres",
+    "slick.dbs.default.db.password" -> "root"
+  )
 
   def waitFor[T](f: Future[T], duration: FiniteDuration = 1000.milli)
                 (implicit ec: ExecutionContext): T = Await.result(f, duration)

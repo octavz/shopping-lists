@@ -12,7 +12,6 @@ case class ListDTO(id: Option[String],
                    userId: Option[String],
                    created: Long,
                    items: Option[Seq[ListItemDTO]],
-                   meta: Option[ListMeta] = None,
                    status: Option[Int] = Some(0),
                    clientTag: Option[String] = None) {
 
@@ -53,15 +52,15 @@ case class ListDTO(id: Option[String],
 
 case class ListItemDTO(productId: Option[String], quantity: Int,
                        description: Option[String], status: Int = 0,
-                       clientTag: Option[String] = None) {
+                       clientTag: Option[String] = None, bought: Int = 0) {
 
   def this(model: ListDefProduct) =
     this(productId = Some(model.productId), quantity = model.quantity,
-      description = model.description, clientTag = Option(model.clientTag))
+      description = model.description, clientTag = Option(model.clientTag), bought = model.bought)
 
   def toModel(listId: String, pid: String) =
-    ListDefProduct(listDefId = listId, productId = productId.getOrElse(pid),
-      description = description, quantity = quantity, clientTag = clientTag.getOrElse(""))
+    ListDefProduct(listDefId = listId, productId = productId.getOrElse(pid), description = description,
+      quantity = quantity, clientTag = clientTag.getOrElse(""), bought = bought.toShort)
 
   override def toString: String = {
     s"""
@@ -69,6 +68,7 @@ case class ListItemDTO(productId: Option[String], quantity: Int,
        |    description = ${description.getOrElse("null")},
        |    quantity = $quantity,
        |    status = $status,
+       |    bought = $bought,
        |    clientTag = ${clientTag.getOrElse("null")}}""".stripMargin
 
   }
