@@ -14,6 +14,7 @@ using ShList.Code.Controls;
 using CommonBL.Data;
 using CommonBL.Managers;
 using CommonBL.Utils;
+using Android.Support.V4.Content;
 
 namespace ShList.Code
 {
@@ -24,7 +25,7 @@ namespace ShList.Code
         ShoppingListDTO m_data = null;
 
         LinearLayout llLst = null;
-        Button btnAddItem = null;        
+        Button btnAddItem = null;
         EditText txtShoppingItem = null;
         EditText txtQuantity = null;
 
@@ -49,6 +50,10 @@ namespace ShList.Code
             btnAddItem.Click += AddNewItem;
 
             GenerateUIListItems();
+
+            IntentFilter filter = new IntentFilter(Intent.ActionSend);
+            MessageReciever receiver = new MessageReciever(this);
+            LocalBroadcastManager.GetInstance(this).RegisterReceiver(receiver, filter);
         }//OnCreate
 
         /// <summary>
@@ -57,9 +62,9 @@ namespace ShList.Code
         private void GenerateUIListItems()
         {
             llLst.RemoveAllViews();
-            for (int i=0;i<m_data.Items.Count;i++)
+            for (int i = 0; i < m_data.Items.Count; i++)
             {
-                CreateUIItem(m_data.Items[i],i);
+                CreateUIItem(m_data.Items[i], i);
             }
         }//GenerateUILists
 
@@ -81,5 +86,65 @@ namespace ShList.Code
             ItemListDTO newItemDto = ListsManager.Instance.CreateListItem(m_data.InternalId, txtShoppingItem.Text, quantity);
             CreateUIItem(newItemDto, 0);
         }//AddNewList
+
+
+        public void ProcessMessage(Intent intent)
+        {
+            //intent.GetStringExtra("WearMessage");        
+            ShoppingListDTO wantedList = ListsManager.Instance.Lists.Where(x => x.InternalId == m_data.InternalId).FirstOrDefault(); //check if the list was not deleted
+            if (wantedList == null)
+            {
+                StartActivity(new Intent(this, typeof(AcShoppingLists)));
+                return;
+            }//endif
+
+            var allUiLists = wantedList.Items.Where(x => x.IsDeleted == false).OrderBy(x => x.Date).ToList();
+
+            ViewGroup viewGroup = (ViewGroup)llLst;
+            //remove all that are not in the datalist
+            for (int i = 0; i < viewGroup.ChildCount; i++)
+            {
+                CtrlItemList child = viewGroup.GetChildAt(i) as CtrlItemList;
+                if (child == null) continue;
+                var foundItem = allUiLists.Where(x => x.InternalId == child.Data.InternalId).FirstOrDefault();
+                if (foundItem == null)
+                    ((child as View).Parent as ViewGroup).RemoveView(child);
+            }//for
+
+            for (int i = 0; i < allUiLists.Count; i++)
+            {
+                CtrlItemList wantedView = null;
+                for (int j = 0; j < viewGroup.ChildCount; j++)
+                {
+                    CtrlItemList child = viewGroup.GetChildAt(j) as CtrlItemList;
+                    if (child.Data.InternalId == allUiLists[i].InternalId)
+                    {
+                        wantedView = child;
+                        break;
+                    }
+                }//for
+
+                if (wantedView != null)
+                {
+                    // update the existing ones
+                    wantedView.UpdateCtrlData(allUiLists[i]);
+                }
+                else
+                {
+                    CreateUIItem(allUiLists[i], i);
+                }
+            }//for
+
+        }//ProcessMessage
+
+        internal class MessageReciever : BroadcastReceiver
+        {
+            AcListItems _main;
+            public MessageReciever(AcListItems owner) { this._main = owner; }
+            public override void OnReceive(Context context, Intent intent)
+            {
+                _main.ProcessMessage(intent);
+            }
+        }
     }
 }

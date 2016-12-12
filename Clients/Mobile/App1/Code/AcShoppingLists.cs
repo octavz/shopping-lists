@@ -57,9 +57,7 @@ namespace ShList.Code
 
         public void ProcessMessage(Intent intent)
         {
-            //intent.GetStringExtra("WearMessage");
-            int a = 2;
-
+            //intent.GetStringExtra("WearMessage");        
             var allUiLists = ListsManager.Instance.Lists.Where(x => x.IsDeleted == false).OrderBy(x => x.ListDate).ToList();
 
 

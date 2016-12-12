@@ -22,6 +22,9 @@ namespace ShList.Code.Controls
         private Activity m_ParentActivity = null;
         public event Action<int> Event_DeleteItem = null;
 
+        TextView lblItem = null;
+        TextView lblQuantity = null;
+
         /// <summary>
         /// CtrlShoppingList
         /// </summary>
@@ -37,10 +40,22 @@ namespace ShList.Code.Controls
 
         void Initialize()
         {
-            TextView lblItem = FindViewById<TextView>(Resource.Id.lblItem);
-            TextView lblQuantity = FindViewById<TextView>(Resource.Id.lblQuantity);
+            lblItem = FindViewById<TextView>(Resource.Id.lblItem);
+            lblQuantity = FindViewById<TextView>(Resource.Id.lblQuantity);
             lblItem.Text = m_Data.Description;
-            lblQuantity.Text = "Quantity: " + m_Data.Quantity;
+            lblQuantity.Text = ShAppContext.GetString(Resource.String.Quantity)+":"  + m_Data.Quantity;
         }//Initialize
+
+
+
+        public void UpdateCtrlData(ItemListDTO aData)
+        {
+            m_Data = aData;
+            lblItem.Text = m_Data.Description;
+            lblQuantity.Text = ShAppContext.GetString(Resource.String.Quantity) + ":" + m_Data.Quantity;
+            this.Invalidate();
+        }
+
+        public ItemListDTO Data { get { return m_Data; } }
     }
 }
