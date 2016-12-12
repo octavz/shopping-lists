@@ -73,16 +73,12 @@ class SlickListRepo @Inject()(protected val dbConfigProvider: DatabaseConfigProv
 
   override def replaceListItems(listId: String, model: Seq[ListDefProduct]): Repo[Seq[ListDefProduct]] = {
     val n = now()
-    if (model.nonEmpty) {
-      val query = for {
-        _ <- ListDefProducts.filter(_.listDefId === listId).delete
-        _ <- ListDefProducts ++= model.map(_.copy(updated = n))
-        ret <- ListDefProducts.filter(_.listDefId === listId).result
-      } yield ret
-      db.run(query.transactionally)
-    } else {
-      db.run(ListDefProducts.filter(_.listDefId === listId).result)
-    }
+    val query = for {
+      _ <- ListDefProducts.filter(_.listDefId === listId).delete
+      _ <- ListDefProducts ++= model.map(_.copy(updated = n))
+      ret <- ListDefProducts.filter(_.listDefId === listId).result
+    } yield ret
+    db.run(query.transactionally)
   }
 
   def getListProductsByList(listDefId: String): Repo[Seq[ListDefProduct]] = {

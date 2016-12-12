@@ -14,7 +14,7 @@ import scalaoauth2.provider.AuthorizationRequest
 
 class UserController @Inject()(userService: UserService) extends BaseController(userService) {
 
-  def accessToken = Action.async {
+  def accessToken: Action[AnyContent] = Action.async {
     implicit request =>
       issueAccessToken(authRepo)
   }
@@ -37,7 +37,7 @@ class UserController @Inject()(userService: UserService) extends BaseController(
       , "username" -> Seq(login)
       , "password" -> Seq(password)))
 
-  def login = Action.async {
+  def login: Action[AnyContent] = Action.async {
     implicit request =>
       request.body.asJson.map { json =>
         val dto = json.as[LoginRequestDTO]
@@ -59,7 +59,7 @@ class UserController @Inject()(userService: UserService) extends BaseController(
       }.getOrElse(Future.successful(BadRequest(err(400, "Wrong json"))))
   }
 
-  def loginPostForm = Action.async {
+  def loginPostForm: Action[AnyContent] = Action.async {
     implicit request =>
       userService.login(request) flatMap {
         case Right(r) =>
@@ -76,7 +76,7 @@ class UserController @Inject()(userService: UserService) extends BaseController(
       }
   }
 
-  def register = Action.async {
+  def register: Action[AnyContent] = Action.async {
     implicit request =>
       request.body.asJson.map {
         json => try {
@@ -101,7 +101,7 @@ class UserController @Inject()(userService: UserService) extends BaseController(
         Future.successful(Unauthorized(err(oerr.statusCode, oerr.description)))
     }
 
-  def registerAndLogin = Action.async {
+  def registerAndLogin: Action[AnyContent] = Action.async {
     implicit request =>
       request.body.asJson.map {
         json => try {
@@ -118,7 +118,7 @@ class UserController @Inject()(userService: UserService) extends BaseController(
       }.getOrElse(Future.successful(BadRequest(err(400, "Wrong json"))))
   }
 
-  def getUserById(userId: String) = Action.async {
+  def getUserById(userId: String): Action[AnyContent] = Action.async {
     implicit request =>
       try {
         authorize {
@@ -130,7 +130,7 @@ class UserController @Inject()(userService: UserService) extends BaseController(
       }
   }
 
-  def getUserBySession = Action.async {
+  def getUserBySession: Action[AnyContent] = Action.async {
     implicit request =>
       try {
         authorize {
@@ -143,7 +143,7 @@ class UserController @Inject()(userService: UserService) extends BaseController(
       }
   }
 
-  def searchUsers(email: Option[String], nick: Option[String]) = Action.async {
+  def searchUsers(email: Option[String], nick: Option[String]): Action[AnyContent] = Action.async {
     implicit request =>
       try {
         authorize {

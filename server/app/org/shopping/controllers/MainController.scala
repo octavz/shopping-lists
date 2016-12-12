@@ -2,38 +2,26 @@ package org.shopping.controllers
 
 import javax.inject.Inject
 
-import controllers.Assets
 import org.shopping.dto._
 import org.shopping.services.MainService
 import org.shopping.util.ErrorMessages
 import play.api.libs.json.JsResultException
-import play.api.mvc.Action
+import play.api.mvc.{Action, AnyContent}
 
 import scala.concurrent.ExecutionContext.Implicits.global
 
 class MainController @Inject()(mainService: MainService) extends BaseController(mainService) {
-  val version = "0.1.15"
+  val version = "0.1.16"
 
   def build = Action { _ => Ok("build")}
 
   def index = Action { Ok(version)}
 
-  def indexUser(user: String) = Action.async {
-    implicit request =>
-      Assets.at("/public/client", "index.html")(request)
-  }
-
-  def indexProject(user: String, project: String) = Action.async {
-    implicit request =>
-      Assets.at("/public/client", "index.html")(request)
-    //Ok(views.html.users.index.render())
-  }
-
   def options(path: String) = Action {
     Ok("")
   }
 
-  def syncData() = Action.async {
+  def syncData(): Action[AnyContent] = Action.async {
     implicit request =>
       request.body.asJson.map {
         json => try {

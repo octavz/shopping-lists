@@ -32,7 +32,7 @@ class DefaultListServiceTest extends PlaySpec with MockFactory {
     MockedContext(ret, userRepo, listRepo, productRepo)
   }
 
-  def genString(size: Int): String = (for (i <- 1 to size) yield "a").mkString
+  def genString(size: Int): String = "a" * size
 
   def genListDef(userId: String) =
     ListWithItems(
@@ -181,13 +181,14 @@ class DefaultListServiceTest extends PlaySpec with MockFactory {
     }
 
     "correctly convert a ListItem to Product" in {
-      val dto = ListItemDTO(productId = Some("pid"), quantity = 2, description = Some("desc"), status = 2, clientTag = Some("test"))
+      val dto = ListItemDTO(productId = Some("pid"), quantity = 2, description = Some("desc"), status = 2, clientTag = Some("test"), bought = 1)
       val model = dto.toModel("listId", "prodId")
       model.description === dto.description
       model.clientTag === dto.clientTag
       model.listDefId === "listId"
       model.productId === "pid"
       model.quantity === model.quantity
+      model.bought === dto.bought
     }
 
     "correctly update existing list when items don't exist" in {
@@ -221,8 +222,8 @@ class DefaultListServiceTest extends PlaySpec with MockFactory {
               "created": 1480683428, "status": 0,
               "clientTag": "82f47c8a-3f0b-4c69-bf5c-6af3e24fc5f8",
               "items": [
-                {"quantity": 1, "description": "apa", "status": 0, "clientTag": "d249094f-a3a5-4828-91ba-bc7011f579da"},
-                {"quantity": 2, "description": "bere", "status": 0, "clientTag": "54238caf-3784-4589-a3a6-a02072a3d439"}
+                {"quantity": 1, "description": "apa", "status": 0, "clientTag": "d249094f-a3a5-4828-91ba-bc7011f579da", "bought": 0},
+                {"quantity": 2, "description": "bere", "status": 0, "clientTag": "54238caf-3784-4589-a3a6-a02072a3d439", "bought": 0}
                 ]}""").as[ListDTO](JsonDTOFormats.list)
       val s = Await.result(m.listService.updateList(list), Duration.Inf)
 
