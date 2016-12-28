@@ -94,6 +94,44 @@ namespace CommonBL.Managers
         }//DeleteList
 
         /// <summary>
+        /// DeleteListItem
+        /// </summary>
+        /// <param name="sListUIId"></param>
+        /// <param name="sElemUIId"></param>
+        public void DeleteListItem(string sListUIId,string sElemUIId)
+        {
+            var aList = mStorage.ShLists.Where(x => x.InternalId == sListUIId).FirstOrDefault();
+            if (aList == null)
+                return;
+            var wantedItem = aList.Items.Where(x => x.InternalId == sElemUIId).FirstOrDefault();
+            if (wantedItem == null)
+                return;            
+
+            lock (mLocker)
+            {
+                wantedItem.InternalId = null;
+                aList.Items.Remove(wantedItem);                
+                aList.IsDirty = true;                
+            }
+        }//DeleteListItem
+
+        public void ItemBought(string sListUIId, string sElemUIId, bool bought)
+        {
+            var aList = mStorage.ShLists.Where(x => x.InternalId == sListUIId).FirstOrDefault();
+            if (aList == null)
+                return;
+            var wantedItem = aList.Items.Where(x => x.InternalId == sElemUIId).FirstOrDefault();
+            if (wantedItem == null)
+                return;
+
+            lock (mLocker)
+            {
+                wantedItem.Bought = bought;                
+                aList.IsDirty = true;
+            }
+        }//ItemBought
+
+        /// <summary>
         /// SetNoDirty
         /// </summary>
         public void SetNoDirty()

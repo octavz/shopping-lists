@@ -72,9 +72,20 @@ namespace ShList.Code
         private void CreateUIItem(ItemListDTO newItem, int position = 0)
         {
             CtrlItemList item = new CtrlItemList(this, ShAppContext, newItem);
-            //item.Event_DeleteItem += DeleteList;
-            //item.Event_EditItem += EditList;
-            //item.Event_ClickItem += ClickList;
+            item.Event_DeleteItem += (x) => 
+            {
+                var view = FindViewById<CtrlItemList>(x);
+                if (view != null)
+                {
+                    (llLst as ViewGroup).RemoveView(view);
+                    ListsManager.Instance.DeleteListItem(m_data.InternalId, view.Data.InternalId);
+                }//endif
+            };
+
+            item.Event_BuyItem += (intId, status) => {
+                ListsManager.Instance.ItemBought(m_data.InternalId, intId, status);
+            };
+
             llLst.AddView(item, position);
             llLst.RequestLayout();
         }//CreateUIList
