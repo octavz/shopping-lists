@@ -11,11 +11,22 @@ import play.api.mvc.{Action, AnyContent}
 import scala.concurrent.ExecutionContext.Implicits.global
 
 class MainController @Inject()(mainService: MainService) extends BaseController(mainService) {
-  val version = "0.1.16"
+//  val version = "0.1.16"
 
   def build = Action { _ => Ok("build")}
 
-  def index = Action { Ok(version)}
+  def index = Action {
+    try {
+      val s = getClass.getResourceAsStream("version")
+      println(s)
+      val version = scala.io.Source.fromInputStream(s).getLines().toList.head
+      Ok(version)
+    }catch {
+      case t: Throwable =>
+        t.printStackTrace()
+        InternalServerError
+    }
+  }
 
   def options(path: String) = Action {
     Ok("")

@@ -26,9 +26,8 @@ getErrors { login, password } =
             )
             errors
 
-
 viewLogin : LoginModel -> Html.Html LoginMsg
-viewLogin model =
+kiewLogin model =
     let
         errItem msg =
             div [] [ text msg ]
