@@ -8,7 +8,7 @@ import Login.Messages exposing (..)
 
 updateLogin : LoginMsg -> LoginModel -> ( LoginModel, Cmd LoginMsg )
 updateLogin action model =
-    case Debug.log "INFO" action of
+    case Debug.log "login-update" action of
         UpdateLogin val ->
             ( { model | login = val }, Cmd.none )
 
@@ -32,7 +32,7 @@ updateLogin action model =
         FetchSuccess s ->
             ( { model | message = Nothing }, Cmd.none )
 
-        FetchError error ->
+        ServerError error ->
             ( { model | message = Just (toString error) }, Cmd.none )
 
         RegisterCmd ->

@@ -56,7 +56,7 @@ namespace CommonBL.Data.Request
         public int quantity { get; set; }
         public string description { get; set; }        
         public int  status { get; set; }
-
+        public int  bought { get; set; }
         public string clientTag { get; set; }
     }
 

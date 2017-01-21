@@ -53,14 +53,14 @@ namespace CommonBL.Managers
             ShoppingListDTO lst = GetListByInternalId(listInternalId);
             if (lst == null)
                 return null;
-            
+
             lock (mLocker)
             {
                 ItemListDTO item = new ItemListDTO();
                 item.InternalId = Guid.NewGuid().ToString();
                 item.Quantity = quantity;
                 item.Description = description;
-                
+
                 lst.Items.Add(item);
                 lst.IsDirty = true;
                 return item;
@@ -92,6 +92,44 @@ namespace CommonBL.Managers
                 aList.InternalId = null;
             }
         }//DeleteList
+
+        /// <summary>
+        /// DeleteListItem
+        /// </summary>
+        /// <param name="sListUIId"></param>
+        /// <param name="sElemUIId"></param>
+        public void DeleteListItem(string sListUIId,string sElemUIId)
+        {
+            var aList = mStorage.ShLists.Where(x => x.InternalId == sListUIId).FirstOrDefault();
+            if (aList == null)
+                return;
+            var wantedItem = aList.Items.Where(x => x.InternalId == sElemUIId).FirstOrDefault();
+            if (wantedItem == null)
+                return;            
+
+            lock (mLocker)
+            {
+                wantedItem.InternalId = null;
+                aList.Items.Remove(wantedItem);                
+                aList.IsDirty = true;                
+            }
+        }//DeleteListItem
+
+        public void ItemBought(string sListUIId, string sElemUIId, bool bought)
+        {
+            var aList = mStorage.ShLists.Where(x => x.InternalId == sListUIId).FirstOrDefault();
+            if (aList == null)
+                return;
+            var wantedItem = aList.Items.Where(x => x.InternalId == sElemUIId).FirstOrDefault();
+            if (wantedItem == null)
+                return;
+
+            lock (mLocker)
+            {
+                wantedItem.Bought = bought;                
+                aList.IsDirty = true;
+            }
+        }//ItemBought
 
         /// <summary>
         /// SetNoDirty
@@ -152,18 +190,20 @@ namespace CommonBL.Managers
 
                 aList.items = L.Items.Count > 0 ? new List<ItemDTO>() : null;
 
-                L.Items.ForEach(I => {
+                L.Items.ForEach(I =>
+                {
                     ItemDTO anItem = new ItemDTO();
                     anItem.productId = string.IsNullOrEmpty(I.ProductId) ? null : I.ProductId;
                     anItem.quantity = I.Quantity;
                     anItem.description = I.Description;
                     anItem.status = I.IsDeleted ? 5 : 0;
                     anItem.clientTag = I.InternalId;
+                    anItem.bought = I.Bought ? 1 : 0;
                     aList.items.Add(anItem);
                 });
 
                 aReq.listsMeta.items.Add(aList);
-                aReq.listsMeta.total = aReq.listsMeta.items.Count;                
+                aReq.listsMeta.total = aReq.listsMeta.items.Count;
             });
 
             return aReq;
@@ -179,8 +219,8 @@ namespace CommonBL.Managers
             mStorage.SyncJsonHash = jsonHash;
 
             //delete those that are not returned
-            List<string> ids = dto.listsMeta.items.Select(x => x.clientTag).ToList();
-            mStorage.ShLists.RemoveAll(x => !ids.Contains(x.InternalId) && !string.IsNullOrEmpty(x.Id)); //delete those that exists but not the new items that were just created
+            List<string> idsLists = dto.listsMeta.items.Where(z => !string.IsNullOrEmpty(z.clientTag)).Select(x => x.clientTag).ToList();
+            mStorage.ShLists.RemoveAll(x => !idsLists.Contains(x.InternalId) && !string.IsNullOrEmpty(x.Id)); //delete those that exists but not the new items that were just created
 
 
             dto.listsMeta.items.ForEach(L =>
@@ -198,14 +238,41 @@ namespace CommonBL.Managers
                         ListDescription = L.description,
                         ListName = L.name
                     };
+
+                    L.items.ForEach(I =>
+                    {
+                        ItemListDTO lstItem = new ItemListDTO(I);
+                        newList.Items.Add(lstItem);
+                    });
+
                     mStorage.ShLists.Add(newList);
                 }//new one
                 else
                 {
+                    //update list
                     wantedlist.Id = L.id;
                     wantedlist.ListDescription = L.description;
                     wantedlist.ListName = L.name;
-                }
+
+                    //delete listItems those that are not returned
+                    List<string> lstItemsRet = L.items.Where(z => !string.IsNullOrEmpty(z.clientTag)).Select(x => x.clientTag).ToList();
+                    wantedlist.Items.RemoveAll(x => !lstItemsRet.Contains(x.InternalId) && !string.IsNullOrEmpty(x.ProductId)); //delete those that exists but not the new items that were just created
+
+                    L.items.ForEach(I =>
+                    {
+                        ItemListDTO wantedItem = wantedlist.Items.FirstOrDefault(x => x.InternalId == I.clientTag);
+                        if (wantedItem == null)
+                            wantedlist.Items.Add(new ItemListDTO(I));
+                        else
+                        {
+                            wantedItem.Description = I.description;
+                            wantedItem.ProductId = I.productId;
+                            wantedItem.Quantity = I.quantity;
+                            wantedItem.Bought = (I.bought == 1);                            
+                        }//else
+                    });//items
+
+                }//else
             });
         }//ImportSyncData
 

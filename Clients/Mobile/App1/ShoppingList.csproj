@@ -131,7 +131,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\AcNewAccount.axml" />
-    <AndroidResource Include="Resources\layout\CtrlItemList.axml" />
+    <AndroidResource Include="Resources\layout\CtrlItemList.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\AcMain.axml">

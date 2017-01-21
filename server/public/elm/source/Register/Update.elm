@@ -27,5 +27,5 @@ updateRegister action model =
         FetchSuccess s ->
             ( { model | message = Nothing }, Cmd.none )
 
-        FetchError error ->
+        ServerError error ->
             ( { model | message = Just (toString error) }, Cmd.none )

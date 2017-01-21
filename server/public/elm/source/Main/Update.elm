@@ -1,6 +1,8 @@
 module Main.Update exposing (update)
 
 import Debug
+import Cmd.Extra as Extra
+
 import Main.Models exposing (..)
 import Main.Messages exposing (..)
 import Repository exposing (..)
@@ -10,11 +12,11 @@ import Supplier.Update exposing (..)
 import Login.Messages as Login
 import Register.Update exposing (..)
 import Register.Messages as Register
-import Supplier.Messages as Register
+import Supplier.Messages as Supplier
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
-    case msg of
+    case Debug.log "main" msg of
         Login ((Login.FetchSuccess user) as m) ->
             let
                 ( subModel, subCmd ) =
@@ -23,9 +25,8 @@ update msg model =
                 ( { model
                     | userData = user
                     , loginView = subModel
-                    , activePage = PageSuppliers
                   }
-                , Cmd.map Login subCmd
+                , Extra.message (SetActivePage PageSuppliers)
                 )
 
         Register ((Register.FetchSuccess user) as m) ->
@@ -59,7 +60,11 @@ update msg model =
                 ( { model | registerView = subModel }, Cmd.map Register subCmd )
 
         SetActivePage page ->
-            ( { model | activePage = setActivePage model page }, Cmd.none )
+            let cmdNewPage = case page of
+              PageSuppliers -> Extra.message (Supplier Supplier.SuppliersReq)
+              _ -> Cmd.none
+            in
+              ( { model | activePage = setActivePage model page }, cmdNewPage )
 
         Supplier subMsg ->
             let

@@ -82,6 +82,6 @@ initialModel =
     , lists = []
     , loginView = emptyLoginView
     , registerView = RegisterModel "a1@aaa.com" "123456" "123456" Nothing
-    , supplierView = emptySupplierView
+    , supplierView = SupplierModel [] emptySupplierItem Nothing
     , activePage = PageLogin
     }
