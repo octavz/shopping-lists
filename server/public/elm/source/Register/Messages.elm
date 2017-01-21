@@ -10,4 +10,4 @@ type RegisterMsg
     | PostMessage String
     | Fetch
     | FetchSuccess UserModel
-    | FetchError Http.Error
+    | ServerError Http.Error

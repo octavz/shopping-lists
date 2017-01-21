@@ -10,6 +10,6 @@ type LoginMsg
     | PostMessage String
     | Fetch
     | FetchSuccess UserModel
-    | FetchError Http.Error
+    | ServerError Http.Error
     | ShowErrors
     | RegisterCmd
