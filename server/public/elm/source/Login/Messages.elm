@@ -8,8 +8,7 @@ type LoginMsg
     = UpdateLogin String
     | UpdatePassword String
     | PostMessage String
-    | Fetch
-    | FetchSuccess UserModel
-    | ServerError Http.Error
+    | OnLogin
+    | PostLogin (Result Http.Error UserModel)
     | ShowErrors
     | RegisterCmd

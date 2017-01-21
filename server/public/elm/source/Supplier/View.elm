@@ -5,7 +5,6 @@ import Maybe exposing (..)
 import Html exposing (label, text, input, button, div, h1, a, b)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onInput, onClick, targetValue)
-import Html.App
 import Supplier.Messages exposing (..)
 import Supplier.Model exposing (..)
 
@@ -41,7 +40,7 @@ viewItem model =
                     , div [ class "col-sm-8" ]
                         [ input
                             [ name "name"
-                            , type' "text"
+                            , type_ "text"
                             , onInput UpdateName
                             , value model.name
                             ]
@@ -56,7 +55,7 @@ viewItem model =
                     , div [ class "col-sm-8" ]
                         [ input
                             [ name "description"
-                            , type' "text"
+                            , type_ "text"
                             , onInput UpdateDescription
                             , value <| withDefault "" model.description
                             ]

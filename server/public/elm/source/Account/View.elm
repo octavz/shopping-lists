@@ -3,7 +3,6 @@ module Account.View exposing (viewAccount)
 import Html exposing (label, text, input, button, div, h1, a, b)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onInput, onClick, targetValue)
-import Html.App
 import Account.Model exposing (..)
 
 

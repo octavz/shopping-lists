@@ -37,7 +37,7 @@ libraryDependencies ++= Seq(
   "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.7.2",
   "org.webjars" % "swagger-ui" % "2.2.2")
 
-lazy val main = (project in file(".")).enablePlugins(PlayScala, SwaggerPlugin)
+lazy val shoppingList = (project in file(".")).enablePlugins(PlayScala, SwaggerPlugin)
 
 swaggerDomainNameSpaces := Seq("org.shopping.dto")
 

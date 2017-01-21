@@ -1,10 +1,10 @@
-module Register.Update exposing (updateRegister)
+module Register.Update exposing (..)
 
 import Debug
 import Register.Model exposing (..)
-import Register.Messages exposing (..)
+import Account.Model exposing (..)
 import Repository exposing (..)
-
+import Register.Messages exposing (..)
 
 updateRegister : RegisterMsg -> RegisterModel -> ( RegisterModel, Cmd RegisterMsg )
 updateRegister action model =
@@ -21,11 +21,11 @@ updateRegister action model =
         PostMessage msg ->
             ( { model | message = Just msg }, Cmd.none )
 
-        Fetch ->
+        OnRegister ->
             ( model, register model )
 
-        FetchSuccess s ->
+        PostRegister (Ok userModel)  ->
             ( { model | message = Nothing }, Cmd.none )
 
-        ServerError error ->
+        PostRegister (Err error) ->
             ( { model | message = Just (toString error) }, Cmd.none )

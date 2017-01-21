@@ -60,7 +60,7 @@ emptySupplierView =
             in
                 SupplierItemModel (Just s) ("test " ++ s) (Just ("description " ++ s))
     in
-        SupplierModel (map elem [1..5]) emptySupplierItem Nothing
+        SupplierModel (map elem (List.range 1 5)) emptySupplierItem Nothing
 
 
 emptyLoginView : LoginModel

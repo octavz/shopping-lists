@@ -7,8 +7,7 @@ type SupplierMsg
     = UpdateName String
     | UpdateDescription String
     | SuppliersReq
-    | SuppliersResp (List SupplierItemModel)
+    | SuppliersResp (Result Http.Error (List SupplierItemModel))
     | SaveSupplierReq
-    | SaveSupplierResp SupplierItemModel
-    | ServerError Http.Error
+    | SaveSupplierResp (Result Http.Error SupplierItemModel)
     | PostMessage String

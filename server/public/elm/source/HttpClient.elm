@@ -1,25 +1,29 @@
-module HttpClient exposing (postLogin, postRegister, getSuppliers)
+module HttpClient exposing (..)
 
 import Http
 import Login.Model exposing (..)
 import Register.Model exposing (..)
 import Account.Model exposing (..)
 import Supplier.Model exposing (..)
-import Login.Messages as Login
 import Json exposing (..)
 import Task
 
-baseUrl =
+
+{-baseUrl =
     "http://localhost:9000/api/"
+
 
 loginUrl =
     baseUrl ++ "login"
 
+
 registerUrl =
     baseUrl ++ "register"
 
+
 suppliersUrl =
     baseUrl ++ "suppliers"
+
 
 defaultHeaders : Maybe UserModel -> List ( String, String )
 defaultHeaders optUser =
@@ -80,4 +84,4 @@ postRegister model =
 
 getSuppliers : UserModel -> Task.Task Http.Error (List SupplierItemModel)
 getSuppliers user =
-    Http.fromJson suppliersDecoder <| httpGet (Just user) suppliersUrl
+    Http.fromJson suppliersDecoder <| httpGet (Just user) suppliersUrl-}

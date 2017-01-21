@@ -7,5 +7,3 @@ type alias LoginModel =
     , signinAttempts : Int
     , message : Maybe String
     }
-
-

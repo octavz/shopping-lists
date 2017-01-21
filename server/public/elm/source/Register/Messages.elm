@@ -8,6 +8,5 @@ type RegisterMsg
     | UpdatePassword String
     | UpdateConfirm String
     | PostMessage String
-    | Fetch
-    | FetchSuccess UserModel
-    | ServerError Http.Error
+    | OnRegister
+    | PostRegister (Result Http.Error UserModel)

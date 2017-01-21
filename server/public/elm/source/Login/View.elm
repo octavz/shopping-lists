@@ -5,10 +5,8 @@ import Maybe exposing (..)
 import Html exposing (label, text, input, button, div, h1, a, b)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onInput, onClick, targetValue)
-import Html.App
 import Login.Model exposing (..)
 import Login.Messages exposing (..)
-
 
 getErrors { login, password } =
     let
@@ -26,8 +24,9 @@ getErrors { login, password } =
             )
             errors
 
+
 viewLogin : LoginModel -> Html.Html LoginMsg
-kiewLogin model =
+viewLogin model =
     let
         errItem msg =
             div [] [ text msg ]
@@ -59,7 +58,7 @@ kiewLogin model =
                         , div [ class "col-sm-8" ]
                             [ input
                                 [ name "login"
-                                , type' "text"
+                                , type_ "text"
                                 , onInput UpdateLogin
                                 , value model.login
                                 ]
@@ -74,7 +73,7 @@ kiewLogin model =
                         , div [ class "col-sm-8" ]
                             [ input
                                 [ name "pass"
-                                , type' "password"
+                                , type_ "password"
                                 , onInput UpdatePassword
                                 , value model.password
                                 ]
@@ -83,7 +82,7 @@ kiewLogin model =
                         ]
                     , div [ class "row top7" ]
                         [ div [ class "col-md-2 col-md-offset-5" ]
-                            [ button [ onClick Fetch, class "btn btn-default" ]
+                            [ button [ onClick OnLogin, class "btn btn-default" ]
                                 [ text "Login" ]
                             ]
                         ]

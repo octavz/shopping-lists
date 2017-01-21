@@ -1,23 +1,22 @@
-module Main.Update exposing (update)
+module Main.Update exposing (..)
 
 import Debug
-import Cmd.Extra as Extra
-
+import Task
 import Main.Models exposing (..)
-import Main.Messages exposing (..)
 import Repository exposing (..)
 import Main.Models exposing (..)
-import Login.Update exposing (..)
+import Register.Update exposing(..)
 import Supplier.Update exposing (..)
-import Login.Messages as Login
-import Register.Update exposing (..)
-import Register.Messages as Register
-import Supplier.Messages as Supplier
+import Login.Update  exposing (..)
+import Main.Messages exposing (..)
+import Login.Messages exposing (..)
+import Register.Messages exposing (..)
+import Supplier.Messages exposing (..)
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case Debug.log "main" msg of
-        Login ((Login.FetchSuccess user) as m) ->
+{-        PostLogin ((Login.FetchSuccess user) as m) ->
             let
                 ( subModel, subCmd ) =
                     updateLogin m model.loginView
@@ -26,7 +25,7 @@ update msg model =
                     | userData = user
                     , loginView = subModel
                   }
-                , Extra.message (SetActivePage PageSuppliers)
+                , message (SetActivePage PageSuppliers)
                 )
 
         Register ((Register.FetchSuccess user) as m) ->
@@ -40,9 +39,9 @@ update msg model =
                     , activePage = PageMyAccount
                   }
                 , Cmd.map Register subCmd
-                )
+                )-}
 
-        Login (Login.RegisterCmd) ->
+        Login RegisterCmd ->
             ( { model | activePage = setActivePage model PageRegister }, Cmd.none )
 
         Login subMsg ->
@@ -60,11 +59,15 @@ update msg model =
                 ( { model | registerView = subModel }, Cmd.map Register subCmd )
 
         SetActivePage page ->
-            let cmdNewPage = case page of
-              PageSuppliers -> Extra.message (Supplier Supplier.SuppliersReq)
-              _ -> Cmd.none
+            let
+                cmdNewPage =
+                    case page of
+                        PageSuppliers ->
+                            Task.perform identity (Task.succeed (Supplier SuppliersReq))
+                        _ ->
+                            Cmd.none
             in
-              ( { model | activePage = setActivePage model page }, cmdNewPage )
+                ( { model | activePage = setActivePage model page }, cmdNewPage )
 
         Supplier subMsg ->
             let

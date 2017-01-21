@@ -3,7 +3,6 @@ module Main.View exposing (view)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onInput, onClick, targetValue)
-import Html.App
 import Main.Models exposing (..)
 import Main.Messages exposing (..)
 import Login.View exposing (..)
@@ -53,13 +52,13 @@ currentView model =
             div [] [ text "404 Not found" ]
 
         PageLogin ->
-            (Html.App.map Login (viewLogin model.loginView))
+            (Html.map Login (viewLogin model.loginView))
 
         PageRegister ->
-            (Html.App.map Register (viewRegister model.registerView))
+            (Html.map Register (viewRegister model.registerView))
 
         PageMyAccount ->
             viewAccount model.userData
 
         PageSuppliers ->
-            (Html.App.map Supplier (viewSupplier model.supplierView))
+            (Html.map Supplier (viewSupplier model.supplierView))

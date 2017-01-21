@@ -1,11 +1,10 @@
-module Supplier.Update exposing (updateSupplier)
+module Supplier.Update exposing (..)
 
 import Debug
 import Supplier.Model exposing (..)
 import Account.Model exposing (..)
 import Repository exposing (..)
 import Supplier.Messages exposing (..)
-
 
 updateSupplier : UserModel -> SupplierMsg -> SupplierModel -> ( SupplierModel, Cmd SupplierMsg )
 updateSupplier userData action model =
@@ -34,11 +33,18 @@ updateSupplier userData action model =
             SuppliersReq ->
                 ( model, (suppliers userData) )
 
-            SuppliersResp val ->
+            SuppliersResp (Ok val) ->
                 ( { model | items = val }, Cmd.none )
 
-            SaveSupplierReq -> (model, Cmd.none)
-            SaveSupplierResp _ -> (model, Cmd.none)
-
-            ServerError error ->
+            SuppliersResp (Err error) ->
                 ( { model | message = Just (toString error) }, Cmd.none )
+
+            SaveSupplierReq ->
+                ( model, Cmd.none )
+
+            SaveSupplierResp (Ok _)  ->
+                ( model, Cmd.none )
+
+            SaveSupplierResp (Err error)  ->
+                ( { model | message = Just (toString error) }, Cmd.none )
+

@@ -3,8 +3,10 @@ module Login.Update exposing (updateLogin)
 import Debug
 import Login.Model exposing (..)
 import Repository exposing (..)
+import Login.Model exposing (..)
+import Account.Model exposing (..)
 import Login.Messages exposing (..)
-
+import Http
 
 updateLogin : LoginMsg -> LoginModel -> ( LoginModel, Cmd LoginMsg )
 updateLogin action model =
@@ -26,13 +28,13 @@ updateLogin action model =
             , Cmd.none
             )
 
-        Fetch ->
+        OnLogin ->
             ( model, login model )
 
-        FetchSuccess s ->
+        PostLogin (Ok userModel)  ->
             ( { model | message = Nothing }, Cmd.none )
 
-        ServerError error ->
+        PostLogin (Err error) ->
             ( { model | message = Just (toString error) }, Cmd.none )
 
         RegisterCmd ->

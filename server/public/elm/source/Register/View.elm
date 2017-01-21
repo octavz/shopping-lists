@@ -5,7 +5,6 @@ import Maybe exposing (..)
 import Html exposing (label, text, input, button, div, h1, a, b)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onInput, onClick, targetValue)
-import Html.App
 import Register.Model exposing (..)
 import Register.Messages exposing (..)
 
@@ -34,7 +33,7 @@ viewRegister model =
                         , div [ class "col-sm-8" ]
                             [ input
                                 [ name "login"
-                                , type' "text"
+                                , type_ "text"
                                 , onInput UpdateLogin
                                 , value model.login
                                 ]
@@ -49,7 +48,7 @@ viewRegister model =
                         , div [ class "col-sm-8" ]
                             [ input
                                 [ name "pass"
-                                , type' "password"
+                                , type_ "password"
                                 , onInput UpdatePassword
                                 , value model.password
                                 ]
@@ -64,7 +63,7 @@ viewRegister model =
                         , div [ class "col-sm-8" ]
                             [ input
                                 [ name "pass"
-                                , type' "password"
+                                , type_ "password"
                                 , onInput UpdateConfirm
                                 , value model.confirm
                                 ]
@@ -73,7 +72,7 @@ viewRegister model =
                         ]
                     , div [ class "row top7" ]
                         [ div [ class "col-md-2 col-md-offset-5" ]
-                            [ button [ onClick Fetch, class "btn btn-default" ]
+                            [ button [ onClick OnRegister, class "btn btn-default" ]
                                 [ text "Register" ]
                             ]
                         ]

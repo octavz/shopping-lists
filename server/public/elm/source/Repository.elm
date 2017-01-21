@@ -1,28 +1,42 @@
 module Repository exposing (login, register, suppliers)
 
-import Task
+import Http
 import Login.Model exposing (..)
 import Register.Model exposing (..)
 import Account.Model exposing (..)
 import Supplier.Model exposing (..)
-import Login.Messages as Login
-import Register.Messages as Register
-import Supplier.Messages as Supplier
-import HttpClient exposing (..)
+import Json
+import Login.Messages exposing (..)
+import Register.Messages exposing (..)
+import Supplier.Messages exposing (..)
 
+baseUrl =
+    "http://localhost:9000/api/"
 
-login : LoginModel -> Cmd Login.LoginMsg
+loginUrl =
+    baseUrl ++ "login"
+
+registerUrl =
+    baseUrl ++ "register"
+
+suppliersUrl =
+    baseUrl ++ "suppliers"
+
+login : LoginModel -> Cmd LoginMsg
 login model =
-    Task.perform Login.ServerError Login.FetchSuccess (postLogin model)
+  let
+    body = Http.jsonBody (Json.loginDto model)
+  in
+    Http.send PostLogin (Http.post loginUrl body Json.userDecoder)
 
-
-register : RegisterModel -> Cmd Register.RegisterMsg
+register : RegisterModel -> Cmd RegisterMsg
 register model =
-    Task.perform Register.ServerError Register.FetchSuccess (postRegister model)
+  let
+    body = Http.jsonBody (Json.registerDto model)
+  in
+    Http.send PostRegister (Http.post registerUrl body Json.userDecoder)
 
 
-suppliers : UserModel -> Cmd Supplier.SupplierMsg
+suppliers : UserModel -> Cmd SupplierMsg
 suppliers model =
-    Task.perform Supplier.ServerError Supplier.SuppliersResp (getSuppliers model)
-
-
+    Http.send SuppliersResp (Http.get suppliersUrl Json.suppliersDecoder)
