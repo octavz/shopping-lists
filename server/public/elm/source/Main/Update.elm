@@ -15,20 +15,21 @@ import Supplier.Messages exposing (..)
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
-    case Debug.log "main" msg of
-{-        PostLogin ((Login.FetchSuccess user) as m) ->
+    case Debug.log "main-update" msg of
+        Login (PostLogin (Ok user) as m) ->
             let
                 ( subModel, subCmd ) =
                     updateLogin m model.loginView
             in
                 ( { model
-                    | userData = user
+                    | userData = Debug.log "user" user
                     , loginView = subModel
+                    , activePage = PageMyAccount
                   }
-                , message (SetActivePage PageSuppliers)
+                , Cmd.map Login subCmd --Task.perform identity (Task.succeed (SetActivePage PageSuppliers))
                 )
 
-        Register ((Register.FetchSuccess user) as m) ->
+        {- Register ((Register.FetchSuccess user) as m) ->
             let
                 ( subModel, subCmd ) =
                     updateRegister m model.registerView

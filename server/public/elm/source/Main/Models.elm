@@ -77,7 +77,7 @@ initialModel =
     { userData =
         { login = "aaa@aaa.com"
         , name = "aaa"
-        , key = Just "Yzg0YmVjYzgtYjA4Mi00NjM5LWJmNWYtYjAyNjVkNzk0NDQw"
+        , key = Nothing
         }
     , lists = []
     , loginView = emptyLoginView

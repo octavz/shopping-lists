@@ -52,7 +52,7 @@ currentView model =
             div [] [ text "404 Not found" ]
 
         PageLogin ->
-            (Html.map Login (viewLogin model.loginView))
+            (Html.map Login (viewLogin1 model.loginView))
 
         PageRegister ->
             (Html.map Register (viewRegister model.registerView))
