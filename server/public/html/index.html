@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shopping list</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        /* set a max-width for horizontal fluid layout and make it centered */
+        .container {
+          margin-right: auto;
+          margin-left: auto;
+          max-width: 1600px; /* or 980px */
+        }
+
+        .list-group-item {
+            margin: 3px 0px
+        }
+
+
+
+    </style>
+</head>
+<body class="container">
+
+<nav class="navbar navbar-default" role="navigation">
+
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example-navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+
+        <a class="navbar-brand" href="#">Shopping lists</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="example-navbar-collapse">
+        <ul class="nav navbar-nav navbar-left">
+            <li><a href="#">Home</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Log In</a></li>
+
+            <!--            <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Username
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Account</a></li>
+                                <li><a href="#">Log Out</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Help</a></li>
+                            </ul>
+                        </li>-->
+
+        </ul>
+    </div>
+
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3"><h3 class="text-center">Create a quick list!</h3></div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="row">
+                <div class="col-md-10">
+                    <input type="text" class="form-control" placeholder="add item here">
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-default">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            Item 1
+                        </div>
+                        <div class="col-xs-8 text-right">
+                            <a><i class="remove glyphicon glyphicon-remove-sign glyphicon-white"></i></a>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            Item 2
+                        </div>
+                        <div class="col-xs-8 text-right">
+                            <a><i class="remove glyphicon glyphicon-remove-sign glyphicon-white"></i></a>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <del>Item 3</del>
+
+                        </div>
+                        <div class="col-xs-8 text-right">
+                            <a><i class="remove glyphicon glyphicon-remove-sign glyphicon-white"></i></a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
