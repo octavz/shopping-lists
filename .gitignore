@@ -14,3 +14,4 @@ Clients/web/.idea
 Clients/web/web.iml
 Clients/Mobile/packages/
 server/public/elm/node_modules
+.DS_Store
