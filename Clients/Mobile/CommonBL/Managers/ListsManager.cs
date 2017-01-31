@@ -132,14 +132,6 @@ namespace CommonBL.Managers
         }//ItemBought
 
         /// <summary>
-        /// SetNoDirty
-        /// </summary>
-        public void SetNoDirty()
-        {
-            mStorage.ShLists.ForEach(x => x.IsDirty = false);
-        }//SetNoDirty
-
-        /// <summary>
         /// GetListByInternalId
         /// </summary>
         /// <param name="id"></param>
@@ -272,6 +264,7 @@ namespace CommonBL.Managers
                         }//else
                     });//items
 
+                    wantedlist.IsDirty = false;//we did the sync
                 }//else
             });
         }//ImportSyncData

@@ -38,4 +38,6 @@
   <string name="DeletingList">Deleting list...</string>
   <string name="UpdatingList">Updating list...</string>
   <string name="DeleteListItem">Are you sure that you want to delete this product?</string>
+  <string name="InvalidQuantity">Invalid quantity</string>
+  <string name="InvalidProduct">Invalid product</string> 
 </resources>
