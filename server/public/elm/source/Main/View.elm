@@ -9,12 +9,13 @@ import Login.View exposing (..)
 import Register.View exposing (..)
 import Account.View exposing (..)
 import Supplier.View exposing (..)
+import Home.View exposing (..)
 import Json.Encode as Json
 import Debug
 
 
-nav : Model -> Html Msg
-nav model =
+nav1 : Model -> Html Msg
+nav1 model =
     let
         isLogin =
             model.activePage == PageLogin
@@ -33,18 +34,62 @@ nav model =
             ]
 
 
-view : Model -> Html.Html Msg
-view model =
+view_ : Model -> Html.Html Msg
+view_ model =
     div []
-        [ nav model
+        [ nav1 model
         , (currentView model)
         , div [] [ text (toString model) ]
+        ]
+
+
+viewNav : Model -> Html.Html Msg
+viewNav model =
+    nav [ class "navbar navbar-default", attribute "role" "navigation" ]
+        [ div [ class "navbar-header" ]
+            [ button [ class "navbar-toggle", attribute "data-target" "#example-navbar-collapse", attribute "data-toggle" "collapse", type_ "button" ]
+                [ span [ class "sr-only" ]
+                    [ text "Toggle navigation" ]
+                , span [ class "icon-bar" ]
+                    []
+                , span [ class "icon-bar" ]
+                    []
+                , span [ class "icon-bar" ]
+                    []
+                ]
+            , a [ class "navbar-brand", href "#" ]
+                [ text "Shopping lists" ]
+            ]
+        , div [ class "collapse navbar-collapse", id "example-navbar-collapse" ]
+            [ ul [ class "nav navbar-nav navbar-left" ]
+                [ li []
+                    [ a [ href "#" ]
+                        [ text "Home" ]
+                    ]
+                ]
+            , ul [ class "nav navbar-nav navbar-right" ]
+                [ li []
+                    [ a [ href "/#login" ]
+                        [ text "Log In" ]
+                    ]
+                ]
+            ]
+        ]
+
+view : Model -> Html.Html Msg
+view model =
+    div [ class "container" ]
+        [ (viewNav model)
+        , (currentView model)
         ]
 
 
 currentView : Model -> Html Msg
 currentView model =
     case Debug.log "page" model.activePage of
+        PageHome ->
+            (Html.map Home (viewHome model.homeView))
+
         PageAccessDenied ->
             div [] [ text "Denied dude!" ]
 
