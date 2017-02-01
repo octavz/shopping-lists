@@ -45,7 +45,8 @@ namespace ShList.Code
         TimerState stateClient = new TimerState();
         TimerState stateServer = new TimerState();
         Messenger msg;
-        Context cnx;
+        Context cnx;        
+
         object mLockerClient = new object();
         object mLockerServer = new object();
 
@@ -93,8 +94,19 @@ namespace ShList.Code
                     return;
 
                 ConnectivityManager connectivityManager = (ConnectivityManager)GetSystemService(ConnectivityService);
-                if (connectivityManager.ActiveNetworkInfo!=null && connectivityManager.ActiveNetworkInfo.IsConnected)
+                if (connectivityManager.ActiveNetworkInfo != null && connectivityManager.ActiveNetworkInfo.IsConnected)
                     SyncRequestResponseStorage(sLogTime, UpdatedUI, true);
+                else
+                {
+                    string sJson = ListsManager.Instance.GetSerializedDataForLocalStorage();
+                    string newhash = Tools.GetMd5Hash(sJson);
+                    if (ListsManager.Instance.CurrentJsonHash != newhash)
+                    {                        
+                        FilesManager.WriteShListsState(sJson);
+                        Log.Debug(sLogTime, "Save in file the changes");                        
+                        ListsManager.Instance.UpdateStorageHash(newhash);
+                    }
+                }
             }
         }//CheckClientChanges
 

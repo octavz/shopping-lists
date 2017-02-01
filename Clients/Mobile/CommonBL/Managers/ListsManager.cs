@@ -208,7 +208,7 @@ namespace CommonBL.Managers
 
         public void ImportSyncData(string jsonHash, ResSyncDTO dto)
         {
-            mStorage.SyncJsonHash = jsonHash;
+            UpdateStorageHash(jsonHash);
 
             //delete those that are not returned
             List<string> idsLists = dto.listsMeta.items.Where(z => !string.IsNullOrEmpty(z.clientTag)).Select(x => x.clientTag).ToList();
@@ -268,6 +268,11 @@ namespace CommonBL.Managers
                 }//else
             });
         }//ImportSyncData
+
+        public void UpdateStorageHash(string sNewHash)
+        {            
+            mStorage.SyncJsonHash = sNewHash;
+        }//UpdateStorageSelfHash
 
         public List<ShoppingListDTO> Lists { get { return mStorage.ShLists.OrderBy(x => x.ListDate).ToList(); } }
 
