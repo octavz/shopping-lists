@@ -18,6 +18,7 @@ using System.Net.Mail;
 using Android.Support.V4.Content;
 using CommonBL.Utils;
 using ShList.Code.Extended;
+using Android.Net;
 
 namespace ShList.Code
 {
@@ -58,20 +59,23 @@ namespace ShList.Code
 
             if (!string.IsNullOrEmpty(ShAppContext.UserToken))
             {
-                var progressDialog = ProgressDialog.Show(this, ShAppContext.GetString(Resource.String.PleaseWait), ShAppContext.GetString(Resource.String.LoggingIn), true);
-                ResLoginDTO resLogin = await UserRepository.Instance.GetUser(ShAppContext.UserToken);
-                progressDialog.Dismiss();
-                if (resLogin.ErrorCode == (int)ErrorCodes.UNAUTHORIZED_LOGIN)
+                ConnectivityManager connectivityManager = (ConnectivityManager)GetSystemService(ConnectivityService);
+                if (connectivityManager.ActiveNetworkInfo != null && connectivityManager.ActiveNetworkInfo.IsConnected)
                 {
-                    ShAppContext.ClearSettingsForLogout();
-                }
-                else
-                {
-                    //resLogin.AccessToken = ShAppContext.UserToken;//save token
-                    //ShAppContext.SetUserLoginSettings(resLogin);
-                    StartActivity(typeof(AcShoppingLists));
-                    Finish();
-                }//else
+                    var progressDialog = ProgressDialog.Show(this, ShAppContext.GetString(Resource.String.PleaseWait), ShAppContext.GetString(Resource.String.LoggingIn), true);
+                    ResLoginDTO resLogin = await UserRepository.Instance.GetUser(ShAppContext.UserToken);
+                    progressDialog.Dismiss();
+                    if (resLogin.ErrorCode == (int)ErrorCodes.UNAUTHORIZED_LOGIN)
+                    {
+                        ShAppContext.ClearSettingsForLogout();
+                        return;
+                    }
+                }//if there is connection
+
+                //resLogin.AccessToken = ShAppContext.UserToken;//save token
+                //ShAppContext.SetUserLoginSettings(resLogin);
+                StartActivity(typeof(AcShoppingLists));
+                Finish();
                 return;
             }//we have a token
           

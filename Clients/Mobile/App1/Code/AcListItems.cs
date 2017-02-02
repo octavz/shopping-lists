@@ -15,6 +15,7 @@ using CommonBL.Data;
 using CommonBL.Managers;
 using CommonBL.Utils;
 using Android.Support.V4.Content;
+using ShList.Code.Extended;
 
 namespace ShList.Code
 {
@@ -93,9 +94,27 @@ namespace ShList.Code
 
         private void AddNewItem(object sender, EventArgs e)
         {
-            int quantity = Convert.ToInt32(txtQuantity.Text);
-            ItemListDTO newItemDto = ListsManager.Instance.CreateListItem(m_data.InternalId, txtShoppingItem.Text, quantity);
-            CreateUIItem(newItemDto, 0);
+            if (string.IsNullOrEmpty(txtShoppingItem.Text))
+                txtShoppingItem.ShowError(ShAppContext.GetString(Resource.String.InvalidProduct), ShAppContext);
+            else
+                txtShoppingItem.HideError();
+
+            if (string.IsNullOrEmpty(txtQuantity.Text))            
+                txtQuantity.ShowError(ShAppContext.GetString(Resource.String.InvalidQuantity), ShAppContext);
+            else
+                txtQuantity.HideError();
+
+
+            if (!string.IsNullOrEmpty(txtShoppingItem.Text) && !string.IsNullOrEmpty(txtQuantity.Text))
+            {
+                int quantity = Convert.ToInt32(txtQuantity.Text);
+                ItemListDTO newItemDto = ListsManager.Instance.CreateListItem(m_data.InternalId, txtShoppingItem.Text, quantity);
+                CreateUIItem(newItemDto, 0);
+                txtShoppingItem.HideError();
+                txtQuantity.HideError();
+                txtShoppingItem.Text = string.Empty;
+                txtQuantity.Text = string.Empty;
+            }
         }//AddNewList
 
 

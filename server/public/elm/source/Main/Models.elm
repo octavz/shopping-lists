@@ -4,8 +4,8 @@ import Login.Model exposing (..)
 import Register.Model exposing (..)
 import Account.Model exposing (..)
 import Supplier.Model exposing (..)
+import Home.Model exposing (..)
 import List exposing (..)
-
 
 type Page
     = PageAccessDenied
@@ -14,7 +14,7 @@ type Page
     | PageMyAccount
     | PageSuppliers
     | PageNotFound
-
+    | PageHome
 
 type alias Model =
     { userData : UserModel
@@ -22,6 +22,7 @@ type alias Model =
     , loginView : LoginModel
     , registerView : RegisterModel
     , supplierView : SupplierModel
+    , homeView : HomeModel
     , activePage : Page
     }
 
@@ -32,14 +33,6 @@ type alias ShopList =
     , created : Int
     , items : List ShopListItem
     }
-
-
-type alias ShopListItem =
-    { id : String
-    , name : String
-    , quantity : Int
-    }
-
 
 
 --emptySupplierView = SupplierModel [] emptySupplierItem Nothing
@@ -83,5 +76,6 @@ initialModel =
     , loginView = emptyLoginView
     , registerView = RegisterModel "a1@aaa.com" "123456" "123456" Nothing
     , supplierView = SupplierModel [] emptySupplierItem Nothing
-    , activePage = PageLogin
+    , homeView = HomeModel emptyShopListItem []
+    , activePage = PageHome
     }

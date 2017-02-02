@@ -14,6 +14,9 @@ delta2url previous current =
         PageAccessDenied ->
             Nothing
 
+        PageHome ->
+            Just <| UrlChange NewEntry "/#"
+
         PageLogin ->
             Just <| UrlChange NewEntry "/#login"
 
@@ -34,7 +37,7 @@ location2messages : Location -> List Msg
 location2messages location =
     case location.hash of
         "" ->
-            []
+            [SetActivePage PageHome]
 
         "#login" ->
             [ SetActivePage PageLogin ]

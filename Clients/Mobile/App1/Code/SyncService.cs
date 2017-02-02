@@ -22,6 +22,7 @@ using CommonBL.Utils;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using CommonBL.Data.Response;
+using Android.Net;
 
 namespace ShList.Code
 {
@@ -44,7 +45,8 @@ namespace ShList.Code
         TimerState stateClient = new TimerState();
         TimerState stateServer = new TimerState();
         Messenger msg;
-        Context cnx;
+        Context cnx;        
+
         object mLockerClient = new object();
         object mLockerServer = new object();
 
@@ -88,10 +90,23 @@ namespace ShList.Code
                 TimerState s = (TimerState)state;
 
                 List<ShoppingListDTO> lsts = ListsManager.Instance.Lists.Where(x => x.IsDirty).ToList();
-                if (lsts.Count == 0)
+                if (lsts.Count == 0)// There are no dirty lists we return
                     return;
 
-                SyncRequestResponseStorage(sLogTime, UpdatedUI, true);
+                ConnectivityManager connectivityManager = (ConnectivityManager)GetSystemService(ConnectivityService);
+                if (connectivityManager.ActiveNetworkInfo != null && connectivityManager.ActiveNetworkInfo.IsConnected)
+                    SyncRequestResponseStorage(sLogTime, UpdatedUI, true);
+                else
+                {
+                    string sJson = ListsManager.Instance.GetSerializedDataForLocalStorage();
+                    string newhash = Tools.GetMd5Hash(sJson);
+                    if (ListsManager.Instance.CurrentJsonHash != newhash)
+                    {                        
+                        FilesManager.WriteShListsState(sJson);
+                        Log.Debug(sLogTime, "Save in file the changes");                        
+                        ListsManager.Instance.UpdateStorageHash(newhash);
+                    }
+                }
             }
         }//CheckClientChanges
 
@@ -104,10 +119,12 @@ namespace ShList.Code
                 TimerState s = (TimerState)state;
 
                 List<ShoppingListDTO> lsts = ListsManager.Instance.Lists.Where(x => x.IsDirty).ToList();
-                if (lsts.Count != 0)
+                if (lsts.Count != 0) // If there are dirty lists first we must send them to server
                     return;
 
-                SyncRequestResponseStorage(sLogTime, UpdatedUI, false);
+                ConnectivityManager connectivityManager = (ConnectivityManager)GetSystemService(ConnectivityService);
+                if (connectivityManager.ActiveNetworkInfo != null && connectivityManager.ActiveNetworkInfo.IsConnected)
+                    SyncRequestResponseStorage(sLogTime, UpdatedUI, false);
             }
         }//CheckServerChanges
 
@@ -117,7 +134,7 @@ namespace ShList.Code
         /// <param name="logTimerType"></param>
         /// <param name="syncUi"></param>
         private void SyncRequestResponseStorage(string logTimerType, Action SyncUi, bool SaveWithSameHash)
-        {            
+        {
             if (string.IsNullOrEmpty(ShAppContext.UserId))
                 return;
 

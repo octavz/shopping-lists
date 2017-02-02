@@ -2639,6 +2639,12 @@ namespace ShList
 			// aapt resource value: 0x7f07002b
 			public const int InvalidPasswordFormat = 2131165227;
 			
+			// aapt resource value: 0x7f07003e
+			public const int InvalidProduct = 2131165246;
+			
+			// aapt resource value: 0x7f07003d
+			public const int InvalidQuantity = 2131165245;
+			
 			// aapt resource value: 0x7f070023
 			public const int ListName = 2131165219;
 			
