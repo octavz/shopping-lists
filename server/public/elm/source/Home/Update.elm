@@ -20,10 +20,13 @@ updateHome action model =
     in
         case Debug.log "home-update" action of
             UpdateNewItem val ->
-                ( { model | newItem = ShopListItem (toString newId) val 0 }, Cmd.none )
+                ( { model | newItem = ShopListItem (toString newId) val 0, message = "" }, Cmd.none )
 
             OnAdd ->
-                ( { model | items = model.newItem :: model.items, newItem = emptyShopListItem }, Cmd.none )
+                if model.newItem.name /= "" then
+                  ( { model | items = model.newItem :: model.items, newItem = emptyShopListItem, message = "" }, Cmd.none )
+                else
+                  ( { model | message = "Item must have a text"}, Cmd.none )
 
             OnDelete val ->
-                ( { model | items = List.filter (\x -> x.id /= val) model.items }, Cmd.none )
+                ( { model | items = List.filter (\x -> x.id /= val) model.items, message = "" }, Cmd.none )

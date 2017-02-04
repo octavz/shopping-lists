@@ -1,4 +1,4 @@
-module Login.View exposing (viewLogin, viewLogin1)
+module Login.View exposing (viewLogin)
 
 import String
 import Maybe exposing (..)
@@ -25,87 +25,6 @@ getErrors { login, password } =
             )
             errors
 
-
-viewLogin1 : LoginModel -> Html.Html LoginMsg
-viewLogin1 model =
-    div [ class "container", attribute "style" "margin-top:30px" ]
-        [ div [ class "col-md-4 col-md-offset-4" ]
-            [ div [ class "panel panel-default" ]
-                [ div [ class "panel-heading" ]
-                    [ h3 [ class "panel-title" ]
-                        [ strong []
-                            [ text "Sign in " ]
-                        ]
-                    , div [ attribute "style" "float:right; font-size: 80%; position: relative; top:-10px" ]
-                        [ a [ href "#" ]
-                            [ text "Forgot password?" ]
-                        ]
-                    ]
-                , div [ class "panel-body" ]
-                    [ Html.form [ attribute "role" "form" ]
-                        [ div [ classList [ ( "alert", True ), ( "alert-danger", True ), ( "hide", model.message == Nothing ) ] ]
-                            [ a [ class "close", attribute "data-dismiss" "alert", href "#" ]
-                                [ text "×" ]
-                            , text (withDefault "" model.message)
-                            ]
-                        , div [ class "input-group", attribute "style" "margin-bottom: 12px" ]
-                            [ span [ class "input-group-addon" ]
-                                [ i [ class "glyphicon glyphicon-user" ]
-                                    []
-                                ]
-                            , input
-                                [ class "form-control"
-                                , id "login-username"
-                                , name "username"
-                                , placeholder "username or email"
-                                , type_ "text"
-                                , value model.login
-                                , onInput UpdateLogin
-                                ]
-                                []
-                            ]
-                        , div [ class "input-group", attribute "style" "margin-bottom: 12px" ]
-                            [ span [ class "input-group-addon" ]
-                                [ i [ class "glyphicon glyphicon-lock" ]
-                                    []
-                                ]
-                            , input
-                                [ class "form-control"
-                                , id "login-password"
-                                , name "password"
-                                , placeholder "password"
-                                , value model.password
-                                , type_ "password"
-                                , onInput UpdatePassword
-                                ]
-                                []
-                            ]
-                        , div [ class "input-group" ]
-                            [ div [ class "checkbox", attribute "style" "margin-top: 0px;" ]
-                                [ label []
-                                    [ input [ id "login-remember", name "remember", type_ "checkbox", value "1" ]
-                                        []
-                                    , text "Remember me                                        "
-                                    ]
-                                ]
-                            ]
-                        , button [ onClick OnLogin, class "btn btn-success", type_ "button" ]
-                            [ text "Sign in" ]
-                        , hr [ attribute "style" "margin-top:10px;margin-bottom:10px;" ]
-                            []
-                        , div [ class "form-group" ]
-                            [ div [ attribute "style" "font-size:85%" ]
-                                [ a [ onClick RegisterCmd, href "/#register" ]
-                                    [ text "Don't have an account! Click to register" ]
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
-            ]
-        ]
-
-
 viewLogin : LoginModel -> Html.Html LoginMsg
 viewLogin model =
     let
@@ -122,59 +41,78 @@ viewLogin model =
             div [] [ text <| withDefault "" model.message ]
     in
         div [ class "container" ]
-            [ div [ class "row" ]
-                [ div [ class "col-xs-4 col-xs-offset-4" ]
-                    [ div [ class "row top5" ]
-                        [ h1 []
+            [ div [ class "mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2", id "loginbox", attribute "style" "margin-top:50px;" ]
+                [ div [ class "panel panel-info" ]
+                    [ div [ class "panel-heading" ]
+                        [ div [ class "panel-title" ]
                             [ text "Sign In" ]
-                        ]
-                    , div [ class "row top5" ]
-                        [ message ]
-                    , div
-                        [ class "row top5" ]
-                        [ div [ class "col-sm-4" ]
-                            [ label [ class "text-right", for "login" ]
-                                [ text "Login:" ]
+                        , div [ attribute "style" "float:right; font-size: 80%; position: relative; top:-10px" ]
+                            [ a [ href "#" ]
+                                [ text "Forgot password?" ]
                             ]
-                        , div [ class "col-sm-8" ]
-                            [ input
-                                [ name "login"
-                                , type_ "text"
-                                , onInput UpdateLogin
-                                , value model.login
+                        ]
+                    , div [ class "panel-body", attribute "style" "padding-top:30px" ]
+                        [ div [ class "alert alert-danger col-sm-12", id "login-alert", attribute "style" "display:none" ]
+                            []
+                        , Html.form [ class "form-horizontal", id "loginform", attribute "role" "form" ]
+                            [ div [ class "input-group", attribute "style" "margin-bottom: 25px" ]
+                                [ span [ class "input-group-addon" ]
+                                    [ i [ class "glyphicon glyphicon-user" ]
+                                        []
+                                    ]
+                                , input
+                                    [ class "form-control"
+                                    , id "login-username"
+                                    , name "username"
+                                    , placeholder "username or email"
+                                    , type_ "text"
+                                    , value model.login
+                                    , onInput UpdateLogin
+                                    ]
+                                    []
                                 ]
-                                []
-                            ]
-                        ]
-                    , div [ class "row top5" ]
-                        [ div [ class "col-sm-4" ]
-                            [ label [ class "text-right", for "pass" ]
-                                [ text "Password:" ]
-                            ]
-                        , div [ class "col-sm-8" ]
-                            [ input
-                                [ name "pass"
-                                , type_ "password"
-                                , onInput UpdatePassword
-                                , value model.password
+                            , div [ class "input-group", attribute "style" "margin-bottom: 25px" ]
+                                [ span [ class "input-group-addon" ]
+                                    [ i [ class "glyphicon glyphicon-lock" ]
+                                        []
+                                    ]
+                                , input
+                                    [ class "form-control"
+                                    , id "login-password"
+                                    , name "password"
+                                    , placeholder "password"
+                                    , type_ "password"
+                                    , value model.password
+                                    , onInput UpdatePassword
+                                    ]
+                                    []
                                 ]
-                                []
+                            , div [ class "input-group" ]
+                                [ div [ class "checkbox" ]
+                                    [ label []
+                                        [ input [ id "login-remember", name "remember", type_ "checkbox", value "1" ]
+                                            []
+                                        , text "Remember me                                        "
+                                        ]
+                                    ]
+                                ]
+                            , div [ class "form-group", attribute "style" "margin-top:10px" ]
+                                [ div [ class "col-sm-12 controls" ]
+                                    [ a [ class "btn btn-success", href "#", id "btn-login", onClick OnLogin ]
+                                        [ text "Login  " ]
+                                    , span [] [ text " " ]
+                                    , a [ class "btn btn-primary", href "#", id "btn-fblogin" ]
+                                        [ text "Login with Facebook" ]
+                                    ]
+                                ]
+                            , div [ class "form-group" ]
+                                [ div [ class "col-md-12 control" ]
+                                    [ div [ attribute "style" "border-top: 1px solid#888; padding-top:15px; font-size:85%" ]
+                                        [ a [ href "/#register" ] [ text "Don't have an account!                                         " ] ]
+                                    ]
+                                ]
                             ]
                         ]
-                    , div [ class "row top7" ]
-                        [ div [ class "col-md-2 col-md-offset-5" ]
-                            [ button [ onClick OnLogin, class "btn btn-default" ]
-                                [ text "Login" ]
-                            ]
-                        ]
-                    , div [ class "row top7" ]
-                        [ div [ class "col-sm-6 col-sm-offset-3" ]
-                            [ a [ onClick RegisterCmd, href "/#register" ]
-                                [ text "Click to register" ]
-                            ]
-                        ]
-                    , div [ class "row errors" ]
-                        viewErrors
                     ]
                 ]
             ]

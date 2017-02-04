@@ -76,6 +76,6 @@ initialModel =
     , loginView = emptyLoginView
     , registerView = RegisterModel "a1@aaa.com" "123456" "123456" Nothing
     , supplierView = SupplierModel [] emptySupplierItem Nothing
-    , homeView = HomeModel emptyShopListItem []
+    , homeView = HomeModel emptyShopListItem [] ""
     , activePage = PageHome
     }

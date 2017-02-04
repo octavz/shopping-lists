@@ -12,6 +12,7 @@ import Supplier.View exposing (..)
 import Home.View exposing (..)
 import Json.Encode as Json
 import Debug
+import String exposing (..)
 
 
 nav1 : Model -> Html Msg
@@ -43,11 +44,21 @@ view_ model =
         ]
 
 
+isLoggedIn : Model -> Bool
+isLoggedIn model =
+    model.userData.key /= Nothing
+
+
 viewNav : Model -> Html.Html Msg
 viewNav model =
     nav [ class "navbar navbar-default", attribute "role" "navigation" ]
         [ div [ class "navbar-header" ]
-            [ button [ class "navbar-toggle", attribute "data-target" "#example-navbar-collapse", attribute "data-toggle" "collapse", type_ "button" ]
+            [ button
+                [ class "navbar-toggle"
+                , attribute "data-target" "#example-navbar-collapse"
+                , attribute "data-toggle" "collapse"
+                , type_ "button"
+                ]
                 [ span [ class "sr-only" ]
                     [ text "Toggle navigation" ]
                 , span [ class "icon-bar" ]
@@ -68,13 +79,43 @@ viewNav model =
                     ]
                 ]
             , ul [ class "nav navbar-nav navbar-right" ]
+                [ userDropDown model ]
+            ]
+        ]
+
+
+userDropDown : Model -> Html.Html Msg
+userDropDown model =
+    if (isLoggedIn model) then
+        li [ class "dropdown" ]
+            [ a [ class "dropdown-toggle", attribute "data-toggle" "dropdown", href "#" ]
+                [ text model.userData.name
+                , b [ class "caret" ]
+                    []
+                ]
+            , ul [ class "dropdown-menu" ]
                 [ li []
-                    [ a [ href "/#login" ]
-                        [ text "Log In" ]
+                    [ a [ href "#" ]
+                        [ text "Account" ]
+                    ]
+                , li []
+                    [ a [ href "#" ]
+                        [ text "Log Out" ]
+                    ]
+                , li [ class "divider" ]
+                    []
+                , li []
+                    [ a [ href "#" ]
+                        [ text "Help" ]
                     ]
                 ]
             ]
-        ]
+    else
+        li []
+            [ a [ href "/#login" ]
+                [ text "Log In" ]
+            ]
+
 
 view : Model -> Html.Html Msg
 view model =
@@ -97,7 +138,7 @@ currentView model =
             div [] [ text "404 Not found" ]
 
         PageLogin ->
-            (Html.map Login (viewLogin1 model.loginView))
+            (Html.map Login (viewLogin model.loginView))
 
         PageRegister ->
             (Html.map Register (viewRegister model.registerView))

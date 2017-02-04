@@ -10,6 +10,7 @@ type alias HomeModel =
   {
     newItem: ShopListItem
     , items: List ShopListItem
+    , message: String
   }
 
 emptyShopListItem: ShopListItem

@@ -1,6 +1,6 @@
 module Home.View exposing (viewHome)
 
-import String
+import String exposing (..)
 import Maybe exposing (..)
 import Html exposing (..)
 import Html.Attributes exposing (..)
@@ -8,14 +8,15 @@ import Html.Events exposing (onInput, onClick, targetValue)
 import Home.Messages exposing (..)
 import Home.Model exposing (..)
 
+
 viewListItem : ShopListItem -> Html.Html HomeMsg
 viewListItem model =
-     li [ class "list-group-item" ]
+    li [ class "list-group-item" ]
         [ div [ class "row" ]
             [ div [ class "col-xs-4" ]
                 [ text model.name ]
             , div [ class "col-xs-8 text-right" ]
-                [ a [onClick (OnDelete model.id)]
+                [ a [ attribute "role" "button", onClick (OnDelete model.id) ]
                     [ i [ class "remove glyphicon glyphicon-remove-sign glyphicon-white" ]
                         []
                     ]
@@ -34,14 +35,32 @@ viewHome model =
                 ]
             ]
         , div [ class "row" ]
-            [ div [ class "col-md-6 col-md-offset-3" ]
+            [ div
+                [ classList
+                    [ ( "col-md-6 col-md-offset-3", True )
+                    , ( "hide", (isEmpty model.message) )
+                    ]
+                ]
+                [ div [ class "alert alert-danger" ] [ text model.message ] ]
+            , div [ class "col-md-6 col-md-offset-3" ]
                 [ div [ class "row" ]
                     [ div [ class "col-md-10" ]
-                        [ input [ class "form-control", placeholder "add item here", type_ "text", onInput UpdateNewItem, value model.newItem.name ]
+                        [ input
+                            [ class "form-control"
+                            , placeholder "add item here"
+                            , type_ "text"
+                            , onInput UpdateNewItem
+                            , value model.newItem.name
+                            ]
                             []
                         ]
                     , div [ class "col-md-2" ]
-                        [ button [ class "btn btn-default", type_ "button", onClick OnAdd ]
+                        [ button
+                            [ class "btn btn-default"
+                            , attribute "role" "button"
+                            , type_ "button"
+                            , onClick OnAdd
+                            ]
                             [ text "Add" ]
                         ]
                     ]
@@ -50,9 +69,7 @@ viewHome model =
         , div [ class "row" ]
             [ div [ class "col-md-6 col-md-offset-3" ]
                 [ ul [ class "list-group" ]
-                     (List.map viewListItem model.items)
+                    (List.map viewListItem model.items)
                 ]
             ]
         ]
-
-
