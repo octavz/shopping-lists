@@ -5,15 +5,16 @@ import Maybe exposing (..)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onInput, onClick, targetValue)
-import Login.Model exposing (..)
+import Main.Models exposing (..)
 import Login.Messages exposing (..)
 
 
-getErrors { login, password } =
+getErrors : LoginModel -> List String
+getErrors model =
     let
         errors =
-            [ ( String.isEmpty login, "Login is required." )
-            , ( String.isEmpty password, "Password is required." )
+            [ ( String.isEmpty model.content.login, "Login is required." )
+            , ( String.isEmpty model.content.password, "Password is required." )
             ]
     in
         List.filterMap
@@ -24,6 +25,7 @@ getErrors { login, password } =
                     Nothing
             )
             errors
+
 
 viewLogin : LoginModel -> Html.Html LoginMsg
 viewLogin model =
@@ -66,7 +68,7 @@ viewLogin model =
                                     , name "username"
                                     , placeholder "username or email"
                                     , type_ "text"
-                                    , value model.login
+                                    , value model.content.login
                                     , onInput UpdateLogin
                                     ]
                                     []
@@ -82,7 +84,7 @@ viewLogin model =
                                     , name "password"
                                     , placeholder "password"
                                     , type_ "password"
-                                    , value model.password
+                                    , value model.content.password
                                     , onInput UpdatePassword
                                     ]
                                     []
@@ -98,11 +100,10 @@ viewLogin model =
                                 ]
                             , div [ class "form-group", attribute "style" "margin-top:10px" ]
                                 [ div [ class "col-sm-12 controls" ]
-                                    [ a [ class "btn btn-success", href "#", id "btn-login", onClick OnLogin ]
-                                        [ text "Login  " ]
+                                    [ input [ class "btn btn-success", type_ "button", id "btn-login", onClick OnLogin, value "Login" ] []
                                     , span [] [ text " " ]
-                                    , a [ class "btn btn-primary", href "#", id "btn-fblogin" ]
-                                        [ text "Login with Facebook" ]
+                                    , input [ class "btn btn-primary", type_ "button", id "btn-fblogin", value "Login with Facebook" ]
+                                        []
                                     ]
                                 ]
                             , div [ class "form-group" ]

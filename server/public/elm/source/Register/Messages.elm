@@ -1,7 +1,7 @@
 module Register.Messages exposing (..)
 
 import Http exposing (..)
-import Account.Model exposing (..)
+import Main.Models exposing (..)
 
 type RegisterMsg
     = UpdateLogin String

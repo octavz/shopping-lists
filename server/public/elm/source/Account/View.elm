@@ -4,7 +4,7 @@ import Account.Messages exposing (..)
 import Html exposing (label, text, input, button, div, h1, a, b, p, span,i)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onInput, onClick, targetValue)
-import Account.Model exposing (..)
+import Main.Models exposing (..)
 import Maybe exposing (..)
 
 viewAccount1 : UserModel -> Html.Html a
@@ -20,14 +20,14 @@ viewAccount1 model =
                     [ class "row top5" ]
                     [ div [ class "col-sm-4" ]
                         [ b [] [ text "Login: " ]
-                        , text model.login
+                        , text <| withDefault "" model.content.login
                         ]
                     ]
                 , div
                     [ class "row top5" ]
                     [ div [ class "col-sm-4" ]
                         [ b [] [ text "Name: " ]
-                        , text model.name
+                        , text <| withDefault "" model.content.nick
                         ]
                     ]
                 ]
@@ -41,11 +41,7 @@ viewAccount model =
             [ div [ class "panel panel-info" ]
                 [ div [ class "panel-heading" ]
                     [ div [ class "panel-title" ]
-                        [ text "Sign Up" ]
-                    , div [ attribute "style" "float:right; font-size: 85%; position: relative; top:-10px" ]
-                        [ a [ href "/#login", id "signinlink" ]
-                            [ text "Sign In" ]
-                        ]
+                        [ text "Account" ]
                     ]
                 , div [ class "panel-body" ]
                     [ Html.form [ action "", class "form-horizontal", id "signupform", attribute "role" "form" ]
@@ -62,10 +58,25 @@ viewAccount model =
                                 [ input
                                     [ class "form-control"
                                     , name "email"
+                                    , placeholder "Login"
+                                    , type_ "text"
+                                    , value <| withDefault "" model.content.login
+                                    , onInput UpdateLogin
+                                    ]
+                                    []
+                                ]
+                            ]
+                        , div [ class "form-group" ]
+                            [ label [ class "col-md-3 control-label", for "email" ]
+                                [ text "Name" ]
+                            , div [ class "col-md-9" ]
+                                [ input
+                                    [ class "form-control"
+                                    , name "email"
                                     , placeholder "Email Address"
                                     , type_ "text"
-                                    , value model.login
-                                    , onInput UpdateLogin
+                                    , value <| withDefault "" model.content.nick
+                                    , onInput UpdateName
                                     ]
                                     []
                                 ]
@@ -79,7 +90,7 @@ viewAccount model =
                                     , name "passwd"
                                     , placeholder "Password"
                                     , type_ "password"
-                                    , value model.password
+                                    , value <| withDefault "" model.content.password
                                     , onInput UpdatePassword
                                     ]
                                     []
@@ -94,7 +105,7 @@ viewAccount model =
                                     , name "passwd"
                                     , placeholder "Password"
                                     , type_ "password"
-                                    , value model.confirm
+                                    , value <| withDefault "" model.confirm
                                     , onInput UpdateConfirm
                                     ]
                                     []
@@ -110,18 +121,7 @@ viewAccount model =
                                     ]
                                     [ i [ class "icon-hand-right" ]
                                         []
-                                    , text "Sign Up                            "
-                                    ]
-                                , span [ attribute "style" "margin-left:8px;" ]
-                                    [ text "or" ]
-                                ]
-                            ]
-                        , div [ class "form-group", attribute "style" "border-top: 1px solid #999; padding-top:20px" ]
-                            [ div [ class "col-md-offset-3 col-md-9" ]
-                                [ button [ class "btn btn-primary", id "btn-fbsignup", type_ "button" ]
-                                    [ i [ class "icon-facebook" ]
-                                        []
-                                    , text "Sign Up with Facebook                            "
+                                    , text "OK                            "
                                     ]
                                 ]
                             ]

@@ -5,7 +5,7 @@ import Maybe exposing (..)
 import Html exposing (label, text, input, button, div, h1, a, b, span, p, i, form)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onInput, onClick, targetValue)
-import Register.Model exposing (..)
+import Main.Models exposing (..)
 import Register.Messages exposing (..)
 
 
@@ -39,7 +39,7 @@ viewRegister model =
                                     , name "email"
                                     , placeholder "Email Address"
                                     , type_ "text"
-                                    , value model.login
+                                    , value <| withDefault "" model.content.login
                                     , onInput UpdateLogin
                                     ]
                                     []
@@ -54,7 +54,7 @@ viewRegister model =
                                     , name "passwd"
                                     , placeholder "Password"
                                     , type_ "password"
-                                    , value model.password
+                                    , value <| withDefault "" model.content.password
                                     , onInput UpdatePassword
                                     ]
                                     []
@@ -69,7 +69,7 @@ viewRegister model =
                                     , name "passwd"
                                     , placeholder "Password"
                                     , type_ "password"
-                                    , value model.confirm
+                                    , value <| withDefault "" model.confirm
                                     , onInput UpdateConfirm
                                     ]
                                     []

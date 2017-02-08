@@ -13,7 +13,7 @@ import Home.View exposing (..)
 import Json.Encode as Json
 import Debug
 import String exposing (..)
-
+import Maybe exposing (withDefault)
 
 nav1 : Model -> Html Msg
 nav1 model =
@@ -89,13 +89,13 @@ userDropDown model =
     if (isLoggedIn model) then
         li [ class "dropdown" ]
             [ a [ class "dropdown-toggle", attribute "data-toggle" "dropdown", href "#" ]
-                [ text model.userData.name
+                [ text <| withDefault "" model.userData.content.nick
                 , b [ class "caret" ]
                     []
                 ]
             , ul [ class "dropdown-menu" ]
                 [ li []
-                    [ a [ href "#" ]
+                    [ a [ href "#account" ]
                         [ text "Account" ]
                     ]
                 , li []
@@ -144,7 +144,7 @@ currentView model =
             (Html.map Register (viewRegister model.registerView))
 
         PageMyAccount ->
-            viewAccount model.userData
+            (Html.map Account (viewAccount model.accountView))
 
         PageSuppliers ->
             (Html.map Supplier (viewSupplier model.supplierView))

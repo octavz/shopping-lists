@@ -1,22 +1,30 @@
 module Register.Update exposing (..)
 
 import Debug
-import Register.Model exposing (..)
-import Account.Model exposing (..)
+import Main.Models exposing (..)
 import Repository exposing (..)
 import Register.Messages exposing (..)
+
 
 updateRegister : RegisterMsg -> RegisterModel -> ( RegisterModel, Cmd RegisterMsg )
 updateRegister action model =
     case Debug.log "INFO" action of
         UpdateLogin val ->
-            ( { model | login = val }, Cmd.none )
+            let
+                c =
+                    model.content
+            in
+                ( { model | content = { c | login = Just val } }, Cmd.none )
 
         UpdatePassword val ->
-            ( { model | password = val }, Cmd.none )
+            let
+                c =
+                    model.content
+            in
+              ( { model | content = {c| password = Just val} }, Cmd.none )
 
         UpdateConfirm val ->
-            ( { model | confirm = val }, Cmd.none )
+            ( { model | confirm = Just val }, Cmd.none )
 
         PostMessage msg ->
             ( { model | message = Just msg }, Cmd.none )
@@ -24,7 +32,7 @@ updateRegister action model =
         OnRegister ->
             ( model, register model )
 
-        PostRegister (Ok userModel)  ->
+        PostRegister (Ok userModel) ->
             ( { model | message = Nothing }, Cmd.none )
 
         PostRegister (Err error) ->

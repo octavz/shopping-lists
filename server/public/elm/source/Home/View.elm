@@ -6,17 +6,18 @@ import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onInput, onClick, targetValue)
 import Home.Messages exposing (..)
-import Home.Model exposing (..)
+import Main.Models exposing (..)
+import Main.Dtos exposing (..)
 
 
-viewListItem : ShopListItem -> Html.Html HomeMsg
+viewListItem : ListItemDTO -> Html.Html HomeMsg
 viewListItem model =
     li [ class "list-group-item" ]
         [ div [ class "row" ]
             [ div [ class "col-xs-4" ]
-                [ text model.name ]
+                [ text <| withDefault "" model.description ]
             , div [ class "col-xs-8 text-right" ]
-                [ a [ attribute "role" "button", onClick (OnDelete model.id) ]
+                [ a [ attribute "role" "button", onClick (OnDelete model.productId) ]
                     [ i [ class "remove glyphicon glyphicon-remove-sign glyphicon-white" ]
                         []
                     ]
@@ -25,51 +26,65 @@ viewListItem model =
         ]
 
 
+newItem : HomeModel -> ListItemDTO
+newItem model =
+    withDefault (ListItemDTO Nothing 0 Nothing 0 Nothing 0) model.newItem
+
+
 viewHome : HomeModel -> Html.Html HomeMsg
 viewHome model =
-    div [ class "container" ]
-        [ div [ class "row" ]
-            [ div [ class "col-md-6 col-md-offset-3" ]
-                [ h3 [ class "text-center" ]
-                    [ text "Create a quick list!" ]
-                ]
-            ]
-        , div [ class "row" ]
-            [ div
-                [ classList
-                    [ ( "col-md-6 col-md-offset-3", True )
-                    , ( "hide", (isEmpty model.message) )
+    let
+        items =
+            case model.content of
+                Just lst ->
+                    withDefault [] lst.items
+
+                Nothing ->
+                    []
+    in
+        div [ class "container" ]
+            [ div [ class "row" ]
+                [ div [ class "col-md-6 col-md-offset-3" ]
+                    [ h3 [ class "text-center" ]
+                        [ text "Create a quick list!" ]
                     ]
                 ]
-                [ div [ class "alert alert-danger" ] [ text model.message ] ]
-            , div [ class "col-md-6 col-md-offset-3" ]
-                [ div [ class "row" ]
-                    [ div [ class "col-md-10" ]
-                        [ input
-                            [ class "form-control"
-                            , placeholder "add item here"
-                            , type_ "text"
-                            , onInput UpdateNewItem
-                            , value model.newItem.name
-                            ]
-                            []
+            , div [ class "row" ]
+                [ div
+                    [ classList
+                        [ ( "col-md-6 col-md-offset-3", True )
+                        , ( "hide", (model.message == Nothing) )
                         ]
-                    , div [ class "col-md-2" ]
-                        [ button
-                            [ class "btn btn-default"
-                            , attribute "role" "button"
-                            , type_ "button"
-                            , onClick OnAdd
+                    ]
+                    [ div [ class "alert alert-danger" ] [ text <| withDefault "" model.message ] ]
+                , div [ class "col-md-6 col-md-offset-3" ]
+                    [ div [ class "row" ]
+                        [ div [ class "col-md-10" ]
+                            [ input
+                                [ class "form-control"
+                                , placeholder "add item here"
+                                , type_ "text"
+                                , onInput UpdateNewItem
+                                , value <| withDefault "" (newItem model).description
+                                ]
+                                []
                             ]
-                            [ text "Add" ]
+                        , div [ class "col-md-2" ]
+                            [ button
+                                [ class "btn btn-default"
+                                , attribute "role" "button"
+                                , type_ "button"
+                                , onClick OnAdd
+                                ]
+                                [ text "Add" ]
+                            ]
                         ]
                     ]
                 ]
-            ]
-        , div [ class "row" ]
-            [ div [ class "col-md-6 col-md-offset-3" ]
-                [ ul [ class "list-group" ]
-                    (List.map viewListItem model.items)
+            , div [ class "row" ]
+                [ div [ class "col-md-6 col-md-offset-3" ]
+                    [ ul [ class "list-group" ]
+                        (List.map viewListItem items)
+                    ]
                 ]
             ]
-        ]

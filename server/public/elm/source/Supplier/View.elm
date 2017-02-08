@@ -6,7 +6,8 @@ import Html exposing (label, text, input, button, div, h1, a, b)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onInput, onClick, targetValue)
 import Supplier.Messages exposing (..)
-import Supplier.Model exposing (..)
+import Main.Dtos exposing (..)
+import Main.Models exposing (..)
 
 
 viewSupplier : SupplierModel -> Html.Html SupplierMsg
@@ -16,13 +17,13 @@ viewSupplier model =
             div [] [ text <| withDefault "" model.message ]
     in
         div [ class "container" ]
-            [ viewItem model.current
+            [ viewItem <| withDefault (SupplierItemDTO Nothing "" Nothing) model.current
             , text "table"
             , div [ class "row top5" ] [ message ]
             ]
 
 
-viewItem : SupplierItemModel -> Html.Html SupplierMsg
+viewItem : SupplierItemDTO -> Html.Html SupplierMsg
 viewItem model =
     div [ class "container" ]
         [ div [ class "row" ]
@@ -64,7 +65,7 @@ viewItem model =
                     ]
                 , div [ class "row top7" ]
                     [ div [ class "col-md-2 col-md-offset-5" ]
-                        [ button [ onClick SaveSupplierReq, class "btn btn-default" ]
+                        [ button [ onClick (SaveSupplierReq model.id), class "btn btn-default" ]
                             [ text "Save" ]
                         ]
                     ]

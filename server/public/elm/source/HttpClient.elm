@@ -1,10 +1,7 @@
 module HttpClient exposing (..)
 
 import Http
-import Login.Model exposing (..)
-import Register.Model exposing (..)
-import Account.Model exposing (..)
-import Supplier.Model exposing (..)
+import Main.Models exposing (..)
 import Json exposing (..)
 import Task
 

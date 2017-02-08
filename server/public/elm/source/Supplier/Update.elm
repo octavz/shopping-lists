@@ -1,31 +1,33 @@
 module Supplier.Update exposing (..)
 
 import Debug
-import Supplier.Model exposing (..)
-import Account.Model exposing (..)
+import Main.Models exposing (..)
+import Main.Dtos exposing (..)
 import Repository exposing (..)
 import Supplier.Messages exposing (..)
+import Maybe exposing (withDefault)
+
 
 updateSupplier : UserModel -> SupplierMsg -> SupplierModel -> ( SupplierModel, Cmd SupplierMsg )
 updateSupplier userData action model =
     let
         current =
-            model.current
+            withDefault (SupplierItemDTO Nothing "" Nothing) model.current
     in
-        case Debug.log "INFO" action of
+        case Debug.log "supplier-update" action of
             UpdateName val ->
                 let
                     c =
                         { current | name = val }
                 in
-                    ( { model | current = c }, Cmd.none )
+                    ( { model | current = Just c }, Cmd.none )
 
             UpdateDescription val ->
                 let
                     c =
                         { current | description = Just val }
                 in
-                    ( { model | current = c }, Cmd.none )
+                    ( { model | current = Just c }, Cmd.none )
 
             PostMessage msg ->
                 ( { model | message = Just msg }, Cmd.none )
@@ -34,17 +36,19 @@ updateSupplier userData action model =
                 ( model, (suppliers userData) )
 
             SuppliersResp (Ok val) ->
-                ( { model | items = val }, Cmd.none )
+                ( { model | content = val }, Cmd.none )
 
             SuppliersResp (Err error) ->
                 ( { model | message = Just (toString error) }, Cmd.none )
 
-            SaveSupplierReq ->
+            SaveSupplierReq (Just id) -> -- update
                 ( model, Cmd.none )
 
-            SaveSupplierResp (Ok _)  ->
+            SaveSupplierReq Nothing -> -- insert
                 ( model, Cmd.none )
 
-            SaveSupplierResp (Err error)  ->
+            SaveSupplierResp (Ok _) ->
+                ( model, Cmd.none )
+
+            SaveSupplierResp (Err error) ->
                 ( { model | message = Just (toString error) }, Cmd.none )
-

@@ -1,11 +1,8 @@
 module Main.Models exposing (..)
 
-import Login.Model exposing (..)
-import Register.Model exposing (..)
-import Account.Model exposing (..)
-import Supplier.Model exposing (..)
-import Home.Model exposing (..)
 import List exposing (..)
+import Main.Dtos exposing (..)
+
 
 type Page
     = PageAccessDenied
@@ -16,66 +13,117 @@ type Page
     | PageNotFound
     | PageHome
 
+
+type alias UserModel =
+    { content : UpdateUserDTO
+    , key : Maybe String
+    }
+
+
+type alias AccountModel =
+    { content : UpdateUserDTO
+    , confirm : Maybe String
+    , message : Maybe String
+    }
+
+
+type alias HomeModel =
+    { content : Maybe ListDTO
+    , newItem : Maybe ListItemDTO
+    , message : Maybe String
+    }
+
+
+type alias LoginModel =
+    { content : LoginDTO
+    , signinAttempts : Int
+    , message : Maybe String
+    }
+
+
+type alias RegisterModel =
+    { content : UpdateUserDTO
+    , confirm : Maybe String
+    , message : Maybe String
+    }
+
+
+type alias SupplierModel =
+    { content : SuppliersDTO
+    , current : Maybe SupplierItemDTO
+    , message : Maybe String
+    }
+
+
 type alias Model =
     { userData : UserModel
-    , lists : List ShopList
     , loginView : LoginModel
     , registerView : RegisterModel
+    , accountView : AccountModel
     , supplierView : SupplierModel
     , homeView : HomeModel
     , activePage : Page
+    , sync : Maybe SyncDTO
     }
 
 
-type alias ShopList =
-    { id : String
-    , name : String
-    , created : Int
-    , items : List ShopListItem
+initUserModel : UserModel
+initUserModel =
+    { content =
+        { login = Just "aaa@aaa.com"
+        , nick = Just "aaa"
+        , id = Nothing
+        , password = Just "123456"
+        }
+    , key = Nothing
     }
 
 
---emptySupplierView = SupplierModel [] emptySupplierItem Nothing
-
-
-emptySupplierItem : SupplierItemModel
-emptySupplierItem =
-    SupplierItemModel Nothing "" Nothing
-
-
-emptySupplierView : SupplierModel
-emptySupplierView =
-    let
-        elem i =
-            let
-                s =
-                    (toString i)
-            in
-                SupplierItemModel (Just s) ("test " ++ s) (Just ("description " ++ s))
-    in
-        SupplierModel (map elem (List.range 1 5)) emptySupplierItem Nothing
-
-
-emptyLoginView : LoginModel
-emptyLoginView =
-    { login = "aaa@aaa.com"
-    , password = "123456"
+initLoginView : LoginModel
+initLoginView =
+    { content =
+        { login = "aaa@aaa.com"
+        , password = "123456"
+        }
     , signinAttempts = 0
+    , message = Nothing
+    }
+
+
+initRegisterView : RegisterModel
+initRegisterView =
+    { content =
+        { login = Just "aaa@aaa.com"
+        , password = Just "123456"
+        , nick = Nothing
+        , id = Nothing
+        }
+    , confirm = Just "123456"
+    , message = Nothing
+    }
+
+
+initAccountView : AccountModel
+initAccountView =
+    { content =
+        { login = Just "aaa@aaa.com"
+        , password = Just "123456"
+        , nick = Nothing
+        , id = Nothing
+        }
+    , confirm = Just "123456"
     , message = Nothing
     }
 
 
 initialModel : Model
 initialModel =
-    { userData =
-        { login = "aaa@aaa.com"
-        , name = "aaa"
-        , key = Nothing
-        }
-    , lists = []
-    , loginView = emptyLoginView
-    , registerView = RegisterModel "a1@aaa.com" "123456" "123456" Nothing
-    , supplierView = SupplierModel [] emptySupplierItem Nothing
-    , homeView = HomeModel emptyShopListItem [] ""
+    { userData = initUserModel
+    , loginView = initLoginView
+    , registerView = initRegisterView
+    , accountView = initAccountView
+    , supplierView = SupplierModel (SuppliersDTO []) Nothing Nothing
+    , homeView = HomeModel Nothing Nothing Nothing
     , activePage = PageHome
+    , sync = Nothing
     }
