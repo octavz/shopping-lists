@@ -4,6 +4,13 @@ import Debug
 import Main.Models exposing (..)
 import Repository exposing (..)
 import Account.Messages exposing (..)
+import String exposing (isEmpty)
+import Maybe exposing (withDefault)
+
+
+notEmpty : Maybe String -> Bool
+notEmpty val =
+    not <| isEmpty <| withDefault "" val
 
 
 updateAccount : AccountMsg -> AccountModel -> ( AccountModel, Cmd AccountMsg )
@@ -29,7 +36,7 @@ updateAccount action model =
                 ( { model | message = Just msg }, Cmd.none )
 
             OnAccount ->
-                if model.content.password /= model.confirm then
+                if model.content.password /= model.confirm && (notEmpty model.content.login) && (notEmpty model.content.nick) then
                     ( { model | message = Just "Password is not confirmed." }, Cmd.none )
                 else
                     ( { model | message = Nothing }, Cmd.none )

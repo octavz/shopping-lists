@@ -15,6 +15,7 @@ import Register.Messages exposing (..)
 import Supplier.Messages exposing (..)
 import Home.Messages exposing (..)
 import Account.Update exposing (..)
+import Account.Messages exposing (..)
 import Home.Update exposing (..)
 
 
@@ -66,6 +67,16 @@ update msg model =
             in
                 ( { model | registerView = subModel }, Cmd.map Register subCmd )
 
+        Account OnAccount ->
+            let
+                inner =
+                    model.sync
+            in
+                if model.accountView.message == Nothing then
+                    ( { model | sync = accountToSync }, Cmd.none )
+                else
+                    ( model, Cmd.none )
+
         Account subMsg ->
             let
                 ( subModel, subCmd ) =
@@ -106,11 +117,22 @@ update msg model =
             ( model, Cmd.none )
 
 
+accountToSync : AccountModel -> SyncDTO -> SyncDTO
+accountToSync account sync =
+    case sync.userData of
+        Just u ->
+            { sync | userData = { u | content = account.content } }
+
+        _ ->
+            { sync | userData = account.content  }
+
+
 performSync : Model -> ( Model, Cmd Msg )
 performSync model =
     case model.userData.key of
         Nothing ->
             ( model, Cmd.none )
+
         _ ->
             ( model, Cmd.none )
 

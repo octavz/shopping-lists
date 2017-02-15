@@ -26,14 +26,12 @@ viewListItem model =
         ]
 
 
-newItem : HomeModel -> ListItemDTO
-newItem model =
-    withDefault (ListItemDTO Nothing 0 Nothing 0 Nothing 0) model.newItem
 
 
 viewHome : HomeModel -> Html.Html HomeMsg
 viewHome model =
     let
+        newItem = withDefault emptyListItem model.newItem
         items =
             case model.content of
                 Just lst ->
@@ -65,7 +63,7 @@ viewHome model =
                                 , placeholder "add item here"
                                 , type_ "text"
                                 , onInput UpdateNewItem
-                                , value <| withDefault "" (newItem model).description
+                                , value <| withDefault "" newItem.description
                                 ]
                                 []
                             ]

@@ -5,7 +5,7 @@ import Main.Models exposing (..)
 import Home.Messages exposing (..)
 import Time exposing (Time)
 import Http
-import Main.Dtos exposing (ListDTO, ListItemDTO)
+import Main.Dtos exposing (..)
 import Maybe exposing (withDefault)
 
 
@@ -21,7 +21,7 @@ items model =
 
 newItem : HomeModel -> ListItemDTO
 newItem model =
-    withDefault (ListItemDTO Nothing 0 Nothing 0 Nothing 0) model.newItem
+    withDefault emptyListItem model.newItem
 
 
 updateHome : HomeMsg -> HomeModel -> ( HomeModel, Cmd HomeMsg )
@@ -32,7 +32,7 @@ updateHome action model =
             Just <| toString <| List.length (items model) + 1
 
         c =
-            withDefault (ListDTO (Just "1") "main" Nothing 0 (Just []) Nothing Nothing) model.content
+            withDefault (ListDTO Nothing "main" Nothing 0 (Just []) Nothing Nothing) model.content
     in
         case Debug.log "home-update" action of
             UpdateNewItem val ->
@@ -52,7 +52,6 @@ updateHome action model =
 
             OnDelete val ->
                 let
-                    filtered : List ListItemDTO
                     filtered =
                         List.filter (\x -> x.productId /= val) (items model)
                 in

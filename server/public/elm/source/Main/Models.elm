@@ -63,18 +63,23 @@ type alias Model =
     , supplierView : SupplierModel
     , homeView : HomeModel
     , activePage : Page
-    , sync : Maybe SyncDTO
+    , sync : SyncDTO
     }
+
+
+emptyUserUpdate : UpdateUserDTO
+emptyUserUpdate =
+    UpdateUserDTO Nothing Nothing Nothing Nothing
+
+
+emptyListItem : ListItemDTO
+emptyListItem =
+    ListItemDTO Nothing 0 Nothing 0 Nothing 0
 
 
 initUserModel : UserModel
 initUserModel =
-    { content =
-        { login = Just "aaa@aaa.com"
-        , nick = Just "aaa"
-        , id = Nothing
-        , password = Just "123456"
-        }
+    { content = emptyUserUpdate
     , key = Nothing
     }
 
@@ -92,26 +97,16 @@ initLoginView =
 
 initRegisterView : RegisterModel
 initRegisterView =
-    { content =
-        { login = Just "aaa@aaa.com"
-        , password = Just "123456"
-        , nick = Nothing
-        , id = Nothing
-        }
-    , confirm = Just "123456"
+    { content = emptyUserUpdate
+    , confirm = Nothing
     , message = Nothing
     }
 
 
 initAccountView : AccountModel
 initAccountView =
-    { content =
-        { login = Just "aaa@aaa.com"
-        , password = Just "123456"
-        , nick = Nothing
-        , id = Nothing
-        }
-    , confirm = Just "123456"
+    { content = emptyUserUpdate
+    , confirm = Nothing
     , message = Nothing
     }
 
@@ -125,5 +120,5 @@ initialModel =
     , supplierView = SupplierModel (SuppliersDTO []) Nothing Nothing
     , homeView = HomeModel Nothing Nothing Nothing
     , activePage = PageHome
-    , sync = Nothing
+    , sync = SyncDTO Nothing Nothing Nothing Nothing
     }
