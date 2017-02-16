@@ -3,13 +3,13 @@ package org.shopping.dto
 import org.shopping.models._
 
 case class ProductDTO(id: Option[String], name: String, tags: String, description: Option[String] = None,
-                      clientTag: Option[String] = None, status: Short) {
+                      clientTag: Option[String] = None, status: Int) {
 
   def this(model: Product) =
     this(id = Some(model.id), name = model.name, tags = model.tags, description = model.description, clientTag = Option(model.clientTag), status = model.status)
 
   def toModel(userId: String, id: String): Product =
-    Product(id = id, userId = userId, name = name, tags = tags, description = description, clientTag = clientTag.getOrElse(""), status = status)
+    Product(id = id, userId = userId, name = name, tags = tags, description = description, clientTag = clientTag.getOrElse(""), status = status.toShort)
 
 }
 

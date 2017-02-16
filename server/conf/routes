@@ -329,12 +329,11 @@ GET            /api/products                   @org.shopping.controllers.Product
 # summary: Sync products
 # produces:
 #   - application/json
-# parameters:
 # responses:
 #   200:
 #     description: products
 #     schema:
-#       $ref: '#/definitions/org.shopping.dto.ProductsDTO'
+#       $ref: '#/definitions/org.shopping.dto.SyncProductsDTO'
 #   500:
 #     description: Internal Error
 #     schema:

@@ -7,7 +7,7 @@ sbt clean dist
 echo "Copying, please wait..."
 
 
-appname="main-0.1-SNAPSHOT"
+appname="shoppinglist-0.1-SNAPSHOT"
 PID_PATH=/home/octav/$appname/RUNNING_PID
 pid=`sshpass -p $pass ssh octav@zaky.ro cat $PID_PATH`
 echo "Found PID: $pid"
@@ -25,9 +25,9 @@ echo "Transfer ok"
 
 echo "Killing PID: $pid"
 
-sshpass -p $pass ssh octav@zaky.ro "chmod +x /home/octav/$appname/bin/main"
+sshpass -p $pass ssh octav@zaky.ro "chmod +x /home/octav/$appname/bin/shoppinglist"
 sshpass -p $pass ssh octav@zaky.ro "kill -SIGTERM $pid"
-sshpass -p $pass ssh octav@zaky.ro "cd /home/octav/$appname; nohup /home/octav/$appname/bin/main -Dhttp.port=9000 -Dplay.evolutions.db.default.autoApply=true -Dplay.evolutions.db.default.autoApplyDowns=true &"
+sshpass -p $pass ssh octav@zaky.ro "cd /home/octav/$appname; nohup /home/octav/$appname/bin/shoppinglist -Dhttp.port=9000 -Dplay.evolutions.db.default.autoApply=true -Dplay.evolutions.db.default.autoApplyDowns=true &"
 
 sshpass -p $pass ssh octav@zaky.ro "jps"
 
