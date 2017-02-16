@@ -1,10 +1,10 @@
 package org.shopping.services.impl
 
 import com.google.inject.Inject
-import org.shopping.repo._
 import org.shopping.dto._
+import org.shopping.repo._
 import org.shopping.services.{ProductService, _}
-import org.shopping.util.{Constants, ErrorMessages, Gen}
+import org.shopping.util.{Constants, ErrorMessages, Gen, Time}
 import play.api.http.Status
 
 import scala.concurrent.ExecutionContext.Implicits._
@@ -98,5 +98,15 @@ class DefaultProductService @Inject()(userRepo: UserRepo, productRepo: ProductRe
         case e: Throwable => exSync(e)
       }
 
+  }
+
+  override def syncProducts(since: Long): Result[SyncProductsDTO] = {
+    val now = Time.now
+    productRepo
+      .getModifiedProductsSince(since)
+      .map(a => resultSync(SyncProductsDTO(items = a._1.map(new ProductDTO(_).copy(tags = "")), time = now, total = a._2)))
+      .recover {
+        case e: Throwable => exSync(e)
+      }
   }
 }

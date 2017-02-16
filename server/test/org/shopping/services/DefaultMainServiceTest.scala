@@ -5,6 +5,7 @@ import org.scalatestplus.play._
 import org.shopping.dto._
 import org.shopping.models.User
 import org.shopping.services.impl._
+import org.shopping.util.Constants
 import org.shopping.util.Gen._
 import org.shopping.util.Time._
 import play.api.libs.json.Json
@@ -47,7 +48,7 @@ class DefaultMainServiceTest extends PlaySpec with MockFactory {
     ListItemDTO(productId = Some(id), quantity = 1, description = Some(s"desc $id"), bought = 0)
 
   private def newProductDTO(id: String = guid) =
-    ProductDTO(id = Some(id), name = s"name $id", tags = "tags", description = Some(s"desc $id"))
+    ProductDTO(id = Some(id), name = s"name $id", tags = "tags", description = Some(s"desc $id"), status = Constants.STATUS_INSERTED)
 
   private def newProductPriceDTO(pid: String = guid) =
     ProductPriceDTO(productId = pid, supplierId = s"s-$pid", price = BigDecimal(100))

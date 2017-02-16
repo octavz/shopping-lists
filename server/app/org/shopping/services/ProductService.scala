@@ -20,4 +20,6 @@ trait ProductService extends BaseService {
 
   def searchProduct(query: String, offset: Int, count: Int)(implicit authData: AuthData): Result[ProductsDTO]
 
+  def syncProducts(since: Long): Result[SyncProductsDTO]
+
 }

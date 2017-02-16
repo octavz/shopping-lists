@@ -326,6 +326,25 @@ GET            /api/products                   @org.shopping.controllers.Product
 ###
 # tags:
 #   - Product operations
+# summary: Sync products
+# produces:
+#   - application/json
+# parameters:
+# responses:
+#   200:
+#     description: products
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.ProductsDTO'
+#   500:
+#     description: Internal Error
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
+###
+GET            /api/sync/products                   @org.shopping.controllers.ProductController.syncProducts(since: Long)
+
+###
+# tags:
+#   - Product operations
 # summary: Get all suppliers
 # produces:
 #   - application/json

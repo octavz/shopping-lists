@@ -56,6 +56,14 @@ class SlickProductRepo @Inject()(protected val dbConfigProvider: DatabaseConfigP
     } yield (res, total)
   }
 
+  override def getModifiedProductsSince(since: Long): Repo[(Seq[Product], Int)] = db.run {
+    val q = Products.filter(p => (p.updated < since) && (p.status =!= Constants.STATUS_DELETE))
+    for {
+      res <- q.result
+      total <- q.length.result
+    } yield (res, total)
+  }
+
   override def getProductPrice(productId: String, supplierId: String): Repo[Option[ProductPrice]] = {
     db.run {
       ProductPrices.filter(p => p.supplierId === supplierId && p.productId === productId).result.headOption
