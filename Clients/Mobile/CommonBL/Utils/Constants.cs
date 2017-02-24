@@ -20,6 +20,8 @@ namespace CommonBL.Utils
         public const string URL_DELETE_LIST = "/api/list/{0}";
         public const string URL_UPDATE_LIST = "/api/list/{0}";
 
+        public const string URL_GET_PRODUCTS = "/api/products";
+
         public const string URL_SYNC = "/api/data";
 
         public const string DEFAULT_LIST_NAME = "_deflistname2016";

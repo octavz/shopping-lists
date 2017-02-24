@@ -10,6 +10,8 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using CommonBL.Data.Response;
+using ShList.Code.DB;
+using CommonBL.Repository;
 
 namespace ShList.Extended.Code
 {
@@ -61,6 +63,7 @@ namespace ShList.Extended.Code
         public override void OnCreate()
         {
             base.OnCreate();
+
             ISharedPreferences settings = LoadSettings();
             if (settings == null)
                 return;
