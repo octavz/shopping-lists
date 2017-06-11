@@ -20,6 +20,7 @@ using System.Threading.Tasks;
 using ShList.Code.Common;
 using Android.Support.V4.Content;
 using CommonBL.Utils;
+using ShList.Code.DB;
 
 namespace ShList.Code
 {
@@ -53,7 +54,21 @@ namespace ShList.Code
             IntentFilter filter = new IntentFilter(Intent.ActionSend);
             MessageReciever receiver = new MessageReciever(this);
             LocalBroadcastManager.GetInstance(this).RegisterReceiver(receiver, filter);
+
+            PrepareDB();
         }//OnCreate
+
+        private async void PrepareDB()
+        {
+            DBGeneral dbGn = new DBGeneral();
+            if (!dbGn.DbExists())
+            {
+                ProductsRepository repPrds = new ProductsRepository();
+                ResPoductsDTO loadPrds = await repPrds.GetProducts(ShAppContext.UserToken);
+                int a =0;
+                a++;
+            }//endif
+        }
 
         public void ProcessMessage(Intent intent)
         {
