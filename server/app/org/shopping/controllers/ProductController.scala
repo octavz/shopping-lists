@@ -152,7 +152,20 @@ class ProductController @Inject()(productService: ProductService) extends BaseCo
     Action.async {
       implicit request =>
         try {
-          productService.syncProducts(since) map (response(_))
+          productService.syncUserProducts(since)(None) map (response(_))
+        } catch {
+          case e: Throwable => asyncBadRequest(e)
+        }
+    }
+
+  def syncUserProducts(since: Long): Action[AnyContent] =
+    Action.async {
+      implicit request =>
+        try {
+          authorize {
+            implicit authInfo =>
+              productService.syncUserProducts(since)(Some(authInfo)) map (response(_))
+          }
         } catch {
           case e: Throwable => asyncBadRequest(e)
         }

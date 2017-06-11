@@ -17,6 +17,7 @@ import Home.Messages exposing (..)
 import Account.Update exposing (..)
 import Account.Messages exposing (..)
 import Home.Update exposing (..)
+import Maybe.Extra exposing (..)
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -72,8 +73,8 @@ update msg model =
                 inner =
                     model.sync
             in
-                if model.accountView.message == Nothing then
-                    ( { model | sync = accountToSync }, Cmd.none )
+                if isNothing model.accountView.message then
+                    ( { model | sync = (accountToSync model.accountView inner) }, Cmd.none )
                 else
                     ( model, Cmd.none )
 
@@ -117,14 +118,27 @@ update msg model =
             ( model, Cmd.none )
 
 
+
+--this saves the current account to sync store
+
+
 accountToSync : AccountModel -> SyncDTO -> SyncDTO
 accountToSync account sync =
-    case sync.userData of
-        Just u ->
-            { sync | userData = { u | content = account.content } }
+    let
+        mergeAccount : UpdateUserDTO -> UpdateUserDTO -> UpdateUserDTO
+        mergeAccount first second =
+            { nick = or second.nick first.nick
+            , password = or second.password first.password
+            , login = or second.login first.login
+            , id = or second.id first.id
+            }
+    in
+        case sync.userData of
+            Just u ->
+                { sync | userData =  Just (mergeAccount u account.content)  }
 
-        _ ->
-            { sync | userData = account.content  }
+            _ ->
+                { sync | userData = Just account.content }
 
 
 performSync : Model -> ( Model, Cmd Msg )

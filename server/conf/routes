@@ -344,6 +344,30 @@ GET            /api/sync/products                   @org.shopping.controllers.Pr
 ###
 # tags:
 #   - Product operations
+# summary: Sync products
+# produces:
+#   - application/json
+# parameters:
+#   - name: "Authorization"
+#     in: "header"
+#     description: "Authorization code"
+#     required: true
+#     type: "string"
+# responses:
+#   200:
+#     description: products
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.SyncProductsDTO'
+#   500:
+#     description: Internal Error
+#     schema:
+#       $ref: '#/definitions/org.shopping.dto.ErrorDTO'
+###
+GET            /api/user/products                   @org.shopping.controllers.ProductController.syncUserProducts(since: Long)
+
+###
+# tags:
+#   - Product operations
 # summary: Get all suppliers
 # produces:
 #   - application/json

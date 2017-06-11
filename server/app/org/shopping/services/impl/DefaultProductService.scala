@@ -100,10 +100,10 @@ class DefaultProductService @Inject()(userRepo: UserRepo, productRepo: ProductRe
 
   }
 
-  override def syncProducts(since: Long): Result[SyncProductsDTO] = {
+  override def syncUserProducts(since: Long)(authData: Option[AuthData]): Result[SyncProductsDTO] = {
     val now = Time.now
     productRepo
-      .getModifiedProductsSince(since)
+      .getModifiedProductsSince(since, authData.map(_.user.id))
       .map(a => resultSync(SyncProductsDTO(items = a._1.map(new ProductDTO(_).copy(tags = "")), time = now, total = a._2)))
       .recover {
         case e: Throwable => exSync(e)

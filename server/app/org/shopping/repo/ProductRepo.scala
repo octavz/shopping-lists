@@ -18,7 +18,7 @@ trait ProductRepo {
 
   def searchProduct(query: String, offset: Int, count: Int): Repo[(Seq[Product], Int)]
 
-  def getModifiedProductsSince(since: Long): Repo[(Seq[Product], Int)]
+  def getModifiedProductsSince(since: Long, userId: Option[String]): Repo[(Seq[Product], Int)]
 
   def getProductPrice(productId: String, supplierId: String): Repo[Option[ProductPrice]]
 
